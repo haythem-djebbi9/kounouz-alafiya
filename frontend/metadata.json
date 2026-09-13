@@ -1,0 +1,6 @@
+{
+  "name": "كنوز العافية - Kunooz Al Afiya",
+  "description": "متجر عسل طبيعي فاخر مع نظام التحقق من الجودة ومصدر كل قطرة - جودة يمكن التحقق منها",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

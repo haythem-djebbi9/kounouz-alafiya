@@ -1,0 +1,392 @@
+// Kounouz Alafiya — schéma de traçabilité du miel, du producteur au consommateur.
+// Chaîne : Producteur -> Demande -> Échantillon -> Scellé -> Analyse labo + Échantillon
+// de référence -> Vérification -> Lot -> Emballage -> Produit -> QR Code -> Scan.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum Role {
+  ADMIN
+  VERIFICATION_TEAM
+  FIELD_AGENT
+  PRODUCER
+  CONSUMER
+}
+
+enum VerificationRequestStatus {
+  NEW
+  IN_REVIEW
+  ACCEPTED
+  REJECTED
+}
+
+enum SampleStatus {
+  COLLECTED
+  SEALED
+  IN_TRANSIT
+  RECEIVED_AT_LAB
+  ANALYZED
+}
+
+enum SealStatus {
+  INTACT
+  BROKEN
+}
+
+enum LabAnalysisStatus {
+  PENDING
+  COMPLIANT
+  NON_COMPLIANT
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  NOT_VERIFIED
+}
+
+enum BatchStatus {
+  CREATED
+  PACKAGED
+  READY
+}
+
+enum PackagingStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+// Valeurs conservées en français : ce sont les statuts métier tels que définis
+// dans le cahier des charges produit (BROUILLON|PUBLIE|RUPTURE|SUSPENDU).
+enum ProductStatus {
+  BROUILLON
+  PUBLIE
+  RUPTURE
+  SUSPENDU
+}
+
+// ---------------------------------------------------------------------------
+// Identité & rôles
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         Role
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  producer Producer?
+  consumer Consumer?
+
+  collectedSamples      Sample[]       @relation("FieldAgentSamples")
+  verificationDecisions Verification[] @relation("VerificationDecidedBy")
+  auditLogs             AuditLog[]
+
+  @@map("users")
+}
+
+model Producer {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  name        String
+  farmName    String   @map("farm_name")
+  location    String
+  description String?
+  isVerified  Boolean  @default(false) @map("is_verified")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user                 User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  verificationRequests VerificationRequest[]
+
+  @@map("producers")
+}
+
+model Consumer {
+  id        String   @id @default(uuid())
+  userId    String   @unique @map("user_id")
+  name      String
+  country   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("consumers")
+}
+
+// ---------------------------------------------------------------------------
+// Flux de vérification : demande -> échantillon -> scellé -> labo -> décision
+// ---------------------------------------------------------------------------
+
+model VerificationRequest {
+  id                 String                    @id @default(uuid())
+  producerId         String                    @map("producer_id")
+  honeyType          String                    @map("honey_type")
+  description        String?
+  collectionLocation String                    @map("collection_location")
+  quantity           Decimal                   @db.Decimal(10, 3)
+  status             VerificationRequestStatus @default(NEW)
+  createdAt          DateTime                  @default(now()) @map("created_at")
+  updatedAt          DateTime                  @updatedAt @map("updated_at")
+
+  producer      Producer       @relation(fields: [producerId], references: [id], onDelete: Restrict)
+  samples       Sample[]
+  verifications Verification[]
+
+  @@map("verification_requests")
+}
+
+model Sample {
+  id             String       @id @default(uuid())
+  requestId      String       @map("request_id")
+  collectedById  String       @map("collected_by")
+  collectionDate DateTime     @map("collection_date")
+  location       String
+  quantity       Decimal      @db.Decimal(10, 3)
+  photos         String[]     @default([])
+  status         SampleStatus @default(COLLECTED)
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  request     VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Restrict)
+  collectedBy User                @relation("FieldAgentSamples", fields: [collectedById], references: [id], onDelete: Restrict)
+
+  seal             Seal?
+  labAnalyses      LaboratoryAnalysis[]
+  referenceSample  ReferenceSample?
+  verifications    Verification[]
+
+  @@map("samples")
+}
+
+// Le scellé n'est jamais modifiable après création : aucun champ mutable n'est
+// exposé côté application au-delà de sa pose initiale.
+model Seal {
+  id       String     @id @default(uuid())
+  sampleId String     @unique @map("sample_id")
+  sealCode String     @unique @map("seal_code")
+  isSealed Boolean    @default(true) @map("is_sealed")
+  sealedAt DateTime   @default(now()) @map("sealed_at")
+  status   SealStatus @default(INTACT)
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  sample Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+
+  @@map("seals")
+}
+
+model Laboratory {
+  id              String @id @default(uuid())
+  name            String
+  accreditationNo String @map("accreditation_no")
+  country         String
+  contactInfo     String @map("contact_info")
+
+  analyses LaboratoryAnalysis[]
+
+  @@map("laboratories")
+}
+
+model LaboratoryAnalysis {
+  id             String            @id @default(uuid())
+  sampleId       String            @map("sample_id")
+  labId          String            @map("lab_id")
+  analysisDate   DateTime          @map("analysis_date")
+  reportFileUrl  String?           @map("report_file_url")
+  // { humidite, ph, hmf, sucres, proline, pollen, pesticides, ... }
+  results        Json
+  status         LabAnalysisStatus @default(PENDING)
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime          @updatedAt @map("updated_at")
+
+  sample        Sample         @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  laboratory    Laboratory     @relation(fields: [labId], references: [id], onDelete: Restrict)
+  verifications Verification[]
+
+  @@map("laboratory_analyses")
+}
+
+model ReferenceSample {
+  id                String   @id @default(uuid())
+  sampleId          String   @unique @map("sample_id")
+  referenceCode     String   @unique @map("reference_code")
+  storageLocation   String   @map("storage_location")
+  storedAt          DateTime @default(now()) @map("stored_at")
+  storageConditions String   @map("storage_conditions")
+  retentionPeriod   String   @map("retention_period")
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  sample Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+
+  @@map("reference_samples")
+}
+
+// La décision de vérification est réservée à ADMIN / VERIFICATION_TEAM (appliqué
+// au niveau des guards NestJS, pas seulement en base).
+model Verification {
+  id           String              @id @default(uuid())
+  requestId    String              @map("request_id")
+  sampleId     String              @map("sample_id")
+  analysisId   String              @map("analysis_id")
+  status       VerificationStatus  @default(PENDING)
+  verifiedAt   DateTime?           @map("verified_at")
+  notes        String?
+  decidedById  String              @map("decided_by")
+  createdAt    DateTime            @default(now()) @map("created_at")
+  updatedAt    DateTime            @updatedAt @map("updated_at")
+
+  request   VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Restrict)
+  sample    Sample              @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  analysis  LaboratoryAnalysis  @relation(fields: [analysisId], references: [id], onDelete: Restrict)
+  decidedBy User                @relation("VerificationDecidedBy", fields: [decidedById], references: [id], onDelete: Restrict)
+
+  batch Batch?
+
+  @@map("verifications")
+}
+
+// ---------------------------------------------------------------------------
+// Lot -> Emballage -> Catalogue -> Produit -> QR Code
+// ---------------------------------------------------------------------------
+
+model Batch {
+  id              String      @id @default(uuid())
+  verificationId  String      @unique @map("verification_id")
+  batchCode       String      @unique @map("batch_code")
+  honeyType       String      @map("honey_type")
+  quantityKg      Decimal     @map("quantity_kg") @db.Decimal(10, 3)
+  productionDate  DateTime    @map("production_date")
+  status          BatchStatus @default(CREATED)
+  createdAt       DateTime    @default(now()) @map("created_at")
+  updatedAt       DateTime    @updatedAt @map("updated_at")
+
+  verification Verification @relation(fields: [verificationId], references: [id], onDelete: Restrict)
+  packaging    Packaging?
+  products     Product[]
+
+  @@map("batches")
+}
+
+model Packaging {
+  id             String          @id @default(uuid())
+  batchId        String          @unique @map("batch_id")
+  packageType    String          @map("package_type")
+  size           String
+  labelDesign    String?         @map("label_design")
+  productionDate DateTime        @map("production_date")
+  status         PackagingStatus @default(IN_PROGRESS)
+  createdAt      DateTime        @default(now()) @map("created_at")
+
+  batch   Batch    @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  product Product?
+
+  @@map("packagings")
+}
+
+model Categorie {
+  id          String  @id @default(uuid())
+  nom         String
+  slug        String  @unique
+  description String?
+  imageUrl    String? @map("image_url")
+  ordre       Int     @default(0)
+  parentId    String? @map("parent_id")
+  actif       Boolean @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  parent   Categorie?  @relation("CategorieHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children Categorie[] @relation("CategorieHierarchy")
+  products Product[]
+
+  @@map("categories")
+}
+
+// Un produit ne peut passer en PUBLIE que si son lot (batch) est VERIFIED —
+// contrainte appliquée au niveau service, pas en base (le batch peut être nul
+// tant que le produit est en BROUILLON).
+model Product {
+  id          String        @id @default(uuid())
+  packagingId String?       @unique @map("packaging_id")
+  categorieId String        @map("categorie_id")
+  batchId     String?       @map("batch_id")
+  nom         String
+  description String?
+  prix        Decimal       @db.Decimal(10, 2)
+  stock       Int           @default(0)
+  images      String[]      @default([])
+  gamme       String?
+  statut      ProductStatus @default(BROUILLON)
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  packaging Packaging? @relation(fields: [packagingId], references: [id], onDelete: SetNull)
+  categorie Categorie  @relation(fields: [categorieId], references: [id], onDelete: Restrict)
+  batch     Batch?     @relation(fields: [batchId], references: [id], onDelete: SetNull)
+
+  qrCode QRCode?
+
+  @@map("products")
+}
+
+// Le QR code d'un produit ne change jamais : seul le statut affiché sur sa
+// page de vérification publique évolue.
+model QRCode {
+  id        String   @id @default(uuid())
+  productId String   @unique @map("product_id")
+  qrCode    String   @unique @map("qr_code")
+  qrId      String   @unique @map("qr_id")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  product Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+  scans   QRScan[]
+
+  @@map("qr_codes")
+}
+
+model QRScan {
+  id         String   @id @default(uuid())
+  qrCodeId   String   @map("qr_code_id")
+  scannedAt  DateTime @default(now()) @map("scanned_at")
+  location   String?
+  deviceInfo String?  @map("device_info")
+  country    String?
+  riskScore  Float    @default(0) @map("risk_score")
+  flagged    Boolean  @default(false)
+
+  qrCode QRCode @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+
+  @@map("qr_scans")
+}
+
+// ---------------------------------------------------------------------------
+// Journalisation
+// ---------------------------------------------------------------------------
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  action    String
+  entite    String
+  entiteId  String   @map("entite_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  @@map("audit_logs")
+}

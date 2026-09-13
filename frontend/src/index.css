@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-cairo: 'Cairo', sans-serif;
+}
+
+:root {
+  --kunoz-green: #0C261B;
+  --kunoz-green-dark: #0D271C;
+  --kunoz-gold: #D19A44;
+  --kunoz-gold-dark: #C79A3B;
+  --kunoz-cream: #F6F1EB;
+  --kunoz-cream-light: #F7F2EC;
+  --kunoz-text: #0C261B;
+  --kunoz-muted: #77736A;
+  --kunoz-white: #FFFFFF;
+}
+
+@layer base {
+  html, body {
+    font-family: 'Cairo', sans-serif;
+    color: #0C261B;
+    background-color: #FAF6EE;
+    overflow-x: hidden;
+    font-weight: 400;
+  }
+
+  /* Titres : Cairo Bold / 700 */
+  h1, h2, h3 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Sous-titres : Cairo SemiBold / 600 */
+  h4, h5, h6, .subtitle, .sub-heading {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Texte normal : Cairo Regular / 400 */
+  p, span, label, input, textarea, select {
+    font-family: 'Cairo', sans-serif;
+  }
+
+  /* Boutons : Cairo SemiBold / 600 */
+  button, [role="button"], .btn {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+  }
+}
+
+/* Subtle Geometric Honeycomb Pattern for Brand Accents */
+.bg-honeycomb-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='70' viewBox='0 0 40 70'%3E%3Cg fill='none' stroke='%23D19A44' stroke-width='1' stroke-opacity='0.12'%3E%3Cpath d='M20 5 L38 15 L38 35 L20 45 L2 35 L2 15 Z'/%3E%3Cpath d='M20 40 L38 50 L38 70 L20 80 L2 70 L2 50 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-honeycomb-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='70' viewBox='0 0 40 70'%3E%3Cg fill='none' stroke='%23D19A44' stroke-width='1' stroke-opacity='0.08'%3E%3Cpath d='M20 5 L38 15 L38 35 L20 45 L2 35 L2 15 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F1EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #D19A44;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C79A3B;
+}
