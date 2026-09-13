@@ -83,9 +83,10 @@ model User {
   id           String   @id @default(uuid())
   name         String
   email        String   @unique
-  passwordHash String   @map("password_hash")
-  role         Role
-  isActive     Boolean  @default(true) @map("is_active")
+  passwordHash     String   @map("password_hash")
+  role             Role
+  isActive         Boolean  @default(true) @map("is_active")
+  refreshTokenHash String?  @map("refresh_token_hash")
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")
 

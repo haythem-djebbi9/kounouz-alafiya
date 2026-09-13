@@ -66,6 +66,20 @@ Deux chaînes de traçabilité complètes sont préchargées :
 - `KZ-QR-2026-000001` — Miel de Sedra Premium 500g → **Vérifié** ✅
 - `KZ-QR-2026-000002` — Miel de Fleurs Sauvages 250g → **Suspendu** ⏸️ (scans anti-fraude suspects)
 
+## Authentification
+
+JWT (access token courte durée + refresh token, avec rotation et invalidation en base) et RBAC
+à 5 rôles (`ADMIN`, `VERIFICATION_TEAM`, `FIELD_AGENT`, `PRODUCER`, `CONSUMER`).
+
+- `POST /api/auth/register` — auto-inscription publique, réservée aux rôles `PRODUCER` et `CONSUMER`.
+- `POST /api/auth/login`, `POST /api/auth/refresh`, `POST /api/auth/logout`, `GET /api/auth/me`.
+- `POST /api/auth/register-staff` — création de comptes internes (Admin, Équipe de vérification,
+  Agent terrain), réservée aux administrateurs.
+
+Toutes les routes sont protégées par défaut (`JwtAuthGuard` + `RolesGuard` globaux) ; une route
+publique doit être explicitement marquée avec le décorateur `@Public()`, et une route restreinte
+à certains rôles avec `@Roles(Role.ADMIN, ...)`.
+
 ## Structure du dépôt
 
 ```
@@ -78,7 +92,7 @@ kounouz affia/
 ## Avancement
 
 - [x] Étape 1 — Monorepo, Docker, PostgreSQL, schéma Prisma, seed de démonstration
-- [ ] Étape 2 — Auth + 5 rôles + guards
+- [x] Étape 2 — Auth + 5 rôles + guards
 - [ ] Étape 3 — Flux cœur métier (Demande → Échantillon → Scellé → Labo → Vérification)
 - [ ] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
 - [ ] Étape 5 — Anti-fraude + Rapports
