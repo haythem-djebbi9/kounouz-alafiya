@@ -156,7 +156,7 @@ export class ProductsService {
         statut: ProductStatus.PUBLIE,
         ...(categorieSlug ? { categorie: { slug: categorieSlug } } : {}),
       },
-      include: { categorie: true, qrCode: { select: { qrId: true } } },
+      include: { categorie: true, qrCode: { select: { qrId: true, qrCode: true } } },
       orderBy: { createdAt: 'desc' },
     });
   }
@@ -164,11 +164,27 @@ export class ProductsService {
   async findPublicOne(id: string) {
     const product = await this.prisma.product.findFirst({
       where: { id, statut: ProductStatus.PUBLIE },
-      include: { categorie: true, qrCode: { select: { qrId: true } } },
+      include: { categorie: true, qrCode: { select: { qrId: true, qrCode: true } } },
     });
     if (!product) {
       throw new NotFoundException('Produit introuvable.');
     }
     return product;
+  }
+
+  // Portail Producteur : "Vue de ses produits publiés" (cahier des charges 7.1).
+  async findMineForProducer(userId: string) {
+    const producer = await this.prisma.producer.findUnique({ where: { userId } });
+    if (!producer) {
+      throw new NotFoundException('Aucun profil producteur pour ce compte.');
+    }
+    return this.prisma.product.findMany({
+      where: {
+        statut: ProductStatus.PUBLIE,
+        batch: { verification: { request: { producerId: producer.id } } },
+      },
+      include: { categorie: true, qrCode: { select: { qrId: true, qrCode: true } } },
+      orderBy: { createdAt: 'desc' },
+    });
   }
 }

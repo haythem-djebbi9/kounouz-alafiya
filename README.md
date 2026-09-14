@@ -7,7 +7,7 @@ QR code unique : un scan = une histoire complète et vérifiée.
 ## Stack technique
 
 - **Backend** : NestJS (TypeScript, ESM), PostgreSQL + Prisma ORM, JWT (RBAC à 5 rôles), Swagger.
-- **Frontend** : React + TypeScript, Vite, Tailwind CSS.
+- **Frontend** : React + TypeScript, Vite, Tailwind CSS, React Router, TanStack Query.
 - **Infra locale** : Docker Compose (PostgreSQL + backend + frontend).
 
 ## Démarrage rapide (tout via Docker)
@@ -106,6 +106,20 @@ publique doit être explicitement marquée avec le décorateur `@Public()`, et u
 - Export : `GET /api/reports/operations/export?format=csv|pdf` et
   `GET /api/reports/by-producer/export` (CSV).
 
+## Frontend — Design System & Portail Producteur
+
+- `frontend/src/design-system/` : composants réutilisables (`Button`, `Card`, `Badge`,
+  `StatusBadge`, `Timeline`, `QRCodeDisplay`, `Input`/`Textarea`/`Select`, `EmptyState`, `Alert`)
+  construits sur l'identité visuelle existante (vert `#0C261B`, or `#D49B37`, crème `#FAF6EE`).
+- `frontend/src/lib/` : client API (`api.ts`, rafraîchissement automatique du jeton sur 401),
+  contexte d'authentification (`auth-context.tsx`), client TanStack Query.
+- `frontend/src/portals/producer/` : espace producteur complet — tableau de bord, demande de
+  vérification en 3 étapes avec barre de progression, suivi en timeline (langage simple, jamais
+  de jargon), profil, produits publiés avec QR code. Connecté à l'API réelle (aucune donnée
+  simulée), protégé par rôle (`PRODUCER`).
+- La vitrine existante (`App.tsx` et ses composants) reste inchangée à ce stade — elle sera
+  branchée sur l'API réelle à l'étape 9.
+
 ## Structure du dépôt
 
 ```
@@ -122,7 +136,7 @@ kounouz affia/
 - [x] Étape 3 — Flux cœur métier (Demande → Échantillon → Scellé → Labo → Vérification)
 - [x] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
 - [x] Étape 5 — Anti-fraude + Rapports
-- [ ] Étape 6 — Design System + Portail Producteur
+- [x] Étape 6 — Design System + Portail Producteur
 - [ ] Étape 7 — Portail Agent Terrain (mobile-first)
 - [ ] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
 - [ ] Étape 9 — Marketplace + Page de vérification publique

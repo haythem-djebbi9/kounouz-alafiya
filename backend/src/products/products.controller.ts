@@ -29,6 +29,15 @@ export class ProductsController {
     return this.service.findPublicOne(id);
   }
 
+  // --- Portail Producteur ----------------------------------------------
+
+  @ApiBearerAuth()
+  @Roles(Role.PRODUCER)
+  @Get('mine')
+  findMine(@CurrentUser() user: JwtPayload) {
+    return this.service.findMineForProducer(user.sub);
+  }
+
   // --- Gestion (Admin / Équipe de vérification) -----------------------
 
   @ApiBearerAuth()
