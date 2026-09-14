@@ -18,7 +18,7 @@ interface ProductDetailModalProps {
   product: Product | null;
   onClose: () => void;
   onAddToCart: (product: Product, quantity: number, weight: string) => void;
-  onVerifyBatch: (batchCode: string) => void;
+  onVerifyBatch: (product: Product) => void;
 }
 
 export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
@@ -188,7 +188,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             </div>
 
             <button
-              onClick={() => onVerifyBatch(product.batchCode)}
+              onClick={() => onVerifyBatch(product)}
               className="text-xs font-bold text-[#0C261B] bg-white hover:bg-[#FAF6EE] px-3 py-1.5 rounded-lg border border-[#D49B37] transition-colors cursor-pointer"
             >
               عرض الشهادة

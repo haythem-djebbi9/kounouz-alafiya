@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { QrCode, ArrowLeft, ShieldCheck, Award, MapPin, Layers, Sparkles } from 'lucide-react';
-import { VERIFICATION_BATCHES } from '../data/mockData';
-import { VerificationBatch } from '../types';
 
-interface VerificationSectionProps {
-  onShowBatchDetails: (batch: VerificationBatch) => void;
-  onOpenScanner: () => void;
-}
-
-export const VerificationSection: React.FC<VerificationSectionProps> = ({
-  onShowBatchDetails,
-  onOpenScanner,
-}) => {
+export const VerificationSection: React.FC = () => {
+  const navigate = useNavigate();
   const [inputCode, setInputCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -23,13 +15,11 @@ export const VerificationSection: React.FC<VerificationSectionProps> = ({
       setErrorMsg('الرجاء إدخال رمز التحقق المطبوع على العبوة');
       return;
     }
-
-    const batch = VERIFICATION_BATCHES[code] || VERIFICATION_BATCHES['KZ-LUX-500'];
     setErrorMsg('');
-    onShowBatchDetails(batch);
+    navigate(`/verify/${encodeURIComponent(code)}`);
   };
 
-  const sampleCodes = ['KZ-LUX-500', 'KZ-SIDR-2025', 'KZ-STICK-2025'];
+  const sampleCodes = ['KZ-QR-2026-000001', 'KZ-QR-2026-000002'];
 
   return (
     <section
@@ -78,14 +68,14 @@ export const VerificationSection: React.FC<VerificationSectionProps> = ({
                     setInputCode(e.target.value);
                     setErrorMsg('');
                   }}
-                  placeholder="أدخل رمز التحقق (مثال: KZ-LUX-500)"
+                  placeholder="أدخل رمز التحقق (مثال: KZ-QR-2026-000001)"
                   className="w-full pl-10 pr-4 py-3 text-sm sm:text-base text-[#0C261B] placeholder:text-[#9AA8A2] bg-transparent focus:outline-none font-bold"
                   dir="rtl"
                 />
                 <button
                   type="button"
-                  onClick={onOpenScanner}
-                  title="مسح الكاميرا للرمز"
+                  onClick={() => navigate('/verify')}
+                  title="طرق تحقق إضافية"
                   className="absolute left-2.5 p-2 text-[#C68A28] hover:text-[#0C261B] hover:bg-[#FAF6EE] rounded-lg transition-colors cursor-pointer"
                 >
                   <QrCode className="w-5 h-5" />
@@ -121,10 +111,7 @@ export const VerificationSection: React.FC<VerificationSectionProps> = ({
                   <button
                     key={code}
                     type="button"
-                    onClick={() => {
-                      setInputCode(code);
-                      onShowBatchDetails(VERIFICATION_BATCHES[code]);
-                    }}
+                    onClick={() => navigate(`/verify/${code}`)}
                     className="px-2.5 py-1 rounded bg-white hover:bg-[#D49B37] hover:text-white text-[#0C261B] font-mono text-[11px] font-bold transition-all cursor-pointer border border-[#D49B37]/50 shadow-sm"
                   >
                     {code}

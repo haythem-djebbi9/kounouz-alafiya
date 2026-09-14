@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import App from './App';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterProducerPage } from './pages/RegisterProducerPage';
+import { RegisterConsumerPage } from './pages/RegisterConsumerPage';
+import { PublicVerifyPage } from './pages/PublicVerifyPage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 import { ProducerLayout } from './portals/producer/ProducerLayout';
 import { DashboardPage } from './portals/producer/DashboardPage';
@@ -40,6 +42,9 @@ export const AppRouter: React.FC = () => {
     <Routes>
       <Route path="/connexion" element={<LoginPage />} />
       <Route path="/inscription/producteur" element={<RegisterProducerPage />} />
+      <Route path="/inscription/client" element={<RegisterConsumerPage />} />
+      {/* Page canonique encodée dans l'image du QR — voir backend QrCodesService.generateImage */}
+      <Route path="/verify/:identifier" element={<PublicVerifyPage />} />
 
       <Route
         path="/producteur"

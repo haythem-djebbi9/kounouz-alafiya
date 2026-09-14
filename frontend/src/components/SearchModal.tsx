@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
-import { PRODUCTS } from '../data/mockData';
-import { Search, X, ArrowLeft, Droplets, Tag } from 'lucide-react';
+import { Search, X, ArrowLeft, Tag } from 'lucide-react';
 
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectProduct: (product: Product) => void;
+  products: Product[];
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
   isOpen,
   onClose,
   onSelectProduct,
+  products,
 }) => {
   const [query, setQuery] = useState('');
 
   if (!isOpen) return null;
 
   const results = query.trim()
-    ? PRODUCTS.filter(
+    ? products.filter(
         (p) =>
           p.name.includes(query) ||
           p.subtitle.includes(query) ||
           p.description.includes(query) ||
           p.categoryLabel.includes(query)
       )
-    : PRODUCTS.slice(0, 4);
+    : products.slice(0, 4);
 
   const quickTags = ['عسل سدر', 'غذاء ملكات', 'أعواد عسل', 'عسل طبيعي فاخر', 'بروبوليس'];
 

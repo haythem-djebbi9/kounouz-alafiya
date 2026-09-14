@@ -2,7 +2,9 @@ export interface Product {
   id: string;
   name: string;
   subtitle: string;
-  category: 'honey' | 'royal-jelly' | 'propolis' | 'bundles' | 'sticks' | 'pollen';
+  // Slug de catégorie — géré dynamiquement par l'équipe (voir Centre de
+  // vérification, étape 8), pas un ensemble fixe.
+  category: string;
   categoryLabel: string;
   price: number;
   oldPrice?: number;
@@ -17,25 +19,9 @@ export interface Product {
   purity: string;
   isBestSeller?: boolean;
   isNew?: boolean;
-}
-
-export interface VerificationBatch {
-  batchCode: string;
-  productName: string;
-  harvestDate: string;
-  expiryDate: string;
-  origin: string;
-  location: string;
-  beekeeper: string;
-  labCertificateNo: string;
-  testDate: string;
-  purityScore: number;
-  moisturePercentage: number;
-  sucrosePercentage: number;
-  fructoseGlucosePercentage: number;
-  hmfScore: number;
-  pollenAnalysis: string;
-  status: 'verified' | 'premium' | 'certified';
+  // Identifiant réel du QR code (branché sur l'API) — absent pour les données
+  // d'exemple restantes du template.
+  qrId?: string;
 }
 
 export interface Testimonial {

@@ -162,6 +162,30 @@ publique doit être explicitement marquée avec le décorateur `@Public()`, et u
   aucun réglage système réel n'existe dans le schéma actuel, et une page sans effet aurait
   été trompeuse. À ajouter si un besoin concret émerge.
 
+## Frontend — Marketplace & Page de vérification publique
+
+- Le template vitrine existant (`App.tsx` et ses composants) est maintenant branché sur l'API
+  réelle : catalogue (`GET /products/catalog`), catégories (`GET /categories`, aplaties en
+  filtres car les produits sont rattachés à une catégorie feuille, pas à sa racine), fiche
+  produit (origine et lot réels), panier (données réelles, le paiement reste une simulation
+  côté client — aucun modèle de commande n'existe dans le schéma, cf. cahier des charges
+  section 5).
+- **`/verify/:identifier`** (nouvelle page, sans connexion) : la page canonique encodée dans
+  l'image du QR (`PUBLIC_APP_URL/verify/{qrId}`) — badge immédiat (vérifié ✅ / suspendu ⏸️),
+  infos essentielles en premier, détails du labo repliés par défaut, jamais d'erreur
+  technique. Accepte aussi bien l'identifiant technique (`qrId`) que le code imprimé
+  (`qrCode`, ex: `KZ-QR-2026-000001`) — `GET /verify/:identifier` côté backend cherche
+  désormais sur les deux colonnes.
+- L'ancien système de vérification du template (`VerificationModal`, lot factice
+  `VERIFICATION_BATCHES`) a été **supprimé** : il affichait des données inventées quel que
+  soit le code saisi. Le formulaire de recherche restant (page interne "التحقق من المنتج")
+  navigue désormais vers la vraie page ; les simulateurs de caméra/upload factices ont été
+  retirés au profit d'un message honnête ("scannez directement avec l'appareil photo").
+- `AccountModal` affichait un client fictif et de fausses commandes à **tout le monde** —
+  remplacé par le vrai `useAuth()` (connexion, inscription, déconnexion) avec un état vide
+  honnête pour les commandes (aucun système de commande n'existe encore).
+- `/inscription/client` (nouvelle page) : inscription consommateur.
+
 ## Structure du dépôt
 
 ```
@@ -181,6 +205,6 @@ kounouz affia/
 - [x] Étape 6 — Design System + Portail Producteur
 - [x] Étape 7 — Portail Agent Terrain (mobile-first)
 - [x] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
-- [ ] Étape 9 — Marketplace + Page de vérification publique
+- [x] Étape 9 — Marketplace + Page de vérification publique
 - [ ] Étape 10 — Responsive sur les 3 breakpoints
 - [ ] Étape 11 — Tests, documentation, finalisation

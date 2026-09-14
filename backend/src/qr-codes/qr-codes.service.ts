@@ -85,9 +85,11 @@ export class QrCodesService {
   // Page de vérification publique : accessible sans connexion, ne doit jamais
   // révéler d'erreur technique — seul un 404 générique sort d'ici si le QR
   // n'existe pas ; le statut affiché (vérifié / suspendu) vient du produit.
-  async getPublicVerification(qrId: string, scan: RecordScanDto, deviceInfo?: string) {
-    const qrCode = await this.prisma.qRCode.findUnique({
-      where: { qrId },
+  async getPublicVerification(identifier: string, scan: RecordScanDto, deviceInfo?: string) {
+    // Accepte soit l'identifiant technique (qrId, encodé dans l'image du QR),
+    // soit le code lisible (qrCode, ex: KZ-QR-2026-000001) pour une saisie manuelle.
+    const qrCode = await this.prisma.qRCode.findFirst({
+      where: { OR: [{ qrId: identifier }, { qrCode: identifier }] },
       include: VERIFY_PAYLOAD_INCLUDE,
     });
     if (!qrCode || !qrCode.isActive) {
@@ -107,6 +109,7 @@ export class QrCodesService {
     const producer = verification?.request.producer;
 
     return {
+      qrId: qrCode.qrId,
       qrCode: qrCode.qrCode,
       displayStatus: product.statut === 'PUBLIE' ? 'VERIFIED' : 'SUSPENDED',
       product: {

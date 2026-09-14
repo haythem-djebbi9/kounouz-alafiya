@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Product, Article } from '../types';
-import { PRODUCTS, ARTICLES } from '../data/mockData';
+import { ARTICLES } from '../data/mockData';
 import {
   Heart,
   Star,
@@ -15,21 +15,27 @@ import {
   CreditCard,
   Send,
   Sparkles,
-  Droplets,
-  Package,
   Layers,
-  Leaf,
   Search,
   SlidersHorizontal,
   ShoppingBag,
   Check,
   Tag,
-  Flame,
   QrCode,
-  Award
+  Award,
+  Package,
+  Droplets
 } from 'lucide-react';
 
+export interface CategoryFilter {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
 interface ProductsPageProps {
+  products: Product[];
+  categories: CategoryFilter[];
   onSelectProduct: (product: Product) => void;
   onAddToCart: (product: Product) => void;
   onOpenArticle: (article: Article) => void;
@@ -37,6 +43,8 @@ interface ProductsPageProps {
 }
 
 export const ProductsPage: React.FC<ProductsPageProps> = ({
+  products,
+  categories,
   onSelectProduct,
   onAddToCart,
   onOpenArticle,
@@ -51,18 +59,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const [subscribed, setSubscribed] = useState(false);
   const [activeReviewIdx, setActiveReviewIdx] = useState(0);
 
-  const categories = [
-    { id: 'all', label: 'كل المنتجات', icon: Layers },
-    { id: 'honey', label: 'العسل الطبيعي', icon: Droplets },
-    { id: 'sticks', label: 'أعواد العافية', icon: Flame },
-    { id: 'royal-jelly', label: 'غذاء الملكات', icon: Sparkles },
-    { id: 'propolis', label: 'البروبوليس (العكبر)', icon: Leaf },
-    { id: 'pollen', label: 'حبوب اللقاح', icon: Tag },
-    { id: 'bundles', label: 'باكجات وهدايا', icon: Package },
-  ];
-
   const filteredAndSortedProducts = useMemo(() => {
-    let result = PRODUCTS.filter((p) => {
+    let result = products.filter((p) => {
       const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
       const q = searchQuery.trim().toLowerCase();
       const matchesSearch =
@@ -95,7 +93,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     }
 
     return result;
-  }, [selectedCategory, searchQuery, sortBy]);
+  }, [products, selectedCategory, searchQuery, sortBy]);
 
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -293,7 +291,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <motion.div 
                 whileHover={{ scale: 1.04, rotate: 1 }}
                 className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-square rounded-3xl bg-gradient-to-b from-[#FAF6EE] to-white p-6 shadow-xl border border-[#D49B37]/40 flex flex-col items-center justify-center text-center group cursor-pointer"
-                onClick={() => onSelectProduct(PRODUCTS[0])}
+                onClick={() => products[0] && onSelectProduct(products[0])}
               >
                 {/* Glowing Aura Ring */}
                 <div className="absolute inset-0 rounded-3xl border-2 border-dashed border-[#D49B37]/40 animate-spin-slow pointer-events-none" />
@@ -340,8 +338,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               const isActive = selectedCategory === cat.id;
               const count =
                 cat.id === 'all'
-                  ? PRODUCTS.length
-                  : PRODUCTS.filter((p) => p.category === cat.id).length;
+                  ? products.length
+                  : products.filter((p) => p.category === cat.id).length;
 
               return (
                 <motion.button

@@ -14,6 +14,25 @@ const PRODUCT_INCLUDE = {
   qrCode: true,
 } as const;
 
+// Catalogue public : ajoute la provenance (producteur/lot) nécessaire à
+// l'affichage de la traçabilité sur la fiche produit du marketplace.
+const PUBLIC_PRODUCT_INCLUDE = {
+  categorie: true,
+  qrCode: { select: { qrId: true, qrCode: true } },
+  packaging: { select: { size: true } },
+  batch: {
+    select: {
+      batchCode: true,
+      honeyType: true,
+      verification: {
+        select: {
+          request: { select: { producer: { select: { name: true, farmName: true, location: true } } } },
+        },
+      },
+    },
+  },
+} as const;
+
 @Injectable()
 export class ProductsService {
   constructor(
@@ -156,7 +175,7 @@ export class ProductsService {
         statut: ProductStatus.PUBLIE,
         ...(categorieSlug ? { categorie: { slug: categorieSlug } } : {}),
       },
-      include: { categorie: true, qrCode: { select: { qrId: true, qrCode: true } } },
+      include: PUBLIC_PRODUCT_INCLUDE,
       orderBy: { createdAt: 'desc' },
     });
   }
@@ -164,7 +183,7 @@ export class ProductsService {
   async findPublicOne(id: string) {
     const product = await this.prisma.product.findFirst({
       where: { id, statut: ProductStatus.PUBLIE },
-      include: { categorie: true, qrCode: { select: { qrId: true, qrCode: true } } },
+      include: PUBLIC_PRODUCT_INCLUDE,
     });
     if (!product) {
       throw new NotFoundException('Produit introuvable.');
