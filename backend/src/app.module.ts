@@ -14,6 +14,11 @@ import { SamplesModule } from './samples/samples.module.js';
 import { SealsModule } from './seals/seals.module.js';
 import { LaboratoryModule } from './laboratory/laboratory.module.js';
 import { VerificationsModule } from './verifications/verifications.module.js';
+import { BatchesModule } from './batches/batches.module.js';
+import { PackagingModule } from './packaging/packaging.module.js';
+import { CategoriesModule } from './categories/categories.module.js';
+import { QrCodesModule } from './qr-codes/qr-codes.module.js';
+import { ProductsModule } from './products/products.module.js';
 
 @Module({
   imports: [
@@ -29,6 +34,11 @@ import { VerificationsModule } from './verifications/verifications.module.js';
     SealsModule,
     LaboratoryModule,
     VerificationsModule,
+    BatchesModule,
+    PackagingModule,
+    CategoriesModule,
+    QrCodesModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [

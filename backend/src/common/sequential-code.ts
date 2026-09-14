@@ -5,6 +5,6 @@ export function padSequence(n: number, width = 6): string {
   return String(n).padStart(width, '0');
 }
 
-export function buildCode(prefix: string, count: number): string {
-  return `${prefix}-${padSequence(count + 1)}`;
+export function buildCode(prefix: string, count: number, width = 6): string {
+  return `${prefix}-${padSequence(count + 1, width)}`;
 }

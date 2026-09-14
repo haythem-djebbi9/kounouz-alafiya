@@ -80,6 +80,20 @@ Toutes les routes sont protégées par défaut (`JwtAuthGuard` + `RolesGuard` gl
 publique doit être explicitement marquée avec le décorateur `@Public()`, et une route restreinte
 à certains rôles avec `@Roles(Role.ADMIN, ...)`.
 
+## Catalogue & QR Code
+
+- `GET /api/categories` (public) — catalogue actif ; `GET /api/categories/admin` — toutes les
+  catégories (Admin/Équipe). Suppression bloquée si des produits sont rattachés.
+- `GET /api/products/catalog` (public) — produits `PUBLIE` uniquement ; le reste des routes
+  `/api/products` est réservé à Admin/Équipe de vérification.
+- Un produit ne peut passer en `PUBLIE` que si son lot est rattaché et au statut `READY`
+  (emballage finalisé) ; le QR code est généré automatiquement à la première publication et
+  ne change plus jamais.
+- `GET /api/verify/:qrId` (public, sans connexion) — page de vérification : renvoie le statut
+  affiché (`VERIFIED`/`SUSPENDED`), le produit, le producteur, le lot et l'analyse de
+  laboratoire complète ; chaque appel journalise un `QRScan`.
+- `GET /api/verify/:qrId/image` (public) — image PNG du QR code.
+
 ## Structure du dépôt
 
 ```
@@ -94,7 +108,7 @@ kounouz affia/
 - [x] Étape 1 — Monorepo, Docker, PostgreSQL, schéma Prisma, seed de démonstration
 - [x] Étape 2 — Auth + 5 rôles + guards
 - [x] Étape 3 — Flux cœur métier (Demande → Échantillon → Scellé → Labo → Vérification)
-- [ ] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
+- [x] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
 - [ ] Étape 5 — Anti-fraude + Rapports
 - [ ] Étape 6 — Design System + Portail Producteur
 - [ ] Étape 7 — Portail Agent Terrain (mobile-first)
