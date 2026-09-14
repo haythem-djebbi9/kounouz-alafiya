@@ -1,0 +1,18 @@
+import { useQuery } from '@tanstack/react-query';
+import { api } from '../../../lib/api';
+import type { QrCode, QrScan } from '../../../lib/api-types';
+
+export function useAdminQrCodes() {
+  return useQuery({
+    queryKey: ['admin', 'qr-codes'],
+    queryFn: () => api.get<QrCode[]>('/qr-codes'),
+  });
+}
+
+export function useQrCodeScans(qrId: string | undefined) {
+  return useQuery({
+    queryKey: ['admin', 'qr-codes', qrId, 'scans'],
+    queryFn: () => api.get<QrScan[]>(`/qr-codes/${qrId}/scans`),
+    enabled: !!qrId,
+  });
+}

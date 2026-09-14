@@ -35,22 +35,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Garde contre la course entre le chargement initial (jeton potentiellement
+  // périmé d'une session précédente) et une connexion fraîche : on n'applique
+  // la réponse que si le jeton utilisé pour la requête est toujours celui en
+  // cours au moment où elle se termine.
   const loadMe = useCallback(async () => {
-    if (!tokenStorage.getAccessToken()) {
+    const tokenAtStart = tokenStorage.getAccessToken();
+    if (!tokenAtStart) {
       setUser(null);
       setIsLoading(false);
       return;
     }
     try {
       const me = await api.get<AuthUser>('/auth/me');
-      setUser(me);
-    } catch (err) {
-      if (err instanceof ApiError && (err.status === 401 || err.status === 403)) {
-        tokenStorage.clear();
+      if (tokenStorage.getAccessToken() === tokenAtStart) {
+        setUser(me);
       }
-      setUser(null);
+    } catch (err) {
+      if (tokenStorage.getAccessToken() === tokenAtStart) {
+        if (err instanceof ApiError && (err.status === 401 || err.status === 403)) {
+          tokenStorage.clear();
+        }
+        setUser(null);
+      }
     } finally {
-      setIsLoading(false);
+      if (tokenStorage.getAccessToken() === tokenAtStart) {
+        setIsLoading(false);
+      }
     }
   }, []);
 

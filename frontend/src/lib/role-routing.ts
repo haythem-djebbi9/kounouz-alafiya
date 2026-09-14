@@ -9,6 +9,9 @@ export function roleHomePath(role: Role): string {
       return '/producteur';
     case 'FIELD_AGENT':
       return '/agent';
+    case 'ADMIN':
+    case 'VERIFICATION_TEAM':
+      return '/admin';
     default:
       return '/';
   }

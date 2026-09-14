@@ -136,6 +136,32 @@ publique doit être explicitement marquée avec le décorateur `@Public()`, et u
   schéma ne modélise pas d'affectation nominative à un agent précis — ce pool partagé est donc
   visible par tous les agents terrain, premier arrivé premier servi.
 
+## Frontend — Centre de Vérification & Gestion Produits/Catégories
+
+- `frontend/src/portals/admin/` : espace Admin + Équipe de vérification, 14 sections
+  (tableau de bord avec KPIs, producteurs, demandes, échantillons, scellés, laboratoire,
+  vérification, lots, emballage, produits, catégories, QR codes, rapports, équipe —
+  cette dernière réservée à Admin). Chaque section est branchée sur l'API réelle.
+- Décision de vérification : impossible de choisir "Vérifié" si l'analyse labo n'est pas
+  conforme (le formulaire désactive l'option et l'explique).
+- Fiche produit : aperçu avant publication (images, prix, description, QR code, lot associé),
+  actions de statut contextuelles (publier / rupture / suspendre / republier).
+- `GET /auth/users` et `PATCH /auth/users/:id/status` (nouveau, rôle `ADMIN`) : liste des
+  comptes et activation/désactivation — complète la création de comptes internes déjà
+  existante (étape 2).
+- **Deux bugs réels trouvés et corrigés pendant les tests en conditions réelles** :
+  1. Course dans `AuthProvider` — le chargement initial du profil (avec un jeton périmé
+     d'une session précédente encore en `localStorage`) pouvait se terminer *après* une
+     connexion fraîche et écraser le bon utilisateur avec l'ancien, provoquant une
+     redirection vers la mauvaise page après connexion. Corrigé en vérifiant que le jeton
+     n'a pas changé avant d'appliquer la réponse.
+  2. `resolveFileUrl` réécrivait à tort les images statiques du frontend (`/images/...`)
+     vers l'origine du backend. Corrigé pour ne réécrire que les fichiers réellement
+     servis par le backend (`/uploads/...`).
+- « Paramètres » (mentionné dans le cahier des charges) n'a volontairement pas été construit :
+  aucun réglage système réel n'existe dans le schéma actuel, et une page sans effet aurait
+  été trompeuse. À ajouter si un besoin concret émerge.
+
 ## Structure du dépôt
 
 ```
@@ -154,7 +180,7 @@ kounouz affia/
 - [x] Étape 5 — Anti-fraude + Rapports
 - [x] Étape 6 — Design System + Portail Producteur
 - [x] Étape 7 — Portail Agent Terrain (mobile-first)
-- [ ] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
+- [x] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
 - [ ] Étape 9 — Marketplace + Page de vérification publique
 - [ ] Étape 10 — Responsive sur les 3 breakpoints
 - [ ] Étape 11 — Tests, documentation, finalisation

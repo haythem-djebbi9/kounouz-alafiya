@@ -106,8 +106,14 @@ export const api = {
   delete: <T>(path: string, options?: RequestOptions) => request<T>(path, { ...options, method: 'DELETE' }),
 };
 
+// Ne réécrit que les fichiers réellement servis par le backend (/uploads/...).
+// Les autres chemins relatifs (ex: /images/...) sont des assets statiques du
+// frontend et doivent rester tels quels.
 export function resolveFileUrl(path: string): string {
-  return path.startsWith('http') ? path : `${API_ORIGIN}${path}`;
+  if (path.startsWith('http') || !path.startsWith('/uploads')) {
+    return path;
+  }
+  return `${API_ORIGIN}${path}`;
 }
 
 export { API_URL };

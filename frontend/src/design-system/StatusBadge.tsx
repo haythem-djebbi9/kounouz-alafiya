@@ -2,7 +2,7 @@ import React from 'react';
 import { Clock, CheckCircle2, XCircle, Truck, FlaskConical, ShieldCheck, PauseCircle, PackageCheck } from 'lucide-react';
 import { Badge } from './Badge';
 
-type StatusKind = 'request' | 'sample' | 'verification' | 'batch' | 'product';
+type StatusKind = 'request' | 'sample' | 'verification' | 'batch' | 'product' | 'labAnalysis' | 'packaging';
 
 interface StatusConfig {
   label: string;
@@ -46,12 +46,25 @@ const PRODUCT_MAP: Record<string, StatusConfig> = {
   SUSPENDU: { label: 'موقوف مؤقتاً', tone: 'red', icon: <PauseCircle className={ICON_CLASS} /> },
 };
 
+const LAB_ANALYSIS_MAP: Record<string, StatusConfig> = {
+  PENDING: { label: 'بانتظار النتيجة', tone: 'gold', icon: <Clock className={ICON_CLASS} /> },
+  COMPLIANT: { label: 'مطابقة', tone: 'green', icon: <CheckCircle2 className={ICON_CLASS} /> },
+  NON_COMPLIANT: { label: 'غير مطابقة', tone: 'red', icon: <XCircle className={ICON_CLASS} /> },
+};
+
+const PACKAGING_MAP: Record<string, StatusConfig> = {
+  IN_PROGRESS: { label: 'قيد التعبئة', tone: 'gold', icon: <Clock className={ICON_CLASS} /> },
+  COMPLETED: { label: 'مكتملة', tone: 'green', icon: <CheckCircle2 className={ICON_CLASS} /> },
+};
+
 const MAPS: Record<StatusKind, Record<string, StatusConfig>> = {
   request: REQUEST_MAP,
   sample: SAMPLE_MAP,
   verification: VERIFICATION_MAP,
   batch: BATCH_MAP,
   product: PRODUCT_MAP,
+  labAnalysis: LAB_ANALYSIS_MAP,
+  packaging: PACKAGING_MAP,
 };
 
 interface StatusBadgeProps {

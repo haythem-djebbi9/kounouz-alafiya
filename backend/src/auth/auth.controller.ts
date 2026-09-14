@@ -1,10 +1,11 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service.js';
 import { RegisterDto } from './dto/register.dto.js';
 import { LoginDto } from './dto/login.dto.js';
 import { RefreshTokenDto } from './dto/refresh-token.dto.js';
 import { RegisterStaffDto } from './dto/register-staff.dto.js';
+import { UpdateUserStatusDto } from './dto/update-user-status.dto.js';
 import { Public } from './decorators/public.decorator.js';
 import { Roles } from './decorators/roles.decorator.js';
 import { CurrentUser } from './decorators/current-user.decorator.js';
@@ -63,5 +64,21 @@ export class AuthController {
   @ApiOperation({ summary: 'Créer un compte interne (Admin, Équipe de vérification, Agent terrain) — Admin uniquement' })
   registerStaff(@Body() dto: RegisterStaffDto) {
     return this.authService.registerStaff(dto);
+  }
+
+  @ApiBearerAuth()
+  @Roles(Role.ADMIN)
+  @Get('users')
+  @ApiOperation({ summary: 'Liste des comptes — Admin uniquement' })
+  findAllUsers() {
+    return this.authService.findAllUsers();
+  }
+
+  @ApiBearerAuth()
+  @Roles(Role.ADMIN)
+  @Patch('users/:id/status')
+  @ApiOperation({ summary: 'Activer / désactiver un compte — Admin uniquement' })
+  setUserActive(@Param('id') id: string, @Body() dto: UpdateUserStatusDto) {
+    return this.authService.setUserActive(id, dto.isActive);
   }
 }

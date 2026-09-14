@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ConflictException,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -156,6 +157,26 @@ export class AuthService {
       throw new UnauthorizedException();
     }
     return user;
+  }
+
+  // Équipe & Utilisateurs (Admin uniquement) — gestion de base des comptes.
+  findAllUsers() {
+    return this.prisma.user.findMany({
+      select: SAFE_USER_SELECT,
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async setUserActive(id: string, isActive: boolean) {
+    const user = await this.prisma.user.findUnique({ where: { id } });
+    if (!user) {
+      throw new NotFoundException('Utilisateur introuvable.');
+    }
+    return this.prisma.user.update({
+      where: { id },
+      data: { isActive },
+      select: SAFE_USER_SELECT,
+    });
   }
 
   private async issueTokens(payload: JwtPayload): Promise<AuthTokens> {

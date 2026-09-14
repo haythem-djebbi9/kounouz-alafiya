@@ -8,3 +8,4 @@ export { QRCodeDisplay } from './QRCodeDisplay';
 export { Input, Textarea, Select } from './Input';
 export { EmptyState } from './EmptyState';
 export { Alert } from './Alert';
+export { Modal } from './Modal';
