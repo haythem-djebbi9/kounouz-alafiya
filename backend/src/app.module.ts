@@ -21,6 +21,7 @@ import { QrCodesModule } from './qr-codes/qr-codes.module.js';
 import { ProductsModule } from './products/products.module.js';
 import { AntiFraudModule } from './anti-fraud/anti-fraud.module.js';
 import { ReportsModule } from './reports/reports.module.js';
+import { UploadsModule } from './uploads/uploads.module.js';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { ReportsModule } from './reports/reports.module.js';
     ProductsModule,
     AntiFraudModule,
     ReportsModule,
+    UploadsModule,
   ],
   controllers: [AppController],
   providers: [

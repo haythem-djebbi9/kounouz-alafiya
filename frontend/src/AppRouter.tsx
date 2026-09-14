@@ -11,6 +11,10 @@ import { NewRequestPage } from './portals/producer/NewRequestPage';
 import { RequestDetailPage } from './portals/producer/RequestDetailPage';
 import { ProfilePage } from './portals/producer/ProfilePage';
 import { ProductsPage } from './portals/producer/ProductsPage';
+import { AgentLayout } from './portals/agent/AgentLayout';
+import { TasksHomePage } from './portals/agent/TasksHomePage';
+import { NewCollectionPage } from './portals/agent/NewCollectionPage';
+import { SampleDetailPage } from './portals/agent/SampleDetailPage';
 
 export const AppRouter: React.FC = () => {
   return (
@@ -32,6 +36,19 @@ export const AppRouter: React.FC = () => {
         <Route path="demandes/:id" element={<RequestDetailPage />} />
         <Route path="produits" element={<ProductsPage />} />
         <Route path="profil" element={<ProfilePage />} />
+      </Route>
+
+      <Route
+        path="/agent"
+        element={
+          <ProtectedRoute allowedRoles={['FIELD_AGENT']}>
+            <AgentLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<TasksHomePage />} />
+        <Route path="collectes/nouvelle" element={<NewCollectionPage />} />
+        <Route path="echantillons/:id" element={<SampleDetailPage />} />
       </Route>
 
       {/* Marketplace / vitrine publique (inchangé pour l'instant — étape 9) */}

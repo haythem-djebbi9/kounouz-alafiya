@@ -32,6 +32,12 @@ export class VerificationRequestsController {
     return this.service.findMine(user.sub);
   }
 
+  @Roles(Role.FIELD_AGENT)
+  @Get('pending-collection')
+  findPendingCollection() {
+    return this.service.findPendingCollection();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string, @CurrentUser() user: JwtPayload) {
     return this.service.findOneForUser(id, user);

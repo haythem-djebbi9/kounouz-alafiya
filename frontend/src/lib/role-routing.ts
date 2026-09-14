@@ -7,6 +7,8 @@ export function roleHomePath(role: Role): string {
   switch (role) {
     case 'PRODUCER':
       return '/producteur';
+    case 'FIELD_AGENT':
+      return '/agent';
     default:
       return '/';
   }

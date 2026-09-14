@@ -56,6 +56,7 @@ export interface Sample {
   photos: string[];
   status: SampleStatus;
   createdAt: string;
+  request?: VerificationRequest;
   seal?: { id: string; sealCode: string; sealedAt: string } | null;
   labAnalyses?: LabAnalysis[];
   referenceSample?: { referenceCode: string } | null;

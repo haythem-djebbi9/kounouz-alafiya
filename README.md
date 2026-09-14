@@ -120,6 +120,22 @@ publique doit être explicitement marquée avec le décorateur `@Public()`, et u
 - La vitrine existante (`App.tsx` et ses composants) reste inchangée à ce stade — elle sera
   branchée sur l'API réelle à l'étape 9.
 
+## Frontend — Portail Agent Terrain (mobile-first)
+
+- `frontend/src/portals/agent/` : un seul écran principal (« مهامي ») listant les demandes
+  acceptées en attente de collecte (pool partagé — voir note ci-dessous) et les échantillons
+  en cours, puis des sous-écrans de collecte (formulaire en 3 étapes avec upload photo réel)
+  et de détail d'échantillon (application du scellé, passage en transit).
+- Layout volontairement minimal (pas de barre latérale) : l'agent travaille depuis son
+  téléphone, une tâche à la fois.
+- `POST /api/uploads/sample-photo` (nouveau, rôle `FIELD_AGENT`) : upload réel de photos de
+  preuve (JPEG/PNG/WebP, 5 Mo max), stockage disque local servi via `/uploads`, structure
+  prête pour un stockage cloud plus tard.
+- `GET /api/verification-requests/pending-collection` (nouveau, rôle `FIELD_AGENT`) : demandes
+  acceptées sans échantillon. Le cahier des charges parle de « collectes assignées », mais le
+  schéma ne modélise pas d'affectation nominative à un agent précis — ce pool partagé est donc
+  visible par tous les agents terrain, premier arrivé premier servi.
+
 ## Structure du dépôt
 
 ```
@@ -137,7 +153,7 @@ kounouz affia/
 - [x] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
 - [x] Étape 5 — Anti-fraude + Rapports
 - [x] Étape 6 — Design System + Portail Producteur
-- [ ] Étape 7 — Portail Agent Terrain (mobile-first)
+- [x] Étape 7 — Portail Agent Terrain (mobile-first)
 - [ ] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
 - [ ] Étape 9 — Marketplace + Page de vérification publique
 - [ ] Étape 10 — Responsive sur les 3 breakpoints

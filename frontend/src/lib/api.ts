@@ -1,6 +1,8 @@
 import { tokenStorage } from './tokenStorage';
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000/api';
+// Origine du backend sans le préfixe /api, pour les fichiers statiques (ex: /uploads/...).
+const API_ORIGIN = API_URL.replace(/\/api\/?$/, '');
 
 export class ApiError extends Error {
   status: number;
@@ -103,5 +105,9 @@ export const api = {
     request<T>(path, { ...options, method: 'PATCH', body }),
   delete: <T>(path: string, options?: RequestOptions) => request<T>(path, { ...options, method: 'DELETE' }),
 };
+
+export function resolveFileUrl(path: string): string {
+  return path.startsWith('http') ? path : `${API_ORIGIN}${path}`;
+}
 
 export { API_URL };

@@ -55,6 +55,18 @@ export class VerificationRequestsService {
     });
   }
 
+  // Portail Agent Terrain : demandes acceptées mais dont l'échantillon n'a pas
+  // encore été collecté — le cahier des charges parle de "collectes assignées"
+  // mais le schéma ne modélise pas d'affectation nominative ; ce pool partagé
+  // est donc visible par tous les agents terrain.
+  findPendingCollection() {
+    return this.prisma.verificationRequest.findMany({
+      where: { status: VerificationRequestStatus.ACCEPTED, samples: { none: {} } },
+      include: { producer: true },
+      orderBy: { updatedAt: 'asc' },
+    });
+  }
+
   async findMine(userId: string) {
     const producer = await this.prisma.producer.findUnique({ where: { userId } });
     if (!producer) {
