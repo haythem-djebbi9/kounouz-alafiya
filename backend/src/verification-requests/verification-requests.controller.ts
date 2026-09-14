@@ -1,0 +1,49 @@
+import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Role, VerificationRequestStatus } from '@prisma/client';
+import { VerificationRequestsService } from './verification-requests.service.js';
+import { CreateVerificationRequestDto } from './dto/create-verification-request.dto.js';
+import { UpdateRequestStatusDto } from './dto/update-request-status.dto.js';
+import { Roles } from '../auth/decorators/roles.decorator.js';
+import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
+import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
+
+@ApiBearerAuth()
+@ApiTags('verification-requests')
+@Controller('verification-requests')
+export class VerificationRequestsController {
+  constructor(private readonly service: VerificationRequestsService) {}
+
+  @Roles(Role.PRODUCER)
+  @Post()
+  create(@CurrentUser() user: JwtPayload, @Body() dto: CreateVerificationRequestDto) {
+    return this.service.create(user.sub, dto);
+  }
+
+  @Roles(Role.ADMIN, Role.VERIFICATION_TEAM)
+  @Get()
+  findAll(@Query('status') status?: VerificationRequestStatus) {
+    return this.service.findAll(status);
+  }
+
+  @Roles(Role.PRODUCER)
+  @Get('mine')
+  findMine(@CurrentUser() user: JwtPayload) {
+    return this.service.findMine(user.sub);
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string, @CurrentUser() user: JwtPayload) {
+    return this.service.findOneForUser(id, user);
+  }
+
+  @Roles(Role.ADMIN, Role.VERIFICATION_TEAM)
+  @Patch(':id/status')
+  updateStatus(
+    @Param('id') id: string,
+    @CurrentUser() user: JwtPayload,
+    @Body() dto: UpdateRequestStatusDto,
+  ) {
+    return this.service.updateStatus(id, user.sub, dto);
+  }
+}

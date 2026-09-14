@@ -93,7 +93,7 @@ kounouz affia/
 
 - [x] Étape 1 — Monorepo, Docker, PostgreSQL, schéma Prisma, seed de démonstration
 - [x] Étape 2 — Auth + 5 rôles + guards
-- [ ] Étape 3 — Flux cœur métier (Demande → Échantillon → Scellé → Labo → Vérification)
+- [x] Étape 3 — Flux cœur métier (Demande → Échantillon → Scellé → Labo → Vérification)
 - [ ] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
 - [ ] Étape 5 — Anti-fraude + Rapports
 - [ ] Étape 6 — Design System + Portail Producteur
