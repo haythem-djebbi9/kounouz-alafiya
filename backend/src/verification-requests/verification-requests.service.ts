@@ -1,7 +1,8 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
-import { Role, VerificationRequestStatus } from '@prisma/client';
+import { NotificationType, Role, VerificationRequestStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
+import { NotificationsService } from '../notifications/notifications.service.js';
 import { CreateVerificationRequestDto } from './dto/create-verification-request.dto.js';
 import { UpdateRequestStatusDto } from './dto/update-request-status.dto.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
@@ -24,6 +25,7 @@ export class VerificationRequestsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly notifications: NotificationsService,
   ) {}
 
   async create(userId: string, dto: CreateVerificationRequestDto) {
@@ -96,7 +98,10 @@ export class VerificationRequestsService {
   }
 
   async updateStatus(id: string, userId: string, dto: UpdateRequestStatusDto) {
-    const request = await this.prisma.verificationRequest.findUnique({ where: { id } });
+    const request = await this.prisma.verificationRequest.findUnique({
+      where: { id },
+      include: { producer: true },
+    });
     if (!request) {
       throw new NotFoundException('Demande de vérification introuvable.');
     }
@@ -114,6 +119,26 @@ export class VerificationRequestsService {
     });
 
     await this.audit.log(userId, `REQUEST_${dto.status}`, 'VerificationRequest', id);
+
+    if (dto.status === VerificationRequestStatus.ACCEPTED) {
+      await this.notifications.notify(
+        request.producer.userId,
+        NotificationType.REQUEST_ACCEPTED,
+        'Demande acceptée',
+        `Votre demande de vérification pour "${request.honeyType}" a été acceptée.`,
+        'VerificationRequest',
+        request.id,
+      );
+      await this.notifications.notifyRole(
+        Role.FIELD_AGENT,
+        NotificationType.COLLECTION_AVAILABLE,
+        'Nouvelle collecte disponible',
+        `Une collecte est disponible pour "${request.honeyType}" (${request.collectionLocation}).`,
+        'VerificationRequest',
+        request.id,
+      );
+    }
+
     return updated;
   }
 }

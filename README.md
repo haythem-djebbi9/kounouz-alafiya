@@ -186,6 +186,36 @@ publique doit être explicitement marquée avec le décorateur `@Public()`, et u
   honnête pour les commandes (aucun système de commande n'existe encore).
 - `/inscription/client` (nouvelle page) : inscription consommateur.
 
+## Notifications (in-app)
+
+Système de notifications internes à l'application — **pas d'e-mail** (aucun service SMTP
+n'est configuré ; ce choix a été confirmé explicitement plutôt que fabriqué). Une cloche
+(`NotificationBell`) est intégrée aux en-têtes des portails Producteur, Agent Terrain et
+Admin/Équipe de vérification : badge du nombre de non-lues, liste des 50 dernières, marquage
+individuel ou global comme lues (rafraîchissement automatique toutes les 30s).
+
+7 événements couvrent chaque transition métier qui dispose réellement d'un déclencheur
+backend :
+
+| Événement                        | Déclencheur                                         | Destinataires                              |
+| --------------------------------- | ---------------------------------------------------- | ------------------------------------------- |
+| Demande acceptée                  | `PATCH /verification-requests/:id/status` → ACCEPTED | Producteur                                  |
+| Collecte disponible                | idem (même transition)                                | Tous les agents terrain                     |
+| Échantillon reçu au labo          | `PATCH /samples/:id/received`                        | Producteur + agent ayant collecté           |
+| Analyse de laboratoire terminée   | `POST /lab-analyses`                                  | Producteur + Admin/Équipe de vérification   |
+| Résultat de vérification          | `POST /verifications`                                 | Producteur (message différent si VERIFIED/NOT_VERIFIED) |
+| Lot créé                          | `POST /batches`                                       | Producteur + Admin/Équipe de vérification   |
+| Produit publié                    | `PATCH /products/:id/status` → PUBLIE                 | Producteur                                  |
+
+**Hors périmètre, assumé** : "Product sold", "Payment processed" et "Settlement available"
+n'ont pas été implémentés — aucun modèle Commande/Paiement/Règlement n'existe dans le schéma
+(cf. cahier des charges section 5, et note similaire dans la section Marketplace ci-dessus).
+Choix confirmé explicitement : construire ces 3 événements nécessiterait d'abord un vrai
+sous-système Commande/Paiement, hors périmètre de cette itération.
+
+Endpoints : `GET /notifications` (50 dernières), `GET /notifications/unread-count`,
+`PATCH /notifications/:id/read`, `PATCH /notifications/read-all`.
+
 ## Structure du dépôt
 
 ```
@@ -206,5 +236,6 @@ kounouz affia/
 - [x] Étape 7 — Portail Agent Terrain (mobile-first)
 - [x] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
 - [x] Étape 9 — Marketplace + Page de vérification publique
+- [x] Notifications in-app (7 événements réels, hors plan initial — voir section dédiée)
 - [ ] Étape 10 — Responsive sur les 3 breakpoints
 - [ ] Étape 11 — Tests, documentation, finalisation

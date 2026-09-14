@@ -22,6 +22,7 @@ import { ProductsModule } from './products/products.module.js';
 import { AntiFraudModule } from './anti-fraud/anti-fraud.module.js';
 import { ReportsModule } from './reports/reports.module.js';
 import { UploadsModule } from './uploads/uploads.module.js';
+import { NotificationsModule } from './notifications/notifications.module.js';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { UploadsModule } from './uploads/uploads.module.js';
     AntiFraudModule,
     ReportsModule,
     UploadsModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [

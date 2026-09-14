@@ -1,7 +1,8 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { BatchStatus, ProductStatus } from '@prisma/client';
+import { BatchStatus, NotificationType, ProductStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
+import { NotificationsService } from '../notifications/notifications.service.js';
 import { QrCodesService } from '../qr-codes/qr-codes.service.js';
 import { CreateProductDto } from './dto/create-product.dto.js';
 import { UpdateProductDto } from './dto/update-product.dto.js';
@@ -39,6 +40,7 @@ export class ProductsService {
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
     private readonly qrCodes: QrCodesService,
+    private readonly notifications: NotificationsService,
   ) {}
 
   async create(userId: string, dto: CreateProductDto) {
@@ -149,6 +151,25 @@ export class ProductsService {
     });
 
     await this.audit.log(userId, `PRODUCT_${dto.statut}`, 'Product', id);
+
+    if (dto.statut === ProductStatus.PUBLIE) {
+      const batch = await this.prisma.batch.findUnique({
+        where: { id: product.batchId! },
+        include: { verification: { include: { request: { include: { producer: true } } } } },
+      });
+      const producerUserId = batch?.verification.request.producer.userId;
+      if (producerUserId) {
+        await this.notifications.notify(
+          producerUserId,
+          NotificationType.PRODUCT_PUBLISHED,
+          'Produit publié',
+          `Votre produit "${updated.nom}" est maintenant publié sur la marketplace.`,
+          'Product',
+          updated.id,
+        );
+      }
+    }
+
     return updated;
   }
 

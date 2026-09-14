@@ -1,7 +1,8 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { BatchStatus, VerificationStatus } from '@prisma/client';
+import { BatchStatus, NotificationType, Role, VerificationStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
+import { NotificationsService } from '../notifications/notifications.service.js';
 import { buildCode } from '../common/sequential-code.js';
 import { CreateBatchDto } from './dto/create-batch.dto.js';
 
@@ -16,12 +17,13 @@ export class BatchesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly notifications: NotificationsService,
   ) {}
 
   async create(userId: string, dto: CreateBatchDto) {
     const verification = await this.prisma.verification.findUnique({
       where: { id: dto.verificationId },
-      include: { request: true, batch: true },
+      include: { request: { include: { producer: true } }, batch: true },
     });
     if (!verification) {
       throw new NotFoundException('Vérification introuvable.');
@@ -49,6 +51,26 @@ export class BatchesService {
     });
 
     await this.audit.log(userId, 'CREATE_BATCH', 'Batch', batch.id);
+
+    await this.notifications.notify(
+      verification.request.producer.userId,
+      NotificationType.BATCH_CREATED,
+      'Lot créé',
+      `Le lot "${batch.batchCode}" a été créé pour votre miel "${batch.honeyType}".`,
+      'Batch',
+      batch.id,
+    );
+    for (const role of [Role.ADMIN, Role.VERIFICATION_TEAM]) {
+      await this.notifications.notifyRole(
+        role,
+        NotificationType.BATCH_CREATED,
+        'Nouveau lot créé',
+        `Le lot "${batch.batchCode}" a été créé.`,
+        'Batch',
+        batch.id,
+      );
+    }
+
     return batch;
   }
 

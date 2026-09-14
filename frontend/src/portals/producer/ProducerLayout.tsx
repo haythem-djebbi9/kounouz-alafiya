@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { LayoutGrid, FileText, Package, User, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../../lib/auth-context';
 import { Logo } from '../../components/Logo';
+import { NotificationBell } from '../../components/NotificationBell';
 
 const NAV_ITEMS = [
   { to: '/producteur', label: 'لوحة التحكم', icon: LayoutGrid, end: true },
@@ -26,23 +27,27 @@ export const ProducerLayout: React.FC = () => {
       {/* Barre mobile */}
       <header className="lg:hidden flex items-center justify-between bg-white border-b border-[#EAE1D2] px-4 py-3 sticky top-0 z-30">
         <Logo compact />
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          className="p-2 rounded-lg text-[#0C261B] hover:bg-[#FAF6EE] min-w-[44px] min-h-[44px] flex items-center justify-center"
-          aria-label="القائمة"
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-1">
+          <NotificationBell />
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="p-2 rounded-lg text-[#0C261B] hover:bg-[#FAF6EE] min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="القائمة"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </header>
 
       {/* Navigation latérale (desktop) / déroulante (mobile) */}
       <nav
         className={`${menuOpen ? 'block' : 'hidden'} lg:block w-full lg:w-64 shrink-0 bg-white border-e border-[#EAE1D2] lg:min-h-screen`}
       >
-        <div className="hidden lg:flex items-center px-6 py-6 border-b border-[#EAE1D2]">
+        <div className="hidden lg:flex items-center justify-between px-6 py-6 border-b border-[#EAE1D2]">
           <Link to="/">
             <Logo compact />
           </Link>
+          <NotificationBell />
         </div>
 
         <div className="px-4 py-4 border-b border-[#EAE1D2]">

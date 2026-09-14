@@ -1,7 +1,8 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
-import { LabAnalysisStatus, Role, VerificationStatus } from '@prisma/client';
+import { LabAnalysisStatus, NotificationType, Role, VerificationStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
+import { NotificationsService } from '../notifications/notifications.service.js';
 import { CreateVerificationDto } from './dto/create-verification.dto.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
 
@@ -17,11 +18,12 @@ export class VerificationsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly notifications: NotificationsService,
   ) {}
 
   async create(userId: string, dto: CreateVerificationDto) {
     const [request, sample, analysis] = await Promise.all([
-      this.prisma.verificationRequest.findUnique({ where: { id: dto.requestId } }),
+      this.prisma.verificationRequest.findUnique({ where: { id: dto.requestId }, include: { producer: true } }),
       this.prisma.sample.findUnique({ where: { id: dto.sampleId } }),
       this.prisma.laboratoryAnalysis.findUnique({ where: { id: dto.analysisId } }),
     ]);
@@ -56,6 +58,19 @@ export class VerificationsService {
     });
 
     await this.audit.log(userId, `VERIFICATION_${dto.status}`, 'Verification', verification.id);
+
+    const isVerified = dto.status === VerificationStatus.VERIFIED;
+    await this.notifications.notify(
+      request.producer.userId,
+      NotificationType.VERIFICATION_RESULT,
+      isVerified ? 'Vérification réussie' : 'Vérification non concluante',
+      isVerified
+        ? `Votre demande "${request.honeyType}" a été vérifiée avec succès.`
+        : `Votre demande "${request.honeyType}" n'a pas été vérifiée.`,
+      'Verification',
+      verification.id,
+    );
+
     return verification;
   }
 

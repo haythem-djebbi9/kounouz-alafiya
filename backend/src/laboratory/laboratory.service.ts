@@ -1,7 +1,8 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { Prisma, SampleStatus, SealStatus } from '@prisma/client';
+import { NotificationType, Prisma, Role, SampleStatus, SealStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
+import { NotificationsService } from '../notifications/notifications.service.js';
 import { buildCode } from '../common/sequential-code.js';
 import { CreateLaboratoryDto } from './dto/create-laboratory.dto.js';
 import { CreateLabAnalysisDto } from './dto/create-lab-analysis.dto.js';
@@ -12,6 +13,7 @@ export class LaboratoryService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly notifications: NotificationsService,
   ) {}
 
   // --- Laboratoires --------------------------------------------------
@@ -31,7 +33,7 @@ export class LaboratoryService {
   async createAnalysis(userId: string, dto: CreateLabAnalysisDto) {
     const sample = await this.prisma.sample.findUnique({
       where: { id: dto.sampleId },
-      include: { seal: true },
+      include: { seal: true, request: { include: { producer: true } } },
     });
     if (!sample) {
       throw new NotFoundException('Échantillon introuvable.');
@@ -68,6 +70,26 @@ export class LaboratoryService {
     ]);
 
     await this.audit.log(userId, 'RECORD_LAB_ANALYSIS', 'LaboratoryAnalysis', analysis.id);
+
+    await this.notifications.notify(
+      sample.request.producer.userId,
+      NotificationType.ANALYSIS_COMPLETED,
+      'Analyse de laboratoire terminée',
+      `L'analyse de votre échantillon "${sample.request.honeyType}" est terminée.`,
+      'LaboratoryAnalysis',
+      analysis.id,
+    );
+    for (const role of [Role.ADMIN, Role.VERIFICATION_TEAM]) {
+      await this.notifications.notifyRole(
+        role,
+        NotificationType.ANALYSIS_COMPLETED,
+        'Analyse de laboratoire terminée',
+        `L'analyse de l'échantillon "${sample.request.honeyType}" est prête pour vérification.`,
+        'LaboratoryAnalysis',
+        analysis.id,
+      );
+    }
+
     return analysis;
   }
 

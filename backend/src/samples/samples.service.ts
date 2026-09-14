@@ -1,7 +1,8 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
-import { Role, SampleStatus, VerificationRequestStatus } from '@prisma/client';
+import { NotificationType, Role, SampleStatus, VerificationRequestStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
+import { NotificationsService } from '../notifications/notifications.service.js';
 import { CreateSampleDto } from './dto/create-sample.dto.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
 
@@ -18,6 +19,7 @@ export class SamplesService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly notifications: NotificationsService,
   ) {}
 
   async create(userId: string, dto: CreateSampleDto) {
@@ -98,7 +100,10 @@ export class SamplesService {
   }
 
   async markReceived(id: string, userId: string) {
-    const sample = await this.prisma.sample.findUnique({ where: { id } });
+    const sample = await this.prisma.sample.findUnique({
+      where: { id },
+      include: { request: { include: { producer: true } } },
+    });
     if (!sample) {
       throw new NotFoundException('Échantillon introuvable.');
     }
@@ -112,6 +117,17 @@ export class SamplesService {
       include: SAMPLE_INCLUDE,
     });
     await this.audit.log(userId, 'SAMPLE_RECEIVED_AT_LAB', 'Sample', id);
+
+    const recipientIds = new Set([sample.request.producer.userId, sample.collectedById]);
+    await this.notifications.notifyMany(
+      Array.from(recipientIds),
+      NotificationType.SAMPLE_RECEIVED,
+      'Échantillon reçu au laboratoire',
+      `L'échantillon de "${sample.request.honeyType}" est arrivé au laboratoire.`,
+      'Sample',
+      sample.id,
+    );
+
     return updated;
   }
 }

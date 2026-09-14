@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
 import { useAuth } from '../../lib/auth-context';
 import { Logo } from '../../components/Logo';
+import { NotificationBell } from '../../components/NotificationBell';
 
 // Portail mobile-first : un seul écran principal (مهامي) + sous-pages de
 // détail. Pas de barre latérale complexe — l'agent terrain travaille
@@ -22,8 +23,9 @@ export const AgentLayout: React.FC = () => {
         <Link to="/agent">
           <Logo compact />
         </Link>
-        <div className="flex items-center gap-3">
-          <span className="text-sm font-bold text-[#0C261B] hidden sm:inline">{user?.name}</span>
+        <div className="flex items-center gap-1">
+          <span className="text-sm font-bold text-[#0C261B] hidden sm:inline me-2">{user?.name}</span>
+          <NotificationBell />
           <button
             onClick={handleLogout}
             className="p-2.5 rounded-lg text-rose-600 hover:bg-rose-50 min-w-[44px] min-h-[44px] flex items-center justify-center"

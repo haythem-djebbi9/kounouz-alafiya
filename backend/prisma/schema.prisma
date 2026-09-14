@@ -96,6 +96,7 @@ model User {
   collectedSamples      Sample[]       @relation("FieldAgentSamples")
   verificationDecisions Verification[] @relation("VerificationDecidedBy")
   auditLogs             AuditLog[]
+  notifications         Notification[]
 
   @@map("users")
 }
@@ -390,4 +391,35 @@ model AuditLog {
   user User @relation(fields: [userId], references: [id], onDelete: Restrict)
 
   @@map("audit_logs")
+}
+
+// ---------------------------------------------------------------------------
+// Notifications (dans l'application uniquement — pas d'e-mail)
+// ---------------------------------------------------------------------------
+
+enum NotificationType {
+  REQUEST_ACCEPTED
+  COLLECTION_AVAILABLE
+  SAMPLE_RECEIVED
+  ANALYSIS_COMPLETED
+  VERIFICATION_RESULT
+  BATCH_CREATED
+  PRODUCT_PUBLISHED
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String           @map("user_id")
+  type      NotificationType
+  title     String
+  message   String
+  entite    String?
+  entiteId  String?          @map("entite_id")
+  isRead    Boolean          @default(false) @map("is_read")
+  createdAt DateTime         @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@map("notifications")
 }
