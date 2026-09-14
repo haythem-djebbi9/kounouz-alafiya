@@ -4,6 +4,7 @@ import * as QRCodeLib from 'qrcode';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { buildCode } from '../common/sequential-code.js';
 import { RecordScanDto } from './dto/record-scan.dto.js';
+import { AntiFraudService } from '../anti-fraud/anti-fraud.service.js';
 
 const VERIFY_PAYLOAD_INCLUDE = {
   product: {
@@ -26,7 +27,10 @@ const VERIFY_PAYLOAD_INCLUDE = {
 
 @Injectable()
 export class QrCodesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly antiFraud: AntiFraudService,
+  ) {}
 
   // Le QR code d'un produit ne change jamais : appelé uniquement lors de la
   // toute première publication (voir ProductsService.updateStatus).
@@ -90,13 +94,10 @@ export class QrCodesService {
       throw new NotFoundException('QR code introuvable.');
     }
 
-    await this.prisma.qRScan.create({
-      data: {
-        qrCodeId: qrCode.id,
-        location: scan.location,
-        country: scan.country,
-        deviceInfo,
-      },
+    await this.antiFraud.assessAndRecordScan(qrCode.id, {
+      location: scan.location,
+      country: scan.country,
+      deviceInfo,
     });
 
     const { product } = qrCode;

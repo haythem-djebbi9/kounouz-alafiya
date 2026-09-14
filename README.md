@@ -94,6 +94,18 @@ publique doit être explicitement marquée avec le décorateur `@Public()`, et u
   laboratoire complète ; chaque appel journalise un `QRScan`.
 - `GET /api/verify/:qrId/image` (public) — image PNG du QR code.
 
+## Anti-fraude & Rapports
+
+- Chaque scan de la page de vérification publique est évalué automatiquement : trop de
+  scans en peu de temps, plusieurs pays en peu de temps, ou volume anormal sur 24h →
+  `QRScan.flagged = true`. Le consommateur n'est jamais bloqué, seule l'équipe interne
+  voit l'alerte via `GET /api/anti-fraud/flagged-scans` et `GET /api/anti-fraud/stats`.
+- `GET /api/reports/operations` — volumes par statut à chaque étape du flux, taux de
+  vérification. `GET /api/reports/by-producer` — répartition par producteur.
+  `GET /api/reports/anti-fraud` — statistiques anti-fraude.
+- Export : `GET /api/reports/operations/export?format=csv|pdf` et
+  `GET /api/reports/by-producer/export` (CSV).
+
 ## Structure du dépôt
 
 ```
@@ -109,7 +121,7 @@ kounouz affia/
 - [x] Étape 2 — Auth + 5 rôles + guards
 - [x] Étape 3 — Flux cœur métier (Demande → Échantillon → Scellé → Labo → Vérification)
 - [x] Étape 4 — Batch → Packaging → Catégories → Produits → QR Code
-- [ ] Étape 5 — Anti-fraude + Rapports
+- [x] Étape 5 — Anti-fraude + Rapports
 - [ ] Étape 6 — Design System + Portail Producteur
 - [ ] Étape 7 — Portail Agent Terrain (mobile-first)
 - [ ] Étape 8 — Centre de Vérification + Gestion Produits/Catégories
