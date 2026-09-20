@@ -4,10 +4,13 @@ import { Role } from '@prisma/client';
 import { LaboratoryService } from './laboratory.service.js';
 import { CreateLaboratoryDto } from './dto/create-laboratory.dto.js';
 import { Roles } from '../auth/decorators/roles.decorator.js';
+import { SensitiveAction } from '../common/admin-override.js';
 
 @ApiBearerAuth()
 @ApiTags('laboratories')
 @Roles(Role.ADMIN, Role.VERIFICATION_TEAM)
+// Actions opérationnelles « A* » : override admin motivé et audité.
+@SensitiveAction()
 @Controller('laboratories')
 export class LaboratoriesController {
   constructor(private readonly service: LaboratoryService) {}

@@ -1,0 +1,335 @@
+{
+  "navGroups": {
+    "overview": "نظرة عامة",
+    "traceability": "التتبّع",
+    "catalog": "الكتالوج",
+    "steering": "القيادة والتوجيه",
+    "sales": "المبيعات"
+  },
+  "nav": {
+    "producers": "المنتجون",
+    "requests": "الطلبات",
+    "samples": "العينات",
+    "seals": "الأختام",
+    "laboratory": "المخبر",
+    "verification": "التحقق",
+    "batches": "الدفعات",
+    "packaging": "التعبئة",
+    "products": "المنتجات",
+    "categories": "الفئات",
+    "qrCodes": "رموز QR",
+    "reports": "التقارير",
+    "team": "الفريق والمستخدمون",
+    "supportInbox": "طلبات الدعم",
+    "orders": "الطلبيات",
+    "settlements": "تسويات المنتجين"
+  },
+  "role": {
+    "ADMIN": "مسؤول",
+    "VERIFICATION_TEAM": "فريق التحقق"
+  },
+  "dashboard": {
+    "greeting": "مرحباً، {{name}}",
+    "subtitle": "نظرة عامة على النشاط الحالي.",
+    "kpi": {
+      "pendingRequests": "طلبات بانتظار المراجعة",
+      "samplesInPipeline": "عينات قيد المعالجة",
+      "labResults": "نتائج مخبرية مسجّلة",
+      "referenceSamples": "عينات مرجعية محفوظة",
+      "verified": "تم التحقق منها",
+      "notVerified": "غير مطابقة",
+      "readyForPackaging": "دفعات جاهزة للتعبئة",
+      "verificationRate": "معدل التحقق"
+    },
+    "totals": {
+      "producers": "منتجون مسجلون",
+      "verifiedProducers": "منتجون موثّقون",
+      "publishedProducts": "منتجات منشورة"
+    }
+  },
+  "producers": {
+    "empty": "لا يوجد منتجون مسجلون بعد",
+    "verifiedBadge": "موثّق"
+  },
+  "producerDetail": {
+    "backToProducers": "العودة إلى المنتجين",
+    "requestsHeading": "طلبات التحقق",
+    "noRequests": "لا توجد طلبات لهذا المنتج",
+    "contact": "الاتصال",
+    "hives": "{{count}} خلية",
+    "status": "حالة المنتج",
+    "documentsHeading": "الوثائق الإدارية",
+    "noDocuments": "لم تُرفع أي وثيقة",
+    "approve": "قبول",
+    "reject": "رفض",
+    "rejectReason": "سبب الرفض - يظهر للمنتج:"
+  },
+  "requests": {
+    "heading": "طلبات التحقق",
+    "empty": "لا توجد طلبات في هذه الفئة",
+    "tabs": {
+      "ALL": "الكل",
+      "NEW": "جديدة",
+      "IN_REVIEW": "قيد المراجعة",
+      "ACCEPTED": "مقبولة",
+      "REJECTED": "مرفوضة"
+    }
+  },
+  "requestDetail": {
+    "backToRequests": "العودة إلى الطلبات",
+    "updateError": "تعذر تحديث حالة الطلب.",
+    "collectionLocation": "مكان الجمع",
+    "quantity": "الكمية",
+    "description": "الوصف",
+    "requestDate": "تاريخ الطلب",
+    "setInReview": "وضع قيد المراجعة",
+    "accept": "قبول الطلب",
+    "reject": "رفض الطلب",
+    "linkedSample": "العينة المرتبطة",
+    "view": "عرض",
+    "requestCode": "معرّف الطلب",
+    "preferredMethod": "طريقة الجمع المفضّلة",
+    "floralCategory": "الفئة الزهرية",
+    "floralOrigin": "المصدر الزهري",
+    "season": "موسم الإنتاج",
+    "harvest": "فترة الجني",
+    "coordinates": "الإحداثيات",
+    "hives": "الخلايا",
+    "beekeepingMethod": "طريقة تربية النحل",
+    "hiveType": "نوع الخلية",
+    "farmSize": "مساحة المزرعة"
+  },
+  "samples": {
+    "empty": "لا توجد عينات مسجلة بعد",
+    "collectedBy": "جمعها {{name}}"
+  },
+  "sampleDetail": {
+    "backToSamples": "العودة إلى العينات",
+    "updateError": "تعذر تحديث الحالة.",
+    "collectionLocation": "مكان الجمع",
+    "collectionDate": "تاريخ الجمع",
+    "photos": "صور الإثبات",
+    "photoAlt": "صورة إثبات",
+    "sealed": "مختومة",
+    "confirmReceived": "تأكيد استلام العينة في المخبر",
+    "labAnalysis": "التحليل المخبري"
+  },
+  "seals": {
+    "heading": "الأختام الأمنية",
+    "subtitle": "سجل غير قابل للتعديل — كل ختم مرتبط بعينة واحدة بشكل نهائي.",
+    "empty": "لا توجد أختام مسجلة بعد",
+    "intact": "سليم",
+    "broken": "مكسور"
+  },
+  "laboratory": {
+    "tabs": {
+      "analyses": "التحاليل",
+      "labs": "المخابر",
+      "reference": "العينات المرجعية"
+    },
+    "notDetected": "غير مكتشفة",
+    "resultFields": {
+      "humidity": "نسبة الرطوبة (%)",
+      "ph": "الحموضة (pH)",
+      "hmf": "HMF (مغ/كغ)",
+      "reducingSugars": "السكريات المختزلة (%)",
+      "proline": "البرولين (مغ/كغ)",
+      "dominantPollen": "حبوب اللقاح السائدة",
+      "pesticides": "المبيدات",
+      "antibiotics": "المضادات الحيوية"
+    },
+    "labs": {
+      "new": "مخبر جديد",
+      "empty": "لا توجد مخابر مسجلة بعد",
+      "createError": "تعذر إضافة المخبر.",
+      "name": "اسم المخبر",
+      "accreditationNo": "رقم الاعتماد",
+      "country": "البلد",
+      "contactInfo": "معلومات التواصل"
+    },
+    "analyses": {
+      "record": "تسجيل نتيجة تحليل",
+      "empty": "لا توجد تحاليل مسجلة بعد",
+      "createError": "تعذر تسجيل التحليل.",
+      "noEligibleSamples": "لا توجد عينات مستلمة بالمخبر بانتظار التحليل حالياً.",
+      "sampleFallback": "عينة",
+      "sample": "العينة",
+      "selectSample": "اختر عينة",
+      "selectLab": "اختر مخبراً",
+      "analysisDate": "تاريخ التحليل",
+      "conclusion": "الخلاصة",
+      "conclusionCompliant": "مطابقة",
+      "conclusionNonCompliant": "غير مطابقة",
+      "conclusionPending": "بانتظار المراجعة",
+      "saveResult": "حفظ النتيجة"
+    },
+    "reference": {
+      "save": "حفظ عينة مرجعية",
+      "empty": "لا توجد عينات مرجعية محفوظة بعد",
+      "createError": "تعذر حفظ العينة المرجعية.",
+      "storageLocation": "مكان التخزين",
+      "storageConditions": "ظروف التخزين",
+      "retentionPeriod": "مدة الاحتفاظ"
+    }
+  },
+  "verification": {
+    "heading": "قرارات التحقق",
+    "new": "قرار جديد",
+    "createError": "تعذر تسجيل القرار.",
+    "noEligibleSamples": "لا توجد عينات محللة بانتظار قرار التحقق حالياً.",
+    "empty": "لم يتم اتخاذ أي قرار تحقق بعد",
+    "decidedBy": "{{producer}} · قرار {{name}}",
+    "selectAnalyzedSample": "اختر عينة محلَّلة",
+    "labAnalysisSummary": "خلاصة التحليل المخبري",
+    "nonCompliantWarning": "لا يمكن اعتبار العينة \"متحقق منها\" لأن التحليل غير مطابق — يمكنك فقط اختيار \"غير مطابق\".",
+    "decision": "القرار",
+    "decisionVerified": "تم التحقق ✅",
+    "decisionNotVerified": "غير مطابق",
+    "notesOptional": "ملاحظات (اختياري)",
+    "confirmDecision": "تأكيد القرار"
+  },
+  "batches": {
+    "createError": "تعذر إنشاء الدفعة.",
+    "new": "دفعة جديدة",
+    "noEligibleVerifications": "لا توجد قرارات تحقق \"مُتحقق منها\" بدون دفعة حالياً.",
+    "empty": "لا توجد دفعات بعد",
+    "verificationDecision": "قرار التحقق",
+    "selectVerifiedDecision": "اختر قراراً متحققاً منه",
+    "quantityKg": "الكمية (كغ)",
+    "productionDate": "تاريخ الإنتاج",
+    "create": "إنشاء الدفعة"
+  },
+  "packaging": {
+    "createError": "تعذر إنشاء التعبئة.",
+    "completeError": "تعذر إنهاء التعبئة.",
+    "new": "تعبئة جديدة",
+    "noEligibleBatches": "لا توجد دفعات بانتظار التعبئة حالياً.",
+    "empty": "لا توجد عمليات تعبئة بعد",
+    "complete": "إنهاء التعبئة",
+    "selectBatch": "اختر دفعة",
+    "packageType": "نوع العبوة",
+    "size": "الحجم",
+    "labelDesign": "تصميم الملصق (اختياري)",
+    "productionDate": "تاريخ التعبئة"
+  },
+  "categories": {
+    "saveError": "تعذر حفظ الفئة.",
+    "deleteError": "تعذر حذف الفئة.",
+    "new": "فئة جديدة",
+    "edit": "تعديل الفئة",
+    "empty": "لا توجد فئات بعد",
+    "name": "الاسم",
+    "descriptionOptional": "الوصف (اختياري)",
+    "imageUrlOptional": "رابط الصورة (اختياري)",
+    "parentOptional": "الفئة الأم (اختياري)",
+    "rootCategory": "— فئة رئيسية —",
+    "displayOrder": "ترتيب العرض",
+    "activeLabel": "فئة نشطة (تظهر في المتجر)",
+    "inactive": "غير نشطة"
+  },
+  "units": {
+    "kg": "كغ",
+    "currency": "د.ت"
+  },
+  "products": {
+    "createError": "تعذر إنشاء المنتج.",
+    "new": "منتج جديد",
+    "empty": "لا توجد منتجات في هذه الفئة",
+    "searchPlaceholder": "بحث بالاسم...",
+    "stock": "المخزون",
+    "productName": "اسم المنتج",
+    "selectCategory": "اختر فئة",
+    "price": "السعر (د.ت)",
+    "rangeOptional": "الفئة السعرية (اختياري)",
+    "linkedBatch": "الدفعة المرتبطة (اختياري الآن، ضروري للنشر)",
+    "noBatch": "— بدون دفعة —",
+    "imageUrls": "روابط الصور (افصل بينها بفاصلة، اختياري)",
+    "createAsDraft": "إنشاء المنتج (كمسودة)",
+    "tabs": {
+      "ALL": "الكل",
+      "BROUILLON": "مسودة",
+      "PUBLIE": "منشور",
+      "RUPTURE": "نفدت الكمية",
+      "SUSPENDU": "موقوف",
+      "ARCHIVE": "المؤرشفة"
+    }
+  },
+  "productDetail": {
+    "saveError": "تعذر حفظ التعديلات.",
+    "statusUpdateError": "تعذر تحديث حالة المنتج.",
+    "backToProducts": "العودة إلى المنتجات",
+    "range": "الفئة السعرية",
+    "linkedBatch": "الدفعة المرتبطة",
+    "publish": "نشر المنتج",
+    "markOutOfStock": "تعليم نفاد الكمية",
+    "suspend": "إيقاف مؤقت",
+    "republish": "إعادة النشر",
+    "qrCode": "رمز QR الخاص بالمنتج",
+    "qrCodePending": "سيتم إنشاء رمز QR تلقائياً عند أول نشر للمنتج.",
+    "editTitle": "تعديل المنتج",
+    "cannotChangeBatch": "لا يمكن تغيير الدفعة لمنتج تم نشره بالفعل.",
+    "imageUrls": "روابط الصور (افصل بينها بفاصلة)",
+    "saveChanges": "حفظ التعديلات"
+  },
+  "qrCodes": {
+    "empty": "لا توجد رموز QR بعد",
+    "emptyDescription": "يتم إنشاؤها تلقائياً عند نشر أول منتج.",
+    "active": "نشط",
+    "inactive": "موقوف",
+    "scanCount": "{{count}} مسح",
+    "scanHistory": "سجل المسح",
+    "noScans": "لا توجد عمليات مسح بعد.",
+    "unknownCountry": "غير معروف",
+    "flagged": "مشبوه",
+    "searchPlaceholder": "ابحث بالمنتج أو بالرمز...",
+    "noResults": "لا يوجد رمز QR مطابق لهذا البحث.",
+    "codeLabel": "الرمز",
+    "qrIdLabel": "المعرّف التقني",
+    "deactivate": "إيقاف هذا الرمز",
+    "activate": "إعادة تفعيل هذا الرمز",
+    "deactivateWarning": "لن يتمكن العملاء من التحقق من رمز موقوف (ستظهر لهم صفحة \"المنتج غير موجود\").",
+    "statusUpdateError": "تعذر تعديل حالة هذا الرمز.",
+    "copyLink": "نسخ رابط التحقق",
+    "linkCopied": "تم نسخ الرابط!"
+  },
+  "reports": {
+    "downloadError": "تعذر تحميل التقرير.",
+    "operationalReport": "التقرير التشغيلي",
+    "byProducer": "حسب المنتج",
+    "requestsAndVerified": "{{requests}} طلبات · {{verified}} متحقق منها",
+    "kgInBatches": "{{kg}} كغ في الدفعات",
+    "antiFraud": "مكافحة الاحتيال",
+    "totalScans": "إجمالي المسح",
+    "flaggedScans": "مسح مشبوه",
+    "flaggedRate": "نسبة الاشتباه",
+    "topFlaggedProducts": "المنتجات الأكثر اشتباهاً"
+  },
+  "orders": {
+    "heading": "الطلبيات",
+    "subtitle": "طلبيات السوق ومتابعة التسليم. تُحتسب الطلبيات المسلّمة في تسويات المنتجين.",
+    "all": "الكل",
+    "empty": "لا توجد طلبيات",
+    "confirmCancel": "إلغاء الطلبية #{{number}}؟ سيُعاد المخزون.",
+    "actions": {
+      "CONFIRMED": "تأكيد",
+      "SHIPPED": "تم الشحن",
+      "DELIVERED": "تم التسليم",
+      "CANCELLED": "إلغاء",
+      "PENDING": "قيد الانتظار"
+    }
+  },
+  "settlements": {
+    "heading": "تسويات المنتجين",
+    "subtitle": "الأرباح الشهرية للمنتجين بعد عمولة كنوز، على أساس الطلبيات المسلّمة.",
+    "empty": "لا توجد تسويات بعد",
+    "toPay": "{{count}} فترة مغلقة للدفع - {{amount}}",
+    "orders": "{{count}} طلبية",
+    "noIban": "لم يُحدَّد IBAN",
+    "gross": "المبيعات",
+    "commission": "العمولة",
+    "paidOn": "دُفعت في {{date}}",
+    "markPaid": "تسجيل كمدفوعة",
+    "openHint": "الفترة لم تُغلق بعد",
+    "referencePrompt": "مرجع التحويل لـ {{producer}} - {{amount}} - اختياري:"
+  }
+}

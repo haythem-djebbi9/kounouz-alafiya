@@ -1,0 +1,476 @@
+{
+  "nav": {
+    "contact": "Contact",
+    "verify": "Verify a product",
+    "story": "Our story",
+    "shop": "Shop",
+    "home": "Home",
+    "help": "Help"
+  },
+  "actions": {
+    "search": "Search",
+    "account": "My account",
+    "login": "Log in",
+    "cart": "Cart",
+    "menu": "Open menu",
+    "verifyProduct": "Verify your product",
+    "verifyProductMobile": "Verify your product by code"
+  },
+  "categories": {
+    "all": "All products"
+  },
+  "currency": "TND",
+  "article": {
+    "intro": "Natural honey is one of the oldest and greatest nutritional and therapeutic treasures known to humanity. At Kounouz Alafiya, we harvest honey using the most modern scientific methods, ensuring that active enzymes and amino acids remain intact, with no heat treatment that could harm its quality.",
+    "tipsTitle": "Key tips to get the most out of it:",
+    "tips": {
+      "morningSpoon": "Take a spoonful in the morning on an empty stomach, dissolved in lukewarm water, for faster absorption.",
+      "woodenSpoon": "Use wooden or ceramic spoons and avoid metal ones to preserve the enzymatic properties.",
+      "storage": "Store honey at room temperature (20-25°C), away from direct sunlight."
+    },
+    "qrReminder": "Always remember to scan the batch QR code on your jar to view the certified lab report and the geographic origin of the apiary.",
+    "share": "Share the article",
+    "shareAlert": "The article link has been copied for sharing!"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "itemsCount": "({{count}} items added)",
+    "orderSuccessTitle": "Your order has been received!",
+    "orderSuccessMessage": "Thank you for trusting Kounouz Alafiya. Your order will be prepared and delivered with certified lab analysis certificates.",
+    "orderNumber": "Order number: #KZ-2025-9481",
+    "emptyTitle": "Your cart is empty",
+    "emptyMessage": "Browse our products and add your favorite honey to enjoy its authentic taste.",
+    "sizeLabel": "Size: {{weight}}",
+    "subtotal": "Subtotal:",
+    "shipping": "Express shipping:",
+    "free": "Free",
+    "total": "Total:",
+    "guarantee": "All products include a certified lab analysis certificate and a return guarantee.",
+    "processing": "Processing and confirming your order...",
+    "checkout": "Complete order and pay",
+    "form": {
+      "title": "Delivery details",
+      "name": "Full name",
+      "phone": "Phone",
+      "email": "Email",
+      "city": "City",
+      "address": "Delivery address",
+      "confirm": "Confirm order",
+      "orderNumber": "Order #{{number}}",
+      "error": "Could not place the order. Please try again.",
+      "networkError": "Can't reach the server. Check your connection and try again."
+    }
+  },
+  "features": {
+    "natural": {
+      "title": "100% Natural",
+      "description": "Straight from nature"
+    },
+    "traceable": {
+      "title": "Traceable",
+      "description": "We know the origin of every product"
+    },
+    "verified": {
+      "title": "Verified",
+      "description": "Rigorous lab testing"
+    },
+    "premium": {
+      "title": "Premium quality",
+      "description": "International purity standards"
+    }
+  },
+  "discover": {
+    "title": "Discover Our Treasures",
+    "subtitle": "Carefully selected products, each one carrying a promise of quality and trust.",
+    "prevAria": "Previous product",
+    "nextAria": "Next product",
+    "previewAria": "Quick preview",
+    "addToCartAria": "Add to cart",
+    "discoverProduct": "Discover the product"
+  },
+  "footer": {
+    "bio": "Carefully selected natural products that give you the best of a nature you can trust. 100% pure honey with a traceable source and lab-verified analysis.",
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "twitter": "Twitter / X",
+      "whatsapp": "WhatsApp"
+    },
+    "productsHeading": "Our products",
+    "products": {
+      "honey": "Natural honey",
+      "poles": "Alafiya sticks",
+      "royalJelly": "Royal jelly",
+      "gifts": "Gifts and sets",
+      "all": "All products"
+    },
+    "browseHeading": "Browse",
+    "blog": "Blog and tips",
+    "guide": "User guide",
+    "address": "Tunis, Tunisia",
+    "copyright": "All rights reserved © {{year}} Kounouz Alafiya.",
+    "privacyPolicy": "Privacy policy",
+    "privacyAlert": "Privacy policy: we uphold the highest standards for protecting our customers' data.",
+    "termsPolicy": "Terms and conditions",
+    "termsAlert": "Terms and conditions: all transactions are subject to approved commercial regulations.",
+    "returnsPolicy": "Returns policy",
+    "returnsAlert": "Returns policy: 100% gold guarantee to return the product within 14 days."
+  },
+  "hero": {
+    "imageAlt": "Kounouz Alafiya - premium natural honey",
+    "titleLine1": "Pure honey.",
+    "titleLine2": "Real wellbeing.",
+    "subtitleLine1": "From nature's finest gifts, we select products that combine",
+    "subtitleLine2": "purity, care, and transparency.",
+    "discoverCta": "Discover our products"
+  },
+  "natureToTable": {
+    "titleLine1": "From nature",
+    "titleLine2": "to your table",
+    "description": "We believe product quality starts at its source, and is completed by the transparency that earns your trust.",
+    "cta": "Discover our story"
+  },
+  "fromWorld": {
+    "title": "From the World of Kounouz Alafiya",
+    "prevAria": "Previous",
+    "nextAria": "Next",
+    "instagramFollow": "Follow us on Instagram",
+    "showMore": "Show more",
+    "stories": {
+      "story1": {
+        "cardTitle": "What makes our honey special?",
+        "articleTitle": "What makes our honey special?",
+        "date": "June 18, 2025",
+        "readTime": "5 min read",
+        "snippet": "From choosing apiary locations in natural reserves far from pollution to the latest precise lab-testing techniques.",
+        "category": "Our story"
+      },
+      "story2": {
+        "cardTitle": "Our journey from hive to jar",
+        "articleTitle": "Our journey from hive to jar",
+        "date": "June 10, 2025",
+        "readTime": "4 min read",
+        "snippet": "Learn about the precise steps we follow to harvest and cold-pack honey without any heat exposure, to preserve its enzymes.",
+        "category": "Production"
+      },
+      "story3": {
+        "cardTitle": "How we verify the quality of every batch",
+        "articleTitle": "How do we verify the quality of every batch?",
+        "date": "June 1, 2025",
+        "readTime": "5 min read",
+        "snippet": "A look inside our certified labs, and how we issue a unique QR code for every jar containing the full lab analysis certificate.",
+        "category": "Transparency"
+      },
+      "story4": {
+        "cardTitle": "Benefits of natural honey for immunity and energy",
+        "articleTitle": "Benefits of natural honey for immunity and energy",
+        "date": "July 20, 2025",
+        "readTime": "4 min read",
+        "snippet": "Discover how a single spoonful of natural honey a day can make a real difference in boosting your immunity and energy levels.",
+        "category": "Health and immunity"
+      }
+    }
+  },
+  "quality": {
+    "headingPart1": "Quality is not a promise.",
+    "headingPart2": "It's a process.",
+    "steps": {
+      "origin": {
+        "title": "Origin",
+        "description": "We select the finest natural sources and pristine mountain reserves."
+      },
+      "batch": {
+        "title": "Batch",
+        "description": "Every product carries a unique batch number registered in our traceability system."
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "Precise testing and international standards ensure complete purity."
+      },
+      "verification": {
+        "title": "Verification",
+        "description": "Transparent information and lab results you can verify with a single tap."
+      }
+    }
+  },
+  "storyHome": {
+    "description": "From the heart of nature, and our passion for quality of life, the Kounouz Alafiya journey began. We carefully select the finest sources of honey and natural products, and work transparently to bring you products that are trustworthy, pure, and sustainable.",
+    "readMore": "Read more"
+  },
+  "storyPage": {
+    "heroTitleLine1": "From nature,",
+    "heroTitleLine2": "to your home.",
+    "heroDescription": "At Kounouz Alafiya, we believe the best products come from nature. We work with passion to bring you 100% pure honey, free of any additives, sharing nature's benefits in every drop.",
+    "discoverJourneyCta": "Discover our journey",
+    "stats": {
+      "experience": "years of experience",
+      "natural": "natural",
+      "happyClients": "happy clients",
+      "naturalProducts": "natural products"
+    },
+    "testimonialsTitle": "What our customers say",
+    "prevTestimonialsAria": "Previous testimonials",
+    "nextTestimonialsAria": "Next testimonials",
+    "testimonials": {
+      "card1": {
+        "quote": "I love the sidr honey, its taste is authentic and its benefits are many. I recommend everyone try it.",
+        "author": "Mohamed A."
+      },
+      "card2": {
+        "quote": "Excellent products and wonderful service. Fast delivery and elegant packaging.",
+        "author": "Sara N."
+      },
+      "card3": {
+        "quote": "100% natural honey with a wonderful taste. I trust Kounouz Alafiya for the quality of its products.",
+        "author": "Ahmed M."
+      }
+    },
+    "newsletter": {
+      "title": "Subscribe to our newsletter",
+      "subtitle": "Get exclusive tips and special offers delivered straight to your inbox",
+      "placeholder": "Enter your email address",
+      "subscribeCta": "Subscribe now",
+      "successMessage": "✓ Successfully subscribed to the Kounouz Alafiya newsletter!"
+    },
+    "perks": {
+      "delivery": {
+        "title": "Fast delivery",
+        "description": "Anywhere in Tunisia"
+      },
+      "payment": {
+        "title": "100% secure payment",
+        "description": "Trusted payment methods"
+      },
+      "quality": {
+        "title": "Quality guarantee",
+        "description": "Guaranteed natural products"
+      },
+      "support": {
+        "title": "Customer satisfaction",
+        "description": "24/7 customer support"
+      }
+    }
+  },
+  "verifyPage": {
+    "badge": "Kounouz Alafiya's certified verification system",
+    "title": "Verify the product's authenticity and quality",
+    "subtitle": "We guarantee that every drop of Kounouz Alafiya is 100% pure and from a verified source",
+    "scanHint": "Scan the QR code on the product directly with your phone's camera — the verification page will open automatically, no need to visit this site.",
+    "orEnterManually": "Or enter the code manually",
+    "inputPlaceholder": "Enter the verification code here (e.g. KZ-QR-2026-000001)",
+    "errorEmpty": "Please enter the verification code printed on the packaging",
+    "verifyCta": "Verify now",
+    "demoCodesLabel": "Demo codes:",
+    "findCodeLink": "Where can I find the verification code on the packaging?",
+    "trust": {
+      "authentic": {
+        "title": "100% authentic and guaranteed",
+        "description": "We guarantee the quality and authenticity of every product"
+      },
+      "source": {
+        "title": "Trusted source",
+        "description": "Our products come from the finest selected apiaries"
+      },
+      "lab": {
+        "title": "Lab-tested and certified",
+        "description": "Tested according to the highest standards"
+      },
+      "natural": {
+        "title": "Fully natural",
+        "description": "No additives or preservatives"
+      }
+    },
+    "guide": {
+      "findTitle": "Where can I find the verification code?",
+      "findDescription": "You'll find the verification (QR) code on the product's side label or on the bottom of the packaging.",
+      "resultTitle": "What does the verification result mean?",
+      "verified": {
+        "title": "Verified product",
+        "description": "This product has been lab-verified — 100% authentic"
+      },
+      "suspended": {
+        "title": "Temporarily suspended",
+        "description": "Currently unavailable for sale. If you purchased it, please contact us."
+      }
+    }
+  },
+  "search": {
+    "placeholder": "Search for honey, a type, a benefit, or a batch code...",
+    "popularLabel": "Popular searches:",
+    "quickTags": [
+      "Sidr honey",
+      "Royal jelly",
+      "Honey sticks",
+      "Premium natural honey",
+      "Propolis"
+    ],
+    "resultsCount": "Search results ({{count}})",
+    "featuredProducts": "Featured products",
+    "noResults": "No products found matching \"{{query}}\"."
+  },
+  "productDetail": {
+    "reviewsCount": "({{count}} verified reviews)",
+    "originLabel": "Origin: {{origin}}",
+    "chooseSizeLabel": "Choose the size:",
+    "descriptionTitle": "Product description:",
+    "benefitsTitle": "Key benefits and properties:",
+    "batchCodeLabel": "Current batch code: {{code}}",
+    "batchVerifiedNote": "Tested and registered in the quality and apiary records",
+    "viewCertificate": "View certificate",
+    "addedToCart": "Added to cart!",
+    "addToCartCta": "Add to cart",
+    "soldOut": "Sold out"
+  },
+  "verifySection": {
+    "headingPart1": "Don't just trust.",
+    "headingPart2": "Verify.",
+    "description": "Scan the QR code on your product or enter the verification code to see its information, origin, and test results.",
+    "inputPlaceholder": "Enter the verification code (e.g. KZ-QR-2026-000001)",
+    "scanTitle": "More verification methods",
+    "tryCodesLabel": "Try ready-made codes:"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Lab-verified Tunisian honey",
+      "subtitle": "From selected Tunisian apiaries to your table. Every jar carries a QR code that reveals the honey’s origin, batch number and lab results.",
+      "points": {
+        "lab": "Lab analysis for every batch",
+        "origin": "Named apiary and region",
+        "qr": "A unique QR code on every jar"
+      },
+      "card": {
+        "status": "Verified batch",
+        "batch": "Batch no.",
+        "origin": "Origin"
+      },
+      "scroll": "Discover more"
+    },
+    "features": {
+      "lab": {
+        "title": "Lab analysis",
+        "description": "Every batch is tested by an accredited lab before it goes on sale."
+      },
+      "traceable": {
+        "title": "Full traceability",
+        "description": "From hive to jar, every step is recorded and dated."
+      },
+      "qr": {
+        "title": "A QR code per jar",
+        "description": "Scan it to see the lab results and the honey’s origin yourself."
+      },
+      "local": {
+        "title": "Tunisian producers",
+        "description": "Honey from selected Tunisian apiaries whose beekeepers we know."
+      }
+    },
+    "products": {
+      "eyebrow": "Verified products",
+      "subtitle": "Every product here was lab-tested, approved by the Kounouz team, and carries its own verification code.",
+      "verifiedBadge": "Verified",
+      "quickView": "Quick view",
+      "added": "Added to cart",
+      "viewAll": "View all products ({{count}})",
+      "priceNote": "All prices are in Tunisian dinars (TND).",
+      "empty": "No products available right now. Check back soon!"
+    },
+    "journey": {
+      "eyebrow": "The trust journey",
+      "subtitle": "How honey travels from a Tunisian apiary to your table: six steps, each one recorded.",
+      "steps": {
+        "request": {
+          "title": "Verification request",
+          "description": "The beekeeper registers their honey and asks for verification.",
+          "who": "Producer"
+        },
+        "collect": {
+          "title": "Sealed sampling",
+          "description": "A sample is taken at the apiary and closed with a numbered seal.",
+          "who": "Field agent"
+        },
+        "lab": {
+          "title": "Lab analysis",
+          "description": "An accredited lab tests the sample; a reference sample is kept.",
+          "who": "Laboratory"
+        },
+        "decision": {
+          "title": "Decision",
+          "description": "The Kounouz team reviews the results: verified or not verified.",
+          "who": "Verification team"
+        },
+        "qr": {
+          "title": "Packaging & QR",
+          "description": "The verified batch is packaged and each jar gets a unique code.",
+          "who": "Kounouz Alafiya"
+        },
+        "you": {
+          "title": "You verify",
+          "description": "Scan the code and see everything in seconds.",
+          "who": "You"
+        }
+      }
+    },
+    "verify": {
+      "eyebrow": "Verify a product",
+      "revealsTitle": "What you’ll see when you verify:",
+      "reveals": {
+        "lab": "Lab analysis results",
+        "origin": "Honey origin and apiary",
+        "batch": "Batch number",
+        "status": "Current product status"
+      },
+      "inputLabel": "Enter the code printed under the QR code",
+      "imageAlt": "Kounouz Alafiya jar with its QR verification card",
+      "resultHint": "Lab-tested and approved by Kounouz Alafiya"
+    },
+    "terroir": {
+      "eyebrow": "Tunisian terroir",
+      "description": "Honey quality starts at the source. We work with Tunisian beekeepers we know by name, and track every batch from the apiary to the jar.",
+      "points": {
+        "producers": "Registered Tunisian beekeepers, each with a known profile and region.",
+        "reference": "A reference sample of every batch is kept by Kounouz.",
+        "batch": "Each batch has its own number, printed on every jar from it."
+      },
+      "regionsLabel": "Our apiaries today:",
+      "badge": "Tunisian mountain honey",
+      "imageAlt": "Kounouz Alafiya mountain honey jar in the mountains"
+    },
+    "story": {
+      "title": "A passion for bees, trust in every drop",
+      "producerCta": "Beekeeper? Join us",
+      "imageAlt": "Beekeeper inspecting a hive frame"
+    },
+    "articles": {
+      "eyebrow": "The blog",
+      "subtitle": "Tips and facts about honey, and how we verify its quality.",
+      "read": "Read"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Everything you want to know",
+      "subtitle": "Clear answers about verification, prices and joining Kounouz Alafiya.",
+      "contact": "Didn’t find your answer? Contact us",
+      "items": {
+        "verified": {
+          "q": "What does “verified product” mean?",
+          "a": "A sealed sample of the batch was tested by an accredited lab, then the Kounouz verification team approved the results. Only verified batches are put on sale."
+        },
+        "whereQr": {
+          "q": "Where do I find the verification code?",
+          "a": "On the jar label: a QR code with a written code underneath (e.g. KZ-QR-2026-000001). Scan the QR with your phone camera, or type the code into the verification field above."
+        },
+        "problem": {
+          "q": "What if the product shows “suspended” or the code isn’t found?",
+          "a": "Don’t consume the product before contacting us: it may be temporarily suspended, or the label may be counterfeit. You can report a suspicious label from the verification page; the report goes to our anti-counterfeit team."
+        },
+        "prices": {
+          "q": "Are prices in Tunisian dinars?",
+          "a": "Yes, all prices are shown in Tunisian dinars (TND). The price of each size appears when you choose the product."
+        },
+        "producer": {
+          "q": "I’m a beekeeper — how do I sell my honey on Kounouz?",
+          "a": "Create a producer account and submit a verification request. Our team reviews it and arranges sampling (an agent visit or you drop it off), then the lab analysis. Once verified, your honey is packaged and listed in the shop."
+        }
+      }
+    }
+  }
+}

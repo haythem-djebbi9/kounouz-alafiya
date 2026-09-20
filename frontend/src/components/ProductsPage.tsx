@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
+import { useTranslation } from 'react-i18next';
+import { usePriceFormatter } from '../lib/format-price';
 import { Product, Article } from '../types';
 import { ARTICLES } from '../data/mockData';
 import {
@@ -50,6 +52,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   onOpenArticle,
   onVerifyProduct,
 }) => {
+  const { t } = useTranslation(['marketplace', 'common']);
+  const formatPrice = usePriceFormatter();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'featured' | 'bestseller' | 'price-asc' | 'price-desc' | 'rating'>('featured');
@@ -144,13 +148,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     },
     {
       name: 'عبدالله السعيد',
-      role: 'عميل مميز - الرياض',
+      role: 'عميل مميز - صفاقس',
       text: 'عسل السدر لا يُعلى عليه. نقاء ورائحة أصيلة لم أجدها في أي متجر آخر، شكراً لكم.',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
     },
     {
       name: 'منى الشريف',
-      role: 'زبونة دائمة - جدة',
+      role: 'زبونة دائمة - سوسة',
       text: 'باكج العافية وصلني بتغليف راقي وفخم، استخدمت غذاء الملكات وشعرت بنشاط غير مسبوق.',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
     }
@@ -527,11 +531,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
                         {/* Price Section */}
                         <div className="flex items-baseline gap-2 mb-4">
                           <span className="text-lg sm:text-xl font-extrabold text-[#0C261B]">
-                            {product.price} ريال
+                            {formatPrice(product.price)}
                           </span>
                           {product.oldPrice && (
                             <span className="text-xs text-[#8C9E97] line-through font-medium">
-                              {product.oldPrice} ريال
+                              {formatPrice(product.oldPrice)}
                             </span>
                           )}
                         </div>
@@ -611,7 +615,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
               <Truck className="w-6 h-6" />
             </div>
             <h4 className="text-sm font-bold text-[#0C261B] mb-1">شحن سريع ومجاني</h4>
-            <p className="text-xs text-[#6F827B]">للطلبات فوق 200 ريال لجميع المدن</p>
+            <p className="text-xs text-[#6F827B]">للطلبات فوق {formatPrice(200)} لكل الولايات</p>
           </div>
 
           <div className="flex flex-col items-center p-3">

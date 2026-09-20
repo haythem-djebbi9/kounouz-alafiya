@@ -1,0 +1,1035 @@
+{
+  "brand": {
+    "tagline": "Pure Origins. Trusted Honey.",
+    "sidebarMotto": "Tunisian honey\na richer tomorrow",
+    "promoTitle": "Authentic Honey\nStronger Communities"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "profile": "My Profile",
+    "requests": "Verification Requests",
+    "samples": "My Samples",
+    "batches": "My Batches",
+    "products": "My Products",
+    "sales": "Sales & Earnings",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "help": "Help & Support"
+  },
+  "footer": {
+    "motto": "From Nature to People with Trust",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact Us"
+  },
+  "search": {
+    "placeholder": "Search products, batches, or anything...",
+    "empty": "No results found.",
+    "groups": {
+      "requests": "Request",
+      "batches": "Batch",
+      "products": "Product",
+      "samples": "Sample"
+    }
+  },
+  "help": {
+    "title": "Need Help?",
+    "body": "If you are not sure about any information, our support team is here to help.",
+    "cta": "Contact Support"
+  },
+  "common": {
+    "currency": "TND",
+    "roleLabel": "Honey Producer",
+    "actions": "Actions",
+    "view": "View",
+    "export": "Export",
+    "reset": "Reset",
+    "select": "Select",
+    "selectOrType": "Select or type",
+    "other": "Other",
+    "otherSpecify": "Other (specify)",
+    "required": "This field is required.",
+    "allStatuses": "All Statuses",
+    "noResults": "No results match your filters.",
+    "noSalesYet": "No sales yet",
+    "units": "Units",
+    "kg": "{{value}} kg",
+    "kgUnit": "kg",
+    "showing": "Showing {{from}} to {{to}} of {{total}}"
+  },
+  "range": {
+    "THIS_MONTH": "This month",
+    "LAST_MONTH": "Last month",
+    "LAST_30_DAYS": "Last 30 days",
+    "LAST_3_MONTHS": "Last 3 months",
+    "THIS_YEAR": "This year",
+    "ALL_TIME": "All time",
+    "CUSTOM": "Custom range",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply"
+  },
+  "kpi": {
+    "unitsSold": "Units Sold",
+    "grossSales": "Gross Sales",
+    "commission": "Kounouz Commission",
+    "netEarnings": "Net Earnings",
+    "totalUnits": "Total Units Sold",
+    "totalSales": "Total Sales (TND)",
+    "totalSalesTnd": "Total Sales (TND)",
+    "totalOrders": "Total Orders",
+    "yourEarnings": "Your Earnings",
+    "yourEarningsTnd": "Your Earnings (TND)",
+    "salesTnd": "Sales (TND)",
+    "pendingPayment": "Pending Payment"
+  },
+  "dashboard": {
+    "greeting": "Welcome back, {{name}}!",
+    "subtitle": "Here's an overview of your activity and the impact of your honey.",
+    "newRequest": "New Verification Request",
+    "plusThisMonth": "+{{value}} this month",
+    "vsLastMonth": "{{value}} this month",
+    "newThisMonth": "New this month",
+    "salesOverview": "Sales Overview",
+    "metric": "Metric",
+    "period": "Period",
+    "lastMonths_one": "Last month",
+    "lastMonths_other": "Last {{count}} Months",
+    "unitsByPackage": "Units Sold by Package Size",
+    "workMattersTitle": "Your work matters",
+    "workMattersBody": "By working with Kounouz Alafiya, you help bring authentic Tunisian honey to more families while preserving our natural heritage.",
+    "recentRequests": "Recent Verification Requests",
+    "myBatches": "My Batches",
+    "quickActions": "Quick Actions",
+    "quick": {
+      "request": "Request Verification",
+      "batches": "View My Batches",
+      "products": "Manage My Products",
+      "sales": "View Sales & Earnings"
+    }
+  },
+  "stage": {
+    "DRAFT": "Draft",
+    "SUBMITTED": "Submitted",
+    "UNDER_REVIEW": "Under Review",
+    "REJECTED": "Rejected",
+    "COLLECTION_SCHEDULED": "Sample Requested",
+    "SAMPLE_COLLECTED": "Sample Collected",
+    "UNDER_ANALYSIS": "Under Analysis",
+    "VERIFICATION_PENDING": "Verification Pending",
+    "VERIFIED": "Approved",
+    "NOT_VERIFIED": "Not Verified"
+  },
+  "collectionMethod": {
+    "KOUNOUZ_VISIT": {
+      "title": "Kounouz visits my farm",
+      "short": "Kounouz visit",
+      "description": "A Kounouz representative comes to your apiary to collect and seal the sample."
+    },
+    "PRODUCER_DELIVERY": {
+      "title": "I bring the sample to Kounouz",
+      "short": "Producer delivery",
+      "description": "You deliver the sample to Kounouz following the instructions our team will send you."
+    }
+  },
+  "floralCategory": {
+    "MONOFLORAL": "Mono-floral",
+    "MULTIFLORAL": "Multi-floral"
+  },
+  "honey": {
+    "types": {
+      "JUJUBE": "Jujube (Sidr) Honey",
+      "THYME": "Thyme Honey",
+      "ROSEMARY": "Rosemary Honey",
+      "EUCALYPTUS": "Eucalyptus Honey",
+      "ORANGE_BLOSSOM": "Orange Blossom Honey",
+      "CAROB": "Carob Honey",
+      "ALEPPO_PINE": "Aleppo Pine Honey",
+      "WILDFLOWER": "Wildflower Honey",
+      "FOREST": "Forest Honey",
+      "MOUNTAIN": "Mountain Honey"
+    },
+    "origins": {
+      "WILDFLOWER": "Wildflower",
+      "THYME": "Thyme",
+      "EUCALYPTUS": "Eucalyptus",
+      "ORANGE_BLOSSOM": "Orange Blossom",
+      "CITRUS": "Citrus",
+      "ROSEMARY": "Rosemary",
+      "ALEPPO_PINE": "Aleppo Pine",
+      "SAGE": "Sage",
+      "JUJUBE": "Jujube (Sidr)",
+      "CAROB": "Carob"
+    },
+    "seasons": {
+      "SPRING": "Spring",
+      "SUMMER": "Summer",
+      "AUTUMN": "Autumn",
+      "WINTER": "Winter"
+    },
+    "methods": {
+      "TRADITIONAL": "Traditional",
+      "MODERN": "Modern",
+      "ORGANIC": "Organic",
+      "TRANSHUMANT": "Migratory (transhumant)"
+    },
+    "hives": {
+      "LANGSTROTH": "Langstroth",
+      "DADANT": "Dadant",
+      "TRADITIONAL": "Traditional hive",
+      "TOP_BAR": "Top-bar",
+      "OTHER": "Other"
+    }
+  },
+  "fields": {
+    "governorate": "Governorate",
+    "delegation": "Delegation",
+    "chooseGovernorateFirst": "Choose a governorate first",
+    "errors": {
+      "phone": "Invalid phone number.",
+      "nationalId": "The national ID must contain 8 digits.",
+      "postalCode": "The postal code must contain 4 digits."
+    }
+  },
+  "requests": {
+    "title": "Verification Requests",
+    "subtitle": "Follow each request from submission to Kounouz verification.",
+    "draftLabel": "Draft",
+    "empty": "No verification requests yet.",
+    "searchPlaceholder": "Search by request ID, honey type or location...",
+    "continueDraft": "Continue",
+    "deleteDraft": "Delete draft",
+    "confirmDeleteDraft": "Delete this draft? This cannot be undone.",
+    "draftDeleted": "Draft deleted.",
+    "trackProgress": "Track progress",
+    "stats": {
+      "total": "Submitted Requests",
+      "inProgress": "In Progress",
+      "verified": "Verified",
+      "drafts": "Drafts"
+    },
+    "cols": {
+      "id": "Request ID",
+      "honeyType": "Honey Type",
+      "quantity": "Quantity",
+      "location": "Location",
+      "method": "Collection",
+      "submitted": "Submission Date",
+      "status": "Status"
+    }
+  },
+  "wizard": {
+    "steps": {
+      "request": "Request Verification",
+      "honey": "Honey / Batch Information",
+      "review": "Review & Submit",
+      "underReview": "Under Review"
+    },
+    "titles": {
+      "request": "Request Verification",
+      "honey": "Honey / Batch Information",
+      "review": "Review & Submit",
+      "underReview": "Request Submitted"
+    },
+    "subtitles": {
+      "request": "Submit your verification request to build trust and showcase the authenticity of your honey.",
+      "honey": "Provide detailed information about the honey you want to get verified.",
+      "review": "Check your information before sending the request to Kounouz Alafiya.",
+      "underReview": "Our team is now reviewing your request."
+    },
+    "hero": {
+      "title": "From your hives to a trusted future.",
+      "body": "Request the verification of your honey. Our team will review your information and coordinate the next steps, including sample collection and laboratory analysis."
+    },
+    "section": {
+      "producer": "Producer & Farm Information",
+      "producerHint": "Confirm your farm details for this verification request.",
+      "collection": "Preferred Collection Method",
+      "collectionHint": "How would you like the sample to reach Kounouz?",
+      "collectionNote": "Kounouz confirms the final collection method when reviewing your request.",
+      "documents": "Document Status",
+      "documentsHint": "Make sure your required documents are completed before submitting your request.",
+      "honey": "Honey Details",
+      "honeyHint": "Tell us about the honey you want to get verified.",
+      "location": "Production Location",
+      "locationHint": "Where was this honey produced?",
+      "beekeeping": "Production & Beekeeping Information",
+      "beekeepingHint": "Additional details about your beekeeping activity."
+    },
+    "fields": {
+      "producerName": "Producer Name",
+      "farmName": "Farm / Brand Name",
+      "farmLocation": "Farm Location",
+      "farmSize": "Farm Size (optional)",
+      "honeyType": "Type of Honey",
+      "honeyTypeOther": "Honey type name",
+      "floralCategory": "Floral Category",
+      "floralOrigin": "Floral Origin (if known)",
+      "quantity": "Expected Quantity (kg)",
+      "season": "Production Season",
+      "year": "Year",
+      "harvestStart": "Harvest Start Date",
+      "harvestEnd": "Harvest End Date",
+      "harvestPeriod": "Harvest Period",
+      "coordinates": "Coordinates (optional)",
+      "hives": "Number of Hives (for this batch)",
+      "method": "Beekeeping Method",
+      "hiveType": "Hive Type",
+      "additionalInfo": "Additional Information (optional)"
+    },
+    "placeholders": {
+      "farmSize": "e.g. 50 hectares",
+      "floralOrigin": "Select floral origin",
+      "additionalInfo": "Tell us more about this honey, its environment, or any relevant details..."
+    },
+    "editFarm": "Edit farm information",
+    "docsCount": "{{ready}} of {{total}} required documents are ready",
+    "docsVerified": "All mandatory documents have been uploaded and verified. You can submit your request.",
+    "docsPending": "Your mandatory documents are uploaded and awaiting review by Kounouz. You can submit your request.",
+    "docsMissing": "Upload your mandatory documents (national ID and farm registration) before submitting.",
+    "docsBlocking": "Your request cannot be submitted until the mandatory documents are uploaded.",
+    "manageDocuments": "Manage Documents",
+    "process": {
+      "title": "Verification Process",
+      "submit": {
+        "title": "Submit Request",
+        "body": "Fill in the form and submit your verification request."
+      },
+      "review": {
+        "title": "Review",
+        "body": "Our team will review your information (usually within 2–5 business days)."
+      },
+      "collection": {
+        "title": "Sample Collection",
+        "body": "We will coordinate the collection of honey samples, sealed by Kounouz."
+      },
+      "analysis": {
+        "title": "Laboratory Analysis",
+        "body": "Your samples will be analyzed in accredited labs."
+      },
+      "verified": {
+        "title": "Get Verified",
+        "body": "You will receive a notification once your honey is verified."
+      }
+    },
+    "notes": {
+      "title": "Important Notes",
+      "items": [
+        "Ensure your documents are up to date",
+        "Provide accurate information",
+        "Verification includes laboratory analysis",
+        "You will be notified at each step",
+        "Our team may contact you for additional details"
+      ]
+    },
+    "importantTitle": "Important to know",
+    "importantBody": "You do not need to create a Batch ID. The official Batch ID will be assigned by Kounouz Alafiya after the laboratory verification is completed.",
+    "tips": {
+      "title": "Tips for accurate information",
+      "items": [
+        "Provide the most accurate dates and location.",
+        "Select the closest floral origin if known.",
+        "This information helps us ensure traceability and quality."
+      ]
+    },
+    "examplesTitle": "Examples of Floral Origins",
+    "nextTitle": "What happens next?",
+    "nextBody": "After you submit this information, our team will review your request and contact you to arrange the sample collection.",
+    "batchIdNote": "The official Batch ID will be created by Kounouz Alafiya after the verification process is completed.",
+    "controlTitle": "Kounouz controls the verification",
+    "controlBody": "Sample sealing, laboratory results and the final decision are managed by Kounouz Alafiya only.",
+    "confirmStatement": "I confirm that the information provided is accurate and I agree that Kounouz Alafiya collects and analyzes a sample of this honey.",
+    "saveDraft": "Save as Draft",
+    "draftSaved": "Draft saved. You can come back and finish it at any time.",
+    "continueToHoney": "Continue",
+    "continueToReview": "Continue to Review",
+    "submit": "Submit Verification Request",
+    "errors": {
+      "method": "Choose how the sample will reach Kounouz.",
+      "quantity": "Enter a quantity greater than 0.",
+      "coordinates": "Use the format latitude, longitude (e.g. 36.7531, 10.4205).",
+      "harvestDates": "The end date must be after the start date.",
+      "confirm": "Please confirm the accuracy of your information."
+    },
+    "alreadySubmittedTitle": "This request has already been submitted",
+    "alreadySubmittedBody": "Submitted requests are managed by Kounouz Alafiya and can no longer be edited.",
+    "success": {
+      "title": "Your request has been submitted!",
+      "body": "Thank you. Our team will review your request and contact you to arrange the sample collection.",
+      "reference": "Request reference:"
+    }
+  },
+  "track": {
+    "submitted": "Submitted",
+    "review": "Kounouz Review",
+    "collection": "Collection Arranged",
+    "sample": "Sample & Seal",
+    "analysis": "Lab Analysis",
+    "decision": "Verification",
+    "verified": "Verified",
+    "batch": "Batch & Product"
+  },
+  "requestDetail": {
+    "notFound": "This request could not be found.",
+    "progress": "Request Progress",
+    "rejectedTitle": "Request not accepted",
+    "rejectedBody": "Kounouz could not accept this request. Contact support to learn more or submit a new request.",
+    "verifiedTitle": "Your honey is Kounouz Verified ✓",
+    "verifiedBody": "The honey passed the Kounouz verification process. Packaging and batch creation are handled by Kounouz.",
+    "notVerifiedTitle": "Honey not verified",
+    "notVerifiedBody": "The honey did not pass the verification process.",
+    "methodNote": "Your preferred method. Kounouz confirms the final arrangement.",
+    "sampleTitle": "Sample",
+    "noSample": "No sample collected yet.",
+    "viewCustody": "View chain of custody",
+    "batchTitle": "Verified Batch",
+    "viewBatch": "View batch traceability"
+  },
+  "sampleStatus": {
+    "COLLECTED": "Collected",
+    "SEALED": "Sealed",
+    "IN_TRANSIT": "In Transit",
+    "RECEIVED_AT_LAB": "Received at Lab",
+    "ANALYZED": "Analyzed"
+  },
+  "sealStatus": {
+    "INTACT": "Intact",
+    "BROKEN": "Compromised"
+  },
+  "analysisStatus": {
+    "PENDING": "Under analysis",
+    "COMPLIANT": "Compliant",
+    "NON_COMPLIANT": "Non-compliant"
+  },
+  "verificationStatus": {
+    "PENDING": "Pending",
+    "VERIFIED": "Verified",
+    "NOT_VERIFIED": "Not verified"
+  },
+  "batchStatus": {
+    "CREATED": "Pending",
+    "PACKAGED": "In Packaging",
+    "READY": "Active"
+  },
+  "packagingStatus": {
+    "IN_PROGRESS": "In progress",
+    "COMPLETED": "Completed"
+  },
+  "productStatus": {
+    "BROUILLON": "Pending Review",
+    "PUBLIE": "Active",
+    "RUPTURE": "Out of Stock",
+    "SUSPENDU": "Inactive",
+    "ARCHIVE": "Archived"
+  },
+  "producerStatus": {
+    "PENDING": "Pending",
+    "ACTIVE": "Active",
+    "SUSPENDED": "Suspended",
+    "REJECTED": "Rejected"
+  },
+  "orderStatus": {
+    "PENDING": "Pending",
+    "CONFIRMED": "Confirmed",
+    "SHIPPED": "Shipped",
+    "DELIVERED": "Delivered",
+    "CANCELLED": "Cancelled"
+  },
+  "channel": {
+    "ONLINE_STORE": "Online Store",
+    "MARKETPLACE": "Marketplace",
+    "RETAIL_PARTNER": "Retail Partner"
+  },
+  "settlementStatus": {
+    "OPEN": "In Progress",
+    "PROCESSING": "Processing",
+    "PAID": "Paid"
+  },
+  "samples": {
+    "title": "My Samples",
+    "subtitle": "Follow the collection, sealing and laboratory journey of your samples.",
+    "readOnlyNote": "Samples, seals and laboratory results are managed by Kounouz Alafiya. This page is read-only.",
+    "empty": "No samples collected yet. They appear here once Kounouz collects a sample for one of your requests.",
+    "searchPlaceholder": "Search by seal code, request ID or honey type...",
+    "stats": {
+      "total": "Total Samples",
+      "inCustody": "In Custody / Transit",
+      "atLab": "At the Laboratory",
+      "analyzed": "Analyzed"
+    },
+    "cols": {
+      "ref": "Sample Ref.",
+      "request": "Request",
+      "collected": "Collection Date",
+      "seal": "Kounouz Seal",
+      "custody": "Custody Status",
+      "analysis": "Lab Analysis"
+    },
+    "seal": "Seal",
+    "notSealed": "Not sealed yet",
+    "noAnalysis": "Not started",
+    "viewCustody": "Custody",
+    "custodyTitle": "Chain of Custody",
+    "quantity": "Sample quantity",
+    "location": "Collection location",
+    "collectedBy": "Collected by",
+    "chain": "Sample journey",
+    "dateUnavailable": "Completed",
+    "upcoming": "Upcoming"
+  },
+  "batches": {
+    "title": "My Batches",
+    "subtitle": "Official verified batches created by Kounouz Alafiya from your honey.",
+    "note": "Batch IDs are assigned by Kounouz after verification. Packaging is carried out by Kounouz in Kounouz Alafiya bottles.",
+    "empty": "No batches yet. A batch is created once your honey is verified.",
+    "searchPlaceholder": "Search by batch ID, honey type or request...",
+    "noPackaging": "Awaiting packaging",
+    "noProducts": "No products created from this batch yet.",
+    "traceability": "Traceability",
+    "viewProducts": "View My Products",
+    "stats": {
+      "total": "Verified Batches",
+      "verifiedKg": "Verified Quantity",
+      "packaging": "Pending / In Packaging",
+      "active": "Active Batches"
+    },
+    "cols": {
+      "id": "Batch ID",
+      "honeyType": "Honey Type",
+      "quantity": "Quantity",
+      "request": "Request",
+      "verified": "Verified On",
+      "packaging": "Packaging",
+      "products": "Products",
+      "status": "Status"
+    }
+  },
+  "trace": {
+    "request": "Verification request",
+    "sample": "Sample & seal",
+    "analysis": "Laboratory analysis",
+    "verification": "Kounouz verification",
+    "batch": "Verified batch",
+    "packaging": "Kounouz packaging",
+    "products": "Products & QR codes"
+  },
+  "products": {
+    "title": "My Products",
+    "subtitle": "View and track the products created from your verified honey batches.",
+    "createdByKounouz": "Products are created and published by Kounouz Alafiya after verification and packaging of your honey.",
+    "requestVerification": "Request Verification",
+    "empty": "No products yet. Products appear once Kounouz packages a verified batch of your honey.",
+    "searchPlaceholder": "Search products...",
+    "allHoneyTypes": "All Honey Types",
+    "category": "Category",
+    "viewProduct": "View Product",
+    "openVerification": "Open verification page",
+    "viewBatch": "View batch",
+    "viewSales": "View sales",
+    "verifiedOn": "Verified on",
+    "readOnlyNote": "Price, stock and publication are managed by Kounouz Alafiya.",
+    "qrNote": "This QR code points to the live Kounouz verification page.",
+    "noQr": "The QR code is generated when the product is published.",
+    "stockUnits_one": "{{count}} unit",
+    "stockUnits_other": "{{count}} units",
+    "showing": "Showing {{from}} to {{to}} of {{total}} products",
+    "stats": {
+      "total": "Total Products",
+      "totalHint": "Across all honey types",
+      "active": "Active Products",
+      "activeHint": "Available for sale",
+      "pending": "Pending Products",
+      "pendingHint": "In preparation",
+      "inactive": "Inactive Products",
+      "inactiveHint": "Not for sale"
+    },
+    "groups": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "INACTIVE": "Inactive"
+    },
+    "sort": {
+      "label": "Sort",
+      "NEWEST": "Sort by Newest",
+      "OLDEST": "Sort by Oldest",
+      "NAME": "Sort by Name",
+      "STOCK": "Sort by Stock",
+      "SALES": "Sort by Sales"
+    },
+    "view": {
+      "list": "List view",
+      "grid": "Grid view"
+    },
+    "cols": {
+      "product": "Product",
+      "honeyType": "Honey Type",
+      "package": "Package",
+      "price": "Price",
+      "stock": "Total Stock",
+      "sales": "Sales (Units)",
+      "status": "Status",
+      "batch": "Linked Batch",
+      "added": "Date Added"
+    }
+  },
+  "profile": {
+    "title": "My Profile",
+    "subtitle": "Manage your personal information, farm details and account settings.",
+    "overview": "Profile Overview",
+    "tabs": {
+      "personal": "Personal Information",
+      "farm": "Farm Information",
+      "documents": "Documents",
+      "account": "Account Settings",
+      "farms": "Apiaries"
+    },
+    "changePhoto": "Change photo",
+    "memberSince": "Member since {{date}}",
+    "registrationUnknown": "Registration not provided",
+    "verifiedTitle": "Verified Producer",
+    "verifiedBody": "Your account is active and registered in Kounouz Alafiya.",
+    "notVerifiedTitle": "Verification in progress",
+    "notVerifiedBody": "Complete your profile and documents so Kounouz can verify your producer account.",
+    "saveChanges": "Save Changes",
+    "saved": "Changes saved successfully.",
+    "photoUpdated": "Profile photo updated.",
+    "personal": {
+      "title": "Personal Information",
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address",
+      "changeEmail": "Change email in Account Settings",
+      "dateOfBirth": "Date of Birth",
+      "nationalId": "National ID (CIN)",
+      "nationalIdOnce": "Can only be entered once. Contact support to correct it later.",
+      "nationalIdLocked": "Locked — contact support to request a correction."
+    },
+    "address": {
+      "title": "Address Information",
+      "address": "Address",
+      "postalCode": "Postal Code",
+      "note": "This address will be used for official communication and possible field visits."
+    },
+    "photo": {
+      "title": "Profile Photo",
+      "click": "Click to change photo",
+      "formats": "JPG, PNG (Max 5MB)"
+    },
+    "farm": {
+      "bannerTitle": "A healthy environment for exceptional honey",
+      "bannerBody": "Tell us about your farm. This information helps build trust and showcases the unique origin of your honey.",
+      "bannerMotto": "Healthy Bees\nHealthier Communities",
+      "basic": "Basic Farm Information",
+      "farmName": "Farm Name",
+      "activityType": "Type of Activity",
+      "registrationStatus": "Registration Status",
+      "registrationNumber": "Registration Number (if available)",
+      "location": "Location",
+      "fullAddress": "Full Address",
+      "gps": "GPS Location",
+      "useLocation": "Use my location",
+      "locationDenied": "Unable to access your location. Enter the coordinates manually.",
+      "map": "Farm location map",
+      "openMap": "Open the map",
+      "mapPlaceholder": "Enter GPS coordinates to display your farm on the map.",
+      "photos": "Farm Photos",
+      "photosHint": "Upload photos of your farm (apiary, hives, surroundings, etc.)",
+      "addPhoto": "Add Photo",
+      "photosSaveHint": "Click \"Save Changes\" to keep your photo changes.",
+      "beekeeping": "Beekeeping Details",
+      "productionPeriod": "Production Period",
+      "from": "From",
+      "to": "To",
+      "mainFlora": "Main Flora / Honey Types",
+      "floraPlaceholder": "Type and press Enter",
+      "annualProduction": "Annual Production (estimated)",
+      "description": "Description",
+      "descriptionHint": "Tell us more about your farm (optional)"
+    }
+  },
+  "options": {
+    "activity": {
+      "BEEKEEPING": "Beekeeping (Honey Production)",
+      "BEEKEEPING_AND_PROCESSING": "Beekeeping & hive products",
+      "MIXED_FARMING": "Mixed farming"
+    },
+    "registration": {
+      "REGISTERED": "Farm registered",
+      "IN_PROGRESS": "Registration in progress",
+      "NOT_REGISTERED": "Not registered"
+    },
+    "payment": {
+      "BANK_TRANSFER": "Bank Transfer",
+      "POSTAL_ACCOUNT": "Postal account transfer"
+    }
+  },
+  "documents": {
+    "bannerTitle": "Secure & Verified Documents",
+    "bannerBody": "Upload the required documents to complete your profile and benefit from verification, traceability and access to all platform features.",
+    "secureTitle": "Your information is secure",
+    "secureBody": "Documents are stored privately and only accessible to you and the Kounouz verification team.",
+    "required": "Required Documents",
+    "cols": {
+      "document": "Document",
+      "description": "Description",
+      "status": "Status"
+    },
+    "status": {
+      "VERIFIED": "Verified",
+      "PENDING_REVIEW": "Pending Review",
+      "REJECTED": "Rejected",
+      "NOT_UPLOADED": "Not Uploaded"
+    },
+    "types": {
+      "NATIONAL_ID": {
+        "label": "National ID (CIN)",
+        "description": "A copy of your valid national ID card (front and back)."
+      },
+      "FARM_REGISTRATION": {
+        "label": "Farm Registration Certificate",
+        "description": "Official registration document of your farm (if available)."
+      },
+      "BEEKEEPING_LICENSE": {
+        "label": "Beekeeping Activity License",
+        "description": "Official license for beekeeping activity (if required)."
+      },
+      "TAX_ID": {
+        "label": "Tax Identification Number",
+        "description": "Your tax identification number document."
+      },
+      "PROOF_OF_ADDRESS": {
+        "label": "Proof of Address",
+        "description": "Recent utility bill or official document showing your address."
+      },
+      "OTHER": {
+        "label": "Other Documents",
+        "description": "Any additional documents (e.g. organic certificate, quality labels)."
+      }
+    },
+    "uploadedOn": "Uploaded on {{date}}",
+    "upload": "Upload",
+    "replace": "Replace file",
+    "lockedVerified": "Verified — locked",
+    "filesCount_one": "{{count}} file",
+    "filesCount_other": "{{count}} files",
+    "noneYet": "No documents uploaded yet.",
+    "uploadNew": "Upload a New Document",
+    "documentType": "Document type",
+    "dropzone": "Drag & drop your file here or click to browse",
+    "formats": "JPG, PNG, PDF (Max 10MB)",
+    "chooseFile": "Choose File",
+    "uploaded": "\"{{name}}\" uploaded. It is now awaiting review by Kounouz.",
+    "confirmDelete": "Delete \"{{name}}\"?",
+    "errors": {
+      "format": "Accepted formats: JPG, PNG, PDF.",
+      "size": "The file exceeds 10MB."
+    },
+    "guidelinesTitle": "Document Guidelines",
+    "guidelines": [
+      "Files must be clear and readable",
+      "Accepted formats: JPG, PNG, PDF",
+      "Maximum file size: 10MB",
+      "Ensure all information is visible",
+      "Documents may take up to 24-48 hours for review"
+    ]
+  },
+  "account": {
+    "pageSubtitle": "Manage your account preferences, security settings and notification options.",
+    "bannerTitle": "Account Settings",
+    "bannerBody": "Manage your account preferences, security settings and notification options.",
+    "secureTitle": "A more secure account for a brighter future",
+    "secureBody": "Your data helps build a trusted and transparent honey ecosystem.",
+    "change": "Change",
+    "notSet": "Not provided",
+    "login": {
+      "title": "Login Information",
+      "subtitle": "Keep your contact information up to date."
+    },
+    "password": {
+      "title": "Password",
+      "subtitle": "Update your password regularly to keep your account secure.",
+      "current": "Current Password",
+      "currentPlaceholder": "Enter your current password",
+      "new": "New Password",
+      "newPlaceholder": "Enter new password",
+      "confirm": "Confirm New Password",
+      "confirmPlaceholder": "Confirm new password",
+      "toggle": "Show or hide password",
+      "requirements": "Password Requirements",
+      "rules": {
+        "length": "At least 8 characters",
+        "upper": "Include uppercase letters",
+        "lower": "Include lowercase letters",
+        "number": "Include a number",
+        "special": "Include a special character"
+      },
+      "mismatch": "Passwords do not match.",
+      "submit": "Update Password",
+      "success": "Password updated successfully."
+    },
+    "language": {
+      "title": "Language & Region",
+      "subtitle": "Set your preferred language and time zone.",
+      "language": "Language",
+      "timezone": "Time Zone",
+      "timezoneHint": "Dates are displayed in Tunisia time."
+    },
+    "payment": {
+      "title": "Payment Information",
+      "subtitle": "Where Kounouz sends your monthly earnings.",
+      "method": "Payment Method",
+      "bank": "Bank Name",
+      "iban": "IBAN / RIB",
+      "ibanHint": "Starts with TN followed by your account digits.",
+      "saved": "Payment information saved."
+    },
+    "security": {
+      "title": "Account Security",
+      "subtitle": "Manage additional security settings.",
+      "email": "Email",
+      "phone": "Phone Number",
+      "provided": "Provided",
+      "password": "Password",
+      "lastChanged": "Last changed {{date}}",
+      "neverChanged": "Never changed",
+      "twoFactor": "Two-Factor Authentication",
+      "enabled": "Enabled",
+      "notEnabled": "Not enabled"
+    },
+    "twoFactor": {
+      "enable": "Enable Two-Factor Authentication",
+      "disable": "Disable Two-Factor Authentication",
+      "enableTitle": "Enable Two-Factor Authentication",
+      "disableTitle": "Disable Two-Factor Authentication",
+      "step1": "Install an authenticator app (Google Authenticator, Microsoft Authenticator...).",
+      "step2": "Scan the QR code below or enter the key manually.",
+      "step3": "Enter the 6-digit code shown in the app to confirm.",
+      "manualKey": "Manual setup key",
+      "code": "6-digit code",
+      "activate": "Activate",
+      "enabledSuccess": "Two-factor authentication is now enabled.",
+      "disabledSuccess": "Two-factor authentication has been disabled."
+    },
+    "notifications": {
+      "title": "Notifications Preferences",
+      "subtitle": "Choose what you want to be notified about.",
+      "groups": {
+        "account": {
+          "title": "Account Updates",
+          "body": "Documents review and support replies"
+        },
+        "verification": {
+          "title": "Verification Updates",
+          "body": "Status of your samples and verification requests"
+        },
+        "sales": {
+          "title": "Sales & Payments",
+          "body": "Product publication, new orders and payouts"
+        }
+      },
+      "inAppOnly": "Notifications are delivered inside the platform."
+    },
+    "actions": {
+      "title": "Account Actions",
+      "deleteTitle": "Delete Account",
+      "deleteBody": "This action cannot be undone.",
+      "deleteCta": "Delete My Account"
+    },
+    "emailModal": {
+      "title": "Change email address",
+      "newEmail": "New email address",
+      "hint": "For your security, confirm with your current password.",
+      "success": "Email address updated."
+    },
+    "phoneModal": {
+      "title": "Change phone number",
+      "success": "Phone number updated."
+    },
+    "deleteModal": {
+      "title": "Delete my account",
+      "body": "You will be logged out and will no longer be able to access your producer portal.",
+      "traceability": "If you already submitted verification requests or sold products, your account will be deactivated rather than erased: traceability records (samples, batches, QR codes) must remain available for consumers.",
+      "keyword": "DELETE",
+      "typeToConfirm": "Type {{keyword}} to confirm",
+      "deleted": "Your account has been deleted.",
+      "deactivated": "Your account has been deactivated. Traceability records are kept."
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Updates about your requests, samples, products and payments.",
+    "preferences": "Preferences",
+    "filters": {
+      "all": "All",
+      "unread": "Unread"
+    },
+    "noUnread": "You're all caught up!",
+    "unread": "Unread"
+  },
+  "sales": {
+    "sections": {
+      "dashboard": {
+        "tab": "Sales Dashboard",
+        "title": "Sales Dashboard",
+        "subtitle": "An overview of your product sales, earnings and performance."
+      },
+      "history": {
+        "tab": "Sales History",
+        "title": "Sales History",
+        "subtitle": "View the detailed history of your product sales."
+      },
+      "earnings": {
+        "tab": "Earnings & Commission",
+        "title": "Earnings & Commission",
+        "subtitle": "Understand your earnings, commission details, and upcoming payments."
+      },
+      "settlements": {
+        "tab": "Settlement Details",
+        "title": "Settlement Details",
+        "subtitle": "View the details of your earnings, commissions, and payment status."
+      }
+    },
+    "vsPrevious": "{{value}} vs previous period",
+    "newVsPrevious": "New vs previous period",
+    "rate": "{{rate}} commission",
+    "currencyRate": "TND ({{rate}})",
+    "overview": "Sales Overview",
+    "overviewHint": "Units sold over the selected period",
+    "byPackage": "Sales by Package Size",
+    "byPackageHint": "Distribution of units sold",
+    "noSalesInRange": "No sales in this period",
+    "topProducts": "Top Selling Products",
+    "recentSales": "Recent Sales",
+    "searchPlaceholder": "Search by order number, product...",
+    "copyOrder": "Copy order number",
+    "viewSettlement": "View settlement",
+    "showingOrders": "Showing {{from}} to {{to}} of {{total}} orders",
+    "filters": {
+      "allProducts": "All Products",
+      "allSizes": "All Package Sizes",
+      "allChannels": "All Sales Channels"
+    },
+    "cols": {
+      "date": "Date",
+      "order": "Order",
+      "units": "Units",
+      "quantity": "Quantity",
+      "unitPrice": "Unit Price",
+      "unitPriceTnd": "Unit Price (TND)",
+      "amount": "Sale Amount",
+      "amountTnd": "Sale Amount (TND)",
+      "commission": "Commission",
+      "commissionTnd": "Commission (TND)",
+      "channel": "Channel",
+      "status": "Status"
+    },
+    "detail": {
+      "orderedOn": "Ordered on",
+      "deliveredOn": "Delivered on",
+      "city": "Delivery city",
+      "commission": "Kounouz commission ({{rate}})",
+      "privacy": "Customer personal details are kept by Kounouz and are not shared with producers."
+    }
+  },
+  "earnings": {
+    "nextPayout": "Next payout: {{date}}",
+    "nothingPending": "No payment pending.",
+    "trend": "Earnings Trend",
+    "trendHint": "Your sales, commission and net earnings over time (delivered orders).",
+    "commissionTnd": "Commission (TND)",
+    "breakdown": "Commission Breakdown",
+    "breakdownHint": "How the commission is calculated.",
+    "kounouzShare": "Kounouz Commission ({{rate}})",
+    "yourShare": "Your Earnings ({{rate}})",
+    "payoutHistory": "Payout History",
+    "payoutHistoryHint": "All payments sent to you.",
+    "noSettlements": "No settlements yet.",
+    "download": "Download",
+    "nextPayment": "Next Payment",
+    "nextPaymentHint": "Estimated next payout details.",
+    "estimated": "Estimated Earnings",
+    "payoutRule": "Payouts are usually processed on the 15th of each month for the previous month's delivered sales.",
+    "viewSettlement": "View settlement details",
+    "missingBank": "Add your bank details to receive your payouts.",
+    "addBank": "Add payment information",
+    "cols": {
+      "payoutDate": "Payout Date",
+      "period": "Period",
+      "receipt": "Receipt"
+    }
+  },
+  "settlements": {
+    "select": "Select a settlement",
+    "option": "Settlement {{id}} — {{month}}",
+    "emptyHint": "A settlement is created automatically for each month with delivered sales.",
+    "ordersCount_one": "{{count}} order",
+    "ordersCount_other": "{{count}} orders",
+    "commission": "Commission",
+    "netEarnings": "Net Earnings",
+    "period": "Settlement Period",
+    "monthly": "Monthly Settlement",
+    "ordersTitle": "Orders Included in This Settlement",
+    "ordersHint": "These delivered orders are part of the current settlement period.",
+    "deliveredOn": "Delivered",
+    "summary": "Settlement Summary",
+    "itemsSold": "Total Items Sold",
+    "totalAmount": "Total Sales Amount",
+    "rate": "Commission Rate",
+    "totalCommission": "Total Commission",
+    "paymentInfo": "Payment Information",
+    "paidOn": "Paid On",
+    "expectedPayout": "Expected Payout Date",
+    "reference": "Transfer Reference",
+    "downloadReceipt": "Download Receipt",
+    "support": "Support",
+    "supportBody": "If you have any questions about this settlement, please contact our support team."
+  },
+  "farms": {
+    "title": "My apiaries",
+    "intro": "Declare each of your apiaries. Every verification request is linked to the apiary the honey comes from.",
+    "add": "Add an apiary",
+    "newTitle": "New apiary",
+    "name": "Apiary name",
+    "governorate": "Governorate",
+    "delegation": "Delegation",
+    "hives": "Number of hives",
+    "method": "Beekeeping method",
+    "location": "Location",
+    "requests": "Requests",
+    "primary": "Primary",
+    "inactive": "Inactive",
+    "makePrimary": "Set as primary",
+    "deactivate": "Deactivate",
+    "reactivate": "Reactivate",
+    "created": "Apiary added.",
+    "primarySet": "Primary apiary updated.",
+    "deactivated": "Apiary deactivated.",
+    "reactivated": "Apiary reactivated.",
+    "requestFarm": "Apiary of origin",
+    "requestFarmHint": "The location is pre-filled from the selected apiary."
+  },
+  "infoRequest": {
+    "title": "Kounouz needs more information",
+    "question": "Question:",
+    "answer": "Your answer",
+    "optionalFields": "You may also complete the information below (optional).",
+    "quantity": "Quantity (kg)",
+    "hives": "Number of hives",
+    "farm": "Apiary of origin",
+    "description": "Description",
+    "send": "Send my answer",
+    "assistantTitle": "Where is my request?"
+  },
+  "sku": {
+    "title": "Sales by format (SKU)",
+    "settlementTitle": "Breakdown by format (SKU)",
+    "hint": "Units, revenue, Kounouz commission and net, for each jar format.",
+    "sku": "SKU",
+    "format": "Format",
+    "units": "Units",
+    "gross": "Gross",
+    "commission": "Commission",
+    "net": "Net",
+    "total": "Total"
+  }
+}

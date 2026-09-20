@@ -1,0 +1,995 @@
+{
+  "brand": {
+    "tagline": "أصول نقية. عسل موثوق.",
+    "sloganLine1": "أكثر من مجرد عسل…",
+    "sloganLine2": "غدٌ أكثر صحة.",
+    "footerLine1": "عسل تونسي",
+    "footerLine2": "غدٌ أكثر ثراءً",
+    "role": "مدير النظام"
+  },
+  "nav": {
+    "menu": "القائمة",
+    "collapse": "طيّ القائمة",
+    "expand": "توسيع القائمة",
+    "dashboard": "لوحة التحكم",
+    "usersRoles": "المستخدمون والأدوار",
+    "producers": "المنتجون",
+    "laboratories": "المخابر",
+    "requests": "الطلبات",
+    "samples": "العينات",
+    "seals": "الأختام",
+    "verifiedBatches": "الدفعات الموثّقة",
+    "products": "المنتجات",
+    "categories": "الأصناف",
+    "packaging": "التعبئة",
+    "qrCodes": "رموز QR",
+    "verification": "التحقق",
+    "analytics": "التحليلات",
+    "qrScanAnalytics": "تحليل مسح رموز QR",
+    "antiCounterfeit": "تنبيهات مكافحة التقليد",
+    "businessAnalytics": "التحقق والنشاط التجاري",
+    "sales": "المبيعات",
+    "orders": "الطلبيات",
+    "settlements": "مستحقات المنتجين",
+    "reports": "التقارير",
+    "auditLogs": "سجل التدقيق",
+    "support": "الدعم",
+    "settings": "الإعدادات",
+    "help": "المساعدة",
+    "verifierPortal": "بوابة التحقق"
+  },
+  "search": {
+    "placeholder": "ابحث عن أي شيء (منتجون، دفعات، رموز QR، مستخدمون…)",
+    "minChars": "اكتب حرفين على الأقل.",
+    "noResults": "لا توجد نتائج.",
+    "groups": {
+      "producers": "المنتجون",
+      "users": "المستخدمون",
+      "batches": "الدفعات",
+      "qrCodes": "رموز QR",
+      "products": "المنتجات",
+      "laboratories": "المخابر",
+      "alerts": "التنبيهات"
+    }
+  },
+  "actions": {
+    "add": "إضافة",
+    "approve": "موافقة",
+    "activate": "تفعيل",
+    "cancel": "إلغاء",
+    "clearFilters": "مسح عوامل التصفية",
+    "close": "إغلاق",
+    "columns": "الأعمدة",
+    "confirm": "تأكيد",
+    "copied": "تم النسخ",
+    "copy": "نسخ",
+    "deactivate": "تعطيل",
+    "delete": "حذف",
+    "dismiss": "حفظ دون متابعة",
+    "edit": "تعديل",
+    "export": "تصدير",
+    "investigate": "فتح تحقيق",
+    "lessFilters": "عوامل تصفية أقل",
+    "markResolved": "وضع علامة «تمت المعالجة»",
+    "moreFilters": "عوامل تصفية إضافية",
+    "reactivate": "إعادة التفعيل",
+    "reject": "رفض",
+    "reopen": "إعادة الفتح",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "retry": "إعادة المحاولة",
+    "save": "حفظ",
+    "suspend": "تعليق",
+    "view": "عرض",
+    "viewAll": "عرض الكل",
+    "viewDetails": "عرض التفاصيل",
+    "viewProfile": "عرض الملف",
+    "viewTrail": "عرض سجل التتبع"
+  },
+  "range": {
+    "lastDays": "آخر {{days}} يومًا",
+    "thisYear": "هذه السنة",
+    "custom": "فترة مخصصة",
+    "from": "من",
+    "to": "إلى",
+    "apply": "تطبيق"
+  },
+  "table": {
+    "actions": "إجراءات",
+    "showing": "عرض {{from}} إلى {{to}} من {{total}}",
+    "perPage": "عدد الأسطر في الصفحة",
+    "perPageOption": "{{n}} في الصفحة"
+  },
+  "states": {
+    "loading": "جارٍ التحميل…",
+    "error": "تعذّر تحميل هذه البيانات.",
+    "noData": "لا توجد بيانات لهذه الفترة.",
+    "saveFailed": "تعذّر حفظ التعديل.",
+    "exportFailed": "فشل التصدير. حاول مجددًا."
+  },
+  "shared": {
+    "vsLastMonth": "مقارنة بالشهر الماضي",
+    "vsLastYear": "مقارنة بالسنة الماضية",
+    "vsPrevious30": "مقارنة بالـ30 يومًا السابقة",
+    "vsPreviousPeriod": "مقارنة بالفترة السابقة",
+    "system": "النظام",
+    "unknown": "غير معروف",
+    "others": "أخرى",
+    "status": "الحالة",
+    "allStatuses": "كل الحالات",
+    "region": "الولاية",
+    "allRegions": "كل الولايات",
+    "country": "البلد",
+    "allCountries": "كل البلدان",
+    "sort": "الترتيب",
+    "days": "{{days}} يوم",
+    "points": "نقطة",
+    "noteOptional": "ملاحظة (اختيارية)"
+  },
+  "roles": {
+    "ADMIN": "مدير",
+    "VERIFICATION_TEAM": "فريق التحقق",
+    "FIELD_AGENT": "عون ميداني",
+    "PRODUCER": "منتج",
+    "CONSUMER": "حريف"
+  },
+  "dashboard": {
+    "title": "لوحة تحكم الإدارة",
+    "subtitle": "مرحبًا بعودتك، {{name}}! إليك نظرة عامة على منصة كنوز العافية.",
+    "kpi": {
+      "producers": "إجمالي المنتجين",
+      "laboratories": "المخابر",
+      "products": "المنتجات",
+      "batches": "الدفعات",
+      "qrCodes": "رموز QR المُولَّدة",
+      "verifiedBatches": "الدفعات الموثّقة"
+    },
+    "scansOverTime": "عمليات مسح QR عبر الزمن",
+    "lastMonths": "آخر {{months}} أشهر",
+    "scans": "عمليات المسح",
+    "verificationStatus": "حالة التحقق من المنتجات",
+    "qrCodesLabel": "رمز QR",
+    "qrStatus": {
+      "VERIFIED": "موثّق",
+      "PENDING": "قيد الانتظار",
+      "SUSPENDED": "معلّق"
+    },
+    "recentActivities": "آخر الأنشطة",
+    "scanLocations": "مواقع المسح",
+    "scope": {
+      "ALL": "كل عمليات المسح",
+      "VALID": "المسح الصحيح",
+      "SUSPICIOUS": "المسح المشبوه"
+    },
+    "topRegions": "أبرز الولايات",
+    "topProducts": "المنتجات الأكثر مسحًا",
+    "alerts": "التنبيهات والإشعارات",
+    "noAlerts": "لا شيء يستدعي انتباهك.",
+    "alertItems": {
+      "counterfeit": "{{code}} · {{n}} عملية مسح",
+      "batch": {
+        "SUSPENDED": "دفعة قيد التحقيق",
+        "RECALLED": "دفعة مسحوبة"
+      },
+      "labPending": "نتيجة مخبرية قيد الانتظار",
+      "invalidScans": "رُصدت عمليات مسح لرموز غير صالحة",
+      "invalidScansDetail": "{{n}} عملية مسح غير صالحة خلال آخر 24 ساعة"
+    },
+    "bannerLine1": "عسل تونسي أصيل.",
+    "bannerLine2": "من أرضنا إلى عائلتك.",
+    "systemOverview": "نظرة عامة على النظام",
+    "system": {
+      "users": "إجمالي المستخدمين",
+      "activeUsers": "المستخدمون النشطون",
+      "producers": "المنتجون",
+      "verificationTeam": "فريق التحقق",
+      "samples": "إجمالي العينات",
+      "labResults": "النتائج المخبرية",
+      "referenceSamples": "العينات المرجعية",
+      "storage": "المساحة المستخدمة",
+      "files": "{{files}} ملف"
+    },
+    "support": {
+      "title": "هل تحتاج إلى دعم؟",
+      "subtitle": "يجمع صندوق الدعم كل طلبات المنتجين والفريق.",
+      "action": "فتح صندوق الدعم"
+    }
+  },
+  "users": {
+    "title": "إدارة المستخدمين والأدوار",
+    "subtitle": "أدِر كل المستخدمين والأدوار والصلاحيات على منصة كنوز العافية.",
+    "addUser": "إضافة مستخدم",
+    "tiles": {
+      "ALL": "إجمالي المستخدمين",
+      "PRODUCER": "المنتجون",
+      "VERIFICATION_TEAM": "فريق التحقق",
+      "FIELD_AGENT": "الأعوان الميدانيون",
+      "ADMIN": "المديرون",
+      "CONSUMER": "الحرفاء"
+    },
+    "tabs": {
+      "ALL": "كل المستخدمين",
+      "PRODUCER": "المنتجون",
+      "VERIFICATION_TEAM": "فريق التحقق",
+      "FIELD_AGENT": "الأعوان الميدانيون",
+      "ADMIN": "المديرون",
+      "CONSUMER": "الحرفاء"
+    },
+    "searchPlaceholder": "ابحث بالاسم أو البريد أو المؤسسة…",
+    "status": {
+      "ACTIVE": "نشط",
+      "INACTIVE": "غير نشط"
+    },
+    "lastLogin": "آخر دخول",
+    "lastLoginFilter": {
+      "ALL": "أي تاريخ دخول",
+      "LAST_7_DAYS": "آخر 7 أيام",
+      "LAST_30_DAYS": "آخر 30 يومًا",
+      "OVER_30_DAYS": "منذ أكثر من 30 يومًا",
+      "NEVER": "لم يسجّل الدخول قط"
+    },
+    "sort": {
+      "RECENT": "الأحدث أولًا",
+      "NAME": "الاسم (أ–ي)",
+      "LAST_LOGIN": "آخر دخول"
+    },
+    "columns": {
+      "user": "المستخدم",
+      "role": "الدور",
+      "organization": "المؤسسة",
+      "location": "الموقع",
+      "status": "الحالة",
+      "lastLogin": "آخر دخول"
+    },
+    "empty": "لا يوجد مستخدم يطابق عوامل التصفية.",
+    "neverLoggedIn": "أبدًا",
+    "twoFactor": "مصادقة ثنائية",
+    "drawer": {
+      "title": "تفاصيل المستخدم",
+      "information": "المعلومات",
+      "activity": "آخر الأنشطة"
+    },
+    "fields": {
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة مرور مؤقتة",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "role": "الدور",
+      "phone": "الهاتف",
+      "location": "الموقع",
+      "createdAt": "تاريخ الإنشاء"
+    },
+    "form": {
+      "createTitle": "إضافة عضو إلى الفريق",
+      "editTitle": "تعديل المستخدم",
+      "passwordHint": "8 أحرف على الأقل. أرسلها بطريقة آمنة: يمكن للمستخدم تغييرها من إعداداته.",
+      "roleLocked": "يُدار دورا المنتج والحريف عبر التسجيل الخاص بهما، ولا يمكنك تغيير دورك بنفسك.",
+      "staffOnly": "يُضاف المنتجون من صفحة المنتجين، ويسجّل الحرفاء من المتجر."
+    },
+    "reset": {
+      "title": "إعادة تعيين كلمة المرور — {{name}}",
+      "description": "تتوقف كلمة المرور الحالية عن العمل فورًا وتُغلق كل الجلسات المفتوحة.",
+      "mismatch": "كلمتا المرور غير متطابقتين."
+    },
+    "toggle": {
+      "deactivateTitle": "تعطيل {{name}}؟",
+      "activateTitle": "إعادة تفعيل {{name}}؟",
+      "deactivateText": "لن يتمكن الحساب من الدخول وستُلغى جلساته. يُحتفظ بسجلّه.",
+      "activateText": "سيتمكن الحساب من الدخول مجددًا بكلمة مروره الحالية."
+    },
+    "toasts": {
+      "created": "تم إنشاء المستخدم.",
+      "updated": "تم تحديث المستخدم.",
+      "passwordReset": "تمت إعادة تعيين كلمة المرور.",
+      "activated": "تمت إعادة تفعيل الحساب.",
+      "deactivated": "تم تعطيل الحساب."
+    }
+  },
+  "producers": {
+    "title": "إدارة المنتجين",
+    "subtitle": "أدِر كل منتجي العسل ومعلوماتهم وشهاداتهم ونشاطهم.",
+    "addProducer": "إضافة منتج",
+    "kpi": {
+      "total": "إجمالي المنتجين",
+      "active": "المنتجون النشطون",
+      "pending": "في انتظار الموافقة",
+      "suspended": "معلّقون",
+      "regions": "الولايات",
+      "acrossTunisia": "عبر تونس"
+    },
+    "byRegion": "المنتجون حسب الولاية",
+    "unknownRegion": "ولاية غير محددة",
+    "statusBreakdown": "حالة المنتجين",
+    "producersLabel": "منتج",
+    "newProducers": "منتجون جدد (آخر 30 يومًا)",
+    "avgVerification": "متوسط مدة التحقق",
+    "vsPrevious90": "مقارنة بالـ90 يومًا السابقة",
+    "avgVerificationHint": "من تقديم الطلب إلى القرار، على {{n}} قرارًا خلال آخر 90 يومًا.",
+    "searchPlaceholder": "ابحث بالاسم أو البريد أو الهاتف…",
+    "allHoneyTypes": "كل أنواع العسل",
+    "allVerification": "أي حالة تحقق",
+    "columns": {
+      "producer": "المنتج",
+      "location": "الموقع",
+      "honeyTypes": "أنواع العسل",
+      "status": "الحالة",
+      "verification": "التحقق",
+      "batches": "الدفعات",
+      "products": "المنتجات",
+      "joined": "تاريخ الانضمام"
+    },
+    "verification": {
+      "VERIFIED": "موثّق",
+      "IN_REVIEW": "قيد الدراسة",
+      "ISSUE": "توجد مشكلة",
+      "NONE": "دون طلب"
+    },
+    "empty": "لا يوجد منتج يطابق عوامل التصفية.",
+    "form": {
+      "title": "إضافة منتج",
+      "name": "الاسم الكامل للمنتج",
+      "farmName": "اسم الضيعة / المنحل",
+      "chooseRegion": "اختر الولاية",
+      "passwordHint": "كلمة مرور مؤقتة (8 أحرف على الأقل) تُرسل إلى المنتج."
+    },
+    "statusDialog": {
+      "ACTIVE": "تفعيل {{name}}",
+      "PENDING": "إرجاع {{name}} إلى الانتظار",
+      "SUSPENDED": "تعليق {{name}}",
+      "REJECTED": "رفض {{name}}",
+      "description": "ستتغير الحالة من «{{from}}» إلى «{{to}}». يُسجَّل التغيير في سجل التدقيق."
+    },
+    "toasts": {
+      "created": "تم إنشاء المنتج.",
+      "statusChanged": "تم تحديث حالة المنتج."
+    }
+  },
+  "labs": {
+    "title": "إدارة المخابر",
+    "subtitle": "أدِر كل المخابر الشريكة ومعلوماتها واعتماداتها ونشاطها.",
+    "analysesLink": "التحاليل والعينات المرجعية",
+    "addLab": "إضافة مخبر",
+    "kpi": {
+      "total": "إجمالي المخابر",
+      "active": "المخابر النشطة",
+      "pending": "في انتظار الموافقة",
+      "suspended": "معلّقة",
+      "countries": "البلدان"
+    },
+    "tabs": {
+      "ALL": "كل المخابر",
+      "ACTIVE": "نشطة",
+      "PENDING": "في انتظار الموافقة",
+      "SUSPENDED": "معلّقة"
+    },
+    "searchPlaceholder": "ابحث بالاسم أو البريد أو الموقع…",
+    "allAccreditations": "كل الاعتمادات",
+    "columns": {
+      "laboratory": "المخبر",
+      "location": "الموقع",
+      "accreditations": "الاعتمادات",
+      "status": "الحالة",
+      "samples": "العينات المحلَّلة",
+      "joined": "شريك منذ"
+    },
+    "empty": "لا يوجد مخبر يطابق عوامل التصفية.",
+    "panel": {
+      "title": "المخبر",
+      "noTagline": "لا يوجد شعار بعد",
+      "tabs": {
+        "overview": "نظرة عامة",
+        "contact": "الاتصال",
+        "accreditations": "الاعتمادات",
+        "activity": "النشاط",
+        "notes": "ملاحظات"
+      },
+      "basicInfo": "المعلومات الأساسية",
+      "accreditations": "الاعتمادات والشهادات",
+      "noAccreditations": "لا يوجد اعتماد مسجّل.",
+      "validUntil": "صالح حتى {{date}}",
+      "noExpiry": "دون تاريخ انتهاء",
+      "confirmRemove": "حذف الاعتماد «{{name}}»؟",
+      "statistics": "الإحصائيات",
+      "period": {
+        "1": "آخر 30 يومًا",
+        "12": "آخر 12 شهرًا",
+        "0": "منذ البداية"
+      },
+      "recentActivity": "آخر الأنشطة",
+      "notesHint": "ملاحظات داخلية لا يراها إلا المديرون."
+    },
+    "stats": {
+      "samples": "العينات",
+      "batches": "الدفعات",
+      "verified": "مطابقة",
+      "avgTime": "متوسط المدة"
+    },
+    "accreditationState": {
+      "VALID": "معتمد",
+      "EXPIRED": "منتهي الصلاحية"
+    },
+    "fields": {
+      "name": "اسم المخبر",
+      "tagline": "الشعار",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "location": "الموقع",
+      "city": "المدينة",
+      "address": "العنوان",
+      "website": "الموقع الإلكتروني",
+      "contactName": "الشخص المسؤول",
+      "accreditationNo": "رقم الاعتماد"
+    },
+    "form": {
+      "createTitle": "إضافة مخبر",
+      "editTitle": "تعديل المخبر",
+      "statusHint": "لا يمكن لمخبر في الانتظار استقبال أي تحليل قبل الموافقة عليه."
+    },
+    "accreditationForm": {
+      "title": "إضافة اعتماد",
+      "name": "الاعتماد",
+      "nameHint": "مثلًا ISO 17025 أو TUNAC أو COFRAC.",
+      "issuingBody": "الجهة المانحة",
+      "certificateNumber": "رقم الشهادة",
+      "validUntil": "صالح حتى"
+    },
+    "statusDialog": {
+      "approve": {
+        "title": "الموافقة على {{name}}",
+        "text": "يصبح المخبر نشطًا ويمكنه استقبال تحاليل العينات."
+      },
+      "suspend": {
+        "title": "تعليق {{name}}",
+        "text": "لن يُسند إلى هذا المخبر أي تحليل جديد. تبقى النتائج السابقة صالحة."
+      },
+      "reactivate": {
+        "title": "إعادة تفعيل {{name}}",
+        "text": "يمكن للمخبر استقبال التحاليل من جديد."
+      }
+    },
+    "toasts": {
+      "created": "تم إنشاء المخبر.",
+      "updated": "تم تحديث المخبر.",
+      "statusChanged": "تم تحديث حالة المخبر.",
+      "accreditationAdded": "تمت إضافة الاعتماد.",
+      "accreditationRemoved": "تم حذف الاعتماد.",
+      "notesSaved": "تم حفظ الملاحظات."
+    }
+  },
+  "audit": {
+    "title": "سجل تدقيق النظام",
+    "subtitle": "تتبّع كل أنشطة النظام والتعديلات وإجراءات المستخدمين بشفافية وأمان كاملين.",
+    "kpi": {
+      "totalLogs": "إجمالي السجلات",
+      "activeUsers": "المستخدمون النشطون",
+      "securityAlerts": "التنبيهات الأمنية",
+      "uptime": "مدة تشغيل الخادم",
+      "uptimeSince": "منذ {{date}}"
+    },
+    "allModules": "كل الوحدات",
+    "allActions": "كل الإجراءات",
+    "allUsers": "كل المستخدمين",
+    "searchPlaceholder": "ابحث في السجلات (مستخدم، إجراء، IP، مرجع)…",
+    "entityPlaceholder": "معرّف المرجع (السجل الكامل لعنصر ما)",
+    "trailMode": "السجل الكامل لعنصر واحد",
+    "columns": {
+      "date": "التاريخ والوقت",
+      "user": "المستخدم",
+      "action": "الإجراء",
+      "module": "الوحدة",
+      "details": "التفاصيل",
+      "ip": "عنوان IP",
+      "status": "الحالة"
+    },
+    "empty": "لا توجد سجلات لعوامل التصفية هذه.",
+    "anonymous": "محاولة مجهولة",
+    "automated": "آلي",
+    "filterUser": "عرض إجراءات هذا المستخدم",
+    "openEntity": "فتح العنصر المعني",
+    "detail": {
+      "title": "تفاصيل السجل",
+      "reference": "المرجع",
+      "userAgent": "المتصفح",
+      "changes": "التفاصيل",
+      "field": "الحقل المعدَّل",
+      "oldValue": "القيمة القديمة",
+      "newValue": "القيمة الجديدة",
+      "notes": "ملاحظات",
+      "noChanges": "لم يُسجَّل أي تعديل على الحقول لهذا الإجراء.",
+      "relatedLinks": "روابط ذات صلة",
+      "openEntity": "عرض {{entity}}",
+      "openUser": "عرض ملف المستخدم",
+      "viewTrail": "عرض سجل التتبع ({{n}} سجلًا)",
+      "noLinks": "لا يوجد عنصر مرتبط."
+    }
+  },
+  "scans": {
+    "title": "تحليل مسح رموز QR",
+    "subtitle": "تابع تفاعل المستهلكين وأصالة المنتجات في الوقت الفعلي.",
+    "kpi": {
+      "total": "إجمالي عمليات المسح",
+      "uniqueScanners": "الماسحون الفريدون",
+      "valid": "المسح الصحيح",
+      "suspicious": "غير صالح / مشبوه",
+      "countries": "البلدان"
+    },
+    "tabs": {
+      "overview": "نظرة عامة",
+      "locations": "المواقع",
+      "products": "المنتجات",
+      "batches": "الدفعات",
+      "devices": "الأجهزة",
+      "flow": "تدفق المسح",
+      "journey": "مسار المستهلك",
+      "antiCounterfeit": "مكافحة التقليد"
+    },
+    "granularity": {
+      "day": "يوميًا",
+      "week": "أسبوعيًا",
+      "month": "شهريًا"
+    },
+    "scans": "عمليات المسح",
+    "totalScans": "إجمالي المسح",
+    "overTime": "عمليات المسح عبر الزمن",
+    "resultBreakdown": "نتائج المسح",
+    "byDevice": "المسح حسب الجهاز",
+    "byCountry": "المسح حسب البلد",
+    "byRegion": "المسح حسب الولاية (تونس)",
+    "topProducts": "المنتجات الأكثر مسحًا",
+    "topBatches": "الدفعات الأكثر مسحًا",
+    "recentScans": "آخر عمليات المسح",
+    "validVsSuspicious": "المسح الصحيح والمشبوه",
+    "columns": {
+      "date": "التاريخ والوقت",
+      "location": "الموقع",
+      "product": "المنتج",
+      "result": "النتيجة",
+      "scanner": "الماسح",
+      "share": "النسبة",
+      "batch": "الدفعة",
+      "honeyType": "نوع العسل",
+      "scannedCodes": "الرموز الممسوحة"
+    },
+    "scannerType": {
+      "NEW": "ماسح جديد",
+      "RETURNING": "ماسح عائد"
+    },
+    "insights": {
+      "title": "مؤشرات المسح",
+      "newScanners": "من الماسحين جدد خلال الفترة",
+      "avgPerScanner": "متوسط عمليات المسح لكل ماسح",
+      "growth": "تطور المسح مقارنة بالفترة السابقة",
+      "trusted": "من عمليات المسح أكّدت الأصالة"
+    },
+    "flow": {
+      "byHour": "المسح حسب ساعة اليوم",
+      "byWeekday": "المسح حسب يوم الأسبوع",
+      "utcHint": "الساعات معروضة بتوقيت UTC (تونس = UTC+1)."
+    },
+    "journey": {
+      "frequency": "الماسحون حسب عدد عمليات المسح",
+      "bucket": "{{range}} عملية مسح",
+      "newVsReturning": "الماسحون الجدد والعائدون",
+      "repeatShare": "من الماسحين مسحوا أكثر من مرة"
+    },
+    "banner": {
+      "line1": "أناس حقيقيون.",
+      "line2": "ثقة حقيقية.",
+      "line3": "غدٌ أكثر صحة."
+    }
+  },
+  "alerts": {
+    "title": "تنبيهات مكافحة التقليد",
+    "subtitle": "رصد النشاط المشبوه ومتابعته لحماية أصالة عسل كنوز العافية.",
+    "kpi": {
+      "total": "إجمالي التنبيهات",
+      "duplicates": "نسخ مكررة مشتبه بها",
+      "unusualLocations": "مواقع غير معتادة",
+      "invalidOrTampered": "رموز غير صالحة / معبث بها",
+      "resolved": "تنبيهات تمت معالجتها"
+    },
+    "openBanner": "ما زال {{n}} تنبيهًا مفتوحًا أو قيد التحقيق.",
+    "showOpen": "عرض التنبيهات المفتوحة",
+    "tabs": {
+      "ALL": "كل التنبيهات",
+      "SUSPECTED_DUPLICATE": "نسخ مكررة مشتبه بها",
+      "UNUSUAL_LOCATION": "مواقع غير معتادة",
+      "INVALID_QR": "رموز QR غير صالحة",
+      "TAMPERED_LABEL": "ملصقات معبث بها",
+      "BULK_SCAN": "مسح جماعي",
+      "RESOLVED": "تمت معالجتها"
+    },
+    "searchPlaceholder": "ابحث برمز QR أو الدفعة أو المنتج أو الموقع أو معرّف التنبيه…",
+    "allTypes": "كل أنواع التنبيهات",
+    "allProducts": "كل المنتجات",
+    "severity": "الخطورة",
+    "allSeverities": "كل مستويات الخطورة",
+    "severityLabel": "الخطورة: {{level}}",
+    "overTime": "التنبيهات عبر الزمن",
+    "series": {
+      "total": "إجمالي التنبيهات",
+      "duplicates": "نسخ مكررة مشتبه بها",
+      "resolved": "تمت معالجتها"
+    },
+    "byType": "التنبيهات حسب النوع",
+    "totalAlerts": "إجمالي التنبيهات",
+    "byCountry": "التنبيهات حسب البلد",
+    "risk": {
+      "HIGH": "خطر مرتفع",
+      "MEDIUM": "خطر متوسط",
+      "LOW": "خطر منخفض"
+    },
+    "recent": "آخر التنبيهات",
+    "columns": {
+      "date": "التاريخ والوقت",
+      "type": "نوع التنبيه",
+      "qrCode": "رمز QR",
+      "product": "المنتج",
+      "location": "الموقع",
+      "details": "التفاصيل",
+      "status": "الحالة"
+    },
+    "empty": "لا توجد تنبيهات لعوامل التصفية هذه.",
+    "detail": {
+      "title": "تفاصيل التنبيه",
+      "unknownCode": "رمز مجهول (لم تُصدره كنوز)",
+      "batch": "رقم الدفعة",
+      "device": "الجهاز",
+      "ip": "عنوان IP",
+      "scanCount": "عدد عمليات المسح",
+      "scanCountValue": "{{n}} عملية مسح · آخر رصد {{when}}",
+      "note": "ملاحظة التحقيق",
+      "notePlaceholder": "الإجراءات المتخذة، جهات الاتصال، الخلاصة…",
+      "resolvedBy": "أُغلق من طرف {{name}} في {{date}}",
+      "relatedScans": "آخر عمليات مسح هذا الرمز",
+      "relatedAlerts": "تنبيهات أخرى على هذا الرمز",
+      "history": "السجل"
+    },
+    "toasts": {
+      "OPEN": "أُعيد فتح التنبيه.",
+      "INVESTIGATING": "تم فتح تحقيق.",
+      "RESOLVED": "تم وضع التنبيه كمعالَج.",
+      "DISMISSED": "تم حفظ التنبيه دون متابعة.",
+      "CONFIRMED": "تم تأكيد الحادثة وتسجيل الخلاصة."
+    }
+  },
+  "business": {
+    "title": "التحقق والنشاط التجاري",
+    "subtitle": "حوّل بيانات التحقق إلى رؤى لمنظومة عسل أكثر أمانًا وقوة وقيمة.",
+    "exportReport": "تصدير التقرير",
+    "kpi": {
+      "verifiedBatches": "الدفعات الموثّقة",
+      "totalScans": "إجمالي مسح QR",
+      "uniqueConsumers": "المستهلكون الفريدون",
+      "totalSales": "إجمالي المبيعات (د.ت)",
+      "fraudAttempts": "محاولات الاحتيال",
+      "verificationRate": "نسبة نجاح التحقق",
+      "decisions": "{{n}} قرارًا"
+    },
+    "tabs": {
+      "overview": "نظرة عامة",
+      "verifications": "عمليات التحقق",
+      "sales": "المبيعات والإيرادات",
+      "products": "المنتجات",
+      "producers": "المنتجون",
+      "geographic": "الرؤى الجغرافية",
+      "customers": "رؤى المستهلكين",
+      "trends": "الاتجاهات",
+      "exports": "التصدير والتقارير"
+    },
+    "scansVsSales": "التحقق مقابل المبيعات",
+    "series": {
+      "scans": "عمليات مسح QR",
+      "sales": "المبيعات (د.ت)"
+    },
+    "categories": "أنواع العسل الموثّقة",
+    "verifiedBatchesLabel": "دفعة موثّقة",
+    "noVerifications": "لم يُتخذ أي قرار تحقق خلال هذه الفترة.",
+    "topProducts": "أنواع العسل الأفضل أداءً",
+    "topProducers": "أفضل المنتجين",
+    "columns": {
+      "honeyType": "نوع العسل",
+      "verifiedBatches": "الدفعات الموثّقة",
+      "scans": "عمليات المسح",
+      "revenue": "الإيرادات",
+      "units": "الوحدات المباعة",
+      "date": "التاريخ والوقت",
+      "batch": "رقم الدفعة",
+      "producer": "المنتج",
+      "location": "الموقع",
+      "result": "النتيجة"
+    },
+    "byRegion": "نشاط التحقق حسب الولاية (تونس)",
+    "origins": "أصول المستهلكين",
+    "funnel": {
+      "title": "مسار التحقق",
+      "subtitle": "من المسح إلى الثقة",
+      "TOTAL_SCANS": "إجمالي المسح",
+      "VALID_SCANS": "المسح الصحيح",
+      "VERIFIED_PRODUCTS": "مسح منتجات موثّقة معروضة للبيع",
+      "ORDERS": "الطلبيات المنجزة"
+    },
+    "recentVerifications": "آخر عمليات التحقق",
+    "result": {
+      "VERIFIED": "مطابق",
+      "NOT_VERIFIED": "غير مطابق"
+    },
+    "insights": {
+      "title": "مؤشرات رئيسية",
+      "scanGrowth": "تطور مسح QR مقارنة بالفترة السابقة",
+      "consumers": "مستهلك فريد",
+      "scanToPurchase": "نسبة التحويل من المسح إلى الشراء",
+      "fraudChange": "تطور محاولات الاحتيال مقارنة بالفترة السابقة"
+    },
+    "banner": {
+      "line1": "بيانات حقيقية.",
+      "line2": "ثقة حقيقية.",
+      "line3": "غدٌ أكثر صحة."
+    },
+    "verificationsOverTime": "الدفعات الموثّقة عبر الزمن",
+    "sales": {
+      "orders": "الطلبيات",
+      "averageOrder": "متوسط قيمة الطلبية",
+      "byChannel": "الإيرادات حسب قناة البيع"
+    },
+    "customers": {
+      "scansPerConsumer": "عمليات المسح لكل مستهلك"
+    },
+    "trends": {
+      "verifications": "الدفعات الموثّقة — 12 شهرًا",
+      "scans": "مسح QR — 12 شهرًا",
+      "sales": "المبيعات (د.ت) — 12 شهرًا",
+      "hint": "تغطي الاتجاهات دائمًا آخر 12 شهرًا مهما كانت الفترة المختارة."
+    },
+    "exports": {
+      "title": "تصدير البيانات (CSV)",
+      "reportsTitle": "تقارير العمليات",
+      "reportsText": "تبقى تقارير العمليات بصيغتي PDF وCSV (الطلبات، العينات، التحقق، الدفعات) متاحة في صفحة التقارير.",
+      "openReports": "فتح التقارير",
+      "items": {
+        "business": {
+          "title": "تقرير التحقق والنشاط التجاري",
+          "description": "المؤشرات والسلاسل الزمنية وأنواع العسل والولايات والأصول ومسار التحقق للفترة المختارة."
+        },
+        "scans": {
+          "title": "عمليات مسح QR",
+          "description": "كل عمليات مسح الفترة مع النتيجة والموقع والجهاز."
+        },
+        "alerts": {
+          "title": "تنبيهات مكافحة التقليد",
+          "description": "التنبيهات المنشأة خلال الفترة مع حالتها."
+        },
+        "audit": {
+          "title": "سجل التدقيق",
+          "description": "إجراءات النظام والمستخدمين خلال الفترة."
+        },
+        "producers": {
+          "title": "المنتجون",
+          "description": "كل المنتجين مع الحالة والتحقق والنشاط."
+        },
+        "laboratories": {
+          "title": "المخابر",
+          "description": "المخابر الشريكة واعتماداتها."
+        },
+        "users": {
+          "title": "المستخدمون",
+          "description": "كل الحسابات مع الدور والحالة وآخر دخول."
+        }
+      }
+    }
+  },
+  "enums": {
+    "producerStatus": {
+      "ACTIVE": "نشط",
+      "PENDING": "قيد الانتظار",
+      "SUSPENDED": "معلّق",
+      "REJECTED": "مرفوض"
+    },
+    "labStatus": {
+      "ACTIVE": "نشط",
+      "PENDING": "قيد الانتظار",
+      "SUSPENDED": "معلّق"
+    },
+    "alertType": {
+      "SUSPECTED_DUPLICATE": "نسخة مكررة مشتبه بها",
+      "UNUSUAL_LOCATION": "موقع غير معتاد",
+      "INVALID_QR": "رمز QR غير صالح",
+      "TAMPERED_LABEL": "ملصق معبث به",
+      "BULK_SCAN": "مسح جماعي"
+    },
+    "alertStatus": {
+      "OPEN": "مفتوح",
+      "INVESTIGATING": "قيد التحقيق",
+      "RESOLVED": "تمت معالجته",
+      "DISMISSED": "محفوظ",
+      "CONFIRMED": "حادثة مؤكدة"
+    },
+    "severity": {
+      "HIGH": "مرتفعة",
+      "MEDIUM": "متوسطة",
+      "LOW": "منخفضة"
+    },
+    "scanResult": {
+      "VALID": "صحيح",
+      "SUSPICIOUS": "مشبوه",
+      "INVALID": "غير صالح"
+    },
+    "device": {
+      "MOBILE": "هاتف جوال",
+      "DESKTOP": "حاسوب",
+      "TABLET": "لوحي",
+      "OTHER": "أخرى"
+    },
+    "actionType": {
+      "SYSTEM": "النظام",
+      "LOGIN": "دخول",
+      "LOGOUT": "خروج",
+      "FAILED_LOGIN": "دخول فاشل",
+      "GENERATE": "توليد",
+      "REJECT": "رفض",
+      "VERIFY": "تحقق",
+      "DELETE": "حذف",
+      "CREATE": "إنشاء",
+      "UPDATE": "تعديل"
+    },
+    "auditStatus": {
+      "SUCCESS": "نجاح",
+      "FAILED": "فشل",
+      "WARNING": "تحذير"
+    },
+    "module": {
+      "AUTH": "المصادقة",
+      "USER": "المستخدم",
+      "PRODUCER": "المنتج",
+      "REQUEST": "الطلب",
+      "SAMPLE": "العينة",
+      "LABORATORY": "المخبر",
+      "VERIFICATION": "التحقق",
+      "BATCH": "الدفعة",
+      "PACKAGING": "التعبئة",
+      "PRODUCT": "المنتج",
+      "QR_CODE": "رمز QR",
+      "ANTI_COUNTERFEIT": "مكافحة التقليد",
+      "SALES": "المبيعات",
+      "SYSTEM": "النظام",
+      "SETTINGS": "الإعدادات"
+    },
+    "entity": {
+      "Producer": "المنتج",
+      "User": "المستخدم",
+      "VerificationRequest": "الطلب",
+      "Sample": "العينة",
+      "Batch": "الدفعة",
+      "Product": "المنتج",
+      "Laboratory": "المخبر",
+      "CounterfeitAlert": "التنبيه"
+    },
+    "batchStatus": {
+      "CREATED": "موثّقة",
+      "VERIFIED": "موثّقة",
+      "READY_FOR_PACKAGING": "جاهزة للتعبئة",
+      "IN_PACKAGING": "قيد التعبئة",
+      "PACKAGED": "معبّأة",
+      "READY": "معبّأة",
+      "CONVERTED_TO_PRODUCT": "محوّلة إلى منتج",
+      "PUBLISHED": "منشورة",
+      "SUSPENDED": "معلّقة",
+      "RECALLED": "مسحوبة"
+    },
+    "channel": {
+      "ONLINE_STORE": "المتجر الإلكتروني",
+      "MARKETPLACE": "السوق الإلكترونية",
+      "RETAIL_PARTNER": "بائع شريك"
+    }
+  },
+  "logActions": {
+    "LOGIN": "تسجيل دخول المستخدم",
+    "LOGOUT": "تسجيل خروج المستخدم",
+    "LOGIN_FAILED": "محاولة دخول فاشلة",
+    "LOGIN_BLOCKED": "رُفض الدخول (حساب معطّل)",
+    "CHANGE_PASSWORD": "تغيير كلمة المرور",
+    "CHANGE_EMAIL": "تغيير البريد الإلكتروني",
+    "ENABLE_2FA": "تفعيل المصادقة الثنائية",
+    "DISABLE_2FA": "تعطيل المصادقة الثنائية",
+    "DEACTIVATE_OWN_ACCOUNT": "أغلق صاحب الحساب حسابه",
+    "CREATE_USER": "إنشاء حساب مستخدم",
+    "UPDATE_USER": "تعديل معلومات المستخدم",
+    "CHANGE_USER_ROLE": "تغيير دور المستخدم",
+    "ACTIVATE_USER": "تفعيل حساب مستخدم",
+    "DEACTIVATE_USER": "تعطيل حساب مستخدم",
+    "RESET_USER_PASSWORD": "إعادة تعيين كلمة مرور مستخدم",
+    "CREATE_PRODUCER": "إنشاء حساب منتج جديد",
+    "PRODUCER_ACTIVE": "الموافقة على منتج / تفعيله",
+    "PRODUCER_PENDING": "إرجاع منتج إلى الانتظار",
+    "PRODUCER_SUSPENDED": "تعليق منتج",
+    "PRODUCER_REJECTED": "رفض منتج",
+    "UPLOAD_PRODUCER_DOCUMENT": "إيداع وثيقة منتج",
+    "DELETE_PRODUCER_DOCUMENT": "حذف وثيقة منتج",
+    "DOCUMENT_VERIFIED": "المصادقة على وثيقة منتج",
+    "DOCUMENT_REJECTED": "رفض وثيقة منتج",
+    "CREATE_LABORATORY": "إنشاء مخبر",
+    "UPDATE_LABORATORY": "تعديل معلومات المخبر",
+    "APPROVE_LABORATORY": "الموافقة على مخبر",
+    "SUSPEND_LABORATORY": "تعليق مخبر",
+    "REACTIVATE_LABORATORY": "إعادة تفعيل مخبر",
+    "ADD_LAB_ACCREDITATION": "إضافة اعتماد",
+    "DELETE_LAB_ACCREDITATION": "حذف اعتماد",
+    "CREATE_VERIFICATION_REQUEST": "إنشاء طلب تحقق",
+    "SUBMIT_VERIFICATION_REQUEST": "تقديم طلب تحقق",
+    "DELETE_REQUEST_DRAFT": "حذف مسودة طلب",
+    "REQUEST_ASSIGNED": "إسناد طلب",
+    "REQUEST_NOTES_UPDATED": "تعديل الملاحظات الداخلية للطلب",
+    "REQUEST_REVIEW_START_REVIEW": "بدء دراسة الطلب",
+    "REQUEST_REVIEW_ACCEPT": "قبول الطلب",
+    "REQUEST_REVIEW_REJECT": "رفض الطلب",
+    "REQUEST_REVIEW_REQUEST_INFO": "طلب معلومات من المنتج",
+    "CREATE_COLLECTION_ASSIGNMENT": "برمجة مهمة جمع",
+    "CLAIM_COLLECTION_ASSIGNMENT": "تكفّل بمهمة جمع",
+    "START_COLLECTION_ASSIGNMENT": "بدء مهمة جمع",
+    "COMPLETE_COLLECTION_ASSIGNMENT": "إنهاء مهمة جمع",
+    "RESCHEDULE_COLLECTION_ASSIGNMENT": "إعادة برمجة مهمة جمع",
+    "CANCEL_COLLECTION_ASSIGNMENT": "إلغاء مهمة جمع",
+    "CREATE_SAMPLE": "إنشاء عينة جديدة",
+    "REGISTER_SAMPLE": "تسجيل عينة",
+    "APPLY_SEAL": "وضع ختم الأمان",
+    "SAMPLE_IN_TRANSIT": "عينة في الطريق",
+    "SAMPLE_RECEIVED_AT_KOUNOUZ": "استلام العينة من طرف كنوز",
+    "SAMPLE_SENT_TO_LAB": "إرسال العينة إلى المخبر",
+    "SAMPLE_RECEIVED_AT_LAB": "استلام العينة في المخبر",
+    "SAMPLE_ISSUE_FLAGGED": "الإبلاغ عن مشكلة في العينة",
+    "OPEN_LAB_ANALYSIS": "فتح تحليل مخبري",
+    "SAVE_LAB_RESULTS": "تحديث نتيجة مخبرية",
+    "COMPLETE_LAB_ANALYSIS": "إنهاء التحليل المخبري",
+    "RECORD_LAB_ANALYSIS": "تسجيل تحليل مخبري",
+    "UPLOAD_ANALYSIS_FILE": "إيداع تقرير التحليل",
+    "DELETE_ANALYSIS_FILE": "حذف ملف تحليل",
+    "STORE_REFERENCE_SAMPLE": "تخزين عينة مرجعية",
+    "CREATE_REFERENCE_HONEY": "إنشاء عسل مرجعي",
+    "UPDATE_REFERENCE_HONEY": "تعديل عسل مرجعي",
+    "OPEN_VERIFICATION": "فتح عملية تحقق",
+    "SAVE_VERIFICATION_DRAFT": "حفظ مسودة التحقق",
+    "DECIDE_VERIFICATION": "قرار التحقق",
+    "VERIFICATION_VERIFIED": "توثيق دفعة",
+    "VERIFICATION_NOT_VERIFIED": "إعلان دفعة غير مطابقة",
+    "VERIFICATION_ADDITIONAL_ANALYSIS": "طلب تحليل إضافي",
+    "CREATE_BATCH": "إنشاء دفعة",
+    "UPDATE_BATCH": "تعديل دفعة",
+    "BATCH_RELEASED": "إعادة الدفعة إلى التداول",
+    "BATCH_SUSPENDED": "تعليق دفعة",
+    "BATCH_RECALLED": "سحب دفعة",
+    "PRODUCTS_WITHDRAWN": "سحب المنتجات من البيع",
+    "CREATE_PACKAGING": "إنشاء تعبئة",
+    "SAVE_PACKAGING": "حفظ التعبئة",
+    "COMPLETE_PACKAGING": "إنهاء التعبئة",
+    "ADD_PACKAGING_UNIT": "إضافة وحدة تعبئة",
+    "UPDATE_PACKAGING_UNIT": "تعديل وحدة تعبئة",
+    "DELETE_PACKAGING_UNIT": "حذف وحدة تعبئة",
+    "CREATE_PRODUCT": "إنشاء منتج",
+    "CREATE_BATCH_PRODUCT": "إنشاء منتج من دفعة",
+    "UPDATE_BATCH_PRODUCT": "تعديل معلومات المنتج",
+    "ACTIVATE_PRODUCT": "تفعيل منتج",
+    "SUSPEND_PRODUCT": "تعليق منتج",
+    "PRODUCT_PUBLIE": "نشر منتج",
+    "PRODUCT_SUSPENDU": "تعليق منتج",
+    "PRODUCT_BROUILLON": "إرجاع منتج إلى المسودة",
+    "PRODUCT_RUPTURE": "منتج نفد من المخزون",
+    "UPLOAD_PRODUCT_DOCUMENT": "إيداع وثيقة منتج",
+    "DELETE_PRODUCT_DOCUMENT": "حذف وثيقة منتج",
+    "GENERATE_QR_CODES": "توليد رموز QR",
+    "QR_ACTIVE": "تفعيل رمز QR",
+    "QR_DEACTIVATED": "تعطيل رمز QR",
+    "QR_BULK_DEACTIVATE": "تعطيل جماعي لرموز QR",
+    "RESOLVE_ALERT": "معالجة تنبيه مكافحة التقليد",
+    "DISMISS_ALERT": "حفظ تنبيه دون متابعة",
+    "INVESTIGATE_ALERT": "فتح تحقيق في تنبيه",
+    "REOPEN_ALERT": "إعادة فتح تنبيه",
+    "CREATE_ORDER": "إنشاء طلبية",
+    "ORDER_CONFIRMED": "تأكيد طلبية",
+    "ORDER_SHIPPED": "شحن طلبية",
+    "ORDER_DELIVERED": "تسليم طلبية",
+    "ORDER_CANCELLED": "إلغاء طلبية",
+    "PAY_SETTLEMENT": "صرف مستحقات منتج",
+    "SYSTEM_BACKUP": "اكتمال النسخ الاحتياطي اليومي للقاعدة",
+    "SEED_ADMIN_CONSOLE": "تحميل بيانات العرض التوضيحي"
+  }
+}

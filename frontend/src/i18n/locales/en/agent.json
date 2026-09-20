@@ -1,0 +1,542 @@
+{
+  "brand": {
+    "role": "Field Agent",
+    "motto": "Pure Origins. Trusted Honey.",
+    "tagline": "Tunisian honey",
+    "subline": "A richer tomorrow"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "assignments": "My Assignments",
+    "collection": "Sample Collection",
+    "seals": "Secure Seal Registration",
+    "custody": "Chain of Custody",
+    "visits": "My Visits",
+    "reports": "Reports",
+    "messages": "Messages",
+    "help": "Help & Support",
+    "settings": "Settings"
+  },
+  "common": {
+    "loading": "Loading...",
+    "loadError": "Could not load the data. Check your connection.",
+    "saveError": "The operation failed. Please try again.",
+    "retry": "Retry",
+    "view": "View",
+    "viewAll": "View All",
+    "details": "Details",
+    "back": "Back",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "saveContinue": "Save & Continue",
+    "previous": "Previous",
+    "next": "Next",
+    "yesterday": "Yesterday",
+    "openInMaps": "Open in Maps",
+    "getDirections": "Get Directions",
+    "viewFullMap": "View Full Map",
+    "coordinates": "Coordinates"
+  },
+  "search": {
+    "placeholder": "Search assignments, producers, samples or seal numbers...",
+    "assignments": "Assignments",
+    "samples": "Samples & seals",
+    "noResults": "No results."
+  },
+  "assignmentStatus": {
+    "PENDING": "Pending",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "OVERDUE": "Overdue"
+  },
+  "priority": {
+    "LOW": "Low",
+    "NORMAL": "Normal",
+    "HIGH": "High",
+    "URGENT": "Urgent"
+  },
+  "sampleStatus": {
+    "COLLECTED": "Collected",
+    "SEALED": "Sealed",
+    "IN_TRANSIT": "In Transit",
+    "RECEIVED": "Received by Kounouz",
+    "RECEIVED_AT_LAB": "At Laboratory",
+    "ANALYZED": "Analyzed",
+    "ISSUE": "Issue"
+  },
+  "harvestSource": {
+    "PRODUCTION_HIVES": "From production hives",
+    "STORAGE": "From storage",
+    "EXTRACTION": "From extraction",
+    "PACKAGED_STOCK": "From packaged stock"
+  },
+  "equipment": {
+    "SAMPLING_KIT": "Sampling kit",
+    "STERILE_CONTAINERS": "Sterile containers",
+    "SECURE_SEALS": "Kounouz secure seals",
+    "LABELS_QR": "Labels & QR codes",
+    "CAMERA": "Camera / Mobile device",
+    "GPS": "GPS enabled"
+  },
+  "events": {
+    "REGISTERED": { "title": "Sample Registered", "hint": "Record created" },
+    "COLLECTED": { "title": "Sample Collected", "hint": "Collected from the producer" },
+    "SEALED": { "title": "Seal Registered", "hint": "Security seal applied" },
+    "RELEASED_FOR_TRANSPORT": { "title": "Released for Transport", "hint": "Handed over to transport partner" },
+    "IN_TRANSIT": { "title": "In Transit", "hint": "On the way to Kounouz" },
+    "LOCATION_UPDATE": { "title": "Location Update", "hint": "Checkpoint during transport" },
+    "RECEIVED": { "title": "Received by Kounouz", "hint": "Checked in at the verification center" },
+    "SENT_TO_LAB": { "title": "Sent to Laboratory", "hint": "Dispatched for analysis" },
+    "IN_LABORATORY": { "title": "Received by Laboratory", "hint": "Analysis can begin" },
+    "ANALYSIS_COMPLETED": { "title": "Analysis Completed", "hint": "Results available" },
+    "RESULT_ADDED": { "title": "Result Added", "hint": "Result recorded" },
+    "ISSUE": { "title": "Issue Reported", "hint": "Anomaly on the sample" }
+  },
+  "weather": {
+    "heading": "Weather Conditions",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "fieldConditions": "Conditions",
+    "good": "Good",
+    "poor": "Unfavourable",
+    "goodForVisits": "Good conditions for field visits",
+    "poorForVisits": "Unfavourable conditions — plan carefully",
+    "unavailable": "Weather unavailable.",
+    "noPosition": "Capture the GPS position to see the weather.",
+    "currentPosition": "Your current position",
+    "kinds": {
+      "clear": "Sunny",
+      "cloudy": "Partly cloudy",
+      "fog": "Fog",
+      "rain": "Rain",
+      "snow": "Snow",
+      "storm": "Storm"
+    }
+  },
+  "gps": {
+    "useCurrent": "Use current location",
+    "update": "Update Location",
+    "refresh": "Refresh",
+    "locating": "Getting GPS position...",
+    "captured": "Location captured successfully",
+    "accuracy": "Accuracy: {{meters}} m",
+    "unavailable": "GPS position unavailable",
+    "errors": {
+      "denied": "Location access denied. Allow it in your browser settings or enter the coordinates.",
+      "unavailable": "Could not get a GPS fix. Move to an open area or enter the coordinates.",
+      "unsupported": "This device does not support geolocation."
+    }
+  },
+  "photos": {
+    "add": "Add Photo",
+    "formats": "JPG, PNG · Max 5 MB",
+    "alt": "Evidence photo",
+    "remove": "Remove photo",
+    "none": "No photos.",
+    "uploadError": "Could not upload the photo."
+  },
+  "schedule": {
+    "date": "Visit date",
+    "from": "From",
+    "to": "To",
+    "reason": "Reason",
+    "reasonPlaceholder": "E.g. producer unavailable, bad weather...",
+    "windowError": "The end time must be after the start time.",
+    "rescheduleTitle": "Reschedule the visit",
+    "rescheduleBody": "The producer will be notified of the new date.",
+    "confirm": "Confirm new date"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Good morning, {{name}}",
+      "afternoon": "Good afternoon, {{name}}",
+      "evening": "Good evening, {{name}}"
+    },
+    "subtitle": "Here is your field activity overview for today.",
+    "newCollection": "New Sample Collection",
+    "stats": {
+      "today": "Today's Assignments",
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "upcoming": "Upcoming"
+    },
+    "overdue_one": "{{count}} assignment is overdue — reschedule or complete it.",
+    "overdue_other": "{{count}} assignments are overdue — reschedule or complete them.",
+    "route": {
+      "heading": "Today's Route",
+      "start": "Your position",
+      "empty": "No located visits today.",
+      "noStops": "No visits planned today."
+    },
+    "notifications": {
+      "heading": "Recent Notifications",
+      "empty": "No notifications yet."
+    },
+    "table": {
+      "heading": "Today's Assignments ({{count}})",
+      "empty": "No assignments scheduled for today.",
+      "cols": {
+        "index": "#",
+        "producer": "Producer",
+        "location": "Location",
+        "sampleType": "Sample Type",
+        "status": "Status",
+        "action": "Action"
+      }
+    },
+    "quickActions": {
+      "heading": "Quick Actions",
+      "startCollection": "Start Sample Collection",
+      "registerSeal": "Register Seal",
+      "updateDelivery": "Update Delivery Status"
+    },
+    "help": {
+      "title": "Need Help?",
+      "body": "Contact your supervisor or view the field guide."
+    }
+  },
+  "assignments": {
+    "title": "My Assignments",
+    "subtitle": "Your collection visits, planned by Kounouz or taken from the shared pool.",
+    "searchPlaceholder": "Producer, location, code...",
+    "tabs": {
+      "TODAY": "Today",
+      "UPCOMING": "Upcoming",
+      "ACTIVE": "To do",
+      "COMPLETED": "Past",
+      "ALL": "All",
+      "AVAILABLE": "Available"
+    },
+    "empty": {
+      "TODAY": "No assignments today.",
+      "UPCOMING": "No upcoming assignments.",
+      "ACTIVE": "Nothing left to do.",
+      "COMPLETED": "No past visits yet.",
+      "ALL": "No assignments."
+    },
+    "emptyHint": "New assignments from the verification team will appear here. You can also plan a visit from the Available tab.",
+    "available": {
+      "hint": "Accepted requests that no agent has planned yet. Plan a visit to add it to your assignments.",
+      "empty": "No collection waiting to be planned.",
+      "plan": "Plan the visit",
+      "modalTitle": "Plan a collection visit",
+      "modalBody": "{{honey}} at {{producer}}. The producer will be notified of the visit.",
+      "confirm": "Add to my assignments"
+    }
+  },
+  "assignmentDetail": {
+    "title": "Collection Assignment",
+    "subtitle": "Details of the assignment and instructions for sample collection.",
+    "notFound": "This assignment could not be found.",
+    "assignment": "Assignment #{{code}}",
+    "scheduledDate": "Scheduled Date",
+    "preferredTime": "Preferred Time",
+    "priority": "Priority",
+    "producerInfo": "Producer Information",
+    "viewProfile": "View Producer Profile",
+    "hives_one": "{{count}} hive",
+    "hives_other": "{{count}} hives",
+    "sampleDetails": "Sample Details",
+    "honeyType": "Honey Type",
+    "expectedQuantity": "Expected Quantity",
+    "perSample": "{{grams}} g (per sample)",
+    "numberOfSamples": "Number of Samples",
+    "collectionMethod": "Collection Method",
+    "specialInstructions": "Special Instructions",
+    "location": "Location",
+    "noCoordinates": "GPS coordinates not provided.",
+    "notes": "Assignment Notes",
+    "noNotes": "No notes for this assignment.",
+    "rescheduled_one": "Rescheduled once: {{reason}}",
+    "rescheduled_other": "Rescheduled {{count}} times — last reason: {{reason}}",
+    "assignedBy": "Assigned by {{name}}",
+    "equipment": "Required Equipment",
+    "checkList": "Check all",
+    "uncheckAll": "Uncheck all",
+    "equipmentHint": "Tick each item once it is in your vehicle.",
+    "completedOn": "Collection completed on {{date}}",
+    "backToAssignments": "Back to Assignments",
+    "reschedule": "Reschedule",
+    "startCollection": "Start Collection",
+    "continueCollection": "Continue Collection",
+    "viewCustody": "Chain of Custody"
+  },
+  "producerProfile": {
+    "title": "Producer Profile",
+    "verified": "Verified producer",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Farm address",
+    "hives": "Hives",
+    "flora": "Main flora",
+    "practices": "Practices",
+    "hiveType": "Hive type",
+    "farmPhotos": "Farm photos",
+    "call": "Call",
+    "sendEmail": "Send an email"
+  },
+  "collectionHome": {
+    "title": "Sample Collection",
+    "subtitle": "Resume a collection in progress or start your next visit.",
+    "inProgress": "In progress",
+    "toStart": "To start",
+    "empty": "No active assignment.",
+    "emptyHint": "Plan a visit from the available collections to get started.",
+    "browseAvailable": "See available collections"
+  },
+  "wizard": {
+    "title": "Sample Collection",
+    "subtitle": "Record the sample information collected from the producer.",
+    "cancelled": "This assignment has been cancelled.",
+    "producer": "Producer",
+    "location": "Location",
+    "date": "Date",
+    "steps": {
+      "assignment": "Assignment",
+      "sample": "Sample Collection",
+      "seal": "Seal Registration",
+      "confirmation": "Confirmation",
+      "complete": "Complete"
+    },
+    "assignmentStep": {
+      "heading": "Assignment summary",
+      "equipmentReady": "All required equipment is checked.",
+      "equipmentMissing_one": "{{count}} item is not checked yet:",
+      "equipmentMissing_other": "{{count}} items are not checked yet:",
+      "openChecklist": "Open the checklist",
+      "onSite": "On site",
+      "onSiteBody": "Introduce yourself to the producer, check the hives to sample, then start the collection. The time and your GPS position will be recorded.",
+      "start": "Start collection"
+    },
+    "sample": {
+      "heading": "Sample Information",
+      "sampleId": "Sample ID",
+      "sampleIdHint": "Final ID assigned when you save.",
+      "refreshId": "Refresh ID",
+      "honeyType": "Honey Type",
+      "quantity": "Quantity Collected",
+      "recommended": "Recommended: {{grams}} g",
+      "numberOfSamples": "Number of Samples",
+      "collectionMethod": "Collection Method",
+      "dateTime": "Collection Date & Time",
+      "gps": "GPS Location",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "notes": "Notes (Optional)",
+      "notesPlaceholder": "Add any relevant notes about the collection (e.g. hive condition, weather, etc.)",
+      "photos": "Sample Photos",
+      "photoCount": "{{count}}/{{max}} photos",
+      "photosTip": "Take clear photos of the sample, hives, and the surrounding environment.",
+      "locationHeading": "Location",
+      "collectionPoint": "Collection point",
+      "declaredFarm": "Declared farm location",
+      "noPosition": "Waiting for the GPS position.",
+      "farFromFarm": "You are {{km}} km from the declared farm location. Check the position before saving.",
+      "recorded": "Sample recorded",
+      "errors": {
+        "honeyType": "Enter the honey type.",
+        "quantity": "Enter a quantity greater than 0.",
+        "numberOfSamples": "Enter a whole number of at least 1.",
+        "position": "GPS position required.",
+        "date": "Date and time cannot be in the future.",
+        "summary": "Some required fields are missing or invalid."
+      }
+    },
+    "seal": {
+      "heading": "Seal Registration",
+      "description": "Apply a Kounouz secure seal on sample {{code}}, photograph it in place, then confirm its integrity."
+    },
+    "confirmation": {
+      "heading": "Collection summary",
+      "description": "Check the information with the producer before closing the visit.",
+      "handover": "Producer confirmation",
+      "producerConfirmed": "{{name}} was present and confirms the sample was taken and sealed in their presence.",
+      "notes": "Closing notes (optional)",
+      "submit": "Confirm & close visit",
+      "incomplete": "The sample and its seal must be recorded before confirmation."
+    },
+    "complete": {
+      "heading": "Collection completed",
+      "description": "The sample is sealed and recorded. The chain of custody has started.",
+      "nextStep": "Next step: hand over the sample for transport and update its delivery status.",
+      "custody": "Chain of Custody",
+      "nextCollection": "Next collection",
+      "dashboard": "Back to dashboard"
+    }
+  },
+  "seal": {
+    "numberSource": "Seal number",
+    "source": {
+      "printed": "Pre-printed seal",
+      "auto": "Generate a number"
+    },
+    "number": "Seal Number",
+    "numberHint": "Copy the number printed on the seal exactly.",
+    "autoHint": "Kounouz will assign a unique number (KS-YYYY-XXXXXX). Write it on the seal label.",
+    "notes": "Notes",
+    "notesPlaceholder": "Seal position, container type...",
+    "photo": "Photo of the applied seal",
+    "photoHint": "The seal number must be readable on the photo.",
+    "integrity": "I confirm the seal is intact, correctly closed and matches the number entered.",
+    "submit": "Register seal",
+    "appliedAt": "Applied on",
+    "status": "Condition",
+    "statuses": {
+      "INTACT": "Intact",
+      "BROKEN": "Broken"
+    }
+  },
+  "seals": {
+    "title": "Secure Seal Registration",
+    "subtitle": "Every collected sample must carry a Kounouz secure seal before leaving the farm.",
+    "pending": "Samples awaiting a seal ({{count}})",
+    "pendingEmpty": "All your samples are sealed.",
+    "register": "Register Seal",
+    "registered": "Recently sealed",
+    "modalTitle": "Seal sample {{code}}"
+  },
+  "custody": {
+    "title": "Chain of Custody",
+    "subtitle": "Track the journey of this sample from collection to laboratory.",
+    "listTitle": "Chain of Custody",
+    "listSubtitle": "Follow every sample you collected until it reaches the laboratory.",
+    "notFound": "This sample could not be found.",
+    "searchPlaceholder": "Sample ID, seal, producer...",
+    "empty": "No samples in this list.",
+    "tabs": {
+      "CUSTODY": "In my custody",
+      "DELIVERED": "Delivered",
+      "ISSUES": "Issues",
+      "ALL": "All"
+    },
+    "sampleId": "Sample ID",
+    "producer": "Producer",
+    "producerLocation": "Location (Producer)",
+    "honeyType": "Honey Type",
+    "quantity": "Quantity",
+    "sealNumber": "Seal Number",
+    "collectionDate": "Collection Date",
+    "sampleInfo": "Sample Information",
+    "currentStatus": "Current Status",
+    "since": "Since",
+    "currentLocation": "Current Location",
+    "viewOnMap": "View on Map",
+    "liveLocation": "Live Location",
+    "timeline": "Chain of Custody Timeline",
+    "addEvent": "Add New Event",
+    "otherEvents": "Checkpoints & incidents",
+    "eventDetails": "Event Details",
+    "selectEvent": "Select an event in the timeline.",
+    "pending": "Pending",
+    "updateDeliveryStatus": "Update Delivery Status",
+    "statusHeadline": {
+      "COLLECTED": "Collected",
+      "SEALED": "Sealed",
+      "IN_TRANSIT": "In Transit",
+      "RECEIVED": "Received",
+      "RECEIVED_AT_LAB": "At the Laboratory",
+      "ANALYZED": "Analyzed",
+      "ISSUE": "Issue Reported"
+    },
+    "statusDescription": {
+      "COLLECTED": "The sample must be sealed before leaving the farm.",
+      "SEALED": "The sealed sample is waiting for transport.",
+      "IN_TRANSIT": "The sample is on the way to Kounouz verification center.",
+      "RECEIVED": "The sample was checked in by the Kounouz team.",
+      "RECEIVED_AT_LAB": "The laboratory has the sample.",
+      "ANALYZED": "The laboratory analysis is complete.",
+      "ISSUE": "The verification team will decide on the next step."
+    },
+    "roles": {
+      "FIELD_AGENT": "Field Agent",
+      "VERIFICATION_TEAM": "Kounouz Verification",
+      "ADMIN": "Kounouz Administration",
+      "TRANSPORT": "Transport Partner"
+    },
+    "detail": {
+      "event": "Event",
+      "dateTime": "Date & Time",
+      "handledBy": "Handled By",
+      "location": "Location",
+      "proof": "Proof of Handover",
+      "notes": "Notes"
+    }
+  },
+  "addEvent": {
+    "title": "Update Delivery Status",
+    "type": "Event",
+    "help": {
+      "RELEASED_FOR_TRANSPORT": "The sealed sample is handed over to a carrier. Give their name and a photo of the handover.",
+      "IN_TRANSIT": "The sample has left and is on the road to Kounouz.",
+      "LOCATION_UPDATE": "Record a checkpoint to update the live location.",
+      "ISSUE": "Report damage, a broken seal, a delay or any anomaly. The verification team will see it in their portal."
+    },
+    "handler": "Current holder",
+    "handlerHint": "Leave empty if you carry the sample yourself.",
+    "handlerPlaceholder": "E.g. Cap Bon Express",
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "locationPlaceholder": "E.g. A1, Tunis",
+    "attachGps": "Attach my GPS position",
+    "note": "Notes",
+    "notePlaceholder": {
+      "default": "Vehicle, conditions, remarks...",
+      "issue": "Describe the problem precisely."
+    },
+    "proof": "Proof photo",
+    "futureError": "The event date cannot be in the future.",
+    "submit": "Save event"
+  },
+  "visits": {
+    "title": "My Visits",
+    "subtitle": "History of your farm visits and the samples collected.",
+    "kpis": {
+      "completed": "Completed visits",
+      "averageDuration": "Average visit duration",
+      "places": "Places visited"
+    },
+    "map": "Visited farms",
+    "mapEmpty": "No located visits yet.",
+    "history": "Visit history",
+    "empty": "No visits yet."
+  },
+  "reports": {
+    "title": "Reports",
+    "subtitle": "Your field activity over the selected period.",
+    "period": "Period",
+    "lastMonths_one": "Last month",
+    "lastMonths_other": "Last {{count}} months",
+    "print": "Print",
+    "kpis": {
+      "assignments": "Assignments",
+      "completed": "Completed",
+      "samples": "Samples collected",
+      "sealed": "Samples sealed",
+      "onTimeRate": "On-time rate",
+      "onTimeHint": "Completed on the planned day, never rescheduled",
+      "averageDuration": "Average visit duration",
+      "quantity": "Quantity collected",
+      "issues": "Issues",
+      "rescheduled_one": "{{count}} rescheduled visit",
+      "rescheduled_other": "{{count}} rescheduled visits"
+    },
+    "monthly": "Monthly activity",
+    "series": {
+      "assignments": "Assignments",
+      "completed": "Completed",
+      "samples": "Samples"
+    },
+    "byHoneyType": "By honey type",
+    "bySampleStatus": "By sample status",
+    "byRegion": "By location",
+    "empty": "No data for this period."
+  },
+  "notificationsPage": {
+    "title": "Notifications",
+    "subtitle_one": "{{count}} unread notification",
+    "subtitle_other": "{{count}} unread notifications",
+    "markAll": "Mark all as read"
+  }
+}

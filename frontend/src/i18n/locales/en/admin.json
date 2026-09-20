@@ -1,0 +1,338 @@
+{
+  "navGroups": {
+    "overview": "Overview",
+    "traceability": "Traceability",
+    "catalog": "Catalog",
+    "steering": "Steering",
+    "sales": "Sales"
+  },
+  "nav": {
+    "producers": "Producers",
+    "requests": "Requests",
+    "samples": "Samples",
+    "seals": "Seals",
+    "laboratory": "Laboratory",
+    "verification": "Verification",
+    "batches": "Batches",
+    "packaging": "Packaging",
+    "products": "Products",
+    "categories": "Categories",
+    "qrCodes": "QR codes",
+    "reports": "Reports",
+    "team": "Team & users",
+    "supportInbox": "Support requests",
+    "orders": "Orders",
+    "settlements": "Producer settlements"
+  },
+  "role": {
+    "ADMIN": "Administrator",
+    "VERIFICATION_TEAM": "Verification team"
+  },
+  "dashboard": {
+    "greeting": "Welcome, {{name}}",
+    "subtitle": "Overview of current activity.",
+    "kpi": {
+      "pendingRequests": "Requests awaiting review",
+      "samplesInPipeline": "Samples in progress",
+      "labResults": "Recorded lab results",
+      "referenceSamples": "Stored reference samples",
+      "verified": "Verified",
+      "notVerified": "Not compliant",
+      "readyForPackaging": "Batches ready for packaging",
+      "verificationRate": "Verification rate"
+    },
+    "totals": {
+      "producers": "Registered producers",
+      "verifiedProducers": "Verified producers",
+      "publishedProducts": "Published products"
+    }
+  },
+  "producers": {
+    "empty": "No producers registered yet",
+    "verifiedBadge": "Verified"
+  },
+  "producerDetail": {
+    "backToProducers": "Back to producers",
+    "requestsHeading": "Verification requests",
+    "noRequests": "No requests for this producer",
+    "contact": "Contact",
+    "hives_one": "{{count}} hive",
+    "hives_other": "{{count}} hives",
+    "status": "Producer status",
+    "documentsHeading": "Administrative documents",
+    "noDocuments": "No documents uploaded",
+    "approve": "Approve",
+    "reject": "Reject",
+    "rejectReason": "Reason for rejection (shown to the producer):"
+  },
+  "requests": {
+    "heading": "Verification requests",
+    "empty": "No requests in this category",
+    "tabs": {
+      "ALL": "All",
+      "NEW": "New",
+      "IN_REVIEW": "In review",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected"
+    }
+  },
+  "requestDetail": {
+    "backToRequests": "Back to requests",
+    "updateError": "Could not update the request status.",
+    "collectionLocation": "Collection location",
+    "quantity": "Quantity",
+    "description": "Description",
+    "requestDate": "Request date",
+    "setInReview": "Set to in review",
+    "accept": "Accept request",
+    "reject": "Reject request",
+    "linkedSample": "Linked sample",
+    "view": "View",
+    "requestCode": "Request ID",
+    "preferredMethod": "Preferred collection",
+    "floralCategory": "Floral category",
+    "floralOrigin": "Floral origin",
+    "season": "Production season",
+    "harvest": "Harvest period",
+    "coordinates": "Coordinates",
+    "hives": "Hives",
+    "beekeepingMethod": "Beekeeping method",
+    "hiveType": "Hive type",
+    "farmSize": "Farm size"
+  },
+  "samples": {
+    "empty": "No samples registered yet",
+    "collectedBy": "Collected by {{name}}"
+  },
+  "sampleDetail": {
+    "backToSamples": "Back to samples",
+    "updateError": "Could not update the status.",
+    "collectionLocation": "Collection location",
+    "collectionDate": "Collection date",
+    "photos": "Proof photos",
+    "photoAlt": "Proof photo",
+    "sealed": "Sealed",
+    "confirmReceived": "Confirm sample received at lab",
+    "labAnalysis": "Lab analysis"
+  },
+  "seals": {
+    "heading": "Security seals",
+    "subtitle": "Immutable record — each seal is permanently linked to a single sample.",
+    "empty": "No seals registered yet",
+    "intact": "Intact",
+    "broken": "Broken"
+  },
+  "laboratory": {
+    "tabs": {
+      "analyses": "Analyses",
+      "labs": "Laboratories",
+      "reference": "Reference samples"
+    },
+    "notDetected": "Not detected",
+    "resultFields": {
+      "humidity": "Moisture content (%)",
+      "ph": "Acidity (pH)",
+      "hmf": "HMF (mg/kg)",
+      "reducingSugars": "Reducing sugars (%)",
+      "proline": "Proline (mg/kg)",
+      "dominantPollen": "Dominant pollen",
+      "pesticides": "Pesticides",
+      "antibiotics": "Antibiotics"
+    },
+    "labs": {
+      "new": "New laboratory",
+      "empty": "No laboratories registered yet",
+      "createError": "Could not add the laboratory.",
+      "name": "Laboratory name",
+      "accreditationNo": "Accreditation number",
+      "country": "Country",
+      "contactInfo": "Contact information"
+    },
+    "analyses": {
+      "record": "Record an analysis result",
+      "empty": "No analyses registered yet",
+      "createError": "Could not record the analysis.",
+      "noEligibleSamples": "No samples currently received at the lab awaiting analysis.",
+      "sampleFallback": "Sample",
+      "sample": "Sample",
+      "selectSample": "Choose a sample",
+      "selectLab": "Choose a laboratory",
+      "analysisDate": "Analysis date",
+      "conclusion": "Conclusion",
+      "conclusionCompliant": "Compliant",
+      "conclusionNonCompliant": "Non-compliant",
+      "conclusionPending": "Awaiting review",
+      "saveResult": "Save result"
+    },
+    "reference": {
+      "save": "Save reference sample",
+      "empty": "No reference samples saved yet",
+      "createError": "Could not save the reference sample.",
+      "storageLocation": "Storage location",
+      "storageConditions": "Storage conditions",
+      "retentionPeriod": "Retention period"
+    }
+  },
+  "verification": {
+    "heading": "Verification decisions",
+    "new": "New decision",
+    "createError": "Could not record the decision.",
+    "noEligibleSamples": "No analyzed samples currently awaiting a verification decision.",
+    "empty": "No verification decision has been made yet",
+    "decidedBy": "{{producer}} · decision by {{name}}",
+    "selectAnalyzedSample": "Choose an analyzed sample",
+    "labAnalysisSummary": "Lab analysis summary",
+    "nonCompliantWarning": "The sample cannot be considered \"verified\" because the analysis is non-compliant — you can only choose \"not verified\".",
+    "decision": "Decision",
+    "decisionVerified": "Verified ✅",
+    "decisionNotVerified": "Not verified",
+    "notesOptional": "Notes (optional)",
+    "confirmDecision": "Confirm decision"
+  },
+  "batches": {
+    "createError": "Could not create the batch.",
+    "new": "New batch",
+    "noEligibleVerifications": "No \"verified\" decisions without a batch currently.",
+    "empty": "No batches yet",
+    "verificationDecision": "Verification decision",
+    "selectVerifiedDecision": "Choose a verified decision",
+    "quantityKg": "Quantity (kg)",
+    "productionDate": "Production date",
+    "create": "Create batch"
+  },
+  "packaging": {
+    "createError": "Could not create the packaging.",
+    "completeError": "Could not complete the packaging.",
+    "new": "New packaging",
+    "noEligibleBatches": "No batches currently awaiting packaging.",
+    "empty": "No packaging operations yet",
+    "complete": "Complete packaging",
+    "selectBatch": "Choose a batch",
+    "packageType": "Package type",
+    "size": "Size",
+    "labelDesign": "Label design (optional)",
+    "productionDate": "Packaging date"
+  },
+  "categories": {
+    "saveError": "Could not save the category.",
+    "deleteError": "Could not delete the category.",
+    "new": "New category",
+    "edit": "Edit category",
+    "empty": "No categories yet",
+    "name": "Name",
+    "descriptionOptional": "Description (optional)",
+    "imageUrlOptional": "Image URL (optional)",
+    "parentOptional": "Parent category (optional)",
+    "rootCategory": "— Root category —",
+    "displayOrder": "Display order",
+    "activeLabel": "Active category (shown in the marketplace)",
+    "inactive": "Inactive"
+  },
+  "units": {
+    "kg": "kg",
+    "currency": "TND"
+  },
+  "products": {
+    "createError": "Could not create the product.",
+    "new": "New product",
+    "empty": "No products in this category",
+    "searchPlaceholder": "Search by name...",
+    "stock": "Stock",
+    "productName": "Product name",
+    "selectCategory": "Choose a category",
+    "price": "Price (TND)",
+    "rangeOptional": "Range (optional)",
+    "linkedBatch": "Linked batch (optional for now, required to publish)",
+    "noBatch": "— No batch —",
+    "imageUrls": "Image URLs (comma-separated, optional)",
+    "createAsDraft": "Create product (as draft)",
+    "tabs": {
+      "ALL": "All",
+      "BROUILLON": "Draft",
+      "PUBLIE": "Published",
+      "RUPTURE": "Out of stock",
+      "SUSPENDU": "Suspended",
+      "ARCHIVE": "Archived"
+    }
+  },
+  "productDetail": {
+    "saveError": "Could not save the changes.",
+    "statusUpdateError": "Could not update the product status.",
+    "backToProducts": "Back to products",
+    "range": "Range",
+    "linkedBatch": "Linked batch",
+    "publish": "Publish product",
+    "markOutOfStock": "Mark out of stock",
+    "suspend": "Suspend",
+    "republish": "Republish",
+    "qrCode": "Product QR code",
+    "qrCodePending": "The QR code will be generated automatically when the product is first published.",
+    "editTitle": "Edit product",
+    "cannotChangeBatch": "The batch cannot be changed for a product that has already been published.",
+    "imageUrls": "Image URLs (comma-separated)",
+    "saveChanges": "Save changes"
+  },
+  "qrCodes": {
+    "empty": "No QR codes yet",
+    "emptyDescription": "They are generated automatically when a product is first published.",
+    "active": "Active",
+    "inactive": "Suspended",
+    "scanCount": "{{count}} scans",
+    "scanHistory": "Scan history",
+    "noScans": "No scans yet.",
+    "unknownCountry": "Unknown",
+    "flagged": "Suspicious",
+    "searchPlaceholder": "Search by product or code...",
+    "noResults": "No QR code matches this search.",
+    "codeLabel": "Code",
+    "qrIdLabel": "Technical identifier",
+    "deactivate": "Suspend this code",
+    "activate": "Reactivate this code",
+    "deactivateWarning": "A suspended code can no longer be verified by customers (\"product not found\" page).",
+    "statusUpdateError": "Could not update this code's status.",
+    "copyLink": "Copy verification link",
+    "linkCopied": "Link copied!"
+  },
+  "reports": {
+    "downloadError": "Could not download the report.",
+    "operationalReport": "Operational report",
+    "byProducer": "By producer",
+    "requestsAndVerified": "{{requests}} requests · {{verified}} verified",
+    "kgInBatches": "{{kg}} kg in batches",
+    "antiFraud": "Anti-fraud",
+    "totalScans": "Total scans",
+    "flaggedScans": "Flagged scans",
+    "flaggedRate": "Flagged rate",
+    "topFlaggedProducts": "Most flagged products"
+  },
+  "orders": {
+    "heading": "Orders",
+    "subtitle": "Marketplace orders and their delivery status. Delivered orders feed producer settlements.",
+    "all": "All",
+    "empty": "No orders",
+    "confirmCancel": "Cancel order #{{number}}? Stock will be restored.",
+    "actions": {
+      "CONFIRMED": "Confirm",
+      "SHIPPED": "Mark shipped",
+      "DELIVERED": "Mark delivered",
+      "CANCELLED": "Cancel",
+      "PENDING": "Pending"
+    }
+  },
+  "settlements": {
+    "heading": "Producer settlements",
+    "subtitle": "Monthly earnings of producers after the Kounouz commission, based on delivered orders.",
+    "empty": "No settlements yet",
+    "toPay_one": "{{count}} closed period to pay ({{amount}}).",
+    "toPay_other": "{{count}} closed periods to pay ({{amount}}).",
+    "orders_one": "{{count}} order",
+    "orders_other": "{{count}} orders",
+    "noIban": "No IBAN provided",
+    "gross": "Sales",
+    "commission": "Commission",
+    "paidOn": "Paid on {{date}}",
+    "markPaid": "Mark as paid",
+    "openHint": "Period not closed yet",
+    "referencePrompt": "Transfer reference for {{producer}} ({{amount}}) - optional:"
+  }
+}

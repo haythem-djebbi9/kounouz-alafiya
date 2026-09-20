@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Bell, Check, CheckCheck } from 'lucide-react';
+import { dateLocale } from '../i18n';
 import {
   useMarkAllNotificationsRead,
   useMarkNotificationRead,
@@ -8,6 +10,7 @@ import {
 } from '../lib/notification-hooks';
 
 export const NotificationBell: React.FC = () => {
+  const { t, i18n } = useTranslation('common');
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { data: unreadCount = 0 } = useUnreadCount();
@@ -31,7 +34,7 @@ export const NotificationBell: React.FC = () => {
       <button
         onClick={() => setOpen((v) => !v)}
         className="relative p-2.5 rounded-lg text-[#0C261B] hover:bg-[#FAF6EE] min-w-[44px] min-h-[44px] flex items-center justify-center"
-        aria-label="الإشعارات"
+        aria-label={t('notifications.heading')}
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
@@ -44,22 +47,22 @@ export const NotificationBell: React.FC = () => {
       {open && (
         <div className="absolute end-0 mt-2 w-80 max-w-[90vw] bg-white border border-[#EAE1D2] rounded-xl shadow-lg z-50 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-[#EAE1D2]">
-            <p className="text-sm font-bold text-[#0C261B]">الإشعارات</p>
+            <p className="text-sm font-bold text-[#0C261B]">{t('notifications.heading')}</p>
             {unreadCount > 0 && (
               <button
                 onClick={() => markAllRead.mutate()}
                 className="flex items-center gap-1 text-xs font-bold text-[#0C261B]/70 hover:text-[#0C261B]"
               >
                 <CheckCheck className="w-3.5 h-3.5" />
-                تعليم الكل كمقروء
+                {t('actions.markAllRead')}
               </button>
             )}
           </div>
 
           <div className="max-h-96 overflow-y-auto">
-            {isLoading && <p className="px-4 py-6 text-center text-xs text-gray-400">جارٍ التحميل...</p>}
+            {isLoading && <p className="px-4 py-6 text-center text-xs text-gray-400">{t('status.loading')}</p>}
             {!isLoading && notifications.length === 0 && (
-              <p className="px-4 py-6 text-center text-xs text-gray-400">لا توجد إشعارات بعد</p>
+              <p className="px-4 py-6 text-center text-xs text-gray-400">{t('notifications.empty')}</p>
             )}
             {notifications.map((n) => (
               <div
@@ -72,7 +75,7 @@ export const NotificationBell: React.FC = () => {
                   <p className="text-sm font-bold text-[#0C261B]">{n.title}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{n.message}</p>
                   <p className="text-[11px] text-gray-400 mt-1">
-                    {new Date(n.createdAt).toLocaleDateString('ar-TN', {
+                    {new Date(n.createdAt).toLocaleDateString(dateLocale(i18n.language), {
                       day: 'numeric',
                       month: 'short',
                       hour: '2-digit',
@@ -84,7 +87,7 @@ export const NotificationBell: React.FC = () => {
                   <button
                     onClick={() => markRead.mutate(n.id)}
                     className="shrink-0 p-1.5 rounded-lg text-[#0C261B]/50 hover:bg-white hover:text-[#0C261B]"
-                    aria-label="تعليم كمقروء"
+                    aria-label={t('actions.markAsRead')}
                   >
                     <Check className="w-4 h-4" />
                   </button>

@@ -1,0 +1,48 @@
+{
+  "request": {
+    "DRAFT": "Draft",
+    "NEW": "Sending",
+    "IN_REVIEW": "Under review",
+    "ACCEPTED": "Accepted",
+    "REJECTED": "Rejected"
+  },
+  "sample": {
+    "COLLECTED": "Sample collected",
+    "SEALED": "Sealed",
+    "IN_TRANSIT": "On the way to the lab",
+    "RECEIVED_AT_LAB": "Arrived at the lab",
+    "ANALYZED": "Analyzed"
+  },
+  "verification": {
+    "PENDING": "Verification pending",
+    "VERIFIED": "Verified ✅",
+    "NOT_VERIFIED": "Not verified"
+  },
+  "batch": {
+    "CREATED": "Batch created",
+    "PACKAGED": "Being packaged",
+    "READY": "Ready"
+  },
+  "product": {
+    "BROUILLON": "Draft",
+    "PUBLIE": "Published",
+    "RUPTURE": "Out of stock",
+    "SUSPENDU": "Suspended",
+    "ARCHIVE": "Archived"
+  },
+  "labAnalysis": {
+    "PENDING": "Awaiting result",
+    "COMPLIANT": "Compliant",
+    "NON_COMPLIANT": "Non-compliant"
+  },
+  "packaging": {
+    "IN_PROGRESS": "Being packaged",
+    "COMPLETED": "Completed"
+  },
+  "supportTicket": {
+    "OPEN": "Open",
+    "IN_PROGRESS": "In progress",
+    "RESOLVED": "Resolved",
+    "CLOSED": "Closed"
+  }
+}

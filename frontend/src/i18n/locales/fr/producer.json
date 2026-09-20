@@ -1,0 +1,1035 @@
+{
+  "brand": {
+    "tagline": "Origines pures. Miel de confiance.",
+    "sidebarMotto": "Miel tunisien\nun avenir plus riche",
+    "promoTitle": "Miel authentique\nCommunautés plus fortes"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "profile": "Mon profil",
+    "requests": "Demandes de vérification",
+    "samples": "Mes échantillons",
+    "batches": "Mes lots",
+    "products": "Mes produits",
+    "sales": "Ventes & gains",
+    "notifications": "Notifications",
+    "settings": "Paramètres",
+    "help": "Aide & support"
+  },
+  "footer": {
+    "motto": "De la nature aux personnes, en toute confiance",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contact": "Nous contacter"
+  },
+  "search": {
+    "placeholder": "Rechercher des produits, lots ou autre...",
+    "empty": "Aucun résultat.",
+    "groups": {
+      "requests": "Demande",
+      "batches": "Lot",
+      "products": "Produit",
+      "samples": "Échantillon"
+    }
+  },
+  "help": {
+    "title": "Besoin d'aide ?",
+    "body": "En cas de doute sur une information, notre équipe support est là pour vous aider.",
+    "cta": "Contacter le support"
+  },
+  "common": {
+    "currency": "TND",
+    "roleLabel": "Producteur de miel",
+    "actions": "Actions",
+    "view": "Voir",
+    "export": "Exporter",
+    "reset": "Réinitialiser",
+    "select": "Sélectionner",
+    "selectOrType": "Sélectionner ou saisir",
+    "other": "Autres",
+    "otherSpecify": "Autre (préciser)",
+    "required": "Ce champ est obligatoire.",
+    "allStatuses": "Tous les statuts",
+    "noResults": "Aucun résultat ne correspond à vos filtres.",
+    "noSalesYet": "Aucune vente pour le moment",
+    "units": "Unités",
+    "kg": "{{value}} kg",
+    "kgUnit": "kg",
+    "showing": "Affichage de {{from}} à {{to}} sur {{total}}"
+  },
+  "range": {
+    "THIS_MONTH": "Ce mois-ci",
+    "LAST_MONTH": "Mois dernier",
+    "LAST_30_DAYS": "30 derniers jours",
+    "LAST_3_MONTHS": "3 derniers mois",
+    "THIS_YEAR": "Cette année",
+    "ALL_TIME": "Depuis le début",
+    "CUSTOM": "Période personnalisée",
+    "from": "Du",
+    "to": "Au",
+    "apply": "Appliquer"
+  },
+  "kpi": {
+    "unitsSold": "Unités vendues",
+    "grossSales": "Ventes brutes",
+    "commission": "Commission Kounouz",
+    "netEarnings": "Gains nets",
+    "totalUnits": "Total des unités vendues",
+    "totalSales": "Ventes totales (TND)",
+    "totalSalesTnd": "Ventes totales (TND)",
+    "totalOrders": "Total des commandes",
+    "yourEarnings": "Vos gains",
+    "yourEarningsTnd": "Vos gains (TND)",
+    "salesTnd": "Ventes (TND)",
+    "pendingPayment": "Paiement en attente"
+  },
+  "dashboard": {
+    "greeting": "Bon retour, {{name}} !",
+    "subtitle": "Voici un aperçu de votre activité et de l'impact de votre miel.",
+    "newRequest": "Nouvelle demande de vérification",
+    "plusThisMonth": "+{{value}} ce mois-ci",
+    "vsLastMonth": "{{value}} ce mois-ci",
+    "newThisMonth": "Nouveau ce mois-ci",
+    "salesOverview": "Aperçu des ventes",
+    "metric": "Indicateur",
+    "period": "Période",
+    "lastMonths_one": "Le dernier mois",
+    "lastMonths_other": "{{count}} derniers mois",
+    "unitsByPackage": "Unités vendues par conditionnement",
+    "workMattersTitle": "Votre travail compte",
+    "workMattersBody": "En travaillant avec Kounouz Alafiya, vous faites découvrir le miel tunisien authentique à davantage de familles tout en préservant notre patrimoine naturel.",
+    "recentRequests": "Demandes de vérification récentes",
+    "myBatches": "Mes lots",
+    "quickActions": "Actions rapides",
+    "quick": {
+      "request": "Demander une vérification",
+      "batches": "Voir mes lots",
+      "products": "Gérer mes produits",
+      "sales": "Voir ventes & gains"
+    }
+  },
+  "stage": {
+    "DRAFT": "Brouillon",
+    "SUBMITTED": "Soumise",
+    "UNDER_REVIEW": "En cours d'examen",
+    "REJECTED": "Refusée",
+    "COLLECTION_SCHEDULED": "Échantillon demandé",
+    "SAMPLE_COLLECTED": "Échantillon collecté",
+    "UNDER_ANALYSIS": "En analyse",
+    "VERIFICATION_PENDING": "Vérification en attente",
+    "VERIFIED": "Approuvée",
+    "NOT_VERIFIED": "Non vérifiée"
+  },
+  "collectionMethod": {
+    "KOUNOUZ_VISIT": {
+      "title": "Kounouz vient sur mon exploitation",
+      "short": "Visite Kounouz",
+      "description": "Un représentant Kounouz se rend à votre rucher pour prélever et sceller l'échantillon."
+    },
+    "PRODUCER_DELIVERY": {
+      "title": "J'apporte l'échantillon à Kounouz",
+      "short": "Dépôt producteur",
+      "description": "Vous déposez l'échantillon chez Kounouz selon les instructions que notre équipe vous enverra."
+    }
+  },
+  "floralCategory": {
+    "MONOFLORAL": "Monofloral",
+    "MULTIFLORAL": "Multifloral"
+  },
+  "honey": {
+    "types": {
+      "JUJUBE": "Miel de jujubier (Sedra)",
+      "THYME": "Miel de thym",
+      "ROSEMARY": "Miel de romarin",
+      "EUCALYPTUS": "Miel d'eucalyptus",
+      "ORANGE_BLOSSOM": "Miel de fleur d'oranger",
+      "CAROB": "Miel de caroubier",
+      "ALEPPO_PINE": "Miel de pin d'Alep",
+      "WILDFLOWER": "Miel de fleurs sauvages",
+      "FOREST": "Miel de forêt",
+      "MOUNTAIN": "Miel de montagne"
+    },
+    "origins": {
+      "WILDFLOWER": "Fleurs sauvages",
+      "THYME": "Thym",
+      "EUCALYPTUS": "Eucalyptus",
+      "ORANGE_BLOSSOM": "Fleur d'oranger",
+      "CITRUS": "Agrumes",
+      "ROSEMARY": "Romarin",
+      "ALEPPO_PINE": "Pin d'Alep",
+      "SAGE": "Sauge",
+      "JUJUBE": "Jujubier (Sedra)",
+      "CAROB": "Caroubier"
+    },
+    "seasons": {
+      "SPRING": "Printemps",
+      "SUMMER": "Été",
+      "AUTUMN": "Automne",
+      "WINTER": "Hiver"
+    },
+    "methods": {
+      "TRADITIONAL": "Traditionnelle",
+      "MODERN": "Moderne",
+      "ORGANIC": "Biologique",
+      "TRANSHUMANT": "Transhumante"
+    },
+    "hives": {
+      "LANGSTROTH": "Langstroth",
+      "DADANT": "Dadant",
+      "TRADITIONAL": "Ruche traditionnelle",
+      "TOP_BAR": "Ruche à barrettes (Top-bar)",
+      "OTHER": "Autre"
+    }
+  },
+  "fields": {
+    "governorate": "Gouvernorat",
+    "delegation": "Délégation",
+    "chooseGovernorateFirst": "Choisissez d'abord un gouvernorat",
+    "errors": {
+      "phone": "Numéro de téléphone invalide.",
+      "nationalId": "La CIN doit comporter 8 chiffres.",
+      "postalCode": "Le code postal doit comporter 4 chiffres."
+    }
+  },
+  "requests": {
+    "title": "Demandes de vérification",
+    "subtitle": "Suivez chaque demande, de la soumission jusqu'à la vérification Kounouz.",
+    "draftLabel": "Brouillon",
+    "empty": "Aucune demande de vérification pour le moment.",
+    "searchPlaceholder": "Rechercher par identifiant, type de miel ou localisation...",
+    "continueDraft": "Continuer",
+    "deleteDraft": "Supprimer le brouillon",
+    "confirmDeleteDraft": "Supprimer ce brouillon ? Cette action est irréversible.",
+    "draftDeleted": "Brouillon supprimé.",
+    "trackProgress": "Suivre l'avancement",
+    "stats": {
+      "total": "Demandes soumises",
+      "inProgress": "En cours",
+      "verified": "Vérifiées",
+      "drafts": "Brouillons"
+    },
+    "cols": {
+      "id": "Identifiant",
+      "honeyType": "Type de miel",
+      "quantity": "Quantité",
+      "location": "Localisation",
+      "method": "Collecte",
+      "submitted": "Date de soumission",
+      "status": "Statut"
+    }
+  },
+  "wizard": {
+    "steps": {
+      "request": "Demande de vérification",
+      "honey": "Informations miel / lot",
+      "review": "Vérifier & soumettre",
+      "underReview": "En cours d'examen"
+    },
+    "titles": {
+      "request": "Demande de vérification",
+      "honey": "Informations miel / lot",
+      "review": "Vérifier & soumettre",
+      "underReview": "Demande envoyée"
+    },
+    "subtitles": {
+      "request": "Soumettez votre demande de vérification pour renforcer la confiance et valoriser l'authenticité de votre miel.",
+      "honey": "Donnez des informations détaillées sur le miel à faire vérifier.",
+      "review": "Vérifiez vos informations avant d'envoyer la demande à Kounouz Alafiya.",
+      "underReview": "Notre équipe examine maintenant votre demande."
+    },
+    "hero": {
+      "title": "De vos ruches à un avenir de confiance.",
+      "body": "Demandez la vérification de votre miel. Notre équipe examinera vos informations et coordonnera les étapes suivantes, dont la collecte de l'échantillon et l'analyse en laboratoire."
+    },
+    "section": {
+      "producer": "Producteur & exploitation",
+      "producerHint": "Confirmez les informations de votre exploitation pour cette demande.",
+      "collection": "Mode de collecte souhaité",
+      "collectionHint": "Comment l'échantillon doit-il parvenir à Kounouz ?",
+      "collectionNote": "Kounouz confirme le mode de collecte définitif lors de l'examen de votre demande.",
+      "documents": "État des documents",
+      "documentsHint": "Assurez-vous que vos documents obligatoires sont complets avant de soumettre.",
+      "honey": "Détails du miel",
+      "honeyHint": "Parlez-nous du miel que vous souhaitez faire vérifier.",
+      "location": "Lieu de production",
+      "locationHint": "Où ce miel a-t-il été produit ?",
+      "beekeeping": "Production & apiculture",
+      "beekeepingHint": "Informations complémentaires sur votre activité apicole."
+    },
+    "fields": {
+      "producerName": "Nom du producteur",
+      "farmName": "Exploitation / marque",
+      "farmLocation": "Localisation de l'exploitation",
+      "farmSize": "Taille de l'exploitation (facultatif)",
+      "honeyType": "Type de miel",
+      "honeyTypeOther": "Nom du type de miel",
+      "floralCategory": "Catégorie florale",
+      "floralOrigin": "Origine florale (si connue)",
+      "quantity": "Quantité prévue (kg)",
+      "season": "Saison de production",
+      "year": "Année",
+      "harvestStart": "Début de récolte",
+      "harvestEnd": "Fin de récolte",
+      "harvestPeriod": "Période de récolte",
+      "coordinates": "Coordonnées (facultatif)",
+      "hives": "Nombre de ruches (pour ce lot)",
+      "method": "Méthode apicole",
+      "hiveType": "Type de ruche",
+      "additionalInfo": "Informations complémentaires (facultatif)"
+    },
+    "placeholders": {
+      "farmSize": "ex : 50 hectares",
+      "floralOrigin": "Choisir l'origine florale",
+      "additionalInfo": "Parlez-nous de ce miel, de son environnement ou de tout détail utile..."
+    },
+    "editFarm": "Modifier les informations de l'exploitation",
+    "docsCount": "{{ready}} sur {{total}} documents obligatoires prêts",
+    "docsVerified": "Tous les documents obligatoires ont été déposés et vérifiés. Vous pouvez soumettre votre demande.",
+    "docsPending": "Vos documents obligatoires sont déposés et en attente de contrôle par Kounouz. Vous pouvez soumettre votre demande.",
+    "docsMissing": "Déposez vos documents obligatoires (CIN et registre de l'exploitation) avant de soumettre.",
+    "docsBlocking": "Votre demande ne peut pas être soumise tant que les documents obligatoires ne sont pas déposés.",
+    "manageDocuments": "Gérer les documents",
+    "process": {
+      "title": "Processus de vérification",
+      "submit": {
+        "title": "Soumettre la demande",
+        "body": "Remplissez le formulaire et envoyez votre demande de vérification."
+      },
+      "review": {
+        "title": "Examen",
+        "body": "Notre équipe examine vos informations (généralement sous 2 à 5 jours ouvrés)."
+      },
+      "collection": {
+        "title": "Collecte de l'échantillon",
+        "body": "Nous organisons la collecte des échantillons, scellés par Kounouz."
+      },
+      "analysis": {
+        "title": "Analyse en laboratoire",
+        "body": "Vos échantillons sont analysés dans des laboratoires accrédités."
+      },
+      "verified": {
+        "title": "Vérification",
+        "body": "Vous êtes notifié dès que votre miel est vérifié."
+      }
+    },
+    "notes": {
+      "title": "Points importants",
+      "items": [
+        "Vos documents doivent être à jour",
+        "Fournissez des informations exactes",
+        "La vérification inclut une analyse en laboratoire",
+        "Vous êtes notifié à chaque étape",
+        "Notre équipe peut vous contacter pour des précisions"
+      ]
+    },
+    "importantTitle": "Bon à savoir",
+    "importantBody": "Vous n'avez pas à créer d'identifiant de lot. L'identifiant officiel est attribué par Kounouz Alafiya une fois la vérification en laboratoire terminée.",
+    "tips": {
+      "title": "Conseils pour des informations exactes",
+      "items": [
+        "Indiquez les dates et le lieu les plus précis possibles.",
+        "Choisissez l'origine florale la plus proche si vous la connaissez.",
+        "Ces informations garantissent la traçabilité et la qualité."
+      ]
+    },
+    "examplesTitle": "Exemples d'origines florales",
+    "nextTitle": "Et ensuite ?",
+    "nextBody": "Après l'envoi de ces informations, notre équipe examinera votre demande et vous contactera pour organiser la collecte de l'échantillon.",
+    "batchIdNote": "L'identifiant officiel du lot sera créé par Kounouz Alafiya à l'issue du processus de vérification.",
+    "controlTitle": "Kounouz contrôle la vérification",
+    "controlBody": "Le scellé de l'échantillon, les résultats de laboratoire et la décision finale sont gérés exclusivement par Kounouz Alafiya.",
+    "confirmStatement": "Je confirme l'exactitude des informations fournies et j'accepte que Kounouz Alafiya prélève et analyse un échantillon de ce miel.",
+    "saveDraft": "Enregistrer le brouillon",
+    "draftSaved": "Brouillon enregistré. Vous pouvez le terminer à tout moment.",
+    "continueToHoney": "Continuer",
+    "continueToReview": "Continuer vers la vérification",
+    "submit": "Soumettre la demande",
+    "errors": {
+      "method": "Choisissez comment l'échantillon parviendra à Kounouz.",
+      "quantity": "Saisissez une quantité supérieure à 0.",
+      "coordinates": "Format attendu : latitude, longitude (ex : 36.7531, 10.4205).",
+      "harvestDates": "La fin de récolte doit être postérieure au début.",
+      "confirm": "Veuillez confirmer l'exactitude de vos informations."
+    },
+    "alreadySubmittedTitle": "Cette demande a déjà été soumise",
+    "alreadySubmittedBody": "Les demandes soumises sont gérées par Kounouz Alafiya et ne peuvent plus être modifiées.",
+    "success": {
+      "title": "Votre demande a été envoyée !",
+      "body": "Merci. Notre équipe va examiner votre demande et vous contacter pour organiser la collecte de l'échantillon.",
+      "reference": "Référence de la demande :"
+    }
+  },
+  "track": {
+    "submitted": "Soumise",
+    "review": "Examen Kounouz",
+    "collection": "Collecte organisée",
+    "sample": "Échantillon & scellé",
+    "analysis": "Analyse labo",
+    "decision": "Vérification",
+    "verified": "Vérifié",
+    "batch": "Lot & produit"
+  },
+  "requestDetail": {
+    "notFound": "Cette demande est introuvable.",
+    "progress": "Avancement de la demande",
+    "rejectedTitle": "Demande non acceptée",
+    "rejectedBody": "Kounouz n'a pas pu accepter cette demande. Contactez le support pour en savoir plus ou soumettez une nouvelle demande.",
+    "verifiedTitle": "Votre miel est Kounouz Vérifié ✓",
+    "verifiedBody": "Le miel a passé le processus de vérification Kounouz. L'emballage et la création du lot sont assurés par Kounouz.",
+    "notVerifiedTitle": "Miel non vérifié",
+    "notVerifiedBody": "Le miel n'a pas passé le processus de vérification.",
+    "methodNote": "Mode souhaité. Kounouz confirme l'organisation définitive.",
+    "sampleTitle": "Échantillon",
+    "noSample": "Aucun échantillon collecté pour le moment.",
+    "viewCustody": "Voir la chaîne de possession",
+    "batchTitle": "Lot vérifié",
+    "viewBatch": "Voir la traçabilité du lot"
+  },
+  "sampleStatus": {
+    "COLLECTED": "Collecté",
+    "SEALED": "Scellé",
+    "IN_TRANSIT": "En transit",
+    "RECEIVED_AT_LAB": "Reçu au laboratoire",
+    "ANALYZED": "Analysé"
+  },
+  "sealStatus": {
+    "INTACT": "Intact",
+    "BROKEN": "Compromis"
+  },
+  "analysisStatus": {
+    "PENDING": "En analyse",
+    "COMPLIANT": "Conforme",
+    "NON_COMPLIANT": "Non conforme"
+  },
+  "verificationStatus": {
+    "PENDING": "En attente",
+    "VERIFIED": "Vérifié",
+    "NOT_VERIFIED": "Non vérifié"
+  },
+  "batchStatus": {
+    "CREATED": "En attente",
+    "PACKAGED": "En conditionnement",
+    "READY": "Actif"
+  },
+  "packagingStatus": {
+    "IN_PROGRESS": "En cours",
+    "COMPLETED": "Terminé"
+  },
+  "productStatus": {
+    "BROUILLON": "En préparation",
+    "PUBLIE": "Actif",
+    "RUPTURE": "Rupture de stock",
+    "SUSPENDU": "Inactif",
+    "ARCHIVE": "Archivé"
+  },
+  "producerStatus": {
+    "PENDING": "En attente",
+    "ACTIVE": "Actif",
+    "SUSPENDED": "Suspendu",
+    "REJECTED": "Refusé"
+  },
+  "orderStatus": {
+    "PENDING": "En attente",
+    "CONFIRMED": "Confirmée",
+    "SHIPPED": "Expédiée",
+    "DELIVERED": "Livrée",
+    "CANCELLED": "Annulée"
+  },
+  "channel": {
+    "ONLINE_STORE": "Boutique en ligne",
+    "MARKETPLACE": "Marketplace",
+    "RETAIL_PARTNER": "Revendeur partenaire"
+  },
+  "settlementStatus": {
+    "OPEN": "En cours",
+    "PROCESSING": "En traitement",
+    "PAID": "Payé"
+  },
+  "samples": {
+    "title": "Mes échantillons",
+    "subtitle": "Suivez la collecte, le scellé et le parcours en laboratoire de vos échantillons.",
+    "readOnlyNote": "Les échantillons, scellés et résultats de laboratoire sont gérés par Kounouz Alafiya. Cette page est en lecture seule.",
+    "empty": "Aucun échantillon collecté. Ils apparaissent ici dès que Kounouz prélève un échantillon pour l'une de vos demandes.",
+    "searchPlaceholder": "Rechercher par scellé, identifiant de demande ou type de miel...",
+    "stats": {
+      "total": "Total des échantillons",
+      "inCustody": "En garde / transit",
+      "atLab": "Au laboratoire",
+      "analyzed": "Analysés"
+    },
+    "cols": {
+      "ref": "Réf. échantillon",
+      "request": "Demande",
+      "collected": "Date de collecte",
+      "seal": "Scellé Kounouz",
+      "custody": "Possession",
+      "analysis": "Analyse labo"
+    },
+    "seal": "Scellé",
+    "notSealed": "Pas encore scellé",
+    "noAnalysis": "Non démarrée",
+    "viewCustody": "Parcours",
+    "custodyTitle": "Chaîne de possession",
+    "quantity": "Quantité prélevée",
+    "location": "Lieu de collecte",
+    "collectedBy": "Collecté par",
+    "chain": "Parcours de l'échantillon",
+    "dateUnavailable": "Effectué",
+    "upcoming": "À venir"
+  },
+  "batches": {
+    "title": "Mes lots",
+    "subtitle": "Lots officiels vérifiés, créés par Kounouz Alafiya à partir de votre miel.",
+    "note": "Les identifiants de lot sont attribués par Kounouz après vérification. Le conditionnement est réalisé par Kounouz dans des pots Kounouz Alafiya.",
+    "empty": "Aucun lot pour le moment. Un lot est créé dès que votre miel est vérifié.",
+    "searchPlaceholder": "Rechercher par lot, type de miel ou demande...",
+    "noPackaging": "En attente de conditionnement",
+    "noProducts": "Aucun produit créé à partir de ce lot pour le moment.",
+    "traceability": "Traçabilité",
+    "viewProducts": "Voir mes produits",
+    "stats": {
+      "total": "Lots vérifiés",
+      "verifiedKg": "Quantité vérifiée",
+      "packaging": "En attente / conditionnement",
+      "active": "Lots actifs"
+    },
+    "cols": {
+      "id": "Identifiant du lot",
+      "honeyType": "Type de miel",
+      "quantity": "Quantité",
+      "request": "Demande",
+      "verified": "Vérifié le",
+      "packaging": "Conditionnement",
+      "products": "Produits",
+      "status": "Statut"
+    }
+  },
+  "trace": {
+    "request": "Demande de vérification",
+    "sample": "Échantillon & scellé",
+    "analysis": "Analyse en laboratoire",
+    "verification": "Vérification Kounouz",
+    "batch": "Lot vérifié",
+    "packaging": "Conditionnement Kounouz",
+    "products": "Produits & QR codes"
+  },
+  "products": {
+    "title": "Mes produits",
+    "subtitle": "Consultez et suivez les produits créés à partir de vos lots de miel vérifiés.",
+    "createdByKounouz": "Les produits sont créés et publiés par Kounouz Alafiya après vérification et conditionnement de votre miel.",
+    "requestVerification": "Demander une vérification",
+    "empty": "Aucun produit pour le moment. Ils apparaissent dès que Kounouz conditionne un lot vérifié de votre miel.",
+    "searchPlaceholder": "Rechercher des produits...",
+    "allHoneyTypes": "Tous les types de miel",
+    "category": "Catégorie",
+    "viewProduct": "Voir le produit",
+    "openVerification": "Ouvrir la page de vérification",
+    "viewBatch": "Voir le lot",
+    "viewSales": "Voir les ventes",
+    "verifiedOn": "Vérifié le",
+    "readOnlyNote": "Le prix, le stock et la publication sont gérés par Kounouz Alafiya.",
+    "qrNote": "Ce QR code renvoie vers la page de vérification Kounouz en temps réel.",
+    "noQr": "Le QR code est généré à la publication du produit.",
+    "stockUnits_one": "{{count}} unité",
+    "stockUnits_other": "{{count}} unités",
+    "showing": "Affichage de {{from}} à {{to}} sur {{total}} produits",
+    "stats": {
+      "total": "Total des produits",
+      "totalHint": "Tous types de miel confondus",
+      "active": "Produits actifs",
+      "activeHint": "Disponibles à la vente",
+      "pending": "Produits en attente",
+      "pendingHint": "En préparation",
+      "inactive": "Produits inactifs",
+      "inactiveHint": "Non disponibles à la vente"
+    },
+    "groups": {
+      "ACTIVE": "Actifs",
+      "PENDING": "En attente",
+      "INACTIVE": "Inactifs"
+    },
+    "sort": {
+      "label": "Tri",
+      "NEWEST": "Plus récents",
+      "OLDEST": "Plus anciens",
+      "NAME": "Par nom",
+      "STOCK": "Par stock",
+      "SALES": "Par ventes"
+    },
+    "view": {
+      "list": "Vue liste",
+      "grid": "Vue grille"
+    },
+    "cols": {
+      "product": "Produit",
+      "honeyType": "Type de miel",
+      "package": "Conditionnement",
+      "price": "Prix",
+      "stock": "Stock total",
+      "sales": "Ventes (unités)",
+      "status": "Statut",
+      "batch": "Lot associé",
+      "added": "Date d'ajout"
+    }
+  },
+  "profile": {
+    "title": "Mon profil",
+    "subtitle": "Gérez vos informations personnelles, votre exploitation et les paramètres du compte.",
+    "overview": "Aperçu du profil",
+    "tabs": {
+      "personal": "Informations personnelles",
+      "farm": "Exploitation",
+      "documents": "Documents",
+      "account": "Paramètres du compte",
+      "farms": "Ruchers"
+    },
+    "changePhoto": "Changer la photo",
+    "memberSince": "Membre depuis le {{date}}",
+    "registrationUnknown": "Immatriculation non renseignée",
+    "verifiedTitle": "Producteur vérifié",
+    "verifiedBody": "Votre compte est actif et enregistré chez Kounouz Alafiya.",
+    "notVerifiedTitle": "Vérification en cours",
+    "notVerifiedBody": "Complétez votre profil et vos documents pour que Kounouz vérifie votre compte producteur.",
+    "saveChanges": "Enregistrer",
+    "saved": "Modifications enregistrées.",
+    "photoUpdated": "Photo de profil mise à jour.",
+    "personal": {
+      "title": "Informations personnelles",
+      "fullName": "Nom complet",
+      "phone": "Téléphone",
+      "email": "Adresse e-mail",
+      "changeEmail": "Modifier l'e-mail dans Paramètres du compte",
+      "dateOfBirth": "Date de naissance",
+      "nationalId": "Carte d'identité nationale (CIN)",
+      "nationalIdOnce": "Ne peut être saisie qu'une fois. Contactez le support pour la corriger ensuite.",
+      "nationalIdLocked": "Verrouillée — contactez le support pour demander une correction."
+    },
+    "address": {
+      "title": "Adresse",
+      "address": "Adresse",
+      "postalCode": "Code postal",
+      "note": "Cette adresse sera utilisée pour les communications officielles et d'éventuelles visites sur le terrain."
+    },
+    "photo": {
+      "title": "Photo de profil",
+      "click": "Cliquez pour changer la photo",
+      "formats": "JPG, PNG (5 Mo max.)"
+    },
+    "farm": {
+      "bannerTitle": "Un environnement sain pour un miel d'exception",
+      "bannerBody": "Présentez votre exploitation. Ces informations renforcent la confiance et valorisent l'origine unique de votre miel.",
+      "bannerMotto": "Abeilles en bonne santé\nCommunautés plus saines",
+      "basic": "Informations de l'exploitation",
+      "farmName": "Nom de l'exploitation",
+      "activityType": "Type d'activité",
+      "registrationStatus": "Statut d'immatriculation",
+      "registrationNumber": "Numéro d'immatriculation (si disponible)",
+      "location": "Localisation",
+      "fullAddress": "Adresse complète",
+      "gps": "Position GPS",
+      "useLocation": "Ma position",
+      "locationDenied": "Impossible d'accéder à votre position. Saisissez les coordonnées manuellement.",
+      "map": "Carte de l'exploitation",
+      "openMap": "Ouvrir la carte",
+      "mapPlaceholder": "Saisissez les coordonnées GPS pour afficher votre exploitation sur la carte.",
+      "photos": "Photos de l'exploitation",
+      "photosHint": "Ajoutez des photos de votre exploitation (rucher, ruches, environnement...)",
+      "addPhoto": "Ajouter une photo",
+      "photosSaveHint": "Cliquez sur « Enregistrer » pour conserver les modifications des photos.",
+      "beekeeping": "Détails apicoles",
+      "productionPeriod": "Période de production",
+      "from": "De",
+      "to": "À",
+      "mainFlora": "Flore principale / types de miel",
+      "floraPlaceholder": "Saisir puis Entrée",
+      "annualProduction": "Production annuelle (estimée)",
+      "description": "Description",
+      "descriptionHint": "Parlez-nous de votre exploitation (facultatif)"
+    }
+  },
+  "options": {
+    "activity": {
+      "BEEKEEPING": "Apiculture (production de miel)",
+      "BEEKEEPING_AND_PROCESSING": "Apiculture & produits de la ruche",
+      "MIXED_FARMING": "Polyculture"
+    },
+    "registration": {
+      "REGISTERED": "Exploitation immatriculée",
+      "IN_PROGRESS": "Immatriculation en cours",
+      "NOT_REGISTERED": "Non immatriculée"
+    },
+    "payment": {
+      "BANK_TRANSFER": "Virement bancaire",
+      "POSTAL_ACCOUNT": "Virement sur compte postal"
+    }
+  },
+  "documents": {
+    "bannerTitle": "Documents sécurisés et vérifiés",
+    "bannerBody": "Déposez les documents requis pour compléter votre profil et bénéficier de la vérification, de la traçabilité et de toutes les fonctionnalités.",
+    "secureTitle": "Vos informations sont protégées",
+    "secureBody": "Les documents sont stockés de façon privée, accessibles uniquement par vous et l'équipe de vérification Kounouz.",
+    "required": "Documents requis",
+    "cols": {
+      "document": "Document",
+      "description": "Description",
+      "status": "Statut"
+    },
+    "status": {
+      "VERIFIED": "Vérifié",
+      "PENDING_REVIEW": "En cours de contrôle",
+      "REJECTED": "Refusé",
+      "NOT_UPLOADED": "Non déposé"
+    },
+    "types": {
+      "NATIONAL_ID": {
+        "label": "Carte d'identité (CIN)",
+        "description": "Copie de votre carte d'identité en cours de validité (recto et verso)."
+      },
+      "FARM_REGISTRATION": {
+        "label": "Attestation d'immatriculation",
+        "description": "Document officiel d'immatriculation de votre exploitation (si disponible)."
+      },
+      "BEEKEEPING_LICENSE": {
+        "label": "Autorisation d'activité apicole",
+        "description": "Autorisation officielle d'activité apicole (si exigée)."
+      },
+      "TAX_ID": {
+        "label": "Matricule fiscal",
+        "description": "Document attestant votre matricule fiscal."
+      },
+      "PROOF_OF_ADDRESS": {
+        "label": "Justificatif de domicile",
+        "description": "Facture récente ou document officiel indiquant votre adresse."
+      },
+      "OTHER": {
+        "label": "Autres documents",
+        "description": "Tout document complémentaire (certificat bio, labels qualité...)."
+      }
+    },
+    "uploadedOn": "Déposé le {{date}}",
+    "upload": "Déposer",
+    "replace": "Remplacer le fichier",
+    "lockedVerified": "Vérifié — verrouillé",
+    "filesCount_one": "{{count}} fichier",
+    "filesCount_other": "{{count}} fichiers",
+    "noneYet": "Aucun document déposé pour le moment.",
+    "uploadNew": "Déposer un nouveau document",
+    "documentType": "Type de document",
+    "dropzone": "Glissez-déposez votre fichier ici ou cliquez pour parcourir",
+    "formats": "JPG, PNG, PDF (10 Mo max.)",
+    "chooseFile": "Choisir un fichier",
+    "uploaded": "« {{name}} » déposé. Il est en attente de contrôle par Kounouz.",
+    "confirmDelete": "Supprimer « {{name}} » ?",
+    "errors": {
+      "format": "Formats acceptés : JPG, PNG, PDF.",
+      "size": "Le fichier dépasse 10 Mo."
+    },
+    "guidelinesTitle": "Consignes",
+    "guidelines": [
+      "Les fichiers doivent être nets et lisibles",
+      "Formats acceptés : JPG, PNG, PDF",
+      "Taille maximale : 10 Mo",
+      "Toutes les informations doivent être visibles",
+      "Le contrôle peut prendre 24 à 48 heures"
+    ]
+  },
+  "account": {
+    "pageSubtitle": "Gérez vos préférences, la sécurité du compte et les notifications.",
+    "bannerTitle": "Paramètres du compte",
+    "bannerBody": "Gérez vos préférences, la sécurité du compte et les notifications.",
+    "secureTitle": "Un compte plus sûr pour un avenir meilleur",
+    "secureBody": "Vos données contribuent à un écosystème du miel transparent et digne de confiance.",
+    "change": "Modifier",
+    "notSet": "Non renseigné",
+    "login": {
+      "title": "Identifiants de connexion",
+      "subtitle": "Gardez vos coordonnées à jour."
+    },
+    "password": {
+      "title": "Mot de passe",
+      "subtitle": "Changez régulièrement votre mot de passe pour sécuriser votre compte.",
+      "current": "Mot de passe actuel",
+      "currentPlaceholder": "Saisissez votre mot de passe actuel",
+      "new": "Nouveau mot de passe",
+      "newPlaceholder": "Saisissez le nouveau mot de passe",
+      "confirm": "Confirmer le mot de passe",
+      "confirmPlaceholder": "Confirmez le nouveau mot de passe",
+      "toggle": "Afficher ou masquer le mot de passe",
+      "requirements": "Exigences",
+      "rules": {
+        "length": "Au moins 8 caractères",
+        "upper": "Des lettres majuscules",
+        "lower": "Des lettres minuscules",
+        "number": "Au moins un chiffre",
+        "special": "Un caractère spécial"
+      },
+      "mismatch": "Les mots de passe ne correspondent pas.",
+      "submit": "Mettre à jour",
+      "success": "Mot de passe mis à jour."
+    },
+    "language": {
+      "title": "Langue & région",
+      "subtitle": "Choisissez votre langue et votre fuseau horaire.",
+      "language": "Langue",
+      "timezone": "Fuseau horaire",
+      "timezoneHint": "Les dates sont affichées à l'heure de Tunis."
+    },
+    "payment": {
+      "title": "Informations de paiement",
+      "subtitle": "Où Kounouz verse vos gains mensuels.",
+      "method": "Mode de paiement",
+      "bank": "Banque",
+      "iban": "IBAN / RIB",
+      "ibanHint": "Commence par TN suivi des chiffres de votre compte.",
+      "saved": "Informations de paiement enregistrées."
+    },
+    "security": {
+      "title": "Sécurité du compte",
+      "subtitle": "Gérez les paramètres de sécurité supplémentaires.",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "provided": "Renseigné",
+      "password": "Mot de passe",
+      "lastChanged": "Modifié le {{date}}",
+      "neverChanged": "Jamais modifié",
+      "twoFactor": "Authentification à deux facteurs",
+      "enabled": "Activée",
+      "notEnabled": "Non activée"
+    },
+    "twoFactor": {
+      "enable": "Activer l'authentification à deux facteurs",
+      "disable": "Désactiver l'authentification à deux facteurs",
+      "enableTitle": "Activer l'authentification à deux facteurs",
+      "disableTitle": "Désactiver l'authentification à deux facteurs",
+      "step1": "Installez une application d'authentification (Google Authenticator, Microsoft Authenticator...).",
+      "step2": "Scannez le QR code ci-dessous ou saisissez la clé manuellement.",
+      "step3": "Saisissez le code à 6 chiffres affiché par l'application pour confirmer.",
+      "manualKey": "Clé de configuration manuelle",
+      "code": "Code à 6 chiffres",
+      "activate": "Activer",
+      "enabledSuccess": "L'authentification à deux facteurs est activée.",
+      "disabledSuccess": "L'authentification à deux facteurs est désactivée."
+    },
+    "notifications": {
+      "title": "Préférences de notification",
+      "subtitle": "Choisissez les notifications que vous souhaitez recevoir.",
+      "groups": {
+        "account": {
+          "title": "Mises à jour du compte",
+          "body": "Contrôle des documents et réponses du support"
+        },
+        "verification": {
+          "title": "Suivi de la vérification",
+          "body": "Statut de vos échantillons et demandes"
+        },
+        "sales": {
+          "title": "Ventes & paiements",
+          "body": "Publication des produits, nouvelles commandes et versements"
+        }
+      },
+      "inAppOnly": "Les notifications sont délivrées dans la plateforme."
+    },
+    "actions": {
+      "title": "Actions sur le compte",
+      "deleteTitle": "Supprimer le compte",
+      "deleteBody": "Cette action est irréversible.",
+      "deleteCta": "Supprimer mon compte"
+    },
+    "emailModal": {
+      "title": "Changer d'adresse e-mail",
+      "newEmail": "Nouvelle adresse e-mail",
+      "hint": "Par sécurité, confirmez avec votre mot de passe actuel.",
+      "success": "Adresse e-mail mise à jour."
+    },
+    "phoneModal": {
+      "title": "Changer de numéro de téléphone",
+      "success": "Numéro de téléphone mis à jour."
+    },
+    "deleteModal": {
+      "title": "Supprimer mon compte",
+      "body": "Vous serez déconnecté et ne pourrez plus accéder à votre portail producteur.",
+      "traceability": "Si vous avez déjà soumis des demandes ou vendu des produits, votre compte sera désactivé plutôt qu'effacé : les données de traçabilité (échantillons, lots, QR codes) doivent rester disponibles pour les consommateurs.",
+      "keyword": "SUPPRIMER",
+      "typeToConfirm": "Saisissez {{keyword}} pour confirmer",
+      "deleted": "Votre compte a été supprimé.",
+      "deactivated": "Votre compte a été désactivé. Les données de traçabilité sont conservées."
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Les mises à jour de vos demandes, échantillons, produits et paiements.",
+    "preferences": "Préférences",
+    "filters": {
+      "all": "Toutes",
+      "unread": "Non lues"
+    },
+    "noUnread": "Vous êtes à jour !",
+    "unread": "Non lue"
+  },
+  "sales": {
+    "sections": {
+      "dashboard": {
+        "tab": "Tableau des ventes",
+        "title": "Tableau des ventes",
+        "subtitle": "Vue d'ensemble de vos ventes, gains et performances."
+      },
+      "history": {
+        "tab": "Historique des ventes",
+        "title": "Historique des ventes",
+        "subtitle": "Consultez l'historique détaillé des ventes de vos produits."
+      },
+      "earnings": {
+        "tab": "Gains & commission",
+        "title": "Gains & commission",
+        "subtitle": "Comprenez vos gains, le détail de la commission et vos prochains paiements."
+      },
+      "settlements": {
+        "tab": "Détail des règlements",
+        "title": "Détail du règlement",
+        "subtitle": "Consultez le détail de vos gains, commissions et statut de paiement."
+      }
+    },
+    "vsPrevious": "{{value}} vs période précédente",
+    "newVsPrevious": "Nouveau vs période précédente",
+    "rate": "Commission de {{rate}}",
+    "currencyRate": "TND ({{rate}})",
+    "overview": "Aperçu des ventes",
+    "overviewHint": "Unités vendues sur la période sélectionnée",
+    "byPackage": "Ventes par conditionnement",
+    "byPackageHint": "Répartition des unités vendues",
+    "noSalesInRange": "Aucune vente sur cette période",
+    "topProducts": "Meilleures ventes",
+    "recentSales": "Ventes récentes",
+    "searchPlaceholder": "Rechercher par n° de commande, produit...",
+    "copyOrder": "Copier le n° de commande",
+    "viewSettlement": "Voir le règlement",
+    "showingOrders": "Affichage de {{from}} à {{to}} sur {{total}} commandes",
+    "filters": {
+      "allProducts": "Tous les produits",
+      "allSizes": "Tous les conditionnements",
+      "allChannels": "Tous les canaux"
+    },
+    "cols": {
+      "date": "Date",
+      "order": "Commande",
+      "units": "Unités",
+      "quantity": "Quantité",
+      "unitPrice": "Prix unitaire",
+      "unitPriceTnd": "Prix unitaire (TND)",
+      "amount": "Montant",
+      "amountTnd": "Montant (TND)",
+      "commission": "Commission",
+      "commissionTnd": "Commission (TND)",
+      "channel": "Canal",
+      "status": "Statut"
+    },
+    "detail": {
+      "orderedOn": "Commandée le",
+      "deliveredOn": "Livrée le",
+      "city": "Ville de livraison",
+      "commission": "Commission Kounouz ({{rate}})",
+      "privacy": "Les données personnelles des clients sont conservées par Kounouz et ne sont pas partagées avec les producteurs."
+    }
+  },
+  "earnings": {
+    "nextPayout": "Prochain versement : {{date}}",
+    "nothingPending": "Aucun paiement en attente.",
+    "trend": "Évolution des gains",
+    "trendHint": "Vos ventes, commission et gains nets dans le temps (commandes livrées).",
+    "commissionTnd": "Commission (TND)",
+    "breakdown": "Répartition de la commission",
+    "breakdownHint": "Comment la commission est calculée.",
+    "kounouzShare": "Commission Kounouz ({{rate}})",
+    "yourShare": "Vos gains ({{rate}})",
+    "payoutHistory": "Historique des paiements",
+    "payoutHistoryHint": "Tous les versements effectués.",
+    "noSettlements": "Aucun règlement pour le moment.",
+    "download": "Télécharger",
+    "nextPayment": "Prochain paiement",
+    "nextPaymentHint": "Estimation du prochain versement.",
+    "estimated": "Gains estimés",
+    "payoutRule": "Les versements sont généralement effectués le 15 de chaque mois pour les ventes livrées le mois précédent.",
+    "viewSettlement": "Voir le détail du règlement",
+    "missingBank": "Ajoutez vos coordonnées bancaires pour recevoir vos versements.",
+    "addBank": "Ajouter les informations de paiement",
+    "cols": {
+      "payoutDate": "Date de versement",
+      "period": "Période",
+      "receipt": "Reçu"
+    }
+  },
+  "settlements": {
+    "select": "Choisir un règlement",
+    "option": "Règlement {{id}} — {{month}}",
+    "emptyHint": "Un règlement est créé automatiquement pour chaque mois comportant des ventes livrées.",
+    "ordersCount_one": "{{count}} commande",
+    "ordersCount_other": "{{count}} commandes",
+    "commission": "Commission",
+    "netEarnings": "Gains nets",
+    "period": "Période du règlement",
+    "monthly": "Règlement mensuel",
+    "ordersTitle": "Commandes incluses dans ce règlement",
+    "ordersHint": "Commandes livrées faisant partie de cette période de règlement.",
+    "deliveredOn": "Livrée",
+    "summary": "Récapitulatif",
+    "itemsSold": "Articles vendus",
+    "totalAmount": "Montant total des ventes",
+    "rate": "Taux de commission",
+    "totalCommission": "Commission totale",
+    "paymentInfo": "Informations de paiement",
+    "paidOn": "Payé le",
+    "expectedPayout": "Date de versement prévue",
+    "reference": "Référence du virement",
+    "downloadReceipt": "Télécharger le reçu",
+    "support": "Support",
+    "supportBody": "Pour toute question sur ce règlement, contactez notre équipe support."
+  },
+  "farms": {
+    "title": "Mes ruchers",
+    "intro": "Déclarez chacun de vos ruchers. Chaque demande de vérification est rattachée au rucher d'où provient le miel.",
+    "add": "Ajouter un rucher",
+    "newTitle": "Nouveau rucher",
+    "name": "Nom du rucher",
+    "governorate": "Gouvernorat",
+    "delegation": "Délégation",
+    "hives": "Nombre de ruches",
+    "method": "Mode d'apiculture",
+    "location": "Localisation",
+    "requests": "Demandes",
+    "primary": "Principal",
+    "inactive": "Inactif",
+    "makePrimary": "Définir comme principal",
+    "deactivate": "Désactiver",
+    "reactivate": "Réactiver",
+    "created": "Rucher ajouté.",
+    "primarySet": "Rucher principal mis à jour.",
+    "deactivated": "Rucher désactivé.",
+    "reactivated": "Rucher réactivé.",
+    "requestFarm": "Rucher d'origine",
+    "requestFarmHint": "La localisation est pré-remplie à partir du rucher choisi."
+  },
+  "infoRequest": {
+    "title": "Kounouz a besoin d'une précision",
+    "question": "Question :",
+    "answer": "Votre réponse",
+    "optionalFields": "Vous pouvez aussi compléter les informations ci-dessous (facultatif).",
+    "quantity": "Quantité (kg)",
+    "hives": "Nombre de ruches",
+    "farm": "Rucher d'origine",
+    "description": "Description",
+    "send": "Envoyer ma réponse",
+    "assistantTitle": "Où en est ma demande ?"
+  },
+  "sku": {
+    "title": "Ventes par format (SKU)",
+    "settlementTitle": "Détail par format (SKU)",
+    "hint": "Unités, chiffre d'affaires, commission Kounouz et net, pour chaque format de pot.",
+    "sku": "SKU",
+    "format": "Format",
+    "units": "Unités",
+    "gross": "Brut",
+    "commission": "Commission",
+    "net": "Net",
+    "total": "Total"
+  }
+}

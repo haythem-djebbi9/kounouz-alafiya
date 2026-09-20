@@ -1,0 +1,338 @@
+{
+  "navGroups": {
+    "overview": "Vue d'ensemble",
+    "traceability": "Traçabilité",
+    "catalog": "Catalogue",
+    "steering": "Pilotage",
+    "sales": "Ventes"
+  },
+  "nav": {
+    "producers": "Producteurs",
+    "requests": "Demandes",
+    "samples": "Échantillons",
+    "seals": "Scellés",
+    "laboratory": "Laboratoire",
+    "verification": "Vérification",
+    "batches": "Lots",
+    "packaging": "Emballage",
+    "products": "Produits",
+    "categories": "Catégories",
+    "qrCodes": "Codes QR",
+    "reports": "Rapports",
+    "team": "Équipe et utilisateurs",
+    "supportInbox": "Demandes de support",
+    "orders": "Commandes",
+    "settlements": "Règlements producteurs"
+  },
+  "role": {
+    "ADMIN": "Administrateur",
+    "VERIFICATION_TEAM": "Équipe de vérification"
+  },
+  "dashboard": {
+    "greeting": "Bonjour, {{name}}",
+    "subtitle": "Aperçu de l'activité en cours.",
+    "kpi": {
+      "pendingRequests": "Demandes en attente de révision",
+      "samplesInPipeline": "Échantillons en traitement",
+      "labResults": "Résultats de laboratoire enregistrés",
+      "referenceSamples": "Échantillons de référence conservés",
+      "verified": "Vérifiés",
+      "notVerified": "Non conformes",
+      "readyForPackaging": "Lots prêts pour l'emballage",
+      "verificationRate": "Taux de vérification"
+    },
+    "totals": {
+      "producers": "Producteurs enregistrés",
+      "verifiedProducers": "Producteurs vérifiés",
+      "publishedProducts": "Produits publiés"
+    }
+  },
+  "producers": {
+    "empty": "Aucun producteur enregistré pour le moment",
+    "verifiedBadge": "Vérifié"
+  },
+  "producerDetail": {
+    "backToProducers": "Retour aux producteurs",
+    "requestsHeading": "Demandes de vérification",
+    "noRequests": "Aucune demande pour ce producteur",
+    "contact": "Contact",
+    "hives_one": "{{count}} ruche",
+    "hives_other": "{{count}} ruches",
+    "status": "Statut du producteur",
+    "documentsHeading": "Documents administratifs",
+    "noDocuments": "Aucun document déposé",
+    "approve": "Valider",
+    "reject": "Refuser",
+    "rejectReason": "Motif du refus (visible par le producteur) :"
+  },
+  "requests": {
+    "heading": "Demandes de vérification",
+    "empty": "Aucune demande dans cette catégorie",
+    "tabs": {
+      "ALL": "Toutes",
+      "NEW": "Nouvelles",
+      "IN_REVIEW": "En cours d'examen",
+      "ACCEPTED": "Acceptées",
+      "REJECTED": "Refusées"
+    }
+  },
+  "requestDetail": {
+    "backToRequests": "Retour aux demandes",
+    "updateError": "Impossible de mettre à jour le statut de la demande.",
+    "collectionLocation": "Lieu de collecte",
+    "quantity": "Quantité",
+    "description": "Description",
+    "requestDate": "Date de la demande",
+    "setInReview": "Mettre en cours d'examen",
+    "accept": "Accepter la demande",
+    "reject": "Refuser la demande",
+    "linkedSample": "Échantillon associé",
+    "view": "Voir",
+    "requestCode": "Identifiant",
+    "preferredMethod": "Collecte souhaitée",
+    "floralCategory": "Catégorie florale",
+    "floralOrigin": "Origine florale",
+    "season": "Saison de production",
+    "harvest": "Période de récolte",
+    "coordinates": "Coordonnées",
+    "hives": "Ruches",
+    "beekeepingMethod": "Méthode apicole",
+    "hiveType": "Type de ruche",
+    "farmSize": "Taille de l'exploitation"
+  },
+  "samples": {
+    "empty": "Aucun échantillon enregistré pour le moment",
+    "collectedBy": "Collecté par {{name}}"
+  },
+  "sampleDetail": {
+    "backToSamples": "Retour aux échantillons",
+    "updateError": "Impossible de mettre à jour le statut.",
+    "collectionLocation": "Lieu de collecte",
+    "collectionDate": "Date de collecte",
+    "photos": "Photos justificatives",
+    "photoAlt": "Photo justificative",
+    "sealed": "Scellé",
+    "confirmReceived": "Confirmer la réception de l'échantillon au laboratoire",
+    "labAnalysis": "Analyse de laboratoire"
+  },
+  "seals": {
+    "heading": "Scellés de sécurité",
+    "subtitle": "Registre non modifiable — chaque scellé est lié à un seul échantillon de manière définitive.",
+    "empty": "Aucun scellé enregistré pour le moment",
+    "intact": "Intact",
+    "broken": "Brisé"
+  },
+  "laboratory": {
+    "tabs": {
+      "analyses": "Analyses",
+      "labs": "Laboratoires",
+      "reference": "Échantillons de référence"
+    },
+    "notDetected": "Non détecté",
+    "resultFields": {
+      "humidity": "Taux d'humidité (%)",
+      "ph": "Acidité (pH)",
+      "hmf": "HMF (mg/kg)",
+      "reducingSugars": "Sucres réducteurs (%)",
+      "proline": "Proline (mg/kg)",
+      "dominantPollen": "Pollen dominant",
+      "pesticides": "Pesticides",
+      "antibiotics": "Antibiotiques"
+    },
+    "labs": {
+      "new": "Nouveau laboratoire",
+      "empty": "Aucun laboratoire enregistré pour le moment",
+      "createError": "Impossible d'ajouter le laboratoire.",
+      "name": "Nom du laboratoire",
+      "accreditationNo": "Numéro d'accréditation",
+      "country": "Pays",
+      "contactInfo": "Coordonnées"
+    },
+    "analyses": {
+      "record": "Enregistrer un résultat d'analyse",
+      "empty": "Aucune analyse enregistrée pour le moment",
+      "createError": "Impossible d'enregistrer l'analyse.",
+      "noEligibleSamples": "Aucun échantillon reçu au laboratoire en attente d'analyse actuellement.",
+      "sampleFallback": "Échantillon",
+      "sample": "Échantillon",
+      "selectSample": "Choisir un échantillon",
+      "selectLab": "Choisir un laboratoire",
+      "analysisDate": "Date d'analyse",
+      "conclusion": "Conclusion",
+      "conclusionCompliant": "Conforme",
+      "conclusionNonCompliant": "Non conforme",
+      "conclusionPending": "En attente de révision",
+      "saveResult": "Enregistrer le résultat"
+    },
+    "reference": {
+      "save": "Enregistrer un échantillon de référence",
+      "empty": "Aucun échantillon de référence enregistré pour le moment",
+      "createError": "Impossible d'enregistrer l'échantillon de référence.",
+      "storageLocation": "Lieu de stockage",
+      "storageConditions": "Conditions de stockage",
+      "retentionPeriod": "Durée de conservation"
+    }
+  },
+  "verification": {
+    "heading": "Décisions de vérification",
+    "new": "Nouvelle décision",
+    "createError": "Impossible d'enregistrer la décision.",
+    "noEligibleSamples": "Aucun échantillon analysé en attente d'une décision de vérification actuellement.",
+    "empty": "Aucune décision de vérification prise pour le moment",
+    "decidedBy": "{{producer}} · décision {{name}}",
+    "selectAnalyzedSample": "Choisir un échantillon analysé",
+    "labAnalysisSummary": "Résumé de l'analyse de laboratoire",
+    "nonCompliantWarning": "L'échantillon ne peut pas être considéré comme « vérifié » car l'analyse est non conforme — vous ne pouvez choisir que « non conforme ».",
+    "decision": "Décision",
+    "decisionVerified": "Vérifié ✅",
+    "decisionNotVerified": "Non conforme",
+    "notesOptional": "Notes (facultatif)",
+    "confirmDecision": "Confirmer la décision"
+  },
+  "batches": {
+    "createError": "Impossible de créer le lot.",
+    "new": "Nouveau lot",
+    "noEligibleVerifications": "Aucune décision de vérification « vérifiée » sans lot actuellement.",
+    "empty": "Aucun lot pour le moment",
+    "verificationDecision": "Décision de vérification",
+    "selectVerifiedDecision": "Choisir une décision vérifiée",
+    "quantityKg": "Quantité (kg)",
+    "productionDate": "Date de production",
+    "create": "Créer le lot"
+  },
+  "packaging": {
+    "createError": "Impossible de créer l'emballage.",
+    "completeError": "Impossible de terminer l'emballage.",
+    "new": "Nouvel emballage",
+    "noEligibleBatches": "Aucun lot en attente d'emballage actuellement.",
+    "empty": "Aucune opération d'emballage pour le moment",
+    "complete": "Terminer l'emballage",
+    "selectBatch": "Choisir un lot",
+    "packageType": "Type d'emballage",
+    "size": "Taille",
+    "labelDesign": "Design de l'étiquette (facultatif)",
+    "productionDate": "Date d'emballage"
+  },
+  "categories": {
+    "saveError": "Impossible d'enregistrer la catégorie.",
+    "deleteError": "Impossible de supprimer la catégorie.",
+    "new": "Nouvelle catégorie",
+    "edit": "Modifier la catégorie",
+    "empty": "Aucune catégorie pour le moment",
+    "name": "Nom",
+    "descriptionOptional": "Description (facultatif)",
+    "imageUrlOptional": "URL de l'image (facultatif)",
+    "parentOptional": "Catégorie parente (facultatif)",
+    "rootCategory": "— Catégorie principale —",
+    "displayOrder": "Ordre d'affichage",
+    "activeLabel": "Catégorie active (visible sur la boutique)",
+    "inactive": "Inactive"
+  },
+  "units": {
+    "kg": "kg",
+    "currency": "TND"
+  },
+  "products": {
+    "createError": "Impossible de créer le produit.",
+    "new": "Nouveau produit",
+    "empty": "Aucun produit dans cette catégorie",
+    "searchPlaceholder": "Rechercher par nom...",
+    "stock": "Stock",
+    "productName": "Nom du produit",
+    "selectCategory": "Choisir une catégorie",
+    "price": "Prix (TND)",
+    "rangeOptional": "Gamme (facultatif)",
+    "linkedBatch": "Lot associé (facultatif pour l'instant, requis pour la publication)",
+    "noBatch": "— Sans lot —",
+    "imageUrls": "URLs des images (séparées par une virgule, facultatif)",
+    "createAsDraft": "Créer le produit (en brouillon)",
+    "tabs": {
+      "ALL": "Tous",
+      "BROUILLON": "Brouillon",
+      "PUBLIE": "Publié",
+      "RUPTURE": "Rupture de stock",
+      "SUSPENDU": "Suspendu",
+      "ARCHIVE": "Archivés"
+    }
+  },
+  "productDetail": {
+    "saveError": "Impossible d'enregistrer les modifications.",
+    "statusUpdateError": "Impossible de mettre à jour le statut du produit.",
+    "backToProducts": "Retour aux produits",
+    "range": "Gamme",
+    "linkedBatch": "Lot associé",
+    "publish": "Publier le produit",
+    "markOutOfStock": "Marquer en rupture de stock",
+    "suspend": "Suspendre",
+    "republish": "Republier",
+    "qrCode": "Code QR du produit",
+    "qrCodePending": "Le code QR sera généré automatiquement lors de la première publication du produit.",
+    "editTitle": "Modifier le produit",
+    "cannotChangeBatch": "Impossible de changer le lot d'un produit déjà publié.",
+    "imageUrls": "URLs des images (séparées par une virgule)",
+    "saveChanges": "Enregistrer les modifications"
+  },
+  "qrCodes": {
+    "empty": "Aucun code QR pour le moment",
+    "emptyDescription": "Ils sont générés automatiquement lors de la publication du premier produit.",
+    "active": "Actif",
+    "inactive": "Suspendu",
+    "scanCount": "{{count}} scans",
+    "scanHistory": "Historique des scans",
+    "noScans": "Aucun scan pour le moment.",
+    "unknownCountry": "Inconnu",
+    "flagged": "Suspect",
+    "searchPlaceholder": "Rechercher par produit ou par code...",
+    "noResults": "Aucun code QR ne correspond à cette recherche.",
+    "codeLabel": "Code",
+    "qrIdLabel": "Identifiant technique",
+    "deactivate": "Suspendre ce code",
+    "activate": "Réactiver ce code",
+    "deactivateWarning": "Un code suspendu ne pourra plus être vérifié par les clients (page \"produit introuvable\").",
+    "statusUpdateError": "Impossible de modifier le statut de ce code.",
+    "copyLink": "Copier le lien de vérification",
+    "linkCopied": "Lien copié !"
+  },
+  "reports": {
+    "downloadError": "Impossible de télécharger le rapport.",
+    "operationalReport": "Rapport opérationnel",
+    "byProducer": "Par producteur",
+    "requestsAndVerified": "{{requests}} demandes · {{verified}} vérifiées",
+    "kgInBatches": "{{kg}} kg en lots",
+    "antiFraud": "Lutte anti-fraude",
+    "totalScans": "Total des scans",
+    "flaggedScans": "Scans suspects",
+    "flaggedRate": "Taux de suspicion",
+    "topFlaggedProducts": "Produits les plus suspects"
+  },
+  "orders": {
+    "heading": "Commandes",
+    "subtitle": "Commandes de la marketplace et suivi de livraison. Les commandes livrées alimentent les règlements producteurs.",
+    "all": "Toutes",
+    "empty": "Aucune commande",
+    "confirmCancel": "Annuler la commande #{{number}} ? Le stock sera restauré.",
+    "actions": {
+      "CONFIRMED": "Confirmer",
+      "SHIPPED": "Marquer expédiée",
+      "DELIVERED": "Marquer livrée",
+      "CANCELLED": "Annuler",
+      "PENDING": "En attente"
+    }
+  },
+  "settlements": {
+    "heading": "Règlements producteurs",
+    "subtitle": "Gains mensuels des producteurs après commission Kounouz, calculés sur les commandes livrées.",
+    "empty": "Aucun règlement pour le moment",
+    "toPay_one": "{{count}} période clôturée à payer ({{amount}}).",
+    "toPay_other": "{{count}} périodes clôturées à payer ({{amount}}).",
+    "orders_one": "{{count}} commande",
+    "orders_other": "{{count}} commandes",
+    "noIban": "IBAN non renseigné",
+    "gross": "Ventes",
+    "commission": "Commission",
+    "paidOn": "Payé le {{date}}",
+    "markPaid": "Marquer comme payé",
+    "openHint": "Période non clôturée",
+    "referencePrompt": "Référence du virement pour {{producer}} ({{amount}}) - facultatif :"
+  }
+}

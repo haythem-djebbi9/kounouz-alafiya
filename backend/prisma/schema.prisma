@@ -23,19 +23,115 @@ enum Role {
   CONSUMER
 }
 
+// DRAFT : brouillon enregistré par le producteur, jamais visible côté
+// Kounouz tant qu'il n'est pas soumis (passage à NEW).
+// Les statuts qui suivent ACCEPTED suivent l'avancement réel du dossier
+// (cahier des charges §6) : ils sont dérivés des événements échantillon /
+// laboratoire / vérification, jamais saisis à la main par le producteur.
 enum VerificationRequestStatus {
+  DRAFT
   NEW
   IN_REVIEW
+  INFO_REQUESTED
   ACCEPTED
+  COLLECTION_SCHEDULED
+  SAMPLE_COLLECTED
+  UNDER_ANALYSIS
+  VERIFICATION_PENDING
+  VERIFIED
+  NOT_VERIFIED
   REJECTED
 }
 
+enum ProducerStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  REJECTED
+}
+
+// Les deux scénarios physiques du cahier des charges : Kounouz se déplace
+// chez le producteur, ou le producteur apporte l'échantillon.
+enum CollectionMethod {
+  KOUNOUZ_VISIT
+  PRODUCER_DELIVERY
+}
+
+enum ProducerDocumentType {
+  NATIONAL_ID
+  FARM_REGISTRATION
+  BEEKEEPING_LICENSE
+  TAX_ID
+  PROOF_OF_ADDRESS
+  OTHER
+}
+
+enum ProducerDocumentStatus {
+  PENDING_REVIEW
+  VERIFIED
+  REJECTED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum SalesChannel {
+  ONLINE_STORE
+  MARKETPLACE
+  RETAIL_PARTNER
+}
+
+// Parcours physique de l'échantillon. RECEIVED = réceptionné chez Kounouz,
+// RECEIVED_AT_LAB = confié au laboratoire, ANALYZED = analyse terminée.
+// ISSUE est un état terminal : anomalie de transport, scellé compromis, volume
+// insuffisant... Il gèle le dossier tant qu'un humain n'a pas tranché.
 enum SampleStatus {
   COLLECTED
   SEALED
   IN_TRANSIT
+  RECEIVED
   RECEIVED_AT_LAB
   ANALYZED
+  ISSUE
+}
+
+// Chaîne de possession (§8) : chaque transition significative laisse une trace
+// horodatée et nominative, y compris quand elle ne change pas le statut.
+enum SampleEventType {
+  REGISTERED
+  COLLECTED
+  SEALED
+  IN_TRANSIT
+  RECEIVED
+  SENT_TO_LAB
+  IN_LABORATORY
+  ANALYSIS_COMPLETED
+  RESULT_ADDED
+  ISSUE
+  // Portail Agent Terrain : remise au transporteur, puis points de passage
+  // géolocalisés pendant le trajet (sans changement de statut).
+  RELEASED_FOR_TRANSPORT
+  LOCATION_UPDATE
+}
+
+// Mission de collecte confiée à un agent terrain (planning, priorité, matériel).
+enum CollectionPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+enum CollectionAssignmentStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
 }
 
 enum SealStatus {
@@ -43,27 +139,116 @@ enum SealStatus {
   BROKEN
 }
 
+// Conclusion de l'analyse (le miel est-il conforme ?).
 enum LabAnalysisStatus {
   PENDING
   COMPLIANT
   NON_COMPLIANT
 }
 
+// Avancement du travail du laboratoire (où en est le dossier ?), distinct de
+// la conclusion : une analyse peut être COMPLETED et NON_COMPLIANT.
+enum LabWorkflowStatus {
+  ASSIGNED
+  IN_PROGRESS
+  COMPLETED
+  REVIEWED
+}
+
+// Position d'un paramètre mesuré vis-à-vis de sa plage de référence.
+// NOT_APPLICABLE couvre les paramètres qualitatifs (profil sucres, pollens)
+// qui n'ont pas de seuil numérique.
+enum LabTestStatus {
+  WITHIN_RANGE
+  OUT_OF_RANGE
+  NOT_DETECTED
+  DETECTED
+  NOT_APPLICABLE
+}
+
+// ADDITIONAL_ANALYSIS : le vérificateur renvoie le dossier au laboratoire au
+// lieu de trancher — le lot reste bloqué, aucun produit n'est publiable.
 enum VerificationStatus {
   PENDING
   VERIFIED
   NOT_VERIFIED
+  ADDITIONAL_ANALYSIS
 }
 
+// Cycle de vie du lot commercial (§13). CREATED et READY sont conservés pour
+// les lots antérieurs : CREATED se lit comme VERIFIED, READY comme PACKAGED.
+// SUSPENDED et RECALLED sont des états de retrait : le QR continue de
+// fonctionner mais la page publique affiche le statut réel (§17).
 enum BatchStatus {
   CREATED
+  VERIFIED
+  READY_FOR_PACKAGING
+  IN_PACKAGING
   PACKAGED
   READY
+  CONVERTED_TO_PRODUCT
+  PUBLISHED
+  SUSPENDED
+  RECALLED
 }
 
 enum PackagingStatus {
+  PLANNED
   IN_PROGRESS
   COMPLETED
+}
+
+// État d'un QR unitaire. DEACTIVATED est réservé aux codes non encore posés :
+// un code déjà apposé sur un pot en circulation n'est jamais désactivé, sans
+// quoi le consommateur verrait disparaître la preuve de son produit.
+enum QrCodeStatus {
+  ACTIVE
+  DEACTIVATED
+}
+
+enum LaboratoryStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+}
+
+// Issue d'un scan consommateur. INVALID : identifiant inconnu (code copié ou
+// inventé) ; SUSPICIOUS : code réel, mais comportement anormal détecté.
+enum ScanResult {
+  VALID
+  SUSPICIOUS
+  INVALID
+}
+
+enum CounterfeitAlertType {
+  SUSPECTED_DUPLICATE
+  UNUSUAL_LOCATION
+  INVALID_QR
+  TAMPERED_LABEL
+  BULK_SCAN
+}
+
+// Cycle de revue humaine (§Anti-contrefaçon) : une alerte n'est qu'un signal
+// tant qu'un membre de Kounouz ne l'a pas CONFIRMED (incident avéré) ou
+// DISMISSED (fausse alerte). RESOLVED clôt un incident confirmé et traité.
+enum CounterfeitAlertStatus {
+  OPEN
+  INVESTIGATING
+  CONFIRMED
+  RESOLVED
+  DISMISSED
+}
+
+enum AlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum AuditStatus {
+  SUCCESS
+  FAILED
+  WARNING
 }
 
 // Valeurs conservées en français : ce sont les statuts métier tels que définis
@@ -73,6 +258,24 @@ enum ProductStatus {
   PUBLIE
   RUPTURE
   SUSPENDU
+  // Fin de vie commerciale : retiré du catalogue, historique conservé.
+  ARCHIVE
+}
+
+// Déclinaison commerciale (SKU) d'un produit : un format de pot.
+enum ProductVariantStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// Outbox des événements métier (§Architecture événementielle). Un événement
+// n'est écrit qu'après la réussite de la transaction qui l'a produit ; le
+// worker le traite ensuite, avec reprise et file d'erreurs (DEAD_LETTER).
+enum DomainEventStatus {
+  PENDING
+  PROCESSING
+  PROCESSED
+  DEAD_LETTER
 }
 
 // ---------------------------------------------------------------------------
@@ -80,42 +283,131 @@ enum ProductStatus {
 // ---------------------------------------------------------------------------
 
 model User {
-  id           String   @id @default(uuid())
-  name         String
-  email        String   @unique
-  passwordHash     String   @map("password_hash")
-  role             Role
-  isActive         Boolean  @default(true) @map("is_active")
-  refreshTokenHash String?  @map("refresh_token_hash")
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
+  id                     String             @id @default(uuid())
+  name                   String
+  email                  String             @unique
+  passwordHash           String             @map("password_hash")
+  role                   Role
+  isActive               Boolean            @default(true) @map("is_active")
+  refreshTokenHash       String?            @map("refresh_token_hash")
+  language               String             @default("ar") @map("language")
+  mutedNotificationTypes NotificationType[] @default([]) @map("muted_notification_types")
+  passwordChangedAt      DateTime?          @map("password_changed_at")
+  // TOTP (application d'authentification) — aucun canal SMS/e-mail requis.
+  twoFactorEnabled       Boolean            @default(false) @map("two_factor_enabled")
+  twoFactorSecret        String?            @map("two_factor_secret")
+  // Console d'administration : coordonnées internes et dernière connexion.
+  phone                  String?
+  location               String?
+  lastLoginAt            DateTime?          @map("last_login_at")
+  createdAt              DateTime           @default(now()) @map("created_at")
+  updatedAt              DateTime           @updatedAt @map("updated_at")
 
   producer Producer?
   consumer Consumer?
 
-  collectedSamples      Sample[]       @relation("FieldAgentSamples")
-  verificationDecisions Verification[] @relation("VerificationDecidedBy")
-  auditLogs             AuditLog[]
-  notifications         Notification[]
+  collectedSamples       Sample[]               @relation("FieldAgentSamples")
+  verificationDecisions  Verification[]         @relation("VerificationDecidedBy")
+  assignedRequests       VerificationRequest[]  @relation("RequestAssignee")
+  requestComments        RequestComment[]       @relation("RequestCommentAuthor")
+  requestDocuments       RequestDocument[]      @relation("RequestDocumentUploader")
+  sampleEvents           SampleEvent[]          @relation("SampleEventAuthor")
+  assignedAnalyses       LaboratoryAnalysis[]   @relation("AnalysisAssignee")
+  analysisFiles          LabAnalysisFile[]      @relation("AnalysisFileUploader")
+  referenceHoneys        ReferenceHoney[]       @relation("ReferenceHoneyAuthor")
+  productDocuments       ProductDocument[]      @relation("ProductDocumentUploader")
+  qrGenerations          QrGeneration[]         @relation("QrGenerationAuthor")
+  auditLogs              AuditLog[]
+  notifications          Notification[]
+  supportTickets         SupportTicket[]
+  supportTicketMessages  SupportTicketMessage[]
+  reviewedDocuments      ProducerDocument[]     @relation("DocumentReviewedBy")
+  payoutsRecorded        Payout[]               @relation("PayoutPaidBy")
+  collectionAssignments  CollectionAssignment[] @relation("AssignmentAgent")
+  assignmentsCreated     CollectionAssignment[] @relation("AssignmentCreator")
+  resolvedAlerts         CounterfeitAlert[]     @relation("AlertResolvedBy")
+  storedReferenceSamples ReferenceSample[]      @relation("ReferenceSampleStoredBy")
 
   @@map("users")
 }
 
 model Producer {
-  id          String   @id @default(uuid())
-  userId      String   @unique @map("user_id")
+  id          String         @id @default(uuid())
+  userId      String         @unique @map("user_id")
   name        String
-  farmName    String   @map("farm_name")
+  farmName    String         @map("farm_name")
   location    String
   description String?
-  isVerified  Boolean  @default(false) @map("is_verified")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  isVerified  Boolean        @default(false) @map("is_verified")
+  status      ProducerStatus @default(PENDING)
+
+  // Informations personnelles
+  phone       String?
+  dateOfBirth DateTime? @map("date_of_birth")
+  // CIN : saisie une seule fois par le producteur, ensuite verrouillée
+  // (seule l'équipe Kounouz peut la corriger).
+  nationalId  String?   @map("national_id")
+  address     String?
+  governorate String?
+  postalCode  String?   @map("postal_code")
+  avatarUrl   String?   @map("avatar_url")
+
+  // Exploitation
+  activityType         String?  @map("activity_type")
+  registrationStatus   String?  @map("registration_status")
+  registrationNumber   String?  @map("registration_number")
+  farmGovernorate      String?  @map("farm_governorate")
+  farmDelegation       String?  @map("farm_delegation")
+  farmAddress          String?  @map("farm_address")
+  latitude             Float?
+  longitude            Float?
+  farmPhotos           String[] @default([]) @map("farm_photos")
+  hivesCount           Int?     @map("hives_count")
+  productionStartMonth Int?     @map("production_start_month")
+  productionEndMonth   Int?     @map("production_end_month")
+  mainFlora            String[] @default([]) @map("main_flora")
+  annualProductionKg   Decimal? @map("annual_production_kg") @db.Decimal(10, 2)
+
+  // Coordonnées de règlement (versements des gains)
+  paymentMethod String? @map("payment_method")
+  bankName      String? @map("bank_name")
+  iban          String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   user                 User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
   verificationRequests VerificationRequest[]
+  documents            ProducerDocument[]
+  orderItems           OrderItem[]
+  payouts              Payout[]
+  farms                Farm[]
 
   @@map("producers")
+}
+
+// Pièces administratives du producteur (CIN, registre...). Ce ne sont PAS des
+// preuves de vérification : les résultats de laboratoire restent gérés par
+// Kounouz uniquement.
+model ProducerDocument {
+  id           String                 @id @default(uuid())
+  producerId   String                 @map("producer_id")
+  type         ProducerDocumentType
+  fileName     String                 @map("file_name")
+  storedName   String                 @map("stored_name")
+  mimeType     String                 @map("mime_type")
+  size         Int
+  status       ProducerDocumentStatus @default(PENDING_REVIEW)
+  reviewNote   String?                @map("review_note")
+  reviewedById String?                @map("reviewed_by")
+  reviewedAt   DateTime?              @map("reviewed_at")
+  createdAt    DateTime               @default(now()) @map("created_at")
+
+  producer   Producer @relation(fields: [producerId], references: [id], onDelete: Cascade)
+  reviewedBy User?    @relation("DocumentReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([producerId])
+  @@map("producer_documents")
 }
 
 model Consumer {
@@ -142,14 +434,90 @@ model VerificationRequest {
   collectionLocation String                    @map("collection_location")
   quantity           Decimal                   @db.Decimal(10, 3)
   status             VerificationRequestStatus @default(NEW)
-  createdAt          DateTime                  @default(now()) @map("created_at")
-  updatedAt          DateTime                  @updatedAt @map("updated_at")
+  // Identifiant lisible attribué à la soumission (ex: VR-2026-001).
+  requestCode        String?                   @unique @map("request_code")
+  submittedAt        DateTime?                 @map("submitted_at")
 
-  producer      Producer       @relation(fields: [producerId], references: [id], onDelete: Restrict)
+  farmSize                  String?           @map("farm_size")
+  floralOrigin              String?           @map("floral_origin")
+  floralCategory            String?           @map("floral_category")
+  productionSeason          String?           @map("production_season")
+  harvestStartDate          DateTime?         @map("harvest_start_date")
+  harvestEndDate            DateTime?         @map("harvest_end_date")
+  governorate               String?
+  delegation                String?
+  latitude                  Float?
+  longitude                 Float?
+  hivesCount                Int?              @map("hives_count")
+  beekeepingMethod          String?           @map("beekeeping_method")
+  hiveType                  String?           @map("hive_type")
+  preferredCollectionMethod CollectionMethod? @map("preferred_collection_method")
+
+  // Numéro de lot annoncé par le producteur (ex: TH-2026-001). C'est une
+  // déclaration, pas le Batch commercial Kounouz créé après vérification.
+  batchNumber String?  @map("batch_number")
+  photos      String[] @default([])
+
+  // Suivi interne Kounouz — jamais exposé au producteur ni au consommateur.
+  assignedToId  String?   @map("assigned_to")
+  internalNotes String?   @map("internal_notes")
+  reviewedAt    DateTime? @map("reviewed_at")
+  // Renseigné quand le dossier passe en INFO_REQUESTED : ce que Kounouz attend.
+  infoRequested String?   @map("info_requested")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Rucher d'origine du miel à vérifier (ERD : Request -> Farm).
+  farmId        String?                @map("farm_id")
+  farm          Farm?                  @relation(fields: [farmId], references: [id], onDelete: Restrict)
+  producer      Producer               @relation(fields: [producerId], references: [id], onDelete: Restrict)
+  assignedTo    User?                  @relation("RequestAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
   samples       Sample[]
   verifications Verification[]
+  comments      RequestComment[]
+  documents     RequestDocument[]
+  assignments   CollectionAssignment[]
 
+  @@index([status])
+  @@index([farmId])
   @@map("verification_requests")
+}
+
+// Fil de discussion interne sur une demande (onglet "Comments" du portail
+// vérificateur). Réservé à l'équipe Kounouz : invisible côté producteur.
+model RequestComment {
+  id        String   @id @default(uuid())
+  requestId String   @map("request_id")
+  authorId  String   @map("author_id")
+  body      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  request VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  author  User                @relation("RequestCommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([requestId])
+  @@map("request_comments")
+}
+
+// Pièces jointes au dossier de demande (onglet "Documents"), déposées par
+// l'équipe Kounouz. Les pièces administratives du producteur restent dans
+// ProducerDocument.
+model RequestDocument {
+  id           String   @id @default(uuid())
+  requestId    String   @map("request_id")
+  fileName     String   @map("file_name")
+  storedName   String   @map("stored_name")
+  mimeType     String   @map("mime_type")
+  size         Int
+  uploadedById String   @map("uploaded_by")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  request    VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  uploadedBy User                @relation("RequestDocumentUploader", fields: [uploadedById], references: [id], onDelete: Restrict)
+
+  @@index([requestId])
+  @@map("request_documents")
 }
 
 model Sample {
@@ -161,65 +529,259 @@ model Sample {
   quantity       Decimal      @db.Decimal(10, 3)
   photos         String[]     @default([])
   status         SampleStatus @default(COLLECTED)
-  createdAt      DateTime     @default(now()) @map("created_at")
-  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  // Identifiant lisible (ex: SM-2026-001), attribué à la création.
+  sampleCode       String?           @unique @map("sample_code")
+  collectionMethod CollectionMethod? @map("collection_method")
+  // Renseigné uniquement quand status = ISSUE.
+  issueReason      String?           @map("issue_reason")
+
+  // Relevé terrain (portail Agent Terrain).
+  honeyType       String? @map("honey_type")
+  numberOfSamples Int     @default(1) @map("number_of_samples")
+  // Origine du prélèvement : ruches en production, stock, extraction...
+  harvestSource   String? @map("harvest_source")
+  latitude        Float?
+  longitude       Float?
+  gpsAccuracy     Float?  @map("gps_accuracy")
+  notes           String?
+  // Instantané météo au moment de la collecte : { temperature, humidity, windSpeed, code }.
+  weather         Json?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   request     VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Restrict)
   collectedBy User                @relation("FieldAgentSamples", fields: [collectedById], references: [id], onDelete: Restrict)
 
-  seal             Seal?
-  labAnalyses      LaboratoryAnalysis[]
-  referenceSample  ReferenceSample?
-  verifications    Verification[]
+  seal            Seal?
+  labAnalyses     LaboratoryAnalysis[]
+  referenceSample ReferenceSample?
+  verifications   Verification[]
+  events          SampleEvent[]
+  assignment      CollectionAssignment?
 
+  @@index([status])
   @@map("samples")
+}
+
+// Chaîne de possession : une ligne par transition, jamais modifiée ni
+// supprimée. C'est la source de vérité de la timeline "Chain of Custody" ;
+// le champ Sample.status n'en est que la projection courante.
+model SampleEvent {
+  id          String          @id @default(uuid())
+  sampleId    String          @map("sample_id")
+  type        SampleEventType
+  occurredAt  DateTime        @default(now()) @map("occurred_at")
+  userId      String?         @map("user_id")
+  note        String?
+  evidenceUrl String?         @map("evidence_url")
+  // Où et entre quelles mains : lieu lisible, coordonnées GPS et détenteur
+  // physique quand ce n'est pas l'auteur (ex: transporteur partenaire).
+  location    String?
+  latitude    Float?
+  longitude   Float?
+  handlerName String?         @map("handler_name")
+  createdAt   DateTime        @default(now()) @map("created_at")
+
+  sample Sample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+  user   User?  @relation("SampleEventAuthor", fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([sampleId, occurredAt])
+  @@map("sample_events")
 }
 
 // Le scellé n'est jamais modifiable après création : aucun champ mutable n'est
 // exposé côté application au-delà de sa pose initiale.
 model Seal {
-  id       String     @id @default(uuid())
-  sampleId String     @unique @map("sample_id")
-  sealCode String     @unique @map("seal_code")
-  isSealed Boolean    @default(true) @map("is_sealed")
-  sealedAt DateTime   @default(now()) @map("sealed_at")
-  status   SealStatus @default(INTACT)
-  createdAt DateTime  @default(now()) @map("created_at")
+  id        String     @id @default(uuid())
+  sampleId  String     @unique @map("sample_id")
+  sealCode  String     @unique @map("seal_code")
+  isSealed  Boolean    @default(true) @map("is_sealed")
+  sealedAt  DateTime   @default(now()) @map("sealed_at")
+  status    SealStatus @default(INTACT)
+  // Preuve de pose (portail Agent Terrain).
+  photoUrl  String?    @map("photo_url")
+  latitude  Float?
+  longitude Float?
+  notes     String?
+  createdAt DateTime   @default(now()) @map("created_at")
 
   sample Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
 
   @@map("seals")
 }
 
-model Laboratory {
-  id              String @id @default(uuid())
-  name            String
-  accreditationNo String @map("accreditation_no")
-  country         String
-  contactInfo     String @map("contact_info")
+// Mission de collecte : une demande acceptée planifiée chez le producteur pour
+// un agent terrain. Porte le planning (date, créneau, priorité), les consignes
+// et le matériel, puis se relie à l'échantillon effectivement prélevé.
+model CollectionAssignment {
+  id                    String                     @id @default(uuid())
+  // Identifiant lisible (ex: CO-2026-001).
+  assignmentCode        String                     @unique @map("assignment_code")
+  requestId             String                     @map("request_id")
+  agentId               String                     @map("agent_id")
+  createdById           String?                    @map("created_by")
+  scheduledDate         DateTime                   @map("scheduled_date")
+  // Créneau souhaité, heures locales "HH:mm".
+  timeWindowStart       String?                    @map("time_window_start")
+  timeWindowEnd         String?                    @map("time_window_end")
+  priority              CollectionPriority         @default(NORMAL)
+  status                CollectionAssignmentStatus @default(PENDING)
+  expectedQuantityGrams Int                        @default(500) @map("expected_quantity_grams")
+  numberOfSamples       Int                        @default(1) @map("number_of_samples")
+  harvestSource         String?                    @map("harvest_source")
+  specialInstructions   String?                    @map("special_instructions")
+  notes                 String?
+  requiredEquipment     String[]                   @default(["SAMPLING_KIT", "STERILE_CONTAINERS", "SECURE_SEALS", "LABELS_QR", "CAMERA", "GPS"]) @map("required_equipment")
+  checkedEquipment      String[]                   @default([]) @map("checked_equipment")
+  rescheduleCount       Int                        @default(0) @map("reschedule_count")
+  rescheduleReason      String?                    @map("reschedule_reason")
+  producerConfirmed     Boolean                    @default(false) @map("producer_confirmed")
+  startedAt             DateTime?                  @map("started_at")
+  completedAt           DateTime?                  @map("completed_at")
+  sampleId              String?                    @unique @map("sample_id")
+  createdAt             DateTime                   @default(now()) @map("created_at")
+  updatedAt             DateTime                   @updatedAt @map("updated_at")
 
-  analyses LaboratoryAnalysis[]
+  request   VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Restrict)
+  agent     User                @relation("AssignmentAgent", fields: [agentId], references: [id], onDelete: Restrict)
+  createdBy User?               @relation("AssignmentCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  sample    Sample?             @relation(fields: [sampleId], references: [id], onDelete: SetNull)
+
+  @@index([agentId, scheduledDate])
+  @@index([status])
+  @@map("collection_assignments")
+}
+
+// Partenaire d'analyse. Un laboratoire ajouté par l'administration reste
+// PENDING tant qu'il n'est pas approuvé.
+model Laboratory {
+  id              String           @id @default(uuid())
+  name            String
+  accreditationNo String           @map("accreditation_no")
+  country         String
+  contactInfo     String           @map("contact_info")
+  status          LaboratoryStatus @default(ACTIVE)
+  tagline         String?
+  email           String?
+  phone           String?
+  city            String?
+  address         String?
+  website         String?
+  logoUrl         String?          @map("logo_url")
+  contactName     String?          @map("contact_name")
+  notes           String?
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+
+  analyses       LaboratoryAnalysis[]
+  accreditations LaboratoryAccreditation[]
 
   @@map("laboratories")
 }
 
+// Accréditation ou certificat détenu par un laboratoire (ISO 17025, TUNAC,
+// COFRAC...). La validité se lit sur validUntil : un certificat expiré reste
+// affiché pour l'historique.
+model LaboratoryAccreditation {
+  id                String    @id @default(uuid())
+  labId             String    @map("lab_id")
+  name              String
+  issuingBody       String?   @map("issuing_body")
+  certificateNumber String?   @map("certificate_number")
+  validUntil        DateTime? @map("valid_until")
+  createdAt         DateTime  @default(now()) @map("created_at")
+
+  laboratory Laboratory @relation(fields: [labId], references: [id], onDelete: Cascade)
+
+  @@index([labId])
+  @@map("laboratory_accreditations")
+}
+
 model LaboratoryAnalysis {
-  id             String            @id @default(uuid())
-  sampleId       String            @map("sample_id")
-  labId          String            @map("lab_id")
-  analysisDate   DateTime          @map("analysis_date")
-  reportFileUrl  String?           @map("report_file_url")
-  // { humidite, ph, hmf, sucres, proline, pollen, pesticides, ... }
-  results        Json
-  status         LabAnalysisStatus @default(PENDING)
-  createdAt      DateTime          @default(now()) @map("created_at")
-  updatedAt      DateTime          @updatedAt @map("updated_at")
+  id            String            @id @default(uuid())
+  sampleId      String            @map("sample_id")
+  labId         String            @map("lab_id")
+  analysisDate  DateTime          @map("analysis_date")
+  reportFileUrl String?           @map("report_file_url")
+  // Conservé pour l'historique et les paramètres libres. Les paramètres
+  // normés du bulletin vivent désormais dans LabTestResult.
+  results       Json
+  status        LabAnalysisStatus @default(PENDING)
 
-  sample        Sample         @relation(fields: [sampleId], references: [id], onDelete: Restrict)
-  laboratory    Laboratory     @relation(fields: [labId], references: [id], onDelete: Restrict)
+  // Identifiants et suivi du dossier laboratoire
+  analysisCode       String?           @unique @map("analysis_code")
+  reportNumber       String?           @map("report_number")
+  workflowStatus     LabWorkflowStatus @default(ASSIGNED) @map("workflow_status")
+  // Analyste Kounouz responsable du bulletin.
+  assignedToId       String?           @map("assigned_to")
+  assignmentDate     DateTime?         @map("assignment_date")
+  expectedCompletion DateTime?         @map("expected_completion")
+  completedAt        DateTime?         @map("completed_at")
+  conclusion         String?
+  internalNotes      String?           @map("internal_notes")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  sample        Sample            @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  laboratory    Laboratory        @relation(fields: [labId], references: [id], onDelete: Restrict)
+  assignedTo    User?             @relation("AnalysisAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
   verifications Verification[]
+  testResults   LabTestResult[]
+  files         LabAnalysisFile[]
 
+  @@index([sampleId])
   @@map("laboratory_analyses")
+}
+
+// Un paramètre mesuré du bulletin d'analyse. La plage de référence est figée
+// sur la ligne au moment de la saisie : si le référentiel Kounouz évolue, les
+// bulletins déjà émis restent lisibles tels qu'ils ont été validés.
+model LabTestResult {
+  id            String        @id @default(uuid())
+  analysisId    String        @map("analysis_id")
+  parameterKey  String        @map("parameter_key")
+  value         String?
+  unit          String?
+  referenceMin  Decimal?      @map("reference_min") @db.Decimal(10, 3)
+  referenceMax  Decimal?      @map("reference_max") @db.Decimal(10, 3)
+  referenceText String?       @map("reference_text")
+  status        LabTestStatus @default(NOT_APPLICABLE)
+  details       Json?
+  position      Int           @default(0)
+
+  analysis LaboratoryAnalysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  @@unique([analysisId, parameterKey])
+  @@map("lab_test_results")
+}
+
+// Bulletin original du laboratoire et pièces annexes. Le document source doit
+// être conservé (§10) : la suppression n'est ouverte qu'à l'équipe Kounouz.
+model LabAnalysisFile {
+  id           String   @id @default(uuid())
+  analysisId   String   @map("analysis_id")
+  fileName     String   @map("file_name")
+  storedName   String   @map("stored_name")
+  mimeType     String   @map("mime_type")
+  size         Int
+  uploadedById String   @map("uploaded_by")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  analysis   LaboratoryAnalysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  uploadedBy User               @relation("AnalysisFileUploader", fields: [uploadedById], references: [id], onDelete: Restrict)
+
+  @@index([analysisId])
+  @@map("lab_analysis_files")
+}
+
+// Cycle de vie de la portion conservée par Kounouz (ERD : status).
+enum ReferenceSampleStatus {
+  STORED
+  USED_FOR_RETEST
+  DISPOSED
 }
 
 model ReferenceSample {
@@ -232,24 +794,71 @@ model ReferenceSample {
   retentionPeriod   String   @map("retention_period")
   createdAt         DateTime @default(now()) @map("created_at")
 
-  sample Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  // Donnée interne (REF-03) : jamais exposée au consommateur.
+  status     ReferenceSampleStatus @default(STORED)
+  condition  String?
+  storedById String?               @map("stored_by")
+
+  sample   Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  storedBy User?  @relation("ReferenceSampleStoredBy", fields: [storedById], references: [id], onDelete: SetNull)
 
   @@map("reference_samples")
+}
+
+// Bibliothèque de miels étalons Kounouz (ex: REF-TH-001 « Thym, Sfax,
+// printemps 2026 »). À ne pas confondre avec ReferenceSample, qui est le
+// contre-échantillon conservé d'une collecte précise : ici il s'agit de
+// références de comparaison, réutilisées d'une vérification à l'autre.
+// Donnée strictement interne (§11).
+model ReferenceHoney {
+  id              String    @id @default(uuid())
+  code            String    @unique
+  honeyType       String    @map("honey_type")
+  region          String
+  harvestSeason   String    @map("harvest_season")
+  collectionDate  DateTime? @map("collection_date")
+  color           String?
+  texture         String?
+  floralSource    String?   @map("floral_source")
+  notes           String?
+  photos          String[]  @default([])
+  // Résultats d'analyse de l'étalon, servant de base de comparaison.
+  analysisResults Json?     @map("analysis_results")
+  isActive        Boolean   @default(true) @map("is_active")
+  createdById     String?   @map("created_by")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  createdBy User? @relation("ReferenceHoneyAuthor", fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([honeyType])
+  @@index([region])
+  @@map("reference_honeys")
 }
 
 // La décision de vérification est réservée à ADMIN / VERIFICATION_TEAM (appliqué
 // au niveau des guards NestJS, pas seulement en base).
 model Verification {
-  id           String              @id @default(uuid())
-  requestId    String              @map("request_id")
-  sampleId     String              @map("sample_id")
-  analysisId   String              @map("analysis_id")
-  status       VerificationStatus  @default(PENDING)
-  verifiedAt   DateTime?           @map("verified_at")
-  notes        String?
-  decidedById  String              @map("decided_by")
-  createdAt    DateTime            @default(now()) @map("created_at")
-  updatedAt    DateTime            @updatedAt @map("updated_at")
+  id          String             @id @default(uuid())
+  requestId   String             @map("request_id")
+  sampleId    String             @map("sample_id")
+  analysisId  String             @map("analysis_id")
+  status      VerificationStatus @default(PENDING)
+  verifiedAt  DateTime?          @map("verified_at")
+  notes       String?
+  decidedById String             @map("decided_by")
+
+  // Identifiant lisible du dossier de vérification (ex: VT-2026-006).
+  verificationCode String? @unique @map("verification_code")
+  // Tant que isDraft est vrai, la décision n'engage pas Kounouz : elle reste
+  // modifiable et ne déclenche ni notification ni création de lot.
+  isDraft          Boolean @default(false) @map("is_draft")
+  // Grille d'évaluation : { authenticity, physicochemical, pollen,
+  // antibiotics, overall } -> statut par critère.
+  evaluation       Json?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   request   VerificationRequest @relation(fields: [requestId], references: [id], onDelete: Restrict)
   sample    Sample              @relation(fields: [sampleId], references: [id], onDelete: Restrict)
@@ -266,20 +875,35 @@ model Verification {
 // ---------------------------------------------------------------------------
 
 model Batch {
-  id              String      @id @default(uuid())
-  verificationId  String      @unique @map("verification_id")
-  batchCode       String      @unique @map("batch_code")
-  honeyType       String      @map("honey_type")
-  quantityKg      Decimal     @map("quantity_kg") @db.Decimal(10, 3)
-  productionDate  DateTime    @map("production_date")
-  status          BatchStatus @default(CREATED)
-  createdAt       DateTime    @default(now()) @map("created_at")
-  updatedAt       DateTime    @updatedAt @map("updated_at")
+  id             String      @id @default(uuid())
+  verificationId String      @unique @map("verification_id")
+  batchCode      String      @unique @map("batch_code")
+  honeyType      String      @map("honey_type")
+  quantityKg     Decimal     @map("quantity_kg") @db.Decimal(10, 3)
+  productionDate DateTime    @map("production_date")
+  status         BatchStatus @default(VERIFIED)
 
-  verification Verification @relation(fields: [verificationId], references: [id], onDelete: Restrict)
-  packaging    Packaging?
-  products     Product[]
+  // Reprises de la demande vérifiée au moment de la création du lot : le lot
+  // commercial reste lisible même si la demande évolue ensuite.
+  origin        String?   @map("origin")
+  harvestSeason String?   @map("harvest_season")
+  expiryDate    DateTime? @map("expiry_date")
+  bestBefore    DateTime? @map("best_before")
+  notes         String?
+  // Motif de suspension ou de rappel, affiché en interne uniquement.
+  holdReason    String?   @map("hold_reason")
 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  verification  Verification       @relation(fields: [verificationId], references: [id], onDelete: Restrict)
+  packaging     Packaging?
+  products      Product[]
+  qrCodes       QRCode[]
+  qrGenerations QrGeneration[]
+  alerts        CounterfeitAlert[]
+
+  @@index([status])
   @@map("batches")
 }
 
@@ -291,23 +915,54 @@ model Packaging {
   labelDesign    String?         @map("label_design")
   productionDate DateTime        @map("production_date")
   status         PackagingStatus @default(IN_PROGRESS)
-  createdAt      DateTime        @default(now()) @map("created_at")
 
-  batch   Batch    @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  // Ligne de conditionnement Kounouz et volume total prévu. Le détail réel
+  // est porté par les unités : ce nombre reste la cible annoncée.
+  packagingLine String?   @map("packaging_line")
+  unitsPlanned  Int?      @map("units_planned")
+  expiryDate    DateTime? @map("expiry_date")
+  notes         String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  batch   Batch           @relation(fields: [batchId], references: [id], onDelete: Restrict)
   product Product?
+  units   PackagingUnit[]
 
   @@map("packagings")
 }
 
+// Lot de conditionnement d'un même format (ex: 1 000 pots de 500 g).
+// Un emballage en compte plusieurs : c'est la granularité réelle de l'atelier,
+// et la base du nombre de QR à générer.
+model PackagingUnit {
+  id            String          @id @default(uuid())
+  packagingId   String          @map("packaging_id")
+  unitCode      String          @unique @map("unit_code")
+  unitSize      String          @map("unit_size")
+  quantity      Int
+  packagingDate DateTime?       @map("packaging_date")
+  expiryDate    DateTime?       @map("expiry_date")
+  status        PackagingStatus @default(PLANNED)
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+
+  packaging Packaging @relation(fields: [packagingId], references: [id], onDelete: Cascade)
+
+  @@index([packagingId])
+  @@map("packaging_units")
+}
+
 model Categorie {
-  id          String  @id @default(uuid())
+  id          String   @id @default(uuid())
   nom         String
-  slug        String  @unique
+  slug        String   @unique
   description String?
-  imageUrl    String? @map("image_url")
-  ordre       Int     @default(0)
-  parentId    String? @map("parent_id")
-  actif       Boolean @default(true)
+  imageUrl    String?  @map("image_url")
+  ordre       Int      @default(0)
+  parentId    String?  @map("parent_id")
+  actif       Boolean  @default(true)
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
@@ -333,63 +988,310 @@ model Product {
   images      String[]      @default([])
   gamme       String?
   statut      ProductStatus @default(BROUILLON)
-  createdAt   DateTime      @default(now()) @map("created_at")
-  updatedAt   DateTime      @updatedAt @map("updated_at")
+  // Identifiant produit lisible (ex: KZ-PRD-2026-000001), base des SKU.
+  productCode String?       @unique @map("product_code")
+
+  // Fiche commerciale (§15). Le poids net est exprimé en grammes : c'est
+  // l'unité de l'étiquette, et elle évite les arrondis d'un format décimal.
+  netWeightG          Int?     @map("net_weight_g")
+  ingredients         String?
+  storageInstructions String?  @map("storage_instructions")
+  shelfLife           String?  @map("shelf_life")
+  tags                String[] @default([])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   packaging Packaging? @relation(fields: [packagingId], references: [id], onDelete: SetNull)
   categorie Categorie  @relation(fields: [categorieId], references: [id], onDelete: Restrict)
   batch     Batch?     @relation(fields: [batchId], references: [id], onDelete: SetNull)
 
-  qrCode QRCode?
+  // Un produit porte autant de QR que d'unités mises en marché ; le premier
+  // généré fait office de QR de référence pour la fiche produit.
+  qrCodes    QRCode[]
+  documents  ProductDocument[]
+  orderItems OrderItem[]
+  alerts     CounterfeitAlert[]
+  variants   ProductVariant[]
 
   @@map("products")
 }
 
-// Le QR code d'un produit ne change jamais : seul le statut affiché sur sa
-// page de vérification publique évolue.
+// Pièces jointes de la fiche produit (spécification, maquette d'étiquette,
+// argumentaire). Internes : jamais exposées au consommateur.
+model ProductDocument {
+  id           String   @id @default(uuid())
+  productId    String   @map("product_id")
+  type         String
+  fileName     String   @map("file_name")
+  storedName   String   @map("stored_name")
+  mimeType     String   @map("mime_type")
+  size         Int
+  uploadedById String   @map("uploaded_by")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  product    Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  uploadedBy User    @relation("ProductDocumentUploader", fields: [uploadedById], references: [id], onDelete: Restrict)
+
+  @@index([productId])
+  @@map("product_documents")
+}
+
+// ---------------------------------------------------------------------------
+// Ventes -> Commission Kounouz -> Règlements producteurs
+// ---------------------------------------------------------------------------
+
+model Order {
+  id              String       @id @default(uuid())
+  orderNumber     String       @unique @map("order_number")
+  customerName    String       @map("customer_name")
+  customerPhone   String       @map("customer_phone")
+  customerEmail   String?      @map("customer_email")
+  shippingAddress String       @map("shipping_address")
+  city            String
+  channel         SalesChannel @default(ONLINE_STORE)
+  status          OrderStatus  @default(PENDING)
+  subtotal        Decimal      @db.Decimal(10, 2)
+  shippingFee     Decimal      @default(0) @map("shipping_fee") @db.Decimal(10, 2)
+  total           Decimal      @db.Decimal(10, 2)
+  // Date de livraison : détermine la période de règlement (mois) du producteur.
+  deliveredAt     DateTime?    @map("delivered_at")
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+
+  items OrderItem[]
+
+  @@index([status])
+  @@map("orders")
+}
+
+// Chaque ligne fige le prix et le taux de commission au moment de la vente :
+// un changement ultérieur du prix ou du taux ne réécrit pas l'historique.
+model OrderItem {
+  id               String  @id @default(uuid())
+  orderId          String  @map("order_id")
+  productId        String  @map("product_id")
+  producerId       String  @map("producer_id")
+  productName      String  @map("product_name")
+  packageSize      String? @map("package_size")
+  quantity         Int
+  unitPrice        Decimal @map("unit_price") @db.Decimal(10, 2)
+  lineTotal        Decimal @map("line_total") @db.Decimal(10, 2)
+  commissionRate   Decimal @map("commission_rate") @db.Decimal(5, 4)
+  commissionAmount Decimal @map("commission_amount") @db.Decimal(10, 2)
+  netAmount        Decimal @map("net_amount") @db.Decimal(10, 2)
+
+  // Vente au niveau SKU : la déclinaison vendue et son code, figé sur la
+  // ligne pour que l'historique reste lisible si le SKU évolue.
+  variantId String? @map("variant_id")
+  sku       String?
+
+  order    Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product  Product         @relation(fields: [productId], references: [id], onDelete: Restrict)
+  producer Producer        @relation(fields: [producerId], references: [id], onDelete: Restrict)
+  variant  ProductVariant? @relation(fields: [variantId], references: [id], onDelete: Restrict)
+
+  @@index([producerId])
+  @@index([variantId])
+  @@map("order_items")
+}
+
+// Versement effectué pour une période mensuelle (YYYY-MM). Les montants sont
+// figés au moment du paiement.
+model Payout {
+  id               String   @id @default(uuid())
+  producerId       String   @map("producer_id")
+  period           String
+  orderCount       Int      @map("order_count")
+  itemsSold        Int      @map("items_sold")
+  grossAmount      Decimal  @map("gross_amount") @db.Decimal(10, 2)
+  commissionAmount Decimal  @map("commission_amount") @db.Decimal(10, 2)
+  netAmount        Decimal  @map("net_amount") @db.Decimal(10, 2)
+  reference        String?
+  paidById         String   @map("paid_by")
+  paidAt           DateTime @default(now()) @map("paid_at")
+
+  producer Producer @relation(fields: [producerId], references: [id], onDelete: Restrict)
+  paidBy   User     @relation("PayoutPaidBy", fields: [paidById], references: [id], onDelete: Restrict)
+
+  @@unique([producerId, period])
+  @@map("payouts")
+}
+
+// Un QR par unité mise en marché (§17). Ses identifiants sont figés à la
+// génération et ne changent jamais : seul le statut affiché sur la page de
+// vérification publique évolue, en suivant l'état du lot.
 model QRCode {
-  id        String   @id @default(uuid())
-  productId String   @unique @map("product_id")
-  qrCode    String   @unique @map("qr_code")
-  qrId      String   @unique @map("qr_id")
-  isActive  Boolean  @default(true) @map("is_active")
+  id        String  @id @default(uuid())
+  productId String  @map("product_id")
+  qrCode    String  @unique @map("qr_code")
+  qrId      String  @unique @map("qr_id")
+  isActive  Boolean @default(true) @map("is_active")
+
+  batchId      String?      @map("batch_id")
+  generationId String?      @map("generation_id")
+  // Numéro de série lisible imprimé sous le code (ex: KZ-QR-2026-001001).
+  serialNumber String?      @map("serial_number")
+  status       QrCodeStatus @default(ACTIVE)
+
   createdAt DateTime @default(now()) @map("created_at")
 
-  product Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
-  scans   QRScan[]
+  // QR au niveau SKU quand la campagne vise un format précis (ERD : SKU -> QR).
+  variantId  String?            @map("variant_id")
+  variant    ProductVariant?    @relation(fields: [variantId], references: [id], onDelete: SetNull)
+  product    Product            @relation(fields: [productId], references: [id], onDelete: Restrict)
+  batch      Batch?             @relation(fields: [batchId], references: [id], onDelete: SetNull)
+  generation QrGeneration?      @relation(fields: [generationId], references: [id], onDelete: SetNull)
+  scans      QRScan[]
+  alerts     CounterfeitAlert[]
 
+  @@index([productId])
+  @@index([batchId])
+  @@index([status])
   @@map("qr_codes")
 }
 
+// Une campagne de génération : les réglages choisis pour un tirage de codes.
+// Les conserver permet de rejouer à l'identique une impression d'étiquettes.
+model QrGeneration {
+  id             String   @id @default(uuid())
+  batchId        String   @map("batch_id")
+  productId      String?  @map("product_id")
+  quantity       Int
+  qrType         String   @map("qr_type")
+  qrFormat       String   @map("qr_format")
+  destinationUrl String   @map("destination_url")
+  language       String
+  template       String
+  // { includeBatchNumber, includeSecurityFeatures, addSerialNumber,
+  //   enableTracking } — options d'impression cochées à la génération.
+  options        Json
+  createdById    String   @map("created_by")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  batch     Batch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  createdBy User     @relation("QrGenerationAuthor", fields: [createdById], references: [id], onDelete: Restrict)
+  qrCodes   QRCode[]
+
+  @@index([batchId])
+  @@map("qr_generations")
+}
+
+// Un scan consommateur. qrCodeId est nul pour une tentative sur un identifiant
+// inconnu : elle est conservée (scannedIdentifier) car c'est le premier signe
+// d'une étiquette contrefaite.
 model QRScan {
-  id         String   @id @default(uuid())
-  qrCodeId   String   @map("qr_code_id")
-  scannedAt  DateTime @default(now()) @map("scanned_at")
-  location   String?
-  deviceInfo String?  @map("device_info")
-  country    String?
-  riskScore  Float    @default(0) @map("risk_score")
-  flagged    Boolean  @default(false)
+  id                String     @id @default(uuid())
+  qrCodeId          String?    @map("qr_code_id")
+  scannedIdentifier String?    @map("scanned_identifier")
+  scannedAt         DateTime   @default(now()) @map("scanned_at")
+  location          String?
+  deviceInfo        String?    @map("device_info")
+  country           String?
+  // Code ISO 3166-1 alpha-2, normalisé à l'enregistrement.
+  countryCode       String?    @map("country_code")
+  city              String?
+  governorate       String?
+  latitude          Float?
+  longitude         Float?
+  // MOBILE | DESKTOP | TABLET | OTHER, déduit du user-agent.
+  deviceType        String?    @map("device_type")
+  ipAddress         String?    @map("ip_address")
+  // Identifiant anonyme du navigateur (aucune donnée personnelle) : distingue
+  // les nouveaux scanneurs des visiteurs récurrents.
+  visitorId         String?    @map("visitor_id")
+  result            ScanResult @default(VALID)
+  riskScore         Float      @default(0) @map("risk_score")
+  flagged           Boolean    @default(false)
 
-  qrCode QRCode @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+  qrCode QRCode?            @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+  alerts CounterfeitAlert[]
 
+  @@index([scannedAt])
+  @@index([qrCodeId])
+  @@index([visitorId])
   @@map("qr_scans")
+}
+
+// Alerte anti-contrefaçon ouverte par le moteur de détection ou par un
+// signalement consommateur. Une alerte ouverte absorbe les scans suivants du
+// même type sur le même code au lieu d'en créer une nouvelle.
+model CounterfeitAlert {
+  id                String                 @id @default(uuid())
+  alertCode         String                 @unique @map("alert_code")
+  type              CounterfeitAlertType
+  status            CounterfeitAlertStatus @default(OPEN)
+  severity          AlertSeverity          @default(MEDIUM)
+  qrCodeId          String?                @map("qr_code_id")
+  scannedIdentifier String?                @map("scanned_identifier")
+  productId         String?                @map("product_id")
+  batchId           String?                @map("batch_id")
+  scanId            String?                @map("scan_id")
+  location          String?
+  country           String?
+  countryCode       String?                @map("country_code")
+  deviceInfo        String?                @map("device_info")
+  deviceType        String?                @map("device_type")
+  ipAddress         String?                @map("ip_address")
+  scanCount         Int                    @default(1) @map("scan_count")
+  details           String?
+  resolutionNote    String?                @map("resolution_note")
+  resolvedById      String?                @map("resolved_by")
+  resolvedAt        DateTime?              @map("resolved_at")
+  lastSeenAt        DateTime               @default(now()) @map("last_seen_at")
+  createdAt         DateTime               @default(now()) @map("created_at")
+  updatedAt         DateTime               @updatedAt @map("updated_at")
+
+  qrCode     QRCode?  @relation(fields: [qrCodeId], references: [id], onDelete: SetNull)
+  product    Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  batch      Batch?   @relation(fields: [batchId], references: [id], onDelete: SetNull)
+  scan       QRScan?  @relation(fields: [scanId], references: [id], onDelete: SetNull)
+  resolvedBy User?    @relation("AlertResolvedBy", fields: [resolvedById], references: [id], onDelete: SetNull)
+
+  @@index([type])
+  @@index([status])
+  @@index([createdAt])
+  @@map("counterfeit_alerts")
 }
 
 // ---------------------------------------------------------------------------
 // Journalisation
 // ---------------------------------------------------------------------------
 
+// userId est nul pour les événements système (sauvegarde, tâche planifiée) et
+// pour une tentative de connexion sur un e-mail inconnu.
 model AuditLog {
-  id        String   @id @default(uuid())
-  userId    String   @map("user_id")
+  id        String      @id @default(uuid())
+  userId    String?     @map("user_id")
   action    String
   entite    String
-  entiteId  String   @map("entite_id")
-  createdAt DateTime @default(now()) @map("created_at")
+  entiteId  String      @map("entite_id")
+  module    String?
+  details   String?
+  status    AuditStatus @default(SUCCESS)
+  ipAddress String?     @map("ip_address")
+  userAgent String?     @map("user_agent")
+  // { field, oldValue, newValue, notes } : détail d'une modification.
+  metadata  Json?
+  createdAt DateTime    @default(now()) @map("created_at")
 
-  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  // Champs d'audit recommandés (§15 Permissions) : rôle de l'acteur, statut
+  // avant/après, motif, identifiant de corrélation de la requête, et marqueur
+  // d'override administratif (§7 : tout override est motivé et tracé).
+  actorRole      String? @map("actor_role")
+  previousStatus String? @map("previous_status")
+  newStatus      String? @map("new_status")
+  reason         String?
+  correlationId  String? @map("correlation_id")
+  isOverride     Boolean @default(false) @map("is_override")
 
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([entiteId])
+  @@index([userId])
+  @@index([correlationId])
+  @@index([isOverride])
   @@map("audit_logs")
 }
 
@@ -405,6 +1307,15 @@ enum NotificationType {
   VERIFICATION_RESULT
   BATCH_CREATED
   PRODUCT_PUBLISHED
+  SUPPORT_TICKET_UPDATE
+  DOCUMENT_REVIEWED
+  NEW_ORDER
+  PAYOUT_PAID
+  COLLECTION_ASSIGNED
+  COUNTERFEIT_ALERT
+  // Tâche interne générée par l'automatisation (revue à faire, décision en
+  // attente, lot / emballage / produit / QR à préparer...).
+  WORKFLOW_TASK
 }
 
 model Notification {
@@ -422,4 +1333,191 @@ model Notification {
 
   @@index([userId, isRead])
   @@map("notifications")
+}
+
+// ---------------------------------------------------------------------------
+// Support (tickets authentifiés) & Contact (formulaire public, sans suivi)
+// ---------------------------------------------------------------------------
+
+enum SupportTicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+model SupportTicket {
+  id        String              @id @default(uuid())
+  userId    String              @map("user_id")
+  subject   String
+  status    SupportTicketStatus @default(OPEN)
+  createdAt DateTime            @default(now()) @map("created_at")
+  updatedAt DateTime            @updatedAt @map("updated_at")
+
+  user     User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages SupportTicketMessage[]
+
+  @@map("support_tickets")
+}
+
+model SupportTicketMessage {
+  id        String   @id @default(uuid())
+  ticketId  String   @map("ticket_id")
+  authorId  String   @map("author_id")
+  body      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  author User          @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("support_ticket_messages")
+}
+
+// Formulaire "Contact Kounouz" public : boîte de réception à sens unique, sans
+// authentification ni fil de discussion (contrairement aux tickets de support).
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contact_messages")
+}
+
+// ---------------------------------------------------------------------------
+// Rucher (ERD : ProducerProfile -> Farm, 1:N)
+// ---------------------------------------------------------------------------
+
+// Un producteur peut exploiter plusieurs ruchers. Les champs d'exploitation
+// historiques de Producer restent en place ; le rucher principal en est la
+// copie structurée, créée par migration.
+model Farm {
+  id               String   @id @default(uuid())
+  producerId       String   @map("producer_id")
+  farmCode         String   @unique @map("farm_code")
+  name             String
+  governorate      String?
+  delegation       String?
+  address          String?
+  latitude         Float?
+  longitude        Float?
+  hivesCount       Int?     @map("hives_count")
+  mainFlora        String[] @default([]) @map("main_flora")
+  beekeepingMethod String?  @map("beekeeping_method")
+  isPrimary        Boolean  @default(false) @map("is_primary")
+  isActive         Boolean  @default(true) @map("is_active")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  producer             Producer              @relation(fields: [producerId], references: [id], onDelete: Restrict)
+  verificationRequests VerificationRequest[]
+
+  @@index([producerId])
+  @@map("farms")
+}
+
+// ---------------------------------------------------------------------------
+// Déclinaison commerciale / SKU (ERD : Product -> ProductVariant, 1:N)
+// ---------------------------------------------------------------------------
+
+// Un format de pot (250 g, 500 g, 1 kg...) avec son prix et son stock propres.
+// Les ventes, les gains producteur et les QR se rattachent à ce niveau.
+model ProductVariant {
+  id          String               @id @default(uuid())
+  productId   String               @map("product_id")
+  sku         String               @unique
+  packageSize String               @map("package_size")
+  netWeightG  Int?                 @map("net_weight_g")
+  unit        String               @default("g")
+  price       Decimal              @db.Decimal(10, 2)
+  stock       Int                  @default(0)
+  status      ProductVariantStatus @default(ACTIVE)
+  isDefault   Boolean              @default(false) @map("is_default")
+  createdAt   DateTime             @default(now()) @map("created_at")
+  updatedAt   DateTime             @updatedAt @map("updated_at")
+
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Restrict)
+  orderItems OrderItem[]
+  qrCodes    QRCode[]
+
+  @@index([productId])
+  @@map("product_variants")
+}
+
+// ---------------------------------------------------------------------------
+// Architecture événementielle (outbox + worker)
+// ---------------------------------------------------------------------------
+
+// Enveloppe standard d'un événement métier (§4 Architecture événementielle).
+model DomainEvent {
+  id             String            @id @default(uuid())
+  eventType      String            @map("event_type")
+  occurredAt     DateTime          @default(now()) @map("occurred_at")
+  actorId        String?           @map("actor_id")
+  actorRole      String?           @map("actor_role")
+  entityType     String            @map("entity_type")
+  entityId       String            @map("entity_id")
+  correlationId  String?           @map("correlation_id")
+  causationId    String?           @map("causation_id")
+  schemaVersion  Int               @default(1) @map("schema_version")
+  payload        Json
+  idempotencyKey String?           @unique @map("idempotency_key")
+  status         DomainEventStatus @default(PENDING)
+  attempts       Int               @default(0)
+  nextAttemptAt  DateTime          @default(now()) @map("next_attempt_at")
+  lastError      String?           @map("last_error")
+  processedAt    DateTime?         @map("processed_at")
+
+  handlings DomainEventHandling[]
+
+  @@index([status, nextAttemptAt])
+  @@index([eventType])
+  @@index([correlationId])
+  @@index([occurredAt])
+  @@map("domain_events")
+}
+
+// Idempotence par gestionnaire : une livraison répétée d'un même événement ne
+// rejoue jamais un gestionnaire déjà passé (pas de doublon métier).
+model DomainEventHandling {
+  id          String   @id @default(uuid())
+  eventId     String   @map("event_id")
+  handler     String
+  processedAt DateTime @default(now()) @map("processed_at")
+
+  event DomainEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, handler])
+  @@map("domain_event_handlings")
+}
+
+// Clés d'idempotence des commandes rejouables (en-tête Idempotency-Key).
+model IdempotencyRecord {
+  id           String   @id @default(uuid())
+  key          String
+  userId       String   @default("") @map("user_id")
+  method       String
+  path         String
+  requestHash  String   @map("request_hash")
+  statusCode   Int      @map("status_code")
+  responseBody Json?    @map("response_body")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@unique([key, userId])
+  @@index([createdAt])
+  @@map("idempotency_records")
+}
+
+// Paramètres d'exploitation modifiables sans redéploiement (seuils SLA...).
+model PlatformSetting {
+  key         String   @id
+  value       Json
+  description String?
+  updatedById String?  @map("updated_by")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("platform_settings")
 }

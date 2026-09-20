@@ -10,7 +10,9 @@ import { PrismaService } from '../prisma/prisma.service.js';
 export class NotificationsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  notify(userId: string, type: NotificationType, title: string, message: string, entite?: string, entiteId?: string) {
+  async notify(userId: string, type: NotificationType, title: string, message: string, entite?: string, entiteId?: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId }, select: { mutedNotificationTypes: true } });
+    if (!user || user.mutedNotificationTypes.includes(type)) return;
     return this.prisma.notification.create({
       data: { userId, type, title, message, entite, entiteId },
     });
@@ -25,8 +27,13 @@ export class NotificationsService {
     entiteId?: string,
   ) {
     if (userIds.length === 0) return;
+    const recipients = await this.prisma.user.findMany({
+      where: { id: { in: userIds }, NOT: { mutedNotificationTypes: { has: type } } },
+      select: { id: true },
+    });
+    if (recipients.length === 0) return;
     await this.prisma.notification.createMany({
-      data: userIds.map((userId) => ({ userId, type, title, message, entite, entiteId })),
+      data: recipients.map((u) => ({ userId: u.id, type, title, message, entite, entiteId })),
     });
   }
 
@@ -38,7 +45,10 @@ export class NotificationsService {
     entite?: string,
     entiteId?: string,
   ) {
-    const users = await this.prisma.user.findMany({ where: { role, isActive: true }, select: { id: true } });
+    const users = await this.prisma.user.findMany({
+      where: { role, isActive: true, NOT: { mutedNotificationTypes: { has: type } } },
+      select: { id: true },
+    });
     await this.notifyMany(
       users.map((u) => u.id),
       type,
@@ -47,6 +57,24 @@ export class NotificationsService {
       entite,
       entiteId,
     );
+  }
+
+  async getPreferences(userId: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId }, select: { mutedNotificationTypes: true } });
+    return { mutedTypes: user?.mutedNotificationTypes ?? [] };
+  }
+
+  async setPreference(userId: string, type: NotificationType, enabled: boolean) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId }, select: { mutedNotificationTypes: true } });
+    if (!user) throw new NotFoundException('Utilisateur introuvable.');
+    const muted = new Set(user.mutedNotificationTypes);
+    if (enabled) {
+      muted.delete(type);
+    } else {
+      muted.add(type);
+    }
+    await this.prisma.user.update({ where: { id: userId }, data: { mutedNotificationTypes: Array.from(muted) } });
+    return { mutedTypes: Array.from(muted) };
   }
 
   findMine(userId: string) {

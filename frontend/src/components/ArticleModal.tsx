@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Article } from '../types';
 import { X, Calendar, Clock, Share2, Sparkles, CheckCircle2 } from 'lucide-react';
 
@@ -8,6 +9,7 @@ interface ArticleModalProps {
 }
 
 export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) => {
+  const { t } = useTranslation(['marketplace', 'common']);
   if (!article) return null;
 
   return (
@@ -61,32 +63,32 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
 
           <div className="space-y-3 text-xs sm:text-sm text-[#576B64] leading-relaxed pt-2">
             <p>
-              يُعتبر العسل الطبيعي من أقدم وأعظم المعجزات الغذائية والعلاجية التي عرفتها البشرية. في كنوز العافية، نحرص على جني العسل بأحدث الطرق العلمية التي تضمن بقاء الإنزيمات النشطة والأحماض الأمينية دون أي معالجة حرارية تضر بجودته.
+              {t('marketplace:article.intro')}
             </p>
 
             <div className="bg-white p-4 rounded-xl border border-[#EAE1D2] space-y-2 my-3">
               <h4 className="font-bold text-[#0C261B] flex items-center gap-1.5">
                 <Sparkles className="w-4 h-4 text-[#D49B37]" />
-                أهم النصائح للاستفادة القصوى:
+                {t('marketplace:article.tipsTitle')}
               </h4>
               <ul className="space-y-1.5 text-xs text-[#576B64]">
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#1E6B56] shrink-0" />
-                  تناول ملعقة صباحاً على الريق مذابة في ماء فاتر لسرعة الامتصاص.
+                  {t('marketplace:article.tips.morningSpoon')}
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#1E6B56] shrink-0" />
-                  استخدم الملاعق الخشبية أو الخزفية وتجنب الملاعق المعدنية لحفظ الخواص الإنزيمية.
+                  {t('marketplace:article.tips.woodenSpoon')}
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#1E6B56] shrink-0" />
-                  احفظ العسل في درجة حرارة الغرفة (20-25 مئوية) بعيداً عن أشعة الشمس المباشرة.
+                  {t('marketplace:article.tips.storage')}
                 </li>
               </ul>
             </div>
 
             <p>
-              تذكر دائماً أن تتأكد من فحص رمز الدفعة (QR Code) على عبوتك للاطلاع على التقرير المخبري المعتمد ومصدر المنحل الجغرافي.
+              {t('marketplace:article.qrReminder')}
             </p>
           </div>
 
@@ -95,18 +97,18 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
         {/* Footer */}
         <div className="bg-[#EAE1D2] px-6 py-3 border-t border-[#D5C7B0] flex items-center justify-between shrink-0">
           <button
-            onClick={() => alert('تم نسخ رابط المقال للمشاركة!')}
+            onClick={() => alert(t('marketplace:article.shareAlert'))}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-[#0C261B] text-xs font-bold border border-[#D5C7B0] hover:bg-[#FAF6EE] cursor-pointer"
           >
             <Share2 className="w-3.5 h-3.5 text-[#D49B37]" />
-            <span>مشاركة المقال</span>
+            <span>{t('marketplace:article.share')}</span>
           </button>
 
           <button
             onClick={onClose}
             className="px-5 py-1.5 bg-[#0C261B] text-white text-xs font-bold rounded-lg hover:bg-[#16473A] cursor-pointer"
           >
-            إغلاق
+            {t('common:actions.close')}
           </button>
         </div>
 

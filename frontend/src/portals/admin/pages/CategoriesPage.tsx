@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Plus, Pencil, Trash2, EyeOff } from 'lucide-react';
 import {
   useAdminCategories,
@@ -13,6 +14,7 @@ import type { Categorie } from '../../../lib/api-types';
 const EMPTY_FORM = { nom: '', description: '', imageUrl: '', ordre: 0, parentId: '', actif: true };
 
 export const CategoriesPage: React.FC = () => {
+  const { t } = useTranslation(['admin', 'common']);
   const { data: categories, isLoading } = useAdminCategories();
   const createCategorie = useCreateCategorie();
   const updateCategorie = useUpdateCategorie();
@@ -65,7 +67,7 @@ export const CategoriesPage: React.FC = () => {
       }
       setIsOpen(false);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر حفظ الفئة.');
+      setError(err instanceof ApiError ? err.message : t('admin:categories.saveError'));
     }
   };
 
@@ -74,25 +76,25 @@ export const CategoriesPage: React.FC = () => {
     try {
       await deleteCategorie.mutateAsync(c.id);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر حذف الفئة.');
+      setError(err instanceof ApiError ? err.message : t('admin:categories.deleteError'));
     }
   };
 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-[#0C261B]">الفئات</h1>
+        <h1 className="text-2xl font-bold text-[#0C261B]">{t('admin:nav.categories')}</h1>
         <Button size="sm" onClick={openCreate}>
           <Plus className="w-4 h-4" />
-          فئة جديدة
+          {t('admin:categories.new')}
         </Button>
       </div>
 
       {error && <Alert tone="error" className="mb-4">{error}</Alert>}
-      {isLoading && <p className="text-sm text-gray-400">جارٍ التحميل...</p>}
+      {isLoading && <p className="text-sm text-gray-400">{t('common:status.loading')}</p>}
       {!isLoading && rootCategories.length === 0 && (
         <Card>
-          <EmptyState title="لا توجد فئات بعد" />
+          <EmptyState title={t('admin:categories.empty')} />
         </Card>
       )}
 
@@ -111,17 +113,17 @@ export const CategoriesPage: React.FC = () => {
         ))}
       </div>
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={editing ? 'تعديل الفئة' : 'فئة جديدة'}>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={editing ? t('admin:categories.edit') : t('admin:categories.new')}>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <Input label="الاسم" required value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
-          <Textarea label="الوصف (اختياري)" value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} />
-          <Input label="رابط الصورة (اختياري)" value={form.imageUrl} onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))} />
+          <Input label={t('admin:categories.name')} required value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
+          <Textarea label={t('admin:categories.descriptionOptional')} value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} />
+          <Input label={t('admin:categories.imageUrlOptional')} value={form.imageUrl} onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))} />
           <Select
-            label="الفئة الأم (اختياري)"
+            label={t('admin:categories.parentOptional')}
             value={form.parentId}
             onChange={(e) => setForm((f) => ({ ...f, parentId: e.target.value }))}
           >
-            <option value="">— فئة رئيسية —</option>
+            <option value="">{t('admin:categories.rootCategory')}</option>
             {(categories ?? [])
               .filter((c) => !c.parentId && c.id !== editing?.id)
               .map((c) => (
@@ -129,7 +131,7 @@ export const CategoriesPage: React.FC = () => {
               ))}
           </Select>
           <Input
-            label="ترتيب العرض"
+            label={t('admin:categories.displayOrder')}
             type="number"
             value={form.ordre}
             onChange={(e) => setForm((f) => ({ ...f, ordre: Number(e.target.value) }))}
@@ -141,10 +143,10 @@ export const CategoriesPage: React.FC = () => {
               onChange={(e) => setForm((f) => ({ ...f, actif: e.target.checked }))}
               className="w-4 h-4"
             />
-            فئة نشطة (تظهر في المتجر)
+            {t('admin:categories.activeLabel')}
           </label>
           <Button type="submit" fullWidth isLoading={createCategorie.isPending || updateCategorie.isPending}>
-            حفظ
+            {t('common:actions.save')}
           </Button>
         </form>
       </Modal>
@@ -156,31 +158,34 @@ const CategoryRow: React.FC<{ categorie: Categorie; onEdit: (c: Categorie) => vo
   categorie,
   onEdit,
   onDelete,
-}) => (
-  <div className="flex items-center justify-between gap-3">
-    <div className="flex items-center gap-2 min-w-0">
-      <p className="font-bold text-[#0C261B] truncate">{categorie.nom}</p>
-      {!categorie.actif && (
-        <Badge tone="gray" icon={<EyeOff className="w-3 h-3" />}>
-          غير نشطة
-        </Badge>
-      )}
+}) => {
+  const { t } = useTranslation(['admin', 'common']);
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center gap-2 min-w-0">
+        <p className="font-bold text-[#0C261B] truncate">{categorie.nom}</p>
+        {!categorie.actif && (
+          <Badge tone="gray" icon={<EyeOff className="w-3 h-3" />}>
+            {t('admin:categories.inactive')}
+          </Badge>
+        )}
+      </div>
+      <div className="flex items-center gap-1 shrink-0">
+        <button
+          onClick={() => onEdit(categorie)}
+          className="p-2 rounded-lg text-gray-400 hover:bg-[#FAF6EE] hover:text-[#0C261B] min-w-[36px] min-h-[36px] flex items-center justify-center"
+          aria-label={t('common:actions.edit')}
+        >
+          <Pencil className="w-4 h-4" />
+        </button>
+        <button
+          onClick={() => onDelete(categorie)}
+          className="p-2 rounded-lg text-gray-400 hover:bg-rose-50 hover:text-rose-600 min-w-[36px] min-h-[36px] flex items-center justify-center"
+          aria-label={t('common:actions.delete')}
+        >
+          <Trash2 className="w-4 h-4" />
+        </button>
+      </div>
     </div>
-    <div className="flex items-center gap-1 shrink-0">
-      <button
-        onClick={() => onEdit(categorie)}
-        className="p-2 rounded-lg text-gray-400 hover:bg-[#FAF6EE] hover:text-[#0C261B] min-w-[36px] min-h-[36px] flex items-center justify-center"
-        aria-label="تعديل"
-      >
-        <Pencil className="w-4 h-4" />
-      </button>
-      <button
-        onClick={() => onDelete(categorie)}
-        className="p-2 rounded-lg text-gray-400 hover:bg-rose-50 hover:text-rose-600 min-w-[36px] min-h-[36px] flex items-center justify-center"
-        aria-label="حذف"
-      >
-        <Trash2 className="w-4 h-4" />
-      </button>
-    </div>
-  </div>
-);
+  );
+};

@@ -9,6 +9,18 @@ import { resolveFileUrl } from './api';
 // voir la note sur `purity` ci-dessous.
 export function toMockProduct(p: PublicProduct): MockProduct {
   const producer = p.batch?.verification?.request.producer;
+  const variants = (p.variants ?? []).map((v) => ({
+    id: v.id,
+    sku: v.sku,
+    packageSize: v.packageSize,
+    price: Number(v.price),
+    stock: v.stock,
+    isDefault: v.isDefault,
+  }));
+  // Format présenté par défaut : le SKU par défaut en stock, sinon le premier
+  // format disponible, sinon le premier tout court.
+  const preferred =
+    variants.find((v) => v.isDefault && v.stock > 0) ?? variants.find((v) => v.stock > 0) ?? variants[0];
 
   return {
     id: p.id,
@@ -16,8 +28,9 @@ export function toMockProduct(p: PublicProduct): MockProduct {
     subtitle: p.gamme ?? p.categorie.nom,
     category: p.categorie.slug,
     categoryLabel: p.categorie.nom,
-    price: Number(p.prix),
-    weight: p.packaging?.size ?? '',
+    price: preferred ? preferred.price : Number(p.prix),
+    weight: preferred ? preferred.packageSize : (p.packaging?.size ?? ''),
+    variants,
     // Aucun système d'avis dans le backend : on affiche honnêtement 0 plutôt
     // que d'inventer une note ou un nombre d'avis.
     rating: 0,
@@ -25,6 +38,7 @@ export function toMockProduct(p: PublicProduct): MockProduct {
     image: p.images[0] ? resolveFileUrl(p.images[0]) : '/images/cover.png',
     description: p.description ?? '',
     origin: producer ? `${producer.location}` : p.categorie.nom,
+    producerLocation: producer?.location || undefined,
     batchCode: p.batch?.batchCode ?? '',
     benefits: [],
     // Chaque produit du catalogue public a, par construction, déjà traversé

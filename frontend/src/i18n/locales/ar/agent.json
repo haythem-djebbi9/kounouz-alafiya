@@ -1,0 +1,570 @@
+{
+  "brand": {
+    "role": "عون ميداني",
+    "motto": "أصول نقية. عسل موثوق.",
+    "tagline": "العسل التونسي",
+    "subline": "غدٌ أكثر ثراءً"
+  },
+  "nav": {
+    "dashboard": "لوحة القيادة",
+    "assignments": "مهامي",
+    "collection": "جمع العينات",
+    "seals": "تسجيل الأختام الآمنة",
+    "custody": "سلسلة الحيازة",
+    "visits": "زياراتي",
+    "reports": "التقارير",
+    "messages": "الرسائل",
+    "help": "المساعدة والدعم",
+    "settings": "الإعدادات"
+  },
+  "common": {
+    "loading": "جارٍ التحميل...",
+    "loadError": "تعذّر تحميل البيانات. تحقّق من الاتصال.",
+    "saveError": "فشلت العملية. أعد المحاولة.",
+    "retry": "إعادة المحاولة",
+    "view": "عرض",
+    "viewAll": "عرض الكل",
+    "details": "التفاصيل",
+    "back": "رجوع",
+    "cancel": "إلغاء",
+    "continue": "متابعة",
+    "saveContinue": "حفظ ومتابعة",
+    "previous": "السابق",
+    "next": "التالي",
+    "yesterday": "أمس",
+    "openInMaps": "فتح في الخرائط",
+    "getDirections": "الاتجاهات",
+    "viewFullMap": "عرض الخريطة كاملة",
+    "coordinates": "الإحداثيات"
+  },
+  "search": {
+    "placeholder": "ابحث عن مهام أو منتجين أو عينات أو أرقام أختام...",
+    "assignments": "المهام",
+    "samples": "العينات والأختام",
+    "noResults": "لا توجد نتائج."
+  },
+  "assignmentStatus": {
+    "PENDING": "في الانتظار",
+    "IN_PROGRESS": "قيد التنفيذ",
+    "COMPLETED": "منجزة",
+    "CANCELLED": "ملغاة",
+    "OVERDUE": "متأخرة"
+  },
+  "priority": {
+    "LOW": "منخفضة",
+    "NORMAL": "عادية",
+    "HIGH": "مرتفعة",
+    "URGENT": "عاجلة"
+  },
+  "sampleStatus": {
+    "COLLECTED": "تم الجمع",
+    "SEALED": "مختومة",
+    "IN_TRANSIT": "في الطريق",
+    "RECEIVED": "استلمتها كنوز",
+    "RECEIVED_AT_LAB": "في المخبر",
+    "ANALYZED": "تم التحليل",
+    "ISSUE": "إشكال"
+  },
+  "harvestSource": {
+    "PRODUCTION_HIVES": "من خلايا الإنتاج",
+    "STORAGE": "من المخزون",
+    "EXTRACTION": "عند الاستخلاص",
+    "PACKAGED_STOCK": "من المخزون المعبّأ"
+  },
+  "equipment": {
+    "SAMPLING_KIT": "عدّة أخذ العينات",
+    "STERILE_CONTAINERS": "حاويات معقّمة",
+    "SECURE_SEALS": "أختام كنوز الآمنة",
+    "LABELS_QR": "ملصقات ورموز QR",
+    "CAMERA": "كاميرا / هاتف",
+    "GPS": "تفعيل GPS"
+  },
+  "events": {
+    "REGISTERED": { "title": "تسجيل العينة", "hint": "إنشاء البطاقة" },
+    "COLLECTED": { "title": "جمع العينة", "hint": "أُخذت من المنتج" },
+    "SEALED": { "title": "تسجيل الختم", "hint": "وُضع ختم الأمان" },
+    "RELEASED_FOR_TRANSPORT": { "title": "تسليم للنقل", "hint": "سُلّمت إلى شريك النقل" },
+    "IN_TRANSIT": { "title": "في الطريق", "hint": "في الطريق إلى كنوز" },
+    "LOCATION_UPDATE": { "title": "نقطة عبور", "hint": "الموقع أثناء النقل" },
+    "RECEIVED": { "title": "استلمتها كنوز", "hint": "سُجّلت في مركز التحقق" },
+    "SENT_TO_LAB": { "title": "أُرسلت إلى المخبر", "hint": "أُرسلت للتحليل" },
+    "IN_LABORATORY": { "title": "استلمها المخبر", "hint": "يمكن بدء التحليل" },
+    "ANALYSIS_COMPLETED": { "title": "اكتمل التحليل", "hint": "النتائج متاحة" },
+    "RESULT_ADDED": { "title": "إضافة النتيجة", "hint": "سُجّلت النتيجة" },
+    "ISSUE": { "title": "الإبلاغ عن إشكال", "hint": "خلل في العينة" }
+  },
+  "weather": {
+    "heading": "الأحوال الجوية",
+    "humidity": "الرطوبة",
+    "wind": "الرياح",
+    "fieldConditions": "الظروف",
+    "good": "جيدة",
+    "poor": "غير ملائمة",
+    "goodForVisits": "ظروف جيدة للزيارات الميدانية",
+    "poorForVisits": "ظروف غير ملائمة — توخَّ الحذر",
+    "unavailable": "الطقس غير متاح.",
+    "noPosition": "التقط موقع GPS لعرض الطقس.",
+    "currentPosition": "موقعك الحالي",
+    "kinds": {
+      "clear": "مشمس",
+      "cloudy": "غائم جزئيًا",
+      "fog": "ضباب",
+      "rain": "مطر",
+      "snow": "ثلج",
+      "storm": "عاصفة"
+    }
+  },
+  "gps": {
+    "useCurrent": "الموقع الحالي",
+    "update": "تحديث الموقع",
+    "refresh": "تحديث",
+    "locating": "جارٍ تحديد موقع GPS...",
+    "captured": "تم التقاط الموقع بنجاح",
+    "accuracy": "الدقة: {{meters}} م",
+    "unavailable": "موقع GPS غير متاح",
+    "errors": {
+      "denied": "تم رفض الوصول إلى الموقع. اسمح به في إعدادات المتصفح أو أدخل الإحداثيات.",
+      "unavailable": "تعذّر الحصول على إشارة GPS. انتقل إلى مكان مكشوف أو أدخل الإحداثيات.",
+      "unsupported": "هذا الجهاز لا يدعم تحديد الموقع."
+    }
+  },
+  "photos": {
+    "add": "إضافة صورة",
+    "formats": "JPG, PNG · 5 م.ب كحد أقصى",
+    "alt": "صورة إثبات",
+    "remove": "حذف الصورة",
+    "none": "لا توجد صور.",
+    "uploadError": "تعذّر رفع الصورة."
+  },
+  "schedule": {
+    "date": "تاريخ الزيارة",
+    "from": "من",
+    "to": "إلى",
+    "reason": "السبب",
+    "reasonPlaceholder": "مثال: المنتج غير متاح، سوء الطقس...",
+    "windowError": "يجب أن تكون ساعة النهاية بعد ساعة البداية.",
+    "rescheduleTitle": "إعادة برمجة الزيارة",
+    "rescheduleBody": "سيتم إعلام المنتج بالتاريخ الجديد.",
+    "confirm": "تأكيد التاريخ الجديد"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "صباح الخير، {{name}}",
+      "afternoon": "مساء الخير، {{name}}",
+      "evening": "مساء الخير، {{name}}"
+    },
+    "subtitle": "إليك نظرة عامة على نشاطك الميداني لهذا اليوم.",
+    "newCollection": "جمع عينة جديدة",
+    "stats": {
+      "today": "مهام اليوم",
+      "completed": "منجزة",
+      "inProgress": "قيد التنفيذ",
+      "upcoming": "قادمة"
+    },
+    "overdue_zero": "لا توجد مهام متأخرة.",
+    "overdue_one": "مهمة واحدة متأخرة — أعد برمجتها أو أنجزها.",
+    "overdue_two": "مهمتان متأخرتان — أعد برمجتهما أو أنجزهما.",
+    "overdue_few": "{{count}} مهام متأخرة — أعد برمجتها أو أنجزها.",
+    "overdue_many": "{{count}} مهمة متأخرة — أعد برمجتها أو أنجزها.",
+    "overdue_other": "{{count}} مهمة متأخرة — أعد برمجتها أو أنجزها.",
+    "route": {
+      "heading": "مسار اليوم",
+      "start": "موقعك",
+      "empty": "لا توجد زيارات محددة الموقع اليوم.",
+      "noStops": "لا توجد زيارات مبرمجة اليوم."
+    },
+    "notifications": {
+      "heading": "آخر الإشعارات",
+      "empty": "لا توجد إشعارات."
+    },
+    "table": {
+      "heading": "مهام اليوم ({{count}})",
+      "empty": "لا توجد مهام مبرمجة اليوم.",
+      "cols": {
+        "index": "#",
+        "producer": "المنتج",
+        "location": "الموقع",
+        "sampleType": "نوع العينة",
+        "status": "الحالة",
+        "action": "إجراء"
+      }
+    },
+    "quickActions": {
+      "heading": "إجراءات سريعة",
+      "startCollection": "بدء جمع عينة",
+      "registerSeal": "تسجيل ختم",
+      "updateDelivery": "تحديث حالة التسليم"
+    },
+    "help": {
+      "title": "تحتاج مساعدة؟",
+      "body": "تواصل مع مشرفك أو اطّلع على الدليل الميداني."
+    }
+  },
+  "assignments": {
+    "title": "مهامي",
+    "subtitle": "زيارات الجمع الخاصة بك، المبرمجة من كنوز أو المأخوذة من القائمة المشتركة.",
+    "searchPlaceholder": "المنتج، الموقع، الرمز...",
+    "tabs": {
+      "TODAY": "اليوم",
+      "UPCOMING": "القادمة",
+      "ACTIVE": "للإنجاز",
+      "COMPLETED": "السابقة",
+      "ALL": "الكل",
+      "AVAILABLE": "المتاحة"
+    },
+    "empty": {
+      "TODAY": "لا توجد مهام اليوم.",
+      "UPCOMING": "لا توجد مهام قادمة.",
+      "ACTIVE": "لا شيء للإنجاز حاليًا.",
+      "COMPLETED": "لا توجد زيارات سابقة.",
+      "ALL": "لا توجد مهام."
+    },
+    "emptyHint": "ستظهر هنا المهام التي يسندها فريق التحقق. يمكنك أيضًا برمجة زيارة من تبويب المتاحة.",
+    "available": {
+      "hint": "طلبات مقبولة لم يبرمجها أي عون بعد. برمج زيارة لإضافتها إلى مهامك.",
+      "empty": "لا توجد عمليات جمع في انتظار البرمجة.",
+      "plan": "برمجة الزيارة",
+      "modalTitle": "برمجة زيارة جمع",
+      "modalBody": "{{honey}} لدى {{producer}}. سيتم إعلام المنتج بالزيارة.",
+      "confirm": "إضافة إلى مهامي"
+    }
+  },
+  "assignmentDetail": {
+    "title": "مهمة جمع",
+    "subtitle": "تفاصيل المهمة وتعليمات أخذ العينة.",
+    "notFound": "المهمة غير موجودة.",
+    "assignment": "المهمة #{{code}}",
+    "scheduledDate": "التاريخ المحدد",
+    "preferredTime": "التوقيت المفضل",
+    "priority": "الأولوية",
+    "producerInfo": "معلومات المنتج",
+    "viewProfile": "عرض ملف المنتج",
+    "hives_zero": "لا خلايا",
+    "hives_one": "خلية واحدة",
+    "hives_two": "خليتان",
+    "hives_few": "{{count}} خلايا",
+    "hives_many": "{{count}} خلية",
+    "hives_other": "{{count}} خلية",
+    "sampleDetails": "تفاصيل العينة",
+    "honeyType": "نوع العسل",
+    "expectedQuantity": "الكمية المتوقعة",
+    "perSample": "{{grams}} غ (لكل عينة)",
+    "numberOfSamples": "عدد العينات",
+    "collectionMethod": "طريقة الجمع",
+    "specialInstructions": "تعليمات خاصة",
+    "location": "الموقع",
+    "noCoordinates": "إحداثيات GPS غير متوفرة.",
+    "notes": "ملاحظات المهمة",
+    "noNotes": "لا توجد ملاحظات لهذه المهمة.",
+    "rescheduled_zero": "لم تتم إعادة البرمجة.",
+    "rescheduled_one": "أُعيدت برمجتها مرة واحدة: {{reason}}",
+    "rescheduled_two": "أُعيدت برمجتها مرتين — آخر سبب: {{reason}}",
+    "rescheduled_few": "أُعيدت برمجتها {{count}} مرات — آخر سبب: {{reason}}",
+    "rescheduled_many": "أُعيدت برمجتها {{count}} مرة — آخر سبب: {{reason}}",
+    "rescheduled_other": "أُعيدت برمجتها {{count}} مرة — آخر سبب: {{reason}}",
+    "assignedBy": "أسندها {{name}}",
+    "equipment": "المعدات المطلوبة",
+    "checkList": "تحديد الكل",
+    "uncheckAll": "إلغاء تحديد الكل",
+    "equipmentHint": "حدّد كل عنصر بعد وضعه في سيارتك.",
+    "completedOn": "اكتمل الجمع في {{date}}",
+    "backToAssignments": "العودة إلى المهام",
+    "reschedule": "إعادة البرمجة",
+    "startCollection": "بدء الجمع",
+    "continueCollection": "مواصلة الجمع",
+    "viewCustody": "سلسلة الحيازة"
+  },
+  "producerProfile": {
+    "title": "ملف المنتج",
+    "verified": "منتج موثَّق",
+    "phone": "الهاتف",
+    "email": "البريد الإلكتروني",
+    "address": "عنوان الضيعة",
+    "hives": "الخلايا",
+    "flora": "النباتات الرئيسية",
+    "practices": "الممارسات",
+    "hiveType": "نوع الخلية",
+    "farmPhotos": "صور الضيعة",
+    "call": "اتصال",
+    "sendEmail": "إرسال بريد"
+  },
+  "collectionHome": {
+    "title": "جمع العينات",
+    "subtitle": "واصل عملية جمع جارية أو ابدأ زيارتك التالية.",
+    "inProgress": "قيد التنفيذ",
+    "toStart": "للبدء",
+    "empty": "لا توجد مهمة نشطة.",
+    "emptyHint": "برمج زيارة من عمليات الجمع المتاحة للبدء.",
+    "browseAvailable": "عرض عمليات الجمع المتاحة"
+  },
+  "wizard": {
+    "title": "جمع العينة",
+    "subtitle": "سجّل معلومات العينة المأخوذة من المنتج.",
+    "cancelled": "تم إلغاء هذه المهمة.",
+    "producer": "المنتج",
+    "location": "الموقع",
+    "date": "التاريخ",
+    "steps": {
+      "assignment": "المهمة",
+      "sample": "جمع العينة",
+      "seal": "تسجيل الختم",
+      "confirmation": "التأكيد",
+      "complete": "اكتمال"
+    },
+    "assignmentStep": {
+      "heading": "ملخّص المهمة",
+      "equipmentReady": "كل المعدات المطلوبة محدّدة.",
+      "equipmentMissing_zero": "كل المعدات محدّدة.",
+      "equipmentMissing_one": "عنصر واحد غير محدّد بعد:",
+      "equipmentMissing_two": "عنصران غير محدّدين بعد:",
+      "equipmentMissing_few": "{{count}} عناصر غير محدّدة بعد:",
+      "equipmentMissing_many": "{{count}} عنصرًا غير محدّد بعد:",
+      "equipmentMissing_other": "{{count}} عنصر غير محدّد بعد:",
+      "openChecklist": "فتح القائمة",
+      "onSite": "في الموقع",
+      "onSiteBody": "عرّف بنفسك للمنتج، وحدّد الخلايا المعنية ثم ابدأ الجمع. سيتم تسجيل الوقت وموقع GPS.",
+      "start": "بدء الجمع"
+    },
+    "sample": {
+      "heading": "معلومات العينة",
+      "sampleId": "معرّف العينة",
+      "sampleIdHint": "يُسند المعرّف النهائي عند الحفظ.",
+      "refreshId": "تحديث المعرّف",
+      "honeyType": "نوع العسل",
+      "quantity": "الكمية المجمّعة",
+      "recommended": "الموصى به: {{grams}} غ",
+      "numberOfSamples": "عدد العينات",
+      "collectionMethod": "طريقة الجمع",
+      "dateTime": "تاريخ ووقت الجمع",
+      "gps": "موقع GPS",
+      "latitude": "خط العرض",
+      "longitude": "خط الطول",
+      "notes": "ملاحظات (اختياري)",
+      "notesPlaceholder": "أضف أي ملاحظة مفيدة (حالة الخلايا، الطقس...)",
+      "photos": "صور العينة",
+      "photoCount": "{{count}}/{{max}} صور",
+      "photosTip": "التقط صورًا واضحة للعينة والخلايا والمحيط.",
+      "locationHeading": "الموقع",
+      "collectionPoint": "نقطة الجمع",
+      "declaredFarm": "موقع الضيعة المصرّح به",
+      "noPosition": "في انتظار موقع GPS.",
+      "farFromFarm": "أنت على بعد {{km}} كم من موقع الضيعة المصرّح به. تحقّق من الموقع قبل الحفظ.",
+      "recorded": "تم تسجيل العينة",
+      "errors": {
+        "honeyType": "أدخل نوع العسل.",
+        "quantity": "أدخل كمية أكبر من 0.",
+        "numberOfSamples": "أدخل عددًا صحيحًا لا يقل عن 1.",
+        "position": "موقع GPS إلزامي.",
+        "date": "لا يمكن أن يكون التاريخ والوقت في المستقبل.",
+        "summary": "بعض الحقول الإلزامية ناقصة أو غير صالحة."
+      }
+    },
+    "seal": {
+      "heading": "تسجيل الختم",
+      "description": "ضع ختم كنوز الآمن على العينة {{code}}، صوّره في مكانه ثم أكّد سلامته."
+    },
+    "confirmation": {
+      "heading": "ملخّص عملية الجمع",
+      "description": "راجع المعلومات مع المنتج قبل إغلاق الزيارة.",
+      "handover": "تأكيد المنتج",
+      "producerConfirmed": "كان {{name}} حاضرًا ويؤكد أن العينة أُخذت وخُتمت بحضوره.",
+      "notes": "ملاحظات الإغلاق (اختياري)",
+      "submit": "تأكيد وإغلاق الزيارة",
+      "incomplete": "يجب تسجيل العينة وختمها قبل التأكيد."
+    },
+    "complete": {
+      "heading": "اكتمل الجمع",
+      "description": "العينة مختومة ومسجّلة. بدأت سلسلة الحيازة.",
+      "nextStep": "الخطوة التالية: سلّم العينة للنقل وحدّث حالة التسليم.",
+      "custody": "سلسلة الحيازة",
+      "nextCollection": "عملية الجمع التالية",
+      "dashboard": "العودة إلى لوحة القيادة"
+    }
+  },
+  "seal": {
+    "numberSource": "رقم الختم",
+    "source": {
+      "printed": "ختم مطبوع مسبقًا",
+      "auto": "توليد رقم"
+    },
+    "number": "رقم الختم",
+    "numberHint": "انسخ الرقم المطبوع على الختم كما هو.",
+    "autoHint": "ستُسند كنوز رقمًا فريدًا (KS-YYYY-XXXXXX). دوّنه على ملصق الختم.",
+    "notes": "ملاحظات",
+    "notesPlaceholder": "موضع الختم، نوع الحاوية...",
+    "photo": "صورة الختم بعد وضعه",
+    "photoHint": "يجب أن يكون رقم الختم مقروءًا في الصورة.",
+    "integrity": "أؤكد أن الختم سليم ومغلق بإحكام ويطابق الرقم المُدخل.",
+    "submit": "تسجيل الختم",
+    "appliedAt": "وُضع في",
+    "status": "الحالة",
+    "statuses": {
+      "INTACT": "سليم",
+      "BROKEN": "مكسور"
+    }
+  },
+  "seals": {
+    "title": "تسجيل الأختام الآمنة",
+    "subtitle": "يجب أن تحمل كل عينة مجمّعة ختم كنوز الآمن قبل مغادرة الضيعة.",
+    "pending": "عينات في انتظار الختم ({{count}})",
+    "pendingEmpty": "كل عيناتك مختومة.",
+    "register": "تسجيل الختم",
+    "registered": "أختام حديثة",
+    "modalTitle": "ختم العينة {{code}}"
+  },
+  "custody": {
+    "title": "سلسلة الحيازة",
+    "subtitle": "تابع مسار هذه العينة من الجمع إلى المخبر.",
+    "listTitle": "سلسلة الحيازة",
+    "listSubtitle": "تابع كل عينة جمعتها حتى وصولها إلى المخبر.",
+    "notFound": "العينة غير موجودة.",
+    "searchPlaceholder": "معرّف العينة، الختم، المنتج...",
+    "empty": "لا توجد عينات في هذه القائمة.",
+    "tabs": {
+      "CUSTODY": "في عهدتي",
+      "DELIVERED": "مُسلّمة",
+      "ISSUES": "إشكالات",
+      "ALL": "الكل"
+    },
+    "sampleId": "معرّف العينة",
+    "producer": "المنتج",
+    "producerLocation": "الموقع (المنتج)",
+    "honeyType": "نوع العسل",
+    "quantity": "الكمية",
+    "sealNumber": "رقم الختم",
+    "collectionDate": "تاريخ الجمع",
+    "sampleInfo": "معلومات العينة",
+    "currentStatus": "الحالة الحالية",
+    "since": "منذ",
+    "currentLocation": "الموقع الحالي",
+    "viewOnMap": "عرض على الخريطة",
+    "liveLocation": "الموقع المباشر",
+    "timeline": "التسلسل الزمني لسلسلة الحيازة",
+    "addEvent": "إضافة حدث",
+    "otherEvents": "نقاط العبور والحوادث",
+    "eventDetails": "تفاصيل الحدث",
+    "selectEvent": "اختر حدثًا من التسلسل الزمني.",
+    "pending": "في الانتظار",
+    "updateDeliveryStatus": "تحديث حالة التسليم",
+    "statusHeadline": {
+      "COLLECTED": "تم الجمع",
+      "SEALED": "مختومة",
+      "IN_TRANSIT": "في الطريق",
+      "RECEIVED": "تم الاستلام",
+      "RECEIVED_AT_LAB": "في المخبر",
+      "ANALYZED": "تم التحليل",
+      "ISSUE": "تم الإبلاغ عن إشكال"
+    },
+    "statusDescription": {
+      "COLLECTED": "يجب ختم العينة قبل مغادرة الضيعة.",
+      "SEALED": "العينة المختومة في انتظار النقل.",
+      "IN_TRANSIT": "العينة في الطريق إلى مركز التحقق لكنوز.",
+      "RECEIVED": "استلم فريق كنوز العينة.",
+      "RECEIVED_AT_LAB": "تسلّم المخبر العينة.",
+      "ANALYZED": "اكتمل التحليل المخبري.",
+      "ISSUE": "سيقرّر فريق التحقق الخطوة التالية."
+    },
+    "roles": {
+      "FIELD_AGENT": "عون ميداني",
+      "VERIFICATION_TEAM": "فريق التحقق - كنوز",
+      "ADMIN": "إدارة كنوز",
+      "TRANSPORT": "شريك النقل"
+    },
+    "detail": {
+      "event": "الحدث",
+      "dateTime": "التاريخ والوقت",
+      "handledBy": "بعهدة",
+      "location": "الموقع",
+      "proof": "إثبات التسليم",
+      "notes": "ملاحظات"
+    }
+  },
+  "addEvent": {
+    "title": "تحديث حالة التسليم",
+    "type": "الحدث",
+    "help": {
+      "RELEASED_FOR_TRANSPORT": "تُسلَّم العينة المختومة إلى ناقل. أدخل اسمه وأرفق صورة التسليم.",
+      "IN_TRANSIT": "غادرت العينة وهي في الطريق إلى كنوز.",
+      "LOCATION_UPDATE": "سجّل نقطة عبور لتحديث الموقع المباشر.",
+      "ISSUE": "أبلغ عن كسر أو ختم مكسور أو تأخير أو أي خلل. سيراه فريق التحقق في بوابته."
+    },
+    "handler": "الحائز الحالي",
+    "handlerHint": "اتركه فارغًا إن كنت تنقل العينة بنفسك.",
+    "handlerPlaceholder": "مثال: Cap Bon Express",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "location": "الموقع",
+    "locationPlaceholder": "مثال: الطريق السيارة A1، تونس",
+    "attachGps": "إرفاق موقعي GPS",
+    "note": "ملاحظات",
+    "notePlaceholder": {
+      "default": "المركبة، الظروف، ملاحظات...",
+      "issue": "صف المشكلة بدقة."
+    },
+    "proof": "صورة إثبات",
+    "futureError": "لا يمكن أن يكون تاريخ الحدث في المستقبل.",
+    "submit": "حفظ الحدث"
+  },
+  "visits": {
+    "title": "زياراتي",
+    "subtitle": "سجل زياراتك للضيعات والعينات المجمّعة.",
+    "kpis": {
+      "completed": "زيارات منجزة",
+      "averageDuration": "متوسط مدة الزيارة",
+      "places": "أماكن تمت زيارتها"
+    },
+    "map": "الضيعات التي تمت زيارتها",
+    "mapEmpty": "لا توجد زيارات محددة الموقع.",
+    "history": "سجل الزيارات",
+    "empty": "لا توجد زيارات بعد."
+  },
+  "reports": {
+    "title": "التقارير",
+    "subtitle": "نشاطك الميداني خلال الفترة المختارة.",
+    "period": "الفترة",
+    "lastMonths_zero": "آخر شهر",
+    "lastMonths_one": "آخر شهر",
+    "lastMonths_two": "آخر شهرين",
+    "lastMonths_few": "آخر {{count}} أشهر",
+    "lastMonths_many": "آخر {{count}} شهرًا",
+    "lastMonths_other": "آخر {{count}} شهر",
+    "print": "طباعة",
+    "kpis": {
+      "assignments": "المهام",
+      "completed": "منجزة",
+      "samples": "عينات مجمّعة",
+      "sealed": "عينات مختومة",
+      "onTimeRate": "نسبة الالتزام بالمواعيد",
+      "onTimeHint": "أُنجزت في اليوم المحدد دون إعادة برمجة",
+      "averageDuration": "متوسط مدة الزيارة",
+      "quantity": "الكمية المجمّعة",
+      "issues": "الإشكالات",
+      "rescheduled_zero": "لا زيارات مُعاد برمجتها",
+      "rescheduled_one": "زيارة واحدة مُعاد برمجتها",
+      "rescheduled_two": "زيارتان مُعاد برمجتهما",
+      "rescheduled_few": "{{count}} زيارات مُعاد برمجتها",
+      "rescheduled_many": "{{count}} زيارة مُعاد برمجتها",
+      "rescheduled_other": "{{count}} زيارة مُعاد برمجتها"
+    },
+    "monthly": "النشاط الشهري",
+    "series": {
+      "assignments": "المهام",
+      "completed": "منجزة",
+      "samples": "العينات"
+    },
+    "byHoneyType": "حسب نوع العسل",
+    "bySampleStatus": "حسب حالة العينة",
+    "byRegion": "حسب الموقع",
+    "empty": "لا توجد بيانات لهذه الفترة."
+  },
+  "notificationsPage": {
+    "title": "الإشعارات",
+    "subtitle_zero": "لا توجد إشعارات غير مقروءة",
+    "subtitle_one": "إشعار واحد غير مقروء",
+    "subtitle_two": "إشعاران غير مقروءين",
+    "subtitle_few": "{{count}} إشعارات غير مقروءة",
+    "subtitle_many": "{{count}} إشعارًا غير مقروء",
+    "subtitle_other": "{{count}} إشعار غير مقروء",
+    "markAll": "تعليم الكل كمقروء"
+  }
+}

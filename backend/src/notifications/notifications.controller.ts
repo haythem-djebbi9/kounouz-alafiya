@@ -1,6 +1,8 @@
-import { Controller, Get, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { NotificationType } from '@prisma/client';
 import { NotificationsService } from './notifications.service.js';
+import { UpdateNotificationPreferenceDto } from './dto/update-notification-preference.dto.js';
 import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
 
@@ -18,6 +20,20 @@ export class NotificationsController {
   @Get('unread-count')
   countUnread(@CurrentUser() user: JwtPayload) {
     return this.service.countUnread(user.sub);
+  }
+
+  @Get('preferences')
+  getPreferences(@CurrentUser() user: JwtPayload) {
+    return this.service.getPreferences(user.sub);
+  }
+
+  @Patch('preferences/:type')
+  setPreference(
+    @Param('type') type: NotificationType,
+    @Body() dto: UpdateNotificationPreferenceDto,
+    @CurrentUser() user: JwtPayload,
+  ) {
+    return this.service.setPreference(user.sub, type, dto.enabled);
   }
 
   @Patch(':id/read')

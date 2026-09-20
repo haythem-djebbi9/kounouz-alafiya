@@ -1,43 +1,39 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAdminRequests } from '../hooks/useRequests';
 import { Card, StatusBadge, EmptyState } from '../../../design-system';
 import type { VerificationRequestStatus } from '../../../lib/api-types';
 
-const TABS: { value: VerificationRequestStatus | 'ALL'; label: string }[] = [
-  { value: 'ALL', label: 'الكل' },
-  { value: 'NEW', label: 'جديدة' },
-  { value: 'IN_REVIEW', label: 'قيد المراجعة' },
-  { value: 'ACCEPTED', label: 'مقبولة' },
-  { value: 'REJECTED', label: 'مرفوضة' },
-];
+const TAB_VALUES: (VerificationRequestStatus | 'ALL')[] = ['ALL', 'NEW', 'IN_REVIEW', 'ACCEPTED', 'REJECTED'];
 
 export const RequestsPage: React.FC = () => {
+  const { t } = useTranslation(['admin', 'common']);
   const [tab, setTab] = useState<VerificationRequestStatus | 'ALL'>('ALL');
   const { data: requests, isLoading } = useAdminRequests(tab === 'ALL' ? undefined : tab);
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-[#0C261B] mb-4">طلبات التحقق</h1>
+      <h1 className="text-2xl font-bold text-[#0C261B] mb-4">{t('admin:requests.heading')}</h1>
 
       <div className="flex flex-wrap gap-2 mb-6">
-        {TABS.map((t) => (
+        {TAB_VALUES.map((value) => (
           <button
-            key={t.value}
-            onClick={() => setTab(t.value)}
+            key={value}
+            onClick={() => setTab(value)}
             className={`px-3.5 py-2 rounded-lg text-sm font-bold transition-colors min-h-[40px] ${
-              tab === t.value ? 'bg-[#0C261B] text-white' : 'bg-white text-[#0C261B] border border-[#EAE1D2] hover:border-[#D49B37]'
+              tab === value ? 'bg-[#0C261B] text-white' : 'bg-white text-[#0C261B] border border-[#EAE1D2] hover:border-[#D49B37]'
             }`}
           >
-            {t.label}
+            {t(`admin:requests.tabs.${value}`)}
           </button>
         ))}
       </div>
 
-      {isLoading && <p className="text-sm text-gray-400">جارٍ التحميل...</p>}
+      {isLoading && <p className="text-sm text-gray-400">{t('common:status.loading')}</p>}
       {!isLoading && (requests ?? []).length === 0 && (
         <Card>
-          <EmptyState title="لا توجد طلبات في هذه الفئة" />
+          <EmptyState title={t('admin:requests.empty')} />
         </Card>
       )}
 
@@ -48,7 +44,7 @@ export const RequestsPage: React.FC = () => {
               <div className="min-w-0">
                 <p className="font-bold text-[#0C261B] truncate">{req.honeyType}</p>
                 <p className="text-xs text-gray-400 truncate">
-                  {req.producer?.name} · {req.collectionLocation} · {req.quantity} كغ
+                  {req.producer?.name} · {req.collectionLocation} · {req.quantity} {t('admin:units.kg')}
                 </p>
               </div>
               <StatusBadge kind="request" status={req.status} />

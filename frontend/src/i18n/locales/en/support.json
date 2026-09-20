@@ -1,0 +1,58 @@
+{
+  "title": "Help & Support",
+  "helpCenter": {
+    "heading": "Help center",
+    "intro": "Quick answers to the most common questions about Kounouz Alafiya.",
+    "topics": [
+      { "title": "How does honey verification work?", "body": "Every request goes through a full chain: sample collection, lab analysis, then a final decision from the verification team. Follow each step from \"My requests\"." },
+      { "title": "How do I know a product is authentic?", "body": "Scan the QR code on the product, or enter the printed code on the public verification page to see the full traceability chain." },
+      { "title": "How do I create a new verification request?", "body": "From the producer dashboard, click \"Verify my honey\" and follow the three steps." },
+      { "title": "Who answers support tickets?", "body": "The Admin team and the verification team track and reply to all support tickets from within the app." }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "items": [
+      { "q": "Can I edit a request after submitting it?", "a": "No, but you can submit a new request or contact support to adjust the details before it's accepted." },
+      { "q": "Why am I not receiving some notifications?", "a": "Check your notification preferences on the Settings page — that notification type may be turned off." },
+      { "q": "Is online payment available?", "a": "Not yet — this feature is under development." },
+      { "q": "How do I recover my password?", "a": "Contact support by opening a ticket and a team member will help you." }
+    ]
+  },
+  "contact": {
+    "heading": "Contact Kounouz",
+    "intro": "Send us a message and our team will get back to you.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "subjectLabel": "Subject",
+    "messageLabel": "Message",
+    "submit": "Send message",
+    "success": "Your message was sent successfully, thank you for reaching out."
+  },
+  "tickets": {
+    "heading": "Support tickets",
+    "myTickets": "My tickets",
+    "newTicket": "Open a new ticket",
+    "subjectLabel": "Subject",
+    "messageLabel": "Issue details",
+    "submit": "Submit ticket",
+    "success": "Support ticket opened successfully.",
+    "empty": "No support tickets yet.",
+    "openedOn": "Opened on",
+    "viewTicket": "View ticket",
+    "backToList": "Back to list",
+    "conversation": "Conversation",
+    "replyPlaceholder": "Write your reply here...",
+    "closedNotice": "This ticket is closed, no new messages can be added.",
+    "statusLabel": "Status"
+  },
+  "inbox": {
+    "heading": "Support ticket inbox",
+    "filterAll": "All",
+    "noTickets": "No support tickets.",
+    "contactHeading": "Contact messages",
+    "noContactMessages": "No contact messages.",
+    "unread": "Unread",
+    "changeStatus": "Change status"
+  }
+}

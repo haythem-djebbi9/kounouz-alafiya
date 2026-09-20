@@ -1,0 +1,67 @@
+{
+  "appName": "Kounouz Alafiya",
+  "appTagline": "Quality you can verify",
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "search": "Search",
+    "back": "Back",
+    "retry": "Retry",
+    "viewAll": "View all",
+    "viewDetails": "View details",
+    "markAllRead": "Mark all as read",
+    "markAsRead": "Mark as read",
+    "reply": "Reply",
+    "send": "Send",
+    "view": "View",
+    "download": "Download",
+    "add": "Add"
+  },
+  "status": {
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "empty": "No data yet",
+    "error": "Something went wrong, please try again"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "help": "Help & Support",
+    "logout": "Log out",
+    "account": "My account",
+    "menu": "Navigation menu"
+  },
+  "language": {
+    "label": "Language",
+    "ar": "العربية",
+    "fr": "Français",
+    "en": "English"
+  },
+  "notifications": {
+    "heading": "Notifications",
+    "empty": "No notifications yet"
+  },
+  "override": {
+    "title": "Administrative override",
+    "explanation": "This action belongs to the Verification Team. As an administrator you may perform it, but your reason will be recorded in the audit log with your identity.",
+    "reasonLabel": "Reason for the override",
+    "reasonHint": "At least {{min}} characters — visible in the audit log.",
+    "confirm": "Confirm override"
+  },
+  "assistant": {
+    "title": "Assistant",
+    "run": "Analyse",
+    "refresh": "Refresh",
+    "facts": "Facts",
+    "suggestions": "Suggestions",
+    "unknowns": "Not established",
+    "error": "The assistant is unavailable right now."
+  }
+}

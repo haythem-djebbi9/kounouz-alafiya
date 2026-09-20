@@ -9,8 +9,11 @@ import { Roles } from '../auth/decorators/roles.decorator.js';
 import { Public } from '../auth/decorators/public.decorator.js';
 import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
+import { SensitiveAction } from '../common/admin-override.js';
 
 @ApiTags('products')
+// Actions opérationnelles « A* » : override admin motivé et audité.
+@SensitiveAction()
 @Controller('products')
 export class ProductsController {
   constructor(private readonly service: ProductsService) {}

@@ -1,0 +1,476 @@
+{
+  "nav": {
+    "contact": "Contact",
+    "verify": "Vérifier un produit",
+    "story": "Notre histoire",
+    "shop": "Boutique",
+    "home": "Accueil",
+    "help": "Aide"
+  },
+  "actions": {
+    "search": "Rechercher",
+    "account": "Mon compte",
+    "login": "Se connecter",
+    "cart": "Panier",
+    "menu": "Ouvrir le menu",
+    "verifyProduct": "Vérifier votre produit",
+    "verifyProductMobile": "Vérifier votre produit par code"
+  },
+  "categories": {
+    "all": "Tous les produits"
+  },
+  "currency": "DT",
+  "article": {
+    "intro": "Le miel naturel est l'un des plus anciens et des plus précieux trésors nutritionnels et thérapeutiques connus de l'humanité. Chez Kounouz Alafiya, nous récoltons le miel selon les méthodes scientifiques les plus modernes, garantissant la préservation des enzymes actives et des acides aminés, sans aucun traitement thermique susceptible d'altérer sa qualité.",
+    "tipsTitle": "Les conseils essentiels pour en tirer le meilleur :",
+    "tips": {
+      "morningSpoon": "Prenez une cuillère le matin à jeun, diluée dans de l'eau tiède, pour une absorption rapide.",
+      "woodenSpoon": "Utilisez des cuillères en bois ou en céramique et évitez les cuillères métalliques afin de préserver les propriétés enzymatiques.",
+      "storage": "Conservez le miel à température ambiante (20-25°C), à l'abri de la lumière directe du soleil."
+    },
+    "qrReminder": "Pensez toujours à scanner le code QR de votre lot sur l'emballage pour consulter le rapport de laboratoire certifié et l'origine géographique du rucher.",
+    "share": "Partager l'article",
+    "shareAlert": "Le lien de l'article a été copié pour le partage !"
+  },
+  "cart": {
+    "title": "Panier d'achats",
+    "itemsCount": "({{count}} produits ajoutés)",
+    "orderSuccessTitle": "Votre commande a bien été reçue !",
+    "orderSuccessMessage": "Merci pour votre confiance envers Kounouz Alafiya. Votre commande sera préparée et livrée avec les certificats d'analyse en laboratoire.",
+    "orderNumber": "Numéro de commande : #KZ-2025-9481",
+    "emptyTitle": "Votre panier est vide",
+    "emptyMessage": "Parcourez nos produits et ajoutez votre miel préféré pour savourer son goût authentique.",
+    "sizeLabel": "Taille : {{weight}}",
+    "subtotal": "Sous-total :",
+    "shipping": "Livraison express :",
+    "free": "Gratuite",
+    "total": "Total :",
+    "guarantee": "Tous les produits incluent un certificat d'analyse en laboratoire et une garantie de retour.",
+    "processing": "Traitement et confirmation de la commande...",
+    "checkout": "Finaliser la commande et payer",
+    "form": {
+      "title": "Informations de livraison",
+      "name": "Nom complet",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "city": "Ville",
+      "address": "Adresse de livraison",
+      "confirm": "Confirmer la commande",
+      "orderNumber": "Commande n° {{number}}",
+      "error": "Impossible d'enregistrer la commande. Veuillez réessayer.",
+      "networkError": "Serveur injoignable. Vérifiez votre connexion et réessayez."
+    }
+  },
+  "features": {
+    "natural": {
+      "title": "100% naturel",
+      "description": "Tel que la nature l'offre"
+    },
+    "traceable": {
+      "title": "Traçable",
+      "description": "Nous connaissons l'origine de chaque produit"
+    },
+    "verified": {
+      "title": "Vérifié",
+      "description": "Analyses de laboratoire rigoureuses"
+    },
+    "premium": {
+      "title": "Qualité supérieure",
+      "description": "Normes internationales de pureté"
+    }
+  },
+  "discover": {
+    "title": "Découvrez nos trésors",
+    "subtitle": "Des produits sélectionnés avec soin, porteurs dans chaque détail d'une promesse de qualité et de confiance.",
+    "prevAria": "Produit précédent",
+    "nextAria": "Produit suivant",
+    "previewAria": "Aperçu rapide",
+    "addToCartAria": "Ajouter au panier",
+    "discoverProduct": "Découvrir le produit"
+  },
+  "footer": {
+    "bio": "Des produits naturels sélectionnés avec soin, pour vous offrir le meilleur d'une nature qui inspire confiance. Miel 100% pur, dont l'origine et l'analyse en laboratoire sont vérifiables.",
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "twitter": "Twitter / X",
+      "whatsapp": "WhatsApp"
+    },
+    "productsHeading": "Nos produits",
+    "products": {
+      "honey": "Miel naturel",
+      "poles": "Bâtonnets d'Alafiya",
+      "royalJelly": "Gelée royale",
+      "gifts": "Cadeaux et coffrets",
+      "all": "Tous les produits"
+    },
+    "browseHeading": "Navigation",
+    "blog": "Blog et conseils",
+    "guide": "Guide d'utilisation",
+    "address": "Tunis, Tunisie",
+    "copyright": "Tous droits réservés © {{year}} Kounouz Alafiya.",
+    "privacyPolicy": "Politique de confidentialité",
+    "privacyAlert": "Politique de confidentialité : nous respectons les normes les plus strictes en matière de protection des données de nos clients.",
+    "termsPolicy": "Conditions générales",
+    "termsAlert": "Conditions générales : toutes les transactions sont soumises aux réglementations commerciales en vigueur.",
+    "returnsPolicy": "Politique de retour",
+    "returnsAlert": "Politique de retour : garantie or à 100% pour le retour du produit dans un délai de 14 jours."
+  },
+  "hero": {
+    "imageAlt": "Kounouz Alafiya - miel naturel de luxe",
+    "titleLine1": "Miel pur.",
+    "titleLine2": "Bien-être authentique.",
+    "subtitleLine1": "Des trésors de la nature, nous sélectionnons pour vous des produits qui allient",
+    "subtitleLine2": "pureté, soin et transparence.",
+    "discoverCta": "Découvrir nos produits"
+  },
+  "natureToTable": {
+    "titleLine1": "De la nature",
+    "titleLine2": "à votre table",
+    "description": "Nous croyons que la qualité d'un produit commence à sa source et s'accomplit par la transparence qui vous inspire confiance.",
+    "cta": "Découvrir notre histoire"
+  },
+  "fromWorld": {
+    "title": "L'univers de Kounouz Alafiya",
+    "prevAria": "Précédent",
+    "nextAria": "Suivant",
+    "instagramFollow": "Suivez-nous sur Instagram",
+    "showMore": "Voir plus",
+    "stories": {
+      "story1": {
+        "cardTitle": "Qu'est-ce qui rend notre miel unique ?",
+        "articleTitle": "Qu'est-ce qui rend notre miel unique ?",
+        "date": "18 juin 2025",
+        "readTime": "5 min de lecture",
+        "snippet": "Du choix des emplacements des ruchers dans des réserves naturelles préservées de la pollution jusqu'aux techniques d'analyse en laboratoire les plus récentes.",
+        "category": "Notre histoire"
+      },
+      "story2": {
+        "cardTitle": "De la ruche au pot : notre parcours",
+        "articleTitle": "De la ruche au pot : notre parcours",
+        "date": "10 juin 2025",
+        "readTime": "4 min de lecture",
+        "snippet": "Découvrez les étapes précises que nous suivons pour récolter et conditionner le miel à froid, sans aucune exposition à la chaleur, afin de préserver les enzymes.",
+        "category": "Production"
+      },
+      "story3": {
+        "cardTitle": "Comment nous vérifions la qualité de chaque lot",
+        "articleTitle": "Comment vérifions-nous la qualité de chaque lot ?",
+        "date": "1 juin 2025",
+        "readTime": "5 min de lecture",
+        "snippet": "Un aperçu de nos laboratoires certifiés, et comment nous générons un code QR unique pour chaque pot, donnant accès au rapport d'analyse complet.",
+        "category": "Transparence"
+      },
+      "story4": {
+        "cardTitle": "Les bienfaits du miel naturel pour l'immunité et l'énergie",
+        "articleTitle": "Les bienfaits du miel naturel pour l'immunité et l'énergie",
+        "date": "20 juillet 2025",
+        "readTime": "4 min de lecture",
+        "snippet": "Découvrez comment une simple cuillère de miel naturel par jour peut faire une réelle différence pour renforcer votre immunité et votre niveau d'énergie.",
+        "category": "Santé et immunité"
+      }
+    }
+  },
+  "quality": {
+    "headingPart1": "La qualité n'est pas une promesse.",
+    "headingPart2": "C'est un processus.",
+    "steps": {
+      "origin": {
+        "title": "Origine",
+        "description": "Nous sélectionnons les meilleures sources naturelles et les réserves montagneuses préservées."
+      },
+      "batch": {
+        "title": "Lot",
+        "description": "Chaque produit porte un numéro de lot unique, enregistré dans notre système de traçabilité."
+      },
+      "quality": {
+        "title": "Qualité",
+        "description": "Des analyses précises et des normes internationales garantissent une pureté totale."
+      },
+      "verification": {
+        "title": "Vérification",
+        "description": "Des informations transparentes et des résultats de laboratoire vérifiables en une seule touche."
+      }
+    }
+  },
+  "storyHome": {
+    "description": "Du cœur de la nature, et de notre passion pour la qualité de vie, est née l'aventure de Kounouz Alafiya. Nous sélectionnons avec soin les meilleures sources de miel et de produits naturels, et travaillons en toute transparence pour vous offrir des produits fiables, purs et durables.",
+    "readMore": "Lire la suite"
+  },
+  "storyPage": {
+    "heroTitleLine1": "De la nature,",
+    "heroTitleLine2": "à votre foyer.",
+    "heroDescription": "Chez Kounouz Alafiya, nous croyons que les meilleurs produits viennent de la nature. Nous travaillons avec passion pour vous offrir un miel pur à 100%, sans aucun additif, afin de partager avec vous les bienfaits de la nature à chaque goutte.",
+    "discoverJourneyCta": "Découvrir notre parcours",
+    "stats": {
+      "experience": "années d'expérience",
+      "natural": "naturel",
+      "happyClients": "clients satisfaits",
+      "naturalProducts": "produits naturels"
+    },
+    "testimonialsTitle": "Ce que disent nos clients",
+    "prevTestimonialsAria": "Témoignages précédents",
+    "nextTestimonialsAria": "Témoignages suivants",
+    "testimonials": {
+      "card1": {
+        "quote": "J'adore le miel de jujubier, son goût est authentique et ses bienfaits nombreux. Je le recommande à tout le monde.",
+        "author": "Mohamed A."
+      },
+      "card2": {
+        "quote": "D'excellents produits et un service formidable. Livraison rapide et emballage soigné.",
+        "author": "Sara N."
+      },
+      "card3": {
+        "quote": "Miel 100% naturel au goût exceptionnel. Je fais confiance à Kounouz Alafiya pour la qualité de ses produits.",
+        "author": "Ahmed M."
+      }
+    },
+    "newsletter": {
+      "title": "Abonnez-vous à notre newsletter",
+      "subtitle": "Recevez des conseils exclusifs et des offres spéciales directement dans votre boîte mail",
+      "placeholder": "Entrez votre adresse e-mail",
+      "subscribeCta": "S'abonner",
+      "successMessage": "✓ Abonnement à la newsletter de Kounouz Alafiya réussi !"
+    },
+    "perks": {
+      "delivery": {
+        "title": "Livraison rapide",
+        "description": "Dans toute la Tunisie"
+      },
+      "payment": {
+        "title": "Paiement 100% sécurisé",
+        "description": "Moyens de paiement fiables"
+      },
+      "quality": {
+        "title": "Garantie de qualité",
+        "description": "Produits naturels garantis"
+      },
+      "support": {
+        "title": "Satisfaction client",
+        "description": "Support client 24h/24"
+      }
+    }
+  },
+  "verifyPage": {
+    "badge": "Système de vérification certifié Kounouz Alafiya",
+    "title": "Vérifiez l'authenticité et la qualité du produit",
+    "subtitle": "Nous vous garantissons que chaque goutte de Kounouz Alafiya est 100% pure et d'origine vérifiée",
+    "scanHint": "Scannez le code QR présent sur le produit directement avec la caméra de votre téléphone — la page de vérification s'ouvrira automatiquement, sans besoin de ce site.",
+    "orEnterManually": "Ou saisissez le code manuellement",
+    "inputPlaceholder": "Entrez le code de vérification ici (exemple : KZ-QR-2026-000001)",
+    "errorEmpty": "Veuillez saisir le code de vérification imprimé sur l'emballage",
+    "verifyCta": "Vérifier maintenant",
+    "demoCodesLabel": "Codes de démonstration :",
+    "findCodeLink": "Où trouver le code de vérification sur l'emballage ?",
+    "trust": {
+      "authentic": {
+        "title": "100% authentique et garanti",
+        "description": "Nous vous garantissons la qualité et l'authenticité de chaque produit"
+      },
+      "source": {
+        "title": "Source fiable",
+        "description": "Nos produits proviennent des meilleurs ruchers sélectionnés"
+      },
+      "lab": {
+        "title": "Testé et certifié",
+        "description": "Testé selon les normes les plus strictes"
+      },
+      "natural": {
+        "title": "Entièrement naturel",
+        "description": "Sans additifs ni conservateurs"
+      }
+    },
+    "guide": {
+      "findTitle": "Où trouver le code de vérification ?",
+      "findDescription": "Vous trouverez le code de vérification (QR) sur l'étiquette latérale du produit ou au bas de l'emballage.",
+      "resultTitle": "Que signifie le résultat de la vérification ?",
+      "verified": {
+        "title": "Produit certifié",
+        "description": "Ce produit a été vérifié en laboratoire — 100% authentique"
+      },
+      "suspended": {
+        "title": "Temporairement suspendu",
+        "description": "Actuellement indisponible à la vente. Si vous l'avez acheté, veuillez nous contacter."
+      }
+    }
+  },
+  "search": {
+    "placeholder": "Recherchez un miel, un type, un bienfait ou un code de lot...",
+    "popularLabel": "Recherches populaires :",
+    "quickTags": [
+      "Miel de jujubier",
+      "Gelée royale",
+      "Bâtonnets de miel",
+      "Miel naturel premium",
+      "Propolis"
+    ],
+    "resultsCount": "Résultats de recherche ({{count}})",
+    "featuredProducts": "Produits phares",
+    "noResults": "Aucun produit trouvé pour \"{{query}}\"."
+  },
+  "productDetail": {
+    "reviewsCount": "({{count}} avis certifiés)",
+    "originLabel": "Origine : {{origin}}",
+    "chooseSizeLabel": "Choisissez la taille :",
+    "descriptionTitle": "Description du produit :",
+    "benefitsTitle": "Principaux bienfaits et propriétés :",
+    "batchCodeLabel": "Code du lot actuel : {{code}}",
+    "batchVerifiedNote": "Contrôlé et enregistré dans les registres qualité et ruchers",
+    "viewCertificate": "Voir le certificat",
+    "addedToCart": "Ajouté au panier !",
+    "addToCartCta": "Ajouter au panier",
+    "soldOut": "Épuisé"
+  },
+  "verifySection": {
+    "headingPart1": "Ne vous contentez pas de faire confiance.",
+    "headingPart2": "Vérifiez.",
+    "description": "Scannez le code QR présent sur votre produit ou saisissez le code de vérification pour connaître ses informations, son origine et les résultats des analyses.",
+    "inputPlaceholder": "Entrez le code de vérification (exemple : KZ-QR-2026-000001)",
+    "scanTitle": "Autres méthodes de vérification",
+    "tryCodesLabel": "Essayez des codes prêts à l'emploi :"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Miel tunisien vérifié en laboratoire",
+      "subtitle": "Des ruchers tunisiens sélectionnés jusqu’à votre table. Chaque pot porte un QR code qui révèle l’origine du miel, son numéro de lot et ses résultats d’analyse.",
+      "points": {
+        "lab": "Analyse en laboratoire pour chaque lot",
+        "origin": "Rucher identifié : nom et région",
+        "qr": "Un QR code unique par pot"
+      },
+      "card": {
+        "status": "Lot vérifié",
+        "batch": "N° de lot",
+        "origin": "Origine"
+      },
+      "scroll": "Découvrir"
+    },
+    "features": {
+      "lab": {
+        "title": "Analyse en laboratoire",
+        "description": "Chaque lot est analysé par un laboratoire agréé avant la vente."
+      },
+      "traceable": {
+        "title": "Traçabilité complète",
+        "description": "Du rucher au pot, chaque étape est enregistrée et datée."
+      },
+      "qr": {
+        "title": "Un QR code par pot",
+        "description": "Scannez-le pour voir vous-même l’analyse et l’origine du miel."
+      },
+      "local": {
+        "title": "Producteurs tunisiens",
+        "description": "Du miel de ruchers tunisiens sélectionnés, dont nous connaissons les apiculteurs."
+      }
+    },
+    "products": {
+      "eyebrow": "Produits vérifiés",
+      "subtitle": "Chaque produit ici a été analysé en laboratoire, validé par l’équipe Kounouz, et porte son propre code de vérification.",
+      "verifiedBadge": "Vérifié",
+      "quickView": "Aperçu rapide",
+      "added": "Ajouté au panier",
+      "viewAll": "Voir tous les produits ({{count}})",
+      "priceNote": "Tous les prix sont en dinars tunisiens (DT).",
+      "empty": "Aucun produit disponible pour le moment. Revenez bientôt !"
+    },
+    "journey": {
+      "eyebrow": "Le parcours de confiance",
+      "subtitle": "Voici comment le miel passe du rucher tunisien à votre table : six étapes, toutes tracées.",
+      "steps": {
+        "request": {
+          "title": "Demande de vérification",
+          "description": "L’apiculteur enregistre son miel et demande sa vérification.",
+          "who": "Producteur"
+        },
+        "collect": {
+          "title": "Prélèvement scellé",
+          "description": "Un échantillon est prélevé au rucher et fermé par un scellé numéroté.",
+          "who": "Agent terrain"
+        },
+        "lab": {
+          "title": "Analyse en laboratoire",
+          "description": "Un laboratoire agréé analyse l’échantillon ; un échantillon de référence est conservé.",
+          "who": "Laboratoire"
+        },
+        "decision": {
+          "title": "Décision",
+          "description": "L’équipe Kounouz examine les résultats : vérifié ou non vérifié.",
+          "who": "Équipe de vérification"
+        },
+        "qr": {
+          "title": "Conditionnement & QR",
+          "description": "Le lot vérifié est conditionné, chaque pot reçoit un code unique.",
+          "who": "Kounouz Alafiya"
+        },
+        "you": {
+          "title": "Vous vérifiez",
+          "description": "Scannez le code et consultez tout en quelques secondes.",
+          "who": "Vous"
+        }
+      }
+    },
+    "verify": {
+      "eyebrow": "Vérifier un produit",
+      "revealsTitle": "Ce que vous découvrez en vérifiant :",
+      "reveals": {
+        "lab": "Les résultats d’analyse",
+        "origin": "L’origine et le rucher",
+        "batch": "Le numéro de lot",
+        "status": "Le statut actuel du produit"
+      },
+      "inputLabel": "Saisissez le code imprimé sous le QR code",
+      "imageAlt": "Pot Kounouz Alafiya avec sa carte QR de vérification",
+      "resultHint": "Analysé et validé par Kounouz Alafiya"
+    },
+    "terroir": {
+      "eyebrow": "Terroir tunisien",
+      "description": "La qualité d’un miel commence à sa source. Nous travaillons avec des apiculteurs tunisiens que nous connaissons, et suivons chaque lot du rucher jusqu’au pot.",
+      "points": {
+        "producers": "Des apiculteurs tunisiens enregistrés, avec un profil et une région connus.",
+        "reference": "Un échantillon de référence de chaque lot est conservé par Kounouz.",
+        "batch": "Chaque lot a son propre numéro, imprimé sur chacun de ses pots."
+      },
+      "regionsLabel": "Nos ruchers actuellement :",
+      "badge": "Miel de montagne tunisien",
+      "imageAlt": "Pot de miel de montagne Kounouz Alafiya dans les montagnes"
+    },
+    "story": {
+      "title": "La passion des abeilles, la confiance dans chaque goutte",
+      "producerCta": "Apiculteur ? Rejoignez-nous",
+      "imageAlt": "Apiculteur inspectant un cadre de ruche"
+    },
+    "articles": {
+      "eyebrow": "Le blog",
+      "subtitle": "Conseils et informations sur le miel, et sur la façon dont nous vérifions sa qualité.",
+      "read": "Lire"
+    },
+    "faq": {
+      "eyebrow": "Questions fréquentes",
+      "title": "Tout ce que vous voulez savoir",
+      "subtitle": "Des réponses claires sur la vérification, les prix et l’adhésion à Kounouz Alafiya.",
+      "contact": "Pas de réponse à votre question ? Contactez-nous",
+      "items": {
+        "verified": {
+          "q": "Que signifie « produit vérifié » ?",
+          "a": "Un échantillon scellé du lot a été analysé par un laboratoire agréé, puis l’équipe de vérification Kounouz a validé les résultats. Seuls les lots vérifiés sont mis en vente."
+        },
+        "whereQr": {
+          "q": "Où trouver le code de vérification ?",
+          "a": "Sur l’étiquette du pot : un QR code et, en dessous, un code écrit (ex. KZ-QR-2026-000001). Scannez le QR avec l’appareil photo de votre téléphone, ou saisissez le code dans le champ de vérification ci-dessus."
+        },
+        "problem": {
+          "q": "Que faire si le produit est « suspendu » ou si le code est introuvable ?",
+          "a": "Ne consommez pas le produit avant de nous contacter : il peut être suspendu temporairement, ou l’étiquette peut être contrefaite. Vous pouvez signaler une étiquette suspecte depuis la page de vérification ; le signalement arrive à notre équipe anti-contrefaçon."
+        },
+        "prices": {
+          "q": "Les prix sont-ils en dinars tunisiens ?",
+          "a": "Oui, tous les prix sont affichés en dinars tunisiens (DT). Le prix de chaque format s’affiche quand vous choisissez le produit."
+        },
+        "producer": {
+          "q": "Je suis apiculteur : comment vendre mon miel sur Kounouz ?",
+          "a": "Créez un compte producteur puis déposez une demande de vérification. Notre équipe l’examine et organise le prélèvement (visite d’un agent ou dépôt par vos soins), puis l’analyse en laboratoire. Une fois vérifié, votre miel est conditionné et mis en vente."
+        }
+      }
+    }
+  }
+}

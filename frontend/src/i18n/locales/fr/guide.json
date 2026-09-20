@@ -1,0 +1,53 @@
+{
+  "title": "Guide d'utilisation",
+  "intro": "Comment utiliser Kounouz Alafiya, étape par étape, selon votre profil.",
+  "backHome": "Retour à l'accueil",
+  "loginCta": "Se connecter",
+  "tabs": {
+    "consumer": "Consommateur",
+    "producer": "Producteur",
+    "agent": "Agent terrain",
+    "admin": "Admin / Équipe de vérification"
+  },
+  "consumer": {
+    "heading": "En tant que consommateur",
+    "steps": [
+      { "title": "Scannez le QR code", "body": "Scannez le code imprimé sur le produit avec l'appareil photo de votre téléphone, ou saisissez le code manuellement sur la page \"Vérifier un produit\"." },
+      { "title": "Consultez la traçabilité", "body": "Vous voyez l'origine du miel, le producteur, le lot, et les résultats du laboratoire." },
+      { "title": "Achetez en confiance", "body": "Parcourez la boutique en ligne et ajoutez les produits vérifiés à votre panier." },
+      { "title": "Créez un compte (facultatif)", "body": "Créez un compte client pour retrouver votre historique de commandes." }
+    ]
+  },
+  "producer": {
+    "heading": "En tant que producteur",
+    "steps": [
+      { "title": "Créez votre compte producteur", "body": "Inscrivez-vous avec le nom de votre rucher/ferme et votre emplacement." },
+      { "title": "Connectez-vous", "body": "Accédez à votre tableau de bord producteur pour suivre vos demandes et produits." },
+      { "title": "Envoyez une demande de vérification", "body": "Décrivez votre miel (type, quantité) pour lancer le processus de vérification." },
+      { "title": "Suivez le statut", "body": "Suivez l'avancement : demande reçue, échantillon collecté, en laboratoire, vérifiée." },
+      { "title": "Produit publié", "body": "Une fois le lot vérifié, votre produit apparaît sur la marketplace avec son propre code QR." }
+    ]
+  },
+  "agent": {
+    "heading": "En tant qu'agent terrain",
+    "steps": [
+      { "title": "Connectez-vous à votre espace", "body": "Votre tableau de bord liste vos tâches du jour." },
+      { "title": "Consultez les demandes de collecte", "body": "Voyez les demandes de vérification en attente d'un prélèvement d'échantillon." },
+      { "title": "Rendez-vous chez le producteur", "body": "Prélevez l'échantillon de miel sur place." },
+      { "title": "Enregistrez l'échantillon", "body": "Renseignez les détails (poids, photos) directement depuis l'application mobile." },
+      { "title": "Envoi au laboratoire", "body": "L'échantillon enregistré est automatiquement mis en file pour l'analyse en laboratoire." }
+    ]
+  },
+  "admin": {
+    "heading": "En tant qu'admin / équipe de vérification",
+    "steps": [
+      { "title": "Connectez-vous à l'espace admin", "body": "Votre tableau de bord donne une vue d'ensemble de l'activité en cours." },
+      { "title": "Traitez les demandes", "body": "Dans \"Traçabilité → Demandes\", acceptez ou refusez chaque demande de vérification." },
+      { "title": "Suivez les échantillons et scellés", "body": "Vérifiez que chaque échantillon collecté est bien scellé avant envoi au laboratoire." },
+      { "title": "Saisissez le résultat du laboratoire", "body": "Dans \"Laboratoire\", enregistrez les résultats d'analyse reçus." },
+      { "title": "Validez la vérification", "body": "Dans \"Vérification\", validez ou rejetez le lot selon les résultats." },
+      { "title": "Gérez le catalogue", "body": "Une fois le lot vérifié, gérez son emballage, ses produits, ses catégories et son code QR dans \"Catalogue\"." },
+      { "title": "Pilotez l'activité", "body": "Consultez les rapports, gérez l'équipe et les demandes de support dans \"Pilotage\"." }
+    ]
+  }
+}

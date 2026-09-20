@@ -1,0 +1,542 @@
+{
+  "brand": {
+    "role": "Agent terrain",
+    "motto": "Origines pures. Miel de confiance.",
+    "tagline": "Miel tunisien",
+    "subline": "Un avenir plus riche"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "assignments": "Mes missions",
+    "collection": "Collecte d'échantillon",
+    "seals": "Enregistrement des scellés",
+    "custody": "Chaîne de possession",
+    "visits": "Mes visites",
+    "reports": "Rapports",
+    "messages": "Messages",
+    "help": "Aide & support",
+    "settings": "Paramètres"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "loadError": "Impossible de charger les données. Vérifiez votre connexion.",
+    "saveError": "L'opération a échoué. Réessayez.",
+    "retry": "Réessayer",
+    "view": "Voir",
+    "viewAll": "Tout voir",
+    "details": "Détails",
+    "back": "Retour",
+    "cancel": "Annuler",
+    "continue": "Continuer",
+    "saveContinue": "Enregistrer et continuer",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "yesterday": "Hier",
+    "openInMaps": "Ouvrir dans Maps",
+    "getDirections": "Itinéraire",
+    "viewFullMap": "Voir la carte",
+    "coordinates": "Coordonnées"
+  },
+  "search": {
+    "placeholder": "Rechercher missions, producteurs, échantillons ou numéros de scellé...",
+    "assignments": "Missions",
+    "samples": "Échantillons & scellés",
+    "noResults": "Aucun résultat."
+  },
+  "assignmentStatus": {
+    "PENDING": "En attente",
+    "IN_PROGRESS": "En cours",
+    "COMPLETED": "Terminée",
+    "CANCELLED": "Annulée",
+    "OVERDUE": "En retard"
+  },
+  "priority": {
+    "LOW": "Basse",
+    "NORMAL": "Normale",
+    "HIGH": "Haute",
+    "URGENT": "Urgente"
+  },
+  "sampleStatus": {
+    "COLLECTED": "Collecté",
+    "SEALED": "Scellé",
+    "IN_TRANSIT": "En transit",
+    "RECEIVED": "Reçu par Kounouz",
+    "RECEIVED_AT_LAB": "Au laboratoire",
+    "ANALYZED": "Analysé",
+    "ISSUE": "Anomalie"
+  },
+  "harvestSource": {
+    "PRODUCTION_HIVES": "Ruches en production",
+    "STORAGE": "Stock entreposé",
+    "EXTRACTION": "À l'extraction",
+    "PACKAGED_STOCK": "Stock conditionné"
+  },
+  "equipment": {
+    "SAMPLING_KIT": "Kit de prélèvement",
+    "STERILE_CONTAINERS": "Contenants stériles",
+    "SECURE_SEALS": "Scellés sécurisés Kounouz",
+    "LABELS_QR": "Étiquettes & QR codes",
+    "CAMERA": "Appareil photo / mobile",
+    "GPS": "GPS activé"
+  },
+  "events": {
+    "REGISTERED": { "title": "Échantillon enregistré", "hint": "Fiche créée" },
+    "COLLECTED": { "title": "Échantillon collecté", "hint": "Prélevé chez le producteur" },
+    "SEALED": { "title": "Scellé enregistré", "hint": "Scellé de sécurité posé" },
+    "RELEASED_FOR_TRANSPORT": { "title": "Remis au transport", "hint": "Confié au transporteur partenaire" },
+    "IN_TRANSIT": { "title": "En transit", "hint": "En route vers Kounouz" },
+    "LOCATION_UPDATE": { "title": "Point de passage", "hint": "Position pendant le transport" },
+    "RECEIVED": { "title": "Reçu par Kounouz", "hint": "Enregistré au centre de vérification" },
+    "SENT_TO_LAB": { "title": "Envoyé au laboratoire", "hint": "Expédié pour analyse" },
+    "IN_LABORATORY": { "title": "Reçu par le laboratoire", "hint": "L'analyse peut commencer" },
+    "ANALYSIS_COMPLETED": { "title": "Analyse terminée", "hint": "Résultats disponibles" },
+    "RESULT_ADDED": { "title": "Résultat ajouté", "hint": "Résultat enregistré" },
+    "ISSUE": { "title": "Anomalie signalée", "hint": "Problème sur l'échantillon" }
+  },
+  "weather": {
+    "heading": "Conditions météo",
+    "humidity": "Humidité",
+    "wind": "Vent",
+    "fieldConditions": "Conditions",
+    "good": "Bonnes",
+    "poor": "Défavorables",
+    "goodForVisits": "Bonnes conditions pour les visites",
+    "poorForVisits": "Conditions défavorables — prudence",
+    "unavailable": "Météo indisponible.",
+    "noPosition": "Relevez la position GPS pour afficher la météo.",
+    "currentPosition": "Votre position actuelle",
+    "kinds": {
+      "clear": "Ensoleillé",
+      "cloudy": "Partiellement nuageux",
+      "fog": "Brouillard",
+      "rain": "Pluie",
+      "snow": "Neige",
+      "storm": "Orage"
+    }
+  },
+  "gps": {
+    "useCurrent": "Position actuelle",
+    "update": "Mettre à jour",
+    "refresh": "Actualiser",
+    "locating": "Recherche de la position GPS...",
+    "captured": "Position relevée avec succès",
+    "accuracy": "Précision : {{meters}} m",
+    "unavailable": "Position GPS indisponible",
+    "errors": {
+      "denied": "Accès à la position refusé. Autorisez-le dans le navigateur ou saisissez les coordonnées.",
+      "unavailable": "Impossible d'obtenir un signal GPS. Placez-vous à découvert ou saisissez les coordonnées.",
+      "unsupported": "Cet appareil ne gère pas la géolocalisation."
+    }
+  },
+  "photos": {
+    "add": "Ajouter",
+    "formats": "JPG, PNG · 5 Mo max",
+    "alt": "Photo de preuve",
+    "remove": "Retirer la photo",
+    "none": "Aucune photo.",
+    "uploadError": "Impossible d'envoyer la photo."
+  },
+  "schedule": {
+    "date": "Date de visite",
+    "from": "De",
+    "to": "À",
+    "reason": "Motif",
+    "reasonPlaceholder": "Ex. producteur indisponible, mauvais temps...",
+    "windowError": "L'heure de fin doit suivre l'heure de début.",
+    "rescheduleTitle": "Reprogrammer la visite",
+    "rescheduleBody": "Le producteur sera informé de la nouvelle date.",
+    "confirm": "Confirmer la nouvelle date"
+  },
+  "dashboard": {
+    "greeting": {
+      "morning": "Bonjour, {{name}}",
+      "afternoon": "Bon après-midi, {{name}}",
+      "evening": "Bonsoir, {{name}}"
+    },
+    "subtitle": "Voici l'aperçu de votre activité terrain pour aujourd'hui.",
+    "newCollection": "Nouvelle collecte",
+    "stats": {
+      "today": "Missions du jour",
+      "completed": "Terminées",
+      "inProgress": "En cours",
+      "upcoming": "À venir"
+    },
+    "overdue_one": "{{count}} mission est en retard — reprogrammez-la ou terminez-la.",
+    "overdue_other": "{{count}} missions sont en retard — reprogrammez-les ou terminez-les.",
+    "route": {
+      "heading": "Tournée du jour",
+      "start": "Votre position",
+      "empty": "Aucune visite localisée aujourd'hui.",
+      "noStops": "Aucune visite prévue aujourd'hui."
+    },
+    "notifications": {
+      "heading": "Notifications récentes",
+      "empty": "Aucune notification."
+    },
+    "table": {
+      "heading": "Missions du jour ({{count}})",
+      "empty": "Aucune mission prévue aujourd'hui.",
+      "cols": {
+        "index": "#",
+        "producer": "Producteur",
+        "location": "Lieu",
+        "sampleType": "Type d'échantillon",
+        "status": "Statut",
+        "action": "Action"
+      }
+    },
+    "quickActions": {
+      "heading": "Actions rapides",
+      "startCollection": "Démarrer une collecte",
+      "registerSeal": "Enregistrer un scellé",
+      "updateDelivery": "Mettre à jour la livraison"
+    },
+    "help": {
+      "title": "Besoin d'aide ?",
+      "body": "Contactez votre superviseur ou consultez le guide terrain."
+    }
+  },
+  "assignments": {
+    "title": "Mes missions",
+    "subtitle": "Vos visites de collecte, planifiées par Kounouz ou prises dans le pool partagé.",
+    "searchPlaceholder": "Producteur, lieu, code...",
+    "tabs": {
+      "TODAY": "Aujourd'hui",
+      "UPCOMING": "À venir",
+      "ACTIVE": "À faire",
+      "COMPLETED": "Passées",
+      "ALL": "Toutes",
+      "AVAILABLE": "Disponibles"
+    },
+    "empty": {
+      "TODAY": "Aucune mission aujourd'hui.",
+      "UPCOMING": "Aucune mission à venir.",
+      "ACTIVE": "Rien à faire pour le moment.",
+      "COMPLETED": "Aucune visite passée.",
+      "ALL": "Aucune mission."
+    },
+    "emptyHint": "Les missions confiées par l'équipe de vérification apparaîtront ici. Vous pouvez aussi planifier une visite depuis l'onglet Disponibles.",
+    "available": {
+      "hint": "Demandes acceptées qu'aucun agent n'a encore planifiées. Planifiez une visite pour l'ajouter à vos missions.",
+      "empty": "Aucune collecte en attente de planification.",
+      "plan": "Planifier la visite",
+      "modalTitle": "Planifier une visite de collecte",
+      "modalBody": "{{honey}} chez {{producer}}. Le producteur sera informé de la visite.",
+      "confirm": "Ajouter à mes missions"
+    }
+  },
+  "assignmentDetail": {
+    "title": "Mission de collecte",
+    "subtitle": "Détails de la mission et consignes pour le prélèvement.",
+    "notFound": "Mission introuvable.",
+    "assignment": "Mission #{{code}}",
+    "scheduledDate": "Date prévue",
+    "preferredTime": "Créneau souhaité",
+    "priority": "Priorité",
+    "producerInfo": "Informations producteur",
+    "viewProfile": "Voir le profil",
+    "hives_one": "{{count}} ruche",
+    "hives_other": "{{count}} ruches",
+    "sampleDetails": "Détails de l'échantillon",
+    "honeyType": "Type de miel",
+    "expectedQuantity": "Quantité attendue",
+    "perSample": "{{grams}} g (par échantillon)",
+    "numberOfSamples": "Nombre d'échantillons",
+    "collectionMethod": "Méthode de collecte",
+    "specialInstructions": "Consignes particulières",
+    "location": "Localisation",
+    "noCoordinates": "Coordonnées GPS non renseignées.",
+    "notes": "Notes de mission",
+    "noNotes": "Aucune note pour cette mission.",
+    "rescheduled_one": "Reprogrammée une fois : {{reason}}",
+    "rescheduled_other": "Reprogrammée {{count}} fois — dernier motif : {{reason}}",
+    "assignedBy": "Confiée par {{name}}",
+    "equipment": "Matériel requis",
+    "checkList": "Tout cocher",
+    "uncheckAll": "Tout décocher",
+    "equipmentHint": "Cochez chaque élément une fois dans votre véhicule.",
+    "completedOn": "Collecte terminée le {{date}}",
+    "backToAssignments": "Retour aux missions",
+    "reschedule": "Reprogrammer",
+    "startCollection": "Démarrer la collecte",
+    "continueCollection": "Reprendre la collecte",
+    "viewCustody": "Chaîne de possession"
+  },
+  "producerProfile": {
+    "title": "Profil du producteur",
+    "verified": "Producteur vérifié",
+    "phone": "Téléphone",
+    "email": "E-mail",
+    "address": "Adresse de l'exploitation",
+    "hives": "Ruches",
+    "flora": "Flore principale",
+    "practices": "Pratiques",
+    "hiveType": "Type de ruche",
+    "farmPhotos": "Photos de l'exploitation",
+    "call": "Appeler",
+    "sendEmail": "Envoyer un e-mail"
+  },
+  "collectionHome": {
+    "title": "Collecte d'échantillon",
+    "subtitle": "Reprenez une collecte en cours ou démarrez votre prochaine visite.",
+    "inProgress": "En cours",
+    "toStart": "À démarrer",
+    "empty": "Aucune mission active.",
+    "emptyHint": "Planifiez une visite parmi les collectes disponibles pour commencer.",
+    "browseAvailable": "Voir les collectes disponibles"
+  },
+  "wizard": {
+    "title": "Collecte d'échantillon",
+    "subtitle": "Enregistrez les informations de l'échantillon prélevé chez le producteur.",
+    "cancelled": "Cette mission a été annulée.",
+    "producer": "Producteur",
+    "location": "Lieu",
+    "date": "Date",
+    "steps": {
+      "assignment": "Mission",
+      "sample": "Collecte",
+      "seal": "Scellé",
+      "confirmation": "Confirmation",
+      "complete": "Terminé"
+    },
+    "assignmentStep": {
+      "heading": "Résumé de la mission",
+      "equipmentReady": "Tout le matériel requis est coché.",
+      "equipmentMissing_one": "{{count}} élément n'est pas encore coché :",
+      "equipmentMissing_other": "{{count}} éléments ne sont pas encore cochés :",
+      "openChecklist": "Ouvrir la liste",
+      "onSite": "Sur place",
+      "onSiteBody": "Présentez-vous au producteur, repérez les ruches à prélever puis démarrez la collecte. L'heure et votre position GPS seront enregistrées.",
+      "start": "Démarrer la collecte"
+    },
+    "sample": {
+      "heading": "Informations de l'échantillon",
+      "sampleId": "ID échantillon",
+      "sampleIdHint": "Identifiant définitif attribué à l'enregistrement.",
+      "refreshId": "Actualiser l'ID",
+      "honeyType": "Type de miel",
+      "quantity": "Quantité prélevée",
+      "recommended": "Recommandé : {{grams}} g",
+      "numberOfSamples": "Nombre d'échantillons",
+      "collectionMethod": "Méthode de collecte",
+      "dateTime": "Date et heure de collecte",
+      "gps": "Position GPS",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "notes": "Notes (facultatif)",
+      "notesPlaceholder": "Ajoutez toute remarque utile (état des ruches, météo, etc.)",
+      "photos": "Photos de l'échantillon",
+      "photoCount": "{{count}}/{{max}} photos",
+      "photosTip": "Prenez des photos nettes de l'échantillon, des ruches et de l'environnement.",
+      "locationHeading": "Localisation",
+      "collectionPoint": "Point de collecte",
+      "declaredFarm": "Exploitation déclarée",
+      "noPosition": "En attente de la position GPS.",
+      "farFromFarm": "Vous êtes à {{km}} km de l'exploitation déclarée. Vérifiez la position avant d'enregistrer.",
+      "recorded": "Échantillon enregistré",
+      "errors": {
+        "honeyType": "Indiquez le type de miel.",
+        "quantity": "Indiquez une quantité supérieure à 0.",
+        "numberOfSamples": "Indiquez un nombre entier d'au moins 1.",
+        "position": "Position GPS obligatoire.",
+        "date": "La date et l'heure ne peuvent pas être dans le futur.",
+        "summary": "Des champs obligatoires sont manquants ou invalides."
+      }
+    },
+    "seal": {
+      "heading": "Enregistrement du scellé",
+      "description": "Posez un scellé sécurisé Kounouz sur l'échantillon {{code}}, photographiez-le en place puis attestez son intégrité."
+    },
+    "confirmation": {
+      "heading": "Récapitulatif de la collecte",
+      "description": "Vérifiez les informations avec le producteur avant de clôturer la visite.",
+      "handover": "Confirmation du producteur",
+      "producerConfirmed": "{{name}} était présent(e) et confirme que l'échantillon a été prélevé et scellé en sa présence.",
+      "notes": "Notes de clôture (facultatif)",
+      "submit": "Confirmer et clôturer",
+      "incomplete": "L'échantillon et son scellé doivent être enregistrés avant la confirmation."
+    },
+    "complete": {
+      "heading": "Collecte terminée",
+      "description": "L'échantillon est scellé et enregistré. La chaîne de possession a démarré.",
+      "nextStep": "Étape suivante : remettre l'échantillon au transport et mettre à jour sa livraison.",
+      "custody": "Chaîne de possession",
+      "nextCollection": "Collecte suivante",
+      "dashboard": "Retour au tableau de bord"
+    }
+  },
+  "seal": {
+    "numberSource": "Numéro du scellé",
+    "source": {
+      "printed": "Scellé pré-imprimé",
+      "auto": "Générer un numéro"
+    },
+    "number": "Numéro de scellé",
+    "numberHint": "Recopiez exactement le numéro imprimé sur le scellé.",
+    "autoHint": "Kounouz attribuera un numéro unique (KS-AAAA-XXXXXX). Reportez-le sur l'étiquette du scellé.",
+    "notes": "Notes",
+    "notesPlaceholder": "Position du scellé, type de contenant...",
+    "photo": "Photo du scellé posé",
+    "photoHint": "Le numéro du scellé doit être lisible sur la photo.",
+    "integrity": "J'atteste que le scellé est intact, correctement fermé et correspond au numéro saisi.",
+    "submit": "Enregistrer le scellé",
+    "appliedAt": "Posé le",
+    "status": "État",
+    "statuses": {
+      "INTACT": "Intact",
+      "BROKEN": "Rompu"
+    }
+  },
+  "seals": {
+    "title": "Enregistrement des scellés",
+    "subtitle": "Chaque échantillon prélevé doit porter un scellé sécurisé Kounouz avant de quitter l'exploitation.",
+    "pending": "Échantillons à sceller ({{count}})",
+    "pendingEmpty": "Tous vos échantillons sont scellés.",
+    "register": "Enregistrer le scellé",
+    "registered": "Scellés récents",
+    "modalTitle": "Sceller l'échantillon {{code}}"
+  },
+  "custody": {
+    "title": "Chaîne de possession",
+    "subtitle": "Suivez le parcours de cet échantillon, de la collecte au laboratoire.",
+    "listTitle": "Chaîne de possession",
+    "listSubtitle": "Suivez chaque échantillon collecté jusqu'à son arrivée au laboratoire.",
+    "notFound": "Échantillon introuvable.",
+    "searchPlaceholder": "ID échantillon, scellé, producteur...",
+    "empty": "Aucun échantillon dans cette liste.",
+    "tabs": {
+      "CUSTODY": "Sous ma garde",
+      "DELIVERED": "Livrés",
+      "ISSUES": "Anomalies",
+      "ALL": "Tous"
+    },
+    "sampleId": "ID échantillon",
+    "producer": "Producteur",
+    "producerLocation": "Lieu (producteur)",
+    "honeyType": "Type de miel",
+    "quantity": "Quantité",
+    "sealNumber": "N° de scellé",
+    "collectionDate": "Date de collecte",
+    "sampleInfo": "Informations échantillon",
+    "currentStatus": "Statut actuel",
+    "since": "Depuis",
+    "currentLocation": "Position actuelle",
+    "viewOnMap": "Voir sur la carte",
+    "liveLocation": "Position en direct",
+    "timeline": "Chronologie de la chaîne de possession",
+    "addEvent": "Ajouter un événement",
+    "otherEvents": "Points de passage & incidents",
+    "eventDetails": "Détails de l'événement",
+    "selectEvent": "Sélectionnez un événement dans la chronologie.",
+    "pending": "En attente",
+    "updateDeliveryStatus": "Mettre à jour la livraison",
+    "statusHeadline": {
+      "COLLECTED": "Collecté",
+      "SEALED": "Scellé",
+      "IN_TRANSIT": "En transit",
+      "RECEIVED": "Reçu",
+      "RECEIVED_AT_LAB": "Au laboratoire",
+      "ANALYZED": "Analysé",
+      "ISSUE": "Anomalie signalée"
+    },
+    "statusDescription": {
+      "COLLECTED": "L'échantillon doit être scellé avant de quitter l'exploitation.",
+      "SEALED": "L'échantillon scellé attend son transport.",
+      "IN_TRANSIT": "L'échantillon est en route vers le centre de vérification Kounouz.",
+      "RECEIVED": "L'échantillon a été réceptionné par l'équipe Kounouz.",
+      "RECEIVED_AT_LAB": "Le laboratoire a pris en charge l'échantillon.",
+      "ANALYZED": "L'analyse de laboratoire est terminée.",
+      "ISSUE": "L'équipe de vérification décidera de la suite."
+    },
+    "roles": {
+      "FIELD_AGENT": "Agent terrain",
+      "VERIFICATION_TEAM": "Vérification Kounouz",
+      "ADMIN": "Administration Kounouz",
+      "TRANSPORT": "Transporteur partenaire"
+    },
+    "detail": {
+      "event": "Événement",
+      "dateTime": "Date et heure",
+      "handledBy": "Pris en charge par",
+      "location": "Lieu",
+      "proof": "Preuve de remise",
+      "notes": "Notes"
+    }
+  },
+  "addEvent": {
+    "title": "Mettre à jour la livraison",
+    "type": "Événement",
+    "help": {
+      "RELEASED_FOR_TRANSPORT": "L'échantillon scellé est confié à un transporteur. Indiquez son nom et joignez une photo de la remise.",
+      "IN_TRANSIT": "L'échantillon est parti et roule vers Kounouz.",
+      "LOCATION_UPDATE": "Enregistrez un point de passage pour mettre à jour la position en direct.",
+      "ISSUE": "Signalez une casse, un scellé rompu, un retard ou toute anomalie. L'équipe de vérification la verra dans son portail."
+    },
+    "handler": "Détenteur actuel",
+    "handlerHint": "Laissez vide si vous transportez vous-même l'échantillon.",
+    "handlerPlaceholder": "Ex. Cap Bon Express",
+    "date": "Date",
+    "time": "Heure",
+    "location": "Lieu",
+    "locationPlaceholder": "Ex. A1, Tunis",
+    "attachGps": "Joindre ma position GPS",
+    "note": "Notes",
+    "notePlaceholder": {
+      "default": "Véhicule, conditions, remarques...",
+      "issue": "Décrivez précisément le problème."
+    },
+    "proof": "Photo de preuve",
+    "futureError": "La date de l'événement ne peut pas être dans le futur.",
+    "submit": "Enregistrer l'événement"
+  },
+  "visits": {
+    "title": "Mes visites",
+    "subtitle": "Historique de vos visites d'exploitations et des échantillons prélevés.",
+    "kpis": {
+      "completed": "Visites terminées",
+      "averageDuration": "Durée moyenne d'une visite",
+      "places": "Lieux visités"
+    },
+    "map": "Exploitations visitées",
+    "mapEmpty": "Aucune visite localisée.",
+    "history": "Historique des visites",
+    "empty": "Aucune visite pour le moment."
+  },
+  "reports": {
+    "title": "Rapports",
+    "subtitle": "Votre activité terrain sur la période choisie.",
+    "period": "Période",
+    "lastMonths_one": "Dernier mois",
+    "lastMonths_other": "{{count}} derniers mois",
+    "print": "Imprimer",
+    "kpis": {
+      "assignments": "Missions",
+      "completed": "Terminées",
+      "samples": "Échantillons collectés",
+      "sealed": "Échantillons scellés",
+      "onTimeRate": "Taux de ponctualité",
+      "onTimeHint": "Terminées le jour prévu, sans reprogrammation",
+      "averageDuration": "Durée moyenne d'une visite",
+      "quantity": "Quantité prélevée",
+      "issues": "Anomalies",
+      "rescheduled_one": "{{count}} visite reprogrammée",
+      "rescheduled_other": "{{count}} visites reprogrammées"
+    },
+    "monthly": "Activité mensuelle",
+    "series": {
+      "assignments": "Missions",
+      "completed": "Terminées",
+      "samples": "Échantillons"
+    },
+    "byHoneyType": "Par type de miel",
+    "bySampleStatus": "Par statut d'échantillon",
+    "byRegion": "Par lieu",
+    "empty": "Aucune donnée sur cette période."
+  },
+  "notificationsPage": {
+    "title": "Notifications",
+    "subtitle_one": "{{count}} notification non lue",
+    "subtitle_other": "{{count}} notifications non lues",
+    "markAll": "Tout marquer comme lu"
+  }
+}

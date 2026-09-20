@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { usePriceFormatter } from '../lib/format-price';
 import { Product } from '../types';
 import {
   X,
@@ -17,7 +19,7 @@ import confetti from 'canvas-confetti';
 interface ProductDetailModalProps {
   product: Product | null;
   onClose: () => void;
-  onAddToCart: (product: Product, quantity: number, weight: string) => void;
+  onAddToCart: (product: Product, quantity: number, weight: string, variantId?: string, unitPrice?: number) => void;
   onVerifyBatch: (product: Product) => void;
 }
 
@@ -27,16 +29,38 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onAddToCart,
   onVerifyBatch,
 }) => {
-  const [selectedWeight, setSelectedWeight] = useState('500g');
+  const { t } = useTranslation('marketplace');
+  const formatPrice = usePriceFormatter();
+  const [selectedWeight, setSelectedWeight] = useState(product?.weight ?? '');
   const [quantity, setQuantity] = useState(1);
   const [addedSuccess, setAddedSuccess] = useState(false);
 
+  // Le format proposé à l'ouverture suit le produit affiché.
+  useEffect(() => {
+    setSelectedWeight(product?.weight ?? '');
+    setQuantity(1);
+  }, [product?.id, product?.weight]);
+
   if (!product) return null;
 
-  const weights = ['250g', '500g', '1kg'];
+  // Formats réellement en vente (SKU). Les anciennes fiches sans SKU gardent
+  // leur format unique.
+  const variants = product.variants ?? [];
+  const selectedVariant = variants.find((v) => v.packageSize === selectedWeight) ?? variants[0];
+  const weights = variants.length > 0 ? variants.map((v) => v.packageSize) : [product.weight].filter(Boolean);
+  const unitPrice = selectedVariant ? selectedVariant.price : product.price;
+  const available = selectedVariant ? selectedVariant.stock : Infinity;
+  const outOfStock = available <= 0;
 
   const handleAdd = () => {
-    onAddToCart(product, quantity, selectedWeight);
+    if (outOfStock) return;
+    onAddToCart(
+      product,
+      Math.min(quantity, available),
+      selectedVariant?.packageSize ?? selectedWeight,
+      selectedVariant?.id,
+      unitPrice,
+    );
     setAddedSuccess(true);
     try {
       confetti({
@@ -103,18 +127,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <Star key={i} className="w-4 h-4 fill-[#D49B37]" />
                   ))}
                   <span className="text-xs font-mono text-[#8C7A60] mr-1">
-                    ({product.reviewsCount} تقييم معتمد)
+                    {t('marketplace:productDetail.reviewsCount', { count: product.reviewsCount })}
                   </span>
                 </div>
 
                 {/* Price */}
                 <div className="flex items-baseline gap-3 mb-4">
                   <span className="text-2xl font-black text-[#0C261B]">
-                    {product.price} ر.س
+                    {formatPrice(product.price)}
                   </span>
                   {product.oldPrice && (
                     <span className="text-sm font-semibold text-[#A0AFA9] line-through">
-                      {product.oldPrice} ر.س
+                      {formatPrice(product.oldPrice)}
                     </span>
                   )}
                 </div>
@@ -122,29 +146,43 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 {/* Origin */}
                 <div className="flex items-center gap-1.5 text-xs text-[#576B64] mb-4">
                   <MapPin className="w-4 h-4 text-[#D49B37] shrink-0" />
-                  <span>المصدر: {product.origin}</span>
+                  <span>{t('marketplace:productDetail.originLabel', { origin: product.origin })}</span>
                 </div>
               </div>
 
               {/* Weight Selector */}
               <div>
                 <span className="text-xs font-bold text-[#0C261B] block mb-2">
-                  اختر الحجم:
+                  {t('marketplace:productDetail.chooseSizeLabel')}
                 </span>
                 <div className="flex gap-2">
-                  {weights.map((w) => (
-                    <button
-                      key={w}
-                      onClick={() => setSelectedWeight(w)}
-                      className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                        selectedWeight === w
-                          ? 'bg-[#0C261B] text-white border-2 border-[#0C261B]'
-                          : 'bg-white text-[#0C261B] border border-[#EAE1D2] hover:bg-[#F2EAE0]'
-                      }`}
-                    >
-                      {w}
-                    </button>
-                  ))}
+                  {weights.map((w) => {
+                    const variant = variants.find((v) => v.packageSize === w);
+                    const soldOut = variant ? variant.stock <= 0 : false;
+                    const active = (selectedVariant?.packageSize ?? selectedWeight) === w;
+                    return (
+                      <button
+                        key={w}
+                        onClick={() => {
+                          setSelectedWeight(w);
+                          setQuantity(1);
+                        }}
+                        disabled={soldOut}
+                        className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+                          active
+                            ? 'bg-[#0C261B] text-white border-2 border-[#0C261B]'
+                            : 'bg-white text-[#0C261B] border border-[#EAE1D2] hover:bg-[#F2EAE0]'
+                        }`}
+                      >
+                        <span className="block">{w}</span>
+                        {variant && (
+                          <span className={`block text-[10px] font-semibold ${active ? 'text-white/80' : 'text-[#8C7A60]'}`}>
+                            {soldOut ? t('marketplace:productDetail.soldOut') : formatPrice(variant.price)}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -152,7 +190,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           {/* Description & Benefits */}
           <div className="space-y-3 pt-4 border-t border-[#EAE1D2]">
-            <h4 className="text-sm font-extrabold text-[#0C261B]">وصف المنتج:</h4>
+            <h4 className="text-sm font-extrabold text-[#0C261B]">{t('marketplace:productDetail.descriptionTitle')}</h4>
             <p className="text-xs sm:text-sm text-[#576B64] leading-relaxed">
               {product.description}
             </p>
@@ -160,7 +198,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             <div className="bg-white p-3.5 rounded-xl border border-[#EAE1D2] space-y-2 mt-2">
               <span className="text-xs font-bold text-[#0C261B] block flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#D49B37]" />
-                أبرز الفوائد والخصائص:
+                {t('marketplace:productDetail.benefitsTitle')}
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#576B64]">
                 {product.benefits.map((b, i) => (
@@ -179,10 +217,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               <QrCode className="w-5 h-5 text-[#D49B37]" />
               <div>
                 <span className="text-xs font-bold text-[#0C261B] block">
-                  رمز الدفعة الحالي: {product.batchCode}
+                  {t('marketplace:productDetail.batchCodeLabel', { code: product.batchCode })}
                 </span>
                 <span className="text-[10px] text-[#7A8C85]">
-                  مفحوص ومسجل في سجلات الجودة والمناحل
+                  {t('marketplace:productDetail.batchVerifiedNote')}
                 </span>
               </div>
             </div>
@@ -191,7 +229,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               onClick={() => onVerifyBatch(product)}
               className="text-xs font-bold text-[#0C261B] bg-white hover:bg-[#FAF6EE] px-3 py-1.5 rounded-lg border border-[#D49B37] transition-colors cursor-pointer"
             >
-              عرض الشهادة
+              {t('marketplace:productDetail.viewCertificate')}
             </button>
           </div>
 
@@ -232,12 +270,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             {addedSuccess ? (
               <>
                 <Check className="w-4 h-4" />
-                <span>تمت الإضافة للسلة!</span>
+                <span>{t('marketplace:productDetail.addedToCart')}</span>
               </>
             ) : (
               <>
                 <ShoppingCart className="w-4 h-4 text-[#D49B37]" />
-                <span>إضافة إلى السلة • {(product.price * quantity)} ر.س</span>
+                <span>{t('marketplace:productDetail.addToCartCta')} • {formatPrice(unitPrice * quantity)}</span>
               </>
             )}
           </button>

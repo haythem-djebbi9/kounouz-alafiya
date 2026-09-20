@@ -1,107 +1,100 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Mountain, Box, ShieldCheck, Microscope } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Flower2, Lock, FlaskConical, BadgeCheck, QrCode, Smartphone } from 'lucide-react';
+import { SectionHeading } from './home/ui';
+
+// « Parcours de confiance » : les six étapes réelles du flux Kounouz, du dépôt
+// de la demande par le producteur jusqu'au scan du consommateur.
+const STEPS = [
+  { key: 'request', icon: Flower2 },
+  { key: 'collect', icon: Lock },
+  { key: 'lab', icon: FlaskConical },
+  { key: 'decision', icon: BadgeCheck },
+  { key: 'qr', icon: QrCode },
+  { key: 'you', icon: Smartphone },
+] as const;
 
 export const QualityProcess: React.FC = () => {
-  const steps = [
-    {
-      icon: Mountain,
-      title: 'المصدر',
-      enTitle: 'Origin',
-      description: 'نختار أفضل المصادر الطبيعية والمحميات الجبلية النقية.',
-    },
-    {
-      icon: Box,
-      title: 'الدفعة',
-      enTitle: 'Batch',
-      description: 'كل منتج يحمل رقم دفعة فريد مسجل في منظومة التتبع.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'الجودة',
-      enTitle: 'Quality',
-      description: 'اختبارات دقيقة ومعايير عالمية تضمن النقاء التام.',
-    },
-    {
-      icon: Microscope,
-      title: 'التحقق',
-      enTitle: 'Verification',
-      description: 'معلومات شفافة ونتائج مخبرية يمكن التحقق منها بلمسة واحدة.',
-    },
-  ];
+  const { t } = useTranslation('marketplace');
 
   return (
-    <section id="quality-process" className="py-16 sm:py-20 bg-[#FAF6EE] border-b border-[#EAE1D2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-14"
-        >
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0C261B] mb-3">
-            الجودة ليست وعداً. <span className="text-[#C68A28]">إنها عملية.</span>
-          </h2>
+    <section id="quality-process" className="relative py-16 sm:py-24 bg-white overflow-hidden">
+      <div className="absolute -top-32 -end-32 w-96 h-96 rounded-full bg-[#FAF0DC] blur-3xl opacity-70 pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow={t('marketplace:home.journey.eyebrow')}
+          title={t('marketplace:quality.headingPart1')}
+          accent={t('marketplace:quality.headingPart2')}
+          subtitle={t('marketplace:home.journey.subtitle')}
+        />
 
-          {/* Golden Divider */}
-          <div className="flex items-center justify-center gap-3 my-2">
-            <div className="w-12 h-px bg-[#D49B37]" />
-            <div className="w-2.5 h-2.5 rounded-full border border-[#D49B37] bg-[#FAF6EE] flex items-center justify-center">
-              <div className="w-1 h-1 rounded-full bg-[#D49B37]" />
-            </div>
-            <div className="w-12 h-px bg-[#D49B37]" />
-          </div>
-        </motion.div>
+        <div className="relative mt-14">
+          {/* Ligne de progression — horizontale sur grand écran */}
+          <div className="hidden lg:block absolute top-9 start-[8%] end-[8%] h-1 rounded-full bg-[#F1E8D8]" />
+          <motion.div
+            className="hidden lg:block absolute top-9 start-[8%] end-[8%] h-1 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-[#D49B37] via-[#E5AC44] to-[#1E6B56] origin-left rtl:origin-right"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: '-120px' }}
+            transition={{ duration: 1.8, ease: 'easeInOut' }}
+          />
+          {/* … et verticale sur mobile */}
+          <div className="lg:hidden absolute top-2 bottom-2 start-[26px] w-1 rounded-full bg-[#F1E8D8]" />
+          <motion.div
+            className="lg:hidden absolute top-2 bottom-2 start-[26px] w-1 rounded-full bg-gradient-to-b from-[#D49B37] to-[#1E6B56] origin-top"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 1.8, ease: 'easeInOut' }}
+          />
 
-        {/* 4 Hexagonal Connected Badges */}
-        <div className="relative">
-          
-          {/* Horizontal Golden Connecting Line on Desktop */}
-          <div className="hidden lg:block absolute top-14 right-16 left-16 h-0.5 bg-gradient-to-l from-[#D49B37]/20 via-[#D49B37] to-[#D49B37]/20 z-0" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 relative z-10">
-            {steps.map((step, idx) => {
-              const Icon = step.icon;
+          <ol className="relative grid grid-cols-1 lg:grid-cols-6 gap-7 lg:gap-4">
+            {STEPS.map(({ key, icon: Icon }, idx) => {
+              const last = idx === STEPS.length - 1;
               return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
+                <motion.li
+                  key={key}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="flex flex-col items-center text-center group"
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5, delay: 0.15 + idx * 0.22 }}
+                  className="group flex lg:flex-col items-start lg:items-center gap-4 lg:gap-0 text-start lg:text-center"
                 >
-                  {/* Hexagonal Icon Frame with Gold Border */}
-                  <div className="relative mb-5 flex items-center justify-center">
-                    <div className="w-24 h-24 bg-[#FAF6EE] border-2 border-[#D49B37] rounded-2xl rotate-45 flex items-center justify-center shadow-md group-hover:scale-105 group-hover:bg-[#FAF0DC] transition-all duration-300">
-                      <div className="-rotate-45 text-[#C68A28] group-hover:text-[#0C261B] transition-colors">
-                        <Icon className="w-8 h-8 stroke-[1.8]" />
-                      </div>
-                    </div>
+                  <div className="relative shrink-0">
+                    <motion.div
+                      whileHover={{ rotate: 6, scale: 1.06 }}
+                      className={`relative z-10 w-14 h-14 lg:w-[72px] lg:h-[72px] rounded-2xl flex items-center justify-center shadow-md border-2 transition-colors ${
+                        last
+                          ? 'bg-[#1E6B56] border-[#1E6B56] text-white'
+                          : 'bg-[#FAF6EE] border-[#D49B37] text-[#96661A] group-hover:bg-[#0C261B] group-hover:text-[#E5AC44]'
+                      }`}
+                    >
+                      <Icon className="w-6 h-6 lg:w-7 lg:h-7" />
+                    </motion.div>
+                    <span className="absolute -top-2 -end-2 z-20 w-6 h-6 rounded-full bg-[#0C261B] text-[#E5AC44] text-xs font-extrabold flex items-center justify-center border-2 border-white">
+                      {idx + 1}
+                    </span>
+                    {last && (
+                      <span className="absolute inset-0 rounded-2xl bg-[#1E6B56]/40 animate-ping motion-reduce:animate-none" />
+                    )}
                   </div>
-
-                  {/* Title & Sublabel */}
-                  <h3 className="text-xl font-bold text-[#0C261B] mb-0.5">
-                    {step.title}
-                  </h3>
-                  <span className="text-xs font-semibold text-[#8C7A60] tracking-wider mb-2 font-mono uppercase">
-                    {step.enTitle}
-                  </span>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-[#576B64] font-normal leading-relaxed max-w-[220px]">
-                    {step.description}
-                  </p>
-                </motion.div>
+                  <div className="lg:mt-5 lg:px-1">
+                    <h3 className="text-base lg:text-[17px] font-bold text-[#0C261B] leading-snug">
+                      {t(`marketplace:home.journey.steps.${key}.title`)}
+                    </h3>
+                    <p className="text-sm text-[#576B64] leading-relaxed mt-1">
+                      {t(`marketplace:home.journey.steps.${key}.description`)}
+                    </p>
+                    <span className="inline-block mt-2 text-[11px] font-bold text-[#96661A] bg-[#FAF0DC] px-2 py-0.5 rounded-full">
+                      {t(`marketplace:home.journey.steps.${key}.who`)}
+                    </span>
+                  </div>
+                </motion.li>
               );
             })}
-          </div>
-
+          </ol>
         </div>
-
       </div>
     </section>
   );

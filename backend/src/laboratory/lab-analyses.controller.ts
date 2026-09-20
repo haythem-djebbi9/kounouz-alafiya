@@ -6,12 +6,15 @@ import { CreateLabAnalysisDto } from './dto/create-lab-analysis.dto.js';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
+import { SensitiveAction } from '../common/admin-override.js';
 
 // Réservé à ADMIN / VERIFICATION_TEAM : le Producteur et l'Agent Terrain ne
 // peuvent jamais saisir ou modifier un résultat de laboratoire.
 @ApiBearerAuth()
 @ApiTags('lab-analyses')
 @Roles(Role.ADMIN, Role.VERIFICATION_TEAM)
+// Actions opérationnelles « A* » : override admin motivé et audité.
+@SensitiveAction()
 @Controller('lab-analyses')
 export class LabAnalysesController {
   constructor(private readonly service: LaboratoryService) {}

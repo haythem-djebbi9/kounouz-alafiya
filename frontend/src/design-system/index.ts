@@ -9,3 +9,5 @@ export { Input, Textarea, Select } from './Input';
 export { EmptyState } from './EmptyState';
 export { Alert } from './Alert';
 export { Modal } from './Modal';
+export { Accordion } from './Accordion';
+export type { AccordionItem } from './Accordion';

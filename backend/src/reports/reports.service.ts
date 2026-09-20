@@ -24,7 +24,12 @@ export class ReportsService {
   async getOperationsSummary() {
     const [requests, samples, verifications, batches, products, producerCount, verifiedProducerCount] =
       await Promise.all([
-        this.prisma.verificationRequest.groupBy({ by: ['status'], _count: { _all: true } }),
+        // Les brouillons des producteurs ne sont pas encore des demandes.
+        this.prisma.verificationRequest.groupBy({
+          by: ['status'],
+          where: { status: { not: VerificationRequestStatus.DRAFT } },
+          _count: { _all: true },
+        }),
         this.prisma.sample.groupBy({ by: ['status'], _count: { _all: true } }),
         this.prisma.verification.groupBy({ by: ['status'], _count: { _all: true } }),
         this.prisma.batch.groupBy({ by: ['status'], _count: { _all: true } }),
@@ -33,8 +38,10 @@ export class ReportsService {
         this.prisma.producer.count({ where: { isVerified: true } }),
       ]);
 
-    const requestsByStatus = zeroFilledCounts(Object.values(VerificationRequestStatus));
-    requests.forEach((r) => (requestsByStatus[r.status] = r._count._all));
+    const requestsByStatus = zeroFilledCounts(
+      Object.values(VerificationRequestStatus).filter((s) => s !== VerificationRequestStatus.DRAFT),
+    );
+    requests.forEach((r) => (requestsByStatus[r.status as keyof typeof requestsByStatus] = r._count._all));
 
     const samplesByStatus = zeroFilledCounts(Object.values(SampleStatus));
     samples.forEach((s) => (samplesByStatus[s.status] = s._count._all));
@@ -69,7 +76,10 @@ export class ReportsService {
   async getByProducer() {
     const producers = await this.prisma.producer.findMany({
       include: {
-        verificationRequests: { include: { verifications: true } },
+        verificationRequests: {
+          where: { status: { not: VerificationRequestStatus.DRAFT } },
+          include: { verifications: true },
+        },
       },
     });
 

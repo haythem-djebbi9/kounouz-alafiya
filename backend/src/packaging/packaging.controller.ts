@@ -6,10 +6,13 @@ import { CreatePackagingDto } from './dto/create-packaging.dto.js';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
+import { SensitiveAction } from '../common/admin-override.js';
 
 @ApiBearerAuth()
 @ApiTags('packaging')
 @Roles(Role.ADMIN, Role.VERIFICATION_TEAM)
+// Actions opérationnelles « A* » : override admin motivé et audité.
+@SensitiveAction()
 @Controller('packagings')
 export class PackagingController {
   constructor(private readonly service: PackagingService) {}

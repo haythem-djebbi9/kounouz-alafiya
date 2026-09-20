@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Pencil } from 'lucide-react';
 import { useAdminProductDetail, useUpdateProduct, useUpdateProductStatus } from '../hooks/useAdminProducts';
 import { useAdminCategories } from '../hooks/useAdminCategories';
@@ -8,6 +9,7 @@ import { Card, Button, Input, Textarea, Select, Modal, StatusBadge, Alert, QRCod
 import { resolveFileUrl, ApiError } from '../../../lib/api';
 
 export const ProductDetailPage: React.FC = () => {
+  const { t } = useTranslation(['admin', 'common']);
   const { id } = useParams<{ id: string }>();
   const { data: product, isLoading } = useAdminProductDetail(id);
   const { data: categories } = useAdminCategories();
@@ -35,7 +37,7 @@ export const ProductDetailPage: React.FC = () => {
   }, [product]);
 
   if (isLoading || !product) {
-    return <p className="text-sm text-gray-400">جارٍ التحميل...</p>;
+    return <p className="text-sm text-gray-400">{t('common:status.loading')}</p>;
   }
 
   const flatCategories = (categories ?? []).flatMap((c) => [c, ...(c.children ?? [])]);
@@ -57,7 +59,7 @@ export const ProductDetailPage: React.FC = () => {
       });
       setIsEditOpen(false);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر حفظ التعديلات.');
+      setError(err instanceof ApiError ? err.message : t('admin:productDetail.saveError'));
     }
   };
 
@@ -66,7 +68,7 @@ export const ProductDetailPage: React.FC = () => {
     try {
       await updateStatus.mutateAsync({ id: product.id, statut });
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر تحديث حالة المنتج.');
+      setError(err instanceof ApiError ? err.message : t('admin:productDetail.statusUpdateError'));
     }
   };
 
@@ -74,7 +76,7 @@ export const ProductDetailPage: React.FC = () => {
     <div className="max-w-3xl">
       <Link to="/admin/produits" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#0C261B] mb-4">
         <ArrowRight className="w-4 h-4" />
-        العودة إلى المنتجات
+        {t('admin:productDetail.backToProducts')}
       </Link>
 
       {error && <Alert tone="error" className="mb-4">{error}</Alert>}
@@ -96,17 +98,17 @@ export const ProductDetailPage: React.FC = () => {
                 ))}
               </div>
             )}
-            <p className="text-2xl font-bold text-[#D49B37] mb-2">{product.prix} د.ت</p>
+            <p className="text-2xl font-bold text-[#D49B37] mb-2">{product.prix} {t('admin:units.currency')}</p>
             {product.description && <p className="text-sm text-gray-600 mb-3">{product.description}</p>}
             <div className="flex items-center gap-3 text-xs text-gray-400">
-              {product.gamme && <span>الفئة السعرية: {product.gamme}</span>}
-              <span>المخزون: {product.stock}</span>
+              {product.gamme && <span>{t('admin:productDetail.range')}: {product.gamme}</span>}
+              <span>{t('admin:products.stock')}: {product.stock}</span>
             </div>
           </Card>
 
           {product.batch && (
             <Card>
-              <p className="text-xs text-gray-500 mb-1">الدفعة المرتبطة</p>
+              <p className="text-xs text-gray-500 mb-1">{t('admin:productDetail.linkedBatch')}</p>
               <p className="font-mono font-bold text-sm text-[#0C261B]">{product.batch.batchCode}</p>
               <StatusBadge kind="batch" status={product.batch.status} className="mt-2" />
             </Card>
@@ -115,26 +117,26 @@ export const ProductDetailPage: React.FC = () => {
           <div className="flex flex-wrap gap-3">
             <Button variant="outline" onClick={() => setIsEditOpen(true)}>
               <Pencil className="w-4 h-4" />
-              تعديل
+              {t('common:actions.edit')}
             </Button>
             {product.statut === 'BROUILLON' && (
               <Button onClick={() => changeStatus('PUBLIE')} isLoading={updateStatus.isPending}>
-                نشر المنتج
+                {t('admin:productDetail.publish')}
               </Button>
             )}
             {product.statut === 'PUBLIE' && (
               <>
                 <Button variant="outline" onClick={() => changeStatus('RUPTURE')} isLoading={updateStatus.isPending}>
-                  تعليم نفاد الكمية
+                  {t('admin:productDetail.markOutOfStock')}
                 </Button>
                 <Button variant="danger" onClick={() => changeStatus('SUSPENDU')} isLoading={updateStatus.isPending}>
-                  إيقاف مؤقت
+                  {t('admin:productDetail.suspend')}
                 </Button>
               </>
             )}
             {(product.statut === 'RUPTURE' || product.statut === 'SUSPENDU') && (
               <Button onClick={() => changeStatus('PUBLIE')} isLoading={updateStatus.isPending}>
-                إعادة النشر
+                {t('admin:productDetail.republish')}
               </Button>
             )}
           </div>
@@ -143,48 +145,48 @@ export const ProductDetailPage: React.FC = () => {
         <div>
           {product.qrCode ? (
             <Card className="flex flex-col items-center">
-              <p className="text-xs text-gray-500 mb-3">رمز QR الخاص بالمنتج</p>
+              <p className="text-xs text-gray-500 mb-3">{t('admin:productDetail.qrCode')}</p>
               <QRCodeDisplay qrId={product.qrCode.qrId} code={product.qrCode.qrCode} size={140} />
             </Card>
           ) : (
             <Card className="text-center text-sm text-gray-400">
-              سيتم إنشاء رمز QR تلقائياً عند أول نشر للمنتج.
+              {t('admin:productDetail.qrCodePending')}
             </Card>
           )}
         </div>
       </div>
 
-      <Modal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)} title="تعديل المنتج" maxWidth="max-w-xl">
+      <Modal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)} title={t('admin:productDetail.editTitle')} maxWidth="max-w-xl">
         <form onSubmit={handleSubmit} className="space-y-4">
-          <Input label="اسم المنتج" required value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
-          <Select label="الفئة" required value={form.categorieId} onChange={(e) => setForm((f) => ({ ...f, categorieId: e.target.value }))}>
+          <Input label={t('admin:products.productName')} required value={form.nom} onChange={(e) => setForm((f) => ({ ...f, nom: e.target.value }))} />
+          <Select label={t('admin:nav.categories')} required value={form.categorieId} onChange={(e) => setForm((f) => ({ ...f, categorieId: e.target.value }))}>
             {flatCategories.map((c) => (
               <option key={c.id} value={c.id}>{c.nom}</option>
             ))}
           </Select>
-          <Textarea label="الوصف" value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} />
+          <Textarea label={t('admin:requestDetail.description')} value={form.description} onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))} />
           <div className="grid grid-cols-2 gap-3">
-            <Input label="السعر (د.ت)" type="number" min={0} step={0.01} required value={form.prix} onChange={(e) => setForm((f) => ({ ...f, prix: e.target.value }))} />
-            <Input label="المخزون" type="number" min={0} value={form.stock} onChange={(e) => setForm((f) => ({ ...f, stock: e.target.value }))} />
+            <Input label={t('admin:products.price')} type="number" min={0} step={0.01} required value={form.prix} onChange={(e) => setForm((f) => ({ ...f, prix: e.target.value }))} />
+            <Input label={t('admin:products.stock')} type="number" min={0} value={form.stock} onChange={(e) => setForm((f) => ({ ...f, stock: e.target.value }))} />
           </div>
-          <Input label="الفئة السعرية" value={form.gamme} onChange={(e) => setForm((f) => ({ ...f, gamme: e.target.value }))} />
+          <Input label={t('admin:productDetail.range')} value={form.gamme} onChange={(e) => setForm((f) => ({ ...f, gamme: e.target.value }))} />
           <Select
-            label="الدفعة المرتبطة"
+            label={t('admin:productDetail.linkedBatch')}
             value={form.batchId}
             onChange={(e) => setForm((f) => ({ ...f, batchId: e.target.value }))}
             disabled={product.statut !== 'BROUILLON'}
           >
-            <option value="">— بدون دفعة —</option>
+            <option value="">{t('admin:products.noBatch')}</option>
             {(batches ?? []).map((b) => (
               <option key={b.id} value={b.id}>{b.batchCode} — {b.honeyType} ({b.status})</option>
             ))}
           </Select>
           {product.statut !== 'BROUILLON' && (
-            <p className="text-xs text-gray-400 -mt-2">لا يمكن تغيير الدفعة لمنتج تم نشره بالفعل.</p>
+            <p className="text-xs text-gray-400 -mt-2">{t('admin:productDetail.cannotChangeBatch')}</p>
           )}
-          <Input label="روابط الصور (افصل بينها بفاصلة)" value={form.images} onChange={(e) => setForm((f) => ({ ...f, images: e.target.value }))} />
+          <Input label={t('admin:productDetail.imageUrls')} value={form.images} onChange={(e) => setForm((f) => ({ ...f, images: e.target.value }))} />
           <Button type="submit" fullWidth isLoading={updateProduct.isPending}>
-            حفظ التعديلات
+            {t('admin:productDetail.saveChanges')}
           </Button>
         </form>
       </Modal>

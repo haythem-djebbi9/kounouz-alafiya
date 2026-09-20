@@ -1,11 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Plus, CheckCircle2 } from 'lucide-react';
 import { useBatches, usePackagings, useCreatePackaging, useCompletePackaging } from '../hooks/useBatchesAndPackaging';
 import { Card, Button, Input, Select, Modal, StatusBadge, Alert, EmptyState } from '../../../design-system';
 import { ApiError } from '../../../lib/api';
 
 export const PackagingPage: React.FC = () => {
+  const { t } = useTranslation(['admin', 'common']);
   const [searchParams] = useSearchParams();
   const { data: batches } = useBatches();
   const { data: packagings, isLoading } = usePackagings();
@@ -38,7 +40,7 @@ export const PackagingPage: React.FC = () => {
       setForm({ batchId: '', packageType: 'Pot en verre', size: '500g', labelDesign: '', productionDate: new Date().toISOString().slice(0, 10) });
       setIsOpen(false);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر إنشاء التعبئة.');
+      setError(err instanceof ApiError ? err.message : t('admin:packaging.createError'));
     }
   };
 
@@ -47,29 +49,29 @@ export const PackagingPage: React.FC = () => {
     try {
       await completePackaging.mutateAsync(id);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر إنهاء التعبئة.');
+      setError(err instanceof ApiError ? err.message : t('admin:packaging.completeError'));
     }
   };
 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-[#0C261B]">التعبئة</h1>
+        <h1 className="text-2xl font-bold text-[#0C261B]">{t('admin:nav.packaging')}</h1>
         <Button size="sm" onClick={() => setIsOpen(true)} disabled={eligibleBatches.length === 0}>
           <Plus className="w-4 h-4" />
-          تعبئة جديدة
+          {t('admin:packaging.new')}
         </Button>
       </div>
 
       {error && <Alert tone="error" className="mb-4">{error}</Alert>}
       {eligibleBatches.length === 0 && (
-        <Alert tone="info" className="mb-4">لا توجد دفعات بانتظار التعبئة حالياً.</Alert>
+        <Alert tone="info" className="mb-4">{t('admin:packaging.noEligibleBatches')}</Alert>
       )}
 
-      {isLoading && <p className="text-sm text-gray-400">جارٍ التحميل...</p>}
+      {isLoading && <p className="text-sm text-gray-400">{t('common:status.loading')}</p>}
       {!isLoading && (packagings ?? []).length === 0 && (
         <Card>
-          <EmptyState title="لا توجد عمليات تعبئة بعد" />
+          <EmptyState title={t('admin:packaging.empty')} />
         </Card>
       )}
 
@@ -84,37 +86,37 @@ export const PackagingPage: React.FC = () => {
             {p.status === 'IN_PROGRESS' && (
               <Button size="sm" variant="outline" onClick={() => handleComplete(p.id)} isLoading={completePackaging.isPending}>
                 <CheckCircle2 className="w-4 h-4" />
-                إنهاء التعبئة
+                {t('admin:packaging.complete')}
               </Button>
             )}
           </Card>
         ))}
       </div>
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="تعبئة جديدة">
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('admin:packaging.new')}>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <Select label="الدفعة" required value={form.batchId} onChange={(e) => setForm((f) => ({ ...f, batchId: e.target.value }))}>
-            <option value="">اختر دفعة</option>
+          <Select label={t('admin:nav.batches')} required value={form.batchId} onChange={(e) => setForm((f) => ({ ...f, batchId: e.target.value }))}>
+            <option value="">{t('admin:packaging.selectBatch')}</option>
             {eligibleBatches.map((b) => (
               <option key={b.id} value={b.id}>{b.batchCode} — {b.honeyType}</option>
             ))}
           </Select>
-          <Input label="نوع العبوة" required value={form.packageType} onChange={(e) => setForm((f) => ({ ...f, packageType: e.target.value }))} />
-          <Input label="الحجم" required value={form.size} onChange={(e) => setForm((f) => ({ ...f, size: e.target.value }))} />
+          <Input label={t('admin:packaging.packageType')} required value={form.packageType} onChange={(e) => setForm((f) => ({ ...f, packageType: e.target.value }))} />
+          <Input label={t('admin:packaging.size')} required value={form.size} onChange={(e) => setForm((f) => ({ ...f, size: e.target.value }))} />
           <Input
-            label="تصميم الملصق (اختياري)"
+            label={t('admin:packaging.labelDesign')}
             value={form.labelDesign}
             onChange={(e) => setForm((f) => ({ ...f, labelDesign: e.target.value }))}
           />
           <Input
-            label="تاريخ التعبئة"
+            label={t('admin:packaging.productionDate')}
             type="date"
             required
             value={form.productionDate}
             onChange={(e) => setForm((f) => ({ ...f, productionDate: e.target.value }))}
           />
           <Button type="submit" fullWidth isLoading={createPackaging.isPending}>
-            حفظ
+            {t('common:actions.save')}
           </Button>
         </form>
       </Modal>

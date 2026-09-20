@@ -1,0 +1,42 @@
+{
+  "title": "Settings",
+  "account": {
+    "heading": "Account information",
+    "nameLabel": "Full name",
+    "emailLabel": "Email address",
+    "emailHint": "The email address cannot be changed at the moment.",
+    "saveSuccess": "Changes saved successfully."
+  },
+  "language": {
+    "heading": "Language"
+  },
+  "notifications": {
+    "heading": "Notifications",
+    "description": "Choose which notifications you want to receive in the app.",
+    "types": {
+      "REQUEST_ACCEPTED": "Verification request accepted",
+      "COLLECTION_AVAILABLE": "New sample collection available",
+      "COLLECTION_ASSIGNED": "Collection visit assigned or scheduled",
+      "COUNTERFEIT_ALERT": "Anti-counterfeit alert (high risk)",
+      "SAMPLE_RECEIVED": "Sample received at the lab",
+      "ANALYSIS_COMPLETED": "Laboratory analysis completed",
+      "VERIFICATION_RESULT": "Verification result",
+      "BATCH_CREATED": "New batch created",
+      "PRODUCT_PUBLISHED": "Product published",
+      "SUPPORT_TICKET_UPDATE": "Support ticket updates",
+      "DOCUMENT_REVIEWED": "Document review result",
+      "NEW_ORDER": "New order for my products",
+      "PAYOUT_PAID": "Payout sent",
+      "WORKFLOW_TASK": "Internal tasks (review, decision, batch, packaging, product, QR)"
+    }
+  },
+  "security": {
+    "heading": "Security & password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm new password",
+    "submit": "Update password",
+    "mismatch": "Passwords do not match.",
+    "success": "Password updated successfully."
+  }
+}

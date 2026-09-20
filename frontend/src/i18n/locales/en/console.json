@@ -1,0 +1,995 @@
+{
+  "brand": {
+    "tagline": "Pure Origins. Trusted Honey.",
+    "sloganLine1": "More than honey…",
+    "sloganLine2": "A healthier tomorrow.",
+    "footerLine1": "Tunisian honey",
+    "footerLine2": "A richer tomorrow",
+    "role": "System administrator"
+  },
+  "nav": {
+    "menu": "Menu",
+    "collapse": "Collapse menu",
+    "expand": "Expand menu",
+    "dashboard": "Dashboard",
+    "usersRoles": "Users & Roles",
+    "producers": "Producers",
+    "laboratories": "Laboratories",
+    "requests": "Requests",
+    "samples": "Samples",
+    "seals": "Seals",
+    "verifiedBatches": "Verified Batches",
+    "products": "Products",
+    "categories": "Categories",
+    "packaging": "Packaging",
+    "qrCodes": "QR Codes",
+    "verification": "Verification",
+    "analytics": "Analytics",
+    "qrScanAnalytics": "QR Scan Analytics",
+    "antiCounterfeit": "Anti-Counterfeit Alerts",
+    "businessAnalytics": "Verification & Business Analytics",
+    "sales": "Sales",
+    "orders": "Orders",
+    "settlements": "Producer settlements",
+    "reports": "Reports",
+    "auditLogs": "Audit Logs",
+    "support": "Support",
+    "settings": "Settings",
+    "help": "Help",
+    "verifierPortal": "Verification portal"
+  },
+  "search": {
+    "placeholder": "Search anything (producers, batches, QR codes, users…)",
+    "minChars": "Type at least 2 characters.",
+    "noResults": "No results.",
+    "groups": {
+      "producers": "Producers",
+      "users": "Users",
+      "batches": "Batches",
+      "qrCodes": "QR codes",
+      "products": "Products",
+      "laboratories": "Laboratories",
+      "alerts": "Alerts"
+    }
+  },
+  "actions": {
+    "add": "Add",
+    "approve": "Approve",
+    "activate": "Activate",
+    "cancel": "Cancel",
+    "clearFilters": "Clear filters",
+    "close": "Close",
+    "columns": "Columns",
+    "confirm": "Confirm",
+    "copied": "Copied to clipboard",
+    "copy": "Copy",
+    "deactivate": "Deactivate",
+    "delete": "Delete",
+    "dismiss": "Dismiss",
+    "edit": "Edit",
+    "export": "Export",
+    "investigate": "Investigate",
+    "lessFilters": "Fewer filters",
+    "markResolved": "Mark as resolved",
+    "moreFilters": "More filters",
+    "reactivate": "Reactivate",
+    "reject": "Reject",
+    "reopen": "Reopen",
+    "resetPassword": "Reset password",
+    "retry": "Retry",
+    "save": "Save",
+    "suspend": "Suspend",
+    "view": "View",
+    "viewAll": "View all",
+    "viewDetails": "View details",
+    "viewProfile": "View profile",
+    "viewTrail": "View audit trail"
+  },
+  "range": {
+    "lastDays": "Last {{days}} days",
+    "thisYear": "This year",
+    "custom": "Custom range",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply"
+  },
+  "table": {
+    "actions": "Actions",
+    "showing": "Showing {{from}} to {{to}} of {{total}}",
+    "perPage": "Rows per page",
+    "perPageOption": "{{n}} per page"
+  },
+  "states": {
+    "loading": "Loading…",
+    "error": "Unable to load this data.",
+    "noData": "No data for this period.",
+    "saveFailed": "The change could not be saved.",
+    "exportFailed": "The export failed. Please try again."
+  },
+  "shared": {
+    "vsLastMonth": "vs last month",
+    "vsLastYear": "vs last year",
+    "vsPrevious30": "vs previous 30 days",
+    "vsPreviousPeriod": "vs previous period",
+    "system": "System",
+    "unknown": "Unknown",
+    "others": "Others",
+    "status": "Status",
+    "allStatuses": "All statuses",
+    "region": "Region",
+    "allRegions": "All regions",
+    "country": "Country",
+    "allCountries": "All countries",
+    "sort": "Sort",
+    "days": "{{days}} days",
+    "points": "pts",
+    "noteOptional": "Note (optional)"
+  },
+  "roles": {
+    "ADMIN": "Admin",
+    "VERIFICATION_TEAM": "Verification",
+    "FIELD_AGENT": "Field Agent",
+    "PRODUCER": "Producer",
+    "CONSUMER": "Consumer"
+  },
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "subtitle": "Welcome back, {{name}}! Here is an overview of the Kounouz Alafiya platform.",
+    "kpi": {
+      "producers": "Total Producers",
+      "laboratories": "Laboratories",
+      "products": "Products",
+      "batches": "Batches",
+      "qrCodes": "QR Codes Generated",
+      "verifiedBatches": "Verified Batches"
+    },
+    "scansOverTime": "QR Scans Over Time",
+    "lastMonths": "Last {{months}} months",
+    "scans": "Scans",
+    "verificationStatus": "Product Verification Status",
+    "qrCodesLabel": "QR codes",
+    "qrStatus": {
+      "VERIFIED": "Verified",
+      "PENDING": "Pending",
+      "SUSPENDED": "Suspended"
+    },
+    "recentActivities": "Recent Activities",
+    "scanLocations": "Scan Locations",
+    "scope": {
+      "ALL": "All scans",
+      "VALID": "Valid scans",
+      "SUSPICIOUS": "Suspicious scans"
+    },
+    "topRegions": "Top regions",
+    "topProducts": "Top Products by Scans",
+    "alerts": "Alerts & Notifications",
+    "noAlerts": "Nothing needs your attention.",
+    "alertItems": {
+      "counterfeit": "{{code}} · {{n}} scans",
+      "batch": {
+        "SUSPENDED": "Batch under investigation",
+        "RECALLED": "Batch recalled"
+      },
+      "labPending": "Lab result pending",
+      "invalidScans": "Invalid QR scans detected",
+      "invalidScansDetail": "{{n}} invalid scans in the last 24 hours"
+    },
+    "bannerLine1": "Authentic Tunisian honey.",
+    "bannerLine2": "From our land to your family.",
+    "systemOverview": "System Overview",
+    "system": {
+      "users": "Total users",
+      "activeUsers": "Active users",
+      "producers": "Producers",
+      "verificationTeam": "Verification team",
+      "samples": "Total samples",
+      "labResults": "Lab results",
+      "referenceSamples": "Reference samples",
+      "storage": "Storage used",
+      "files": "{{files}} files"
+    },
+    "support": {
+      "title": "Need support?",
+      "subtitle": "The support inbox gathers every request from producers and the team.",
+      "action": "Open support inbox"
+    }
+  },
+  "users": {
+    "title": "User & Roles Management",
+    "subtitle": "Manage all users, roles and permissions across the Kounouz Alafiya platform.",
+    "addUser": "Add User",
+    "tiles": {
+      "ALL": "Total Users",
+      "PRODUCER": "Producers",
+      "VERIFICATION_TEAM": "Verification Team",
+      "FIELD_AGENT": "Field Agents",
+      "ADMIN": "Admins",
+      "CONSUMER": "Consumers"
+    },
+    "tabs": {
+      "ALL": "All Users",
+      "PRODUCER": "Producers",
+      "VERIFICATION_TEAM": "Verification Team",
+      "FIELD_AGENT": "Field Agents",
+      "ADMIN": "Admins",
+      "CONSUMER": "Consumers"
+    },
+    "searchPlaceholder": "Search users by name, email or organization…",
+    "status": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    },
+    "lastLogin": "Last login",
+    "lastLoginFilter": {
+      "ALL": "Any last login",
+      "LAST_7_DAYS": "Last 7 days",
+      "LAST_30_DAYS": "Last 30 days",
+      "OVER_30_DAYS": "Over 30 days ago",
+      "NEVER": "Never logged in"
+    },
+    "sort": {
+      "RECENT": "Newest first",
+      "NAME": "Name (A–Z)",
+      "LAST_LOGIN": "Last login"
+    },
+    "columns": {
+      "user": "User",
+      "role": "Role",
+      "organization": "Organization",
+      "location": "Location",
+      "status": "Status",
+      "lastLogin": "Last login"
+    },
+    "empty": "No user matches these filters.",
+    "neverLoggedIn": "Never",
+    "twoFactor": "2FA",
+    "drawer": {
+      "title": "User details",
+      "information": "Information",
+      "activity": "Recent activity"
+    },
+    "fields": {
+      "name": "Full name",
+      "email": "Email",
+      "password": "Temporary password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "role": "Role",
+      "phone": "Phone",
+      "location": "Location",
+      "createdAt": "Created on"
+    },
+    "form": {
+      "createTitle": "Add a team member",
+      "editTitle": "Edit user",
+      "passwordHint": "At least 8 characters. Share it securely: the user can change it from their settings.",
+      "roleLocked": "Producer and consumer roles are managed through their own sign-up, and you cannot change your own role.",
+      "staffOnly": "Producers are created from the Producers page; consumers sign up from the marketplace."
+    },
+    "reset": {
+      "title": "Reset password — {{name}}",
+      "description": "The current password stops working immediately and every open session is signed out.",
+      "mismatch": "The passwords do not match."
+    },
+    "toggle": {
+      "deactivateTitle": "Deactivate {{name}}?",
+      "activateTitle": "Reactivate {{name}}?",
+      "deactivateText": "The account can no longer sign in and its sessions are revoked. Its history is kept.",
+      "activateText": "The account will be able to sign in again with its current password."
+    },
+    "toasts": {
+      "created": "User created.",
+      "updated": "User updated.",
+      "passwordReset": "Password reset.",
+      "activated": "Account reactivated.",
+      "deactivated": "Account deactivated."
+    }
+  },
+  "producers": {
+    "title": "Producers Management",
+    "subtitle": "Manage all honey producers, their information, certifications and activity.",
+    "addProducer": "Add Producer",
+    "kpi": {
+      "total": "Total Producers",
+      "active": "Active Producers",
+      "pending": "Pending Approval",
+      "suspended": "Suspended",
+      "regions": "Regions",
+      "acrossTunisia": "Across Tunisia"
+    },
+    "byRegion": "Producers by Region",
+    "unknownRegion": "Region not provided",
+    "statusBreakdown": "Producer Status",
+    "producersLabel": "Producers",
+    "newProducers": "New Producers (last 30 days)",
+    "avgVerification": "Avg. Verification Time",
+    "vsPrevious90": "vs previous 90 days",
+    "avgVerificationHint": "From request submission to decision, over {{n}} decisions in the last 90 days.",
+    "searchPlaceholder": "Search producers by name, email, phone…",
+    "allHoneyTypes": "All honey types",
+    "allVerification": "Any verification state",
+    "columns": {
+      "producer": "Producer",
+      "location": "Location",
+      "honeyTypes": "Honey types",
+      "status": "Status",
+      "verification": "Verification",
+      "batches": "Batches",
+      "products": "Products",
+      "joined": "Joined"
+    },
+    "verification": {
+      "VERIFIED": "Verified",
+      "IN_REVIEW": "In review",
+      "ISSUE": "Issue found",
+      "NONE": "No request"
+    },
+    "empty": "No producer matches these filters.",
+    "form": {
+      "title": "Add a producer",
+      "name": "Producer full name",
+      "farmName": "Farm / apiary name",
+      "chooseRegion": "Choose a governorate",
+      "passwordHint": "Temporary password (8 characters minimum) to share with the producer."
+    },
+    "statusDialog": {
+      "ACTIVE": "Activate {{name}}",
+      "PENDING": "Set {{name}} as pending",
+      "SUSPENDED": "Suspend {{name}}",
+      "REJECTED": "Reject {{name}}",
+      "description": "Status will change from “{{from}}” to “{{to}}”. The change is recorded in the audit log."
+    },
+    "toasts": {
+      "created": "Producer created.",
+      "statusChanged": "Producer status updated."
+    }
+  },
+  "labs": {
+    "title": "Laboratories Management",
+    "subtitle": "Manage all partner laboratories, their information, accreditation and activity.",
+    "analysesLink": "Analyses & reference samples",
+    "addLab": "Add Laboratory",
+    "kpi": {
+      "total": "Total Laboratories",
+      "active": "Active Laboratories",
+      "pending": "Pending Approval",
+      "suspended": "Suspended",
+      "countries": "Countries"
+    },
+    "tabs": {
+      "ALL": "All Laboratories",
+      "ACTIVE": "Active",
+      "PENDING": "Pending Approval",
+      "SUSPENDED": "Suspended"
+    },
+    "searchPlaceholder": "Search laboratories by name, email or location…",
+    "allAccreditations": "All accreditations",
+    "columns": {
+      "laboratory": "Laboratory",
+      "location": "Location",
+      "accreditations": "Accreditations",
+      "status": "Status",
+      "samples": "Samples analyzed",
+      "joined": "Joined date"
+    },
+    "empty": "No laboratory matches these filters.",
+    "panel": {
+      "title": "Laboratory",
+      "noTagline": "No tagline yet",
+      "tabs": {
+        "overview": "Overview",
+        "contact": "Contact",
+        "accreditations": "Accreditations",
+        "activity": "Activity",
+        "notes": "Notes"
+      },
+      "basicInfo": "Basic Information",
+      "accreditations": "Accreditations & Certificates",
+      "noAccreditations": "No accreditation recorded.",
+      "validUntil": "Valid until {{date}}",
+      "noExpiry": "No expiry date",
+      "confirmRemove": "Remove the accreditation “{{name}}”?",
+      "statistics": "Statistics",
+      "period": {
+        "1": "Last 30 days",
+        "12": "Last 12 months",
+        "0": "All time"
+      },
+      "recentActivity": "Recent Activity",
+      "notesHint": "Internal notes, visible to administrators only."
+    },
+    "stats": {
+      "samples": "Samples",
+      "batches": "Batches",
+      "verified": "Compliant",
+      "avgTime": "Avg. time"
+    },
+    "accreditationState": {
+      "VALID": "Accredited",
+      "EXPIRED": "Expired"
+    },
+    "fields": {
+      "name": "Laboratory name",
+      "tagline": "Tagline",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "city": "City",
+      "address": "Address",
+      "website": "Website",
+      "contactName": "Contact person",
+      "accreditationNo": "Accreditation number"
+    },
+    "form": {
+      "createTitle": "Add a laboratory",
+      "editTitle": "Edit laboratory",
+      "statusHint": "A pending laboratory cannot receive analyses until it is approved."
+    },
+    "accreditationForm": {
+      "title": "Add an accreditation",
+      "name": "Accreditation",
+      "nameHint": "For example ISO 17025, TUNAC, COFRAC.",
+      "issuingBody": "Issuing body",
+      "certificateNumber": "Certificate number",
+      "validUntil": "Valid until"
+    },
+    "statusDialog": {
+      "approve": {
+        "title": "Approve {{name}}",
+        "text": "The laboratory becomes active and can receive sample analyses."
+      },
+      "suspend": {
+        "title": "Suspend {{name}}",
+        "text": "No new analysis can be assigned to this laboratory. Past results stay valid."
+      },
+      "reactivate": {
+        "title": "Reactivate {{name}}",
+        "text": "The laboratory can receive analyses again."
+      }
+    },
+    "toasts": {
+      "created": "Laboratory created.",
+      "updated": "Laboratory updated.",
+      "statusChanged": "Laboratory status updated.",
+      "accreditationAdded": "Accreditation added.",
+      "accreditationRemoved": "Accreditation removed.",
+      "notesSaved": "Notes saved."
+    }
+  },
+  "audit": {
+    "title": "System Audit Log",
+    "subtitle": "Track all system activities, changes and user actions for full transparency and security.",
+    "kpi": {
+      "totalLogs": "Total Logs",
+      "activeUsers": "Active Users",
+      "securityAlerts": "Security Alerts",
+      "uptime": "API Uptime",
+      "uptimeSince": "Since {{date}}"
+    },
+    "allModules": "All modules",
+    "allActions": "All actions",
+    "allUsers": "All users",
+    "searchPlaceholder": "Search in logs (user, action, IP, reference)…",
+    "entityPlaceholder": "Reference ID (show the full trail of an entity)",
+    "trailMode": "Full history of one entity",
+    "columns": {
+      "date": "Date & time",
+      "user": "User",
+      "action": "Action",
+      "module": "Module",
+      "details": "Details",
+      "ip": "IP address",
+      "status": "Status"
+    },
+    "empty": "No log entry for these filters.",
+    "anonymous": "Unidentified attempt",
+    "automated": "Automated",
+    "filterUser": "Show this user's actions",
+    "openEntity": "Open the related record",
+    "detail": {
+      "title": "Log details",
+      "reference": "Reference",
+      "userAgent": "Browser",
+      "changes": "Details",
+      "field": "Field updated",
+      "oldValue": "Old value",
+      "newValue": "New value",
+      "notes": "Notes",
+      "noChanges": "No field-level change recorded for this action.",
+      "relatedLinks": "Related links",
+      "openEntity": "View {{entity}}",
+      "openUser": "View user profile",
+      "viewTrail": "View the audit trail ({{n}} entries)",
+      "noLinks": "No related record."
+    }
+  },
+  "scans": {
+    "title": "QR Scan Analytics",
+    "subtitle": "Track consumer engagement and product authenticity in real time.",
+    "kpi": {
+      "total": "Total Scans",
+      "uniqueScanners": "Unique Scanners",
+      "valid": "Valid Scans",
+      "suspicious": "Invalid / Suspicious",
+      "countries": "Countries"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "locations": "Locations",
+      "products": "Products",
+      "batches": "Batches",
+      "devices": "Devices",
+      "flow": "Scan Flow",
+      "journey": "Consumer Journey",
+      "antiCounterfeit": "Anti-Counterfeit"
+    },
+    "granularity": {
+      "day": "Daily",
+      "week": "Weekly",
+      "month": "Monthly"
+    },
+    "scans": "Scans",
+    "totalScans": "Total scans",
+    "overTime": "Scans Over Time",
+    "resultBreakdown": "Scan Result Breakdown",
+    "byDevice": "Scans by Device",
+    "byCountry": "Scans by Country",
+    "byRegion": "Scans by Region (Tunisia)",
+    "topProducts": "Top Products by Scans",
+    "topBatches": "Most Scanned Batches",
+    "recentScans": "Recent Scans",
+    "validVsSuspicious": "Valid vs suspicious scans",
+    "columns": {
+      "date": "Date & time",
+      "location": "Location",
+      "product": "Product",
+      "result": "Result",
+      "scanner": "Scanner",
+      "share": "Share",
+      "batch": "Batch",
+      "honeyType": "Honey type",
+      "scannedCodes": "Codes scanned"
+    },
+    "scannerType": {
+      "NEW": "New scanner",
+      "RETURNING": "Returning"
+    },
+    "insights": {
+      "title": "Scan Insights",
+      "newScanners": "of scanners are new this period",
+      "avgPerScanner": "average scans per scanner",
+      "growth": "scan growth vs previous period",
+      "trusted": "of scans confirmed authentic"
+    },
+    "flow": {
+      "byHour": "Scans by hour of day",
+      "byWeekday": "Scans by day of week",
+      "utcHint": "Hours are shown in UTC (Tunisia is UTC+1)."
+    },
+    "journey": {
+      "frequency": "Scanners by number of scans",
+      "bucket": "{{range}} scan(s)",
+      "newVsReturning": "New vs returning scanners",
+      "repeatShare": "of scanners scanned more than once"
+    },
+    "banner": {
+      "line1": "Real people.",
+      "line2": "Real trust.",
+      "line3": "A healthier tomorrow."
+    }
+  },
+  "alerts": {
+    "title": "Anti-Counterfeit Alerts",
+    "subtitle": "Detect and monitor suspicious activity to protect the authenticity of Kounouz Alafiya honey.",
+    "kpi": {
+      "total": "Total Alerts",
+      "duplicates": "Suspected Duplicates",
+      "unusualLocations": "Unusual Locations",
+      "invalidOrTampered": "Invalid / Tampered QR",
+      "resolved": "Resolved Alerts"
+    },
+    "openBanner": "{{n}} alerts are still open or under investigation.",
+    "showOpen": "Show open alerts",
+    "tabs": {
+      "ALL": "All Alerts",
+      "SUSPECTED_DUPLICATE": "Suspected Duplicates",
+      "UNUSUAL_LOCATION": "Unusual Locations",
+      "INVALID_QR": "Invalid QR Codes",
+      "TAMPERED_LABEL": "Tampered Labels",
+      "BULK_SCAN": "Bulk Scans",
+      "RESOLVED": "Resolved"
+    },
+    "searchPlaceholder": "Search by QR code, batch, product, location or alert ID…",
+    "allTypes": "All alert types",
+    "allProducts": "All products",
+    "severity": "Severity",
+    "allSeverities": "All severities",
+    "severityLabel": "{{level}} risk",
+    "overTime": "Alerts Over Time",
+    "series": {
+      "total": "Total alerts",
+      "duplicates": "Suspected duplicates",
+      "resolved": "Resolved"
+    },
+    "byType": "Alerts by Type",
+    "totalAlerts": "Total alerts",
+    "byCountry": "Alerts by Country",
+    "risk": {
+      "HIGH": "High risk",
+      "MEDIUM": "Medium risk",
+      "LOW": "Low risk"
+    },
+    "recent": "Recent Alerts",
+    "columns": {
+      "date": "Date & time",
+      "type": "Alert type",
+      "qrCode": "QR code",
+      "product": "Product",
+      "location": "Location",
+      "details": "Details",
+      "status": "Status"
+    },
+    "empty": "No alert for these filters.",
+    "detail": {
+      "title": "Alert details",
+      "unknownCode": "Unknown code (not issued by Kounouz)",
+      "batch": "Batch number",
+      "device": "Device",
+      "ip": "IP address",
+      "scanCount": "Scan count",
+      "scanCountValue": "{{n}} scans · last seen {{when}}",
+      "note": "Investigation note",
+      "notePlaceholder": "Actions taken, contacts, conclusion…",
+      "resolvedBy": "Closed by {{name}} on {{date}}",
+      "relatedScans": "Latest scans of this code",
+      "relatedAlerts": "Other alerts on this code",
+      "history": "History"
+    },
+    "toasts": {
+      "OPEN": "Alert reopened.",
+      "INVESTIGATING": "Investigation started.",
+      "RESOLVED": "Alert marked as resolved.",
+      "DISMISSED": "Alert dismissed.",
+      "CONFIRMED": "Incident confirmed: conclusion recorded."
+    }
+  },
+  "business": {
+    "title": "Verification & Business Analytics",
+    "subtitle": "Turn verification data into insights for a safer, stronger and more valuable honey ecosystem.",
+    "exportReport": "Export Report",
+    "kpi": {
+      "verifiedBatches": "Verified Batches",
+      "totalScans": "Total QR Scans",
+      "uniqueConsumers": "Unique Consumers",
+      "totalSales": "Total Sales (TND)",
+      "fraudAttempts": "Fraud Attempts",
+      "verificationRate": "Verification Success Rate",
+      "decisions": "{{n}} decisions"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "verifications": "Verifications",
+      "sales": "Sales & Revenue",
+      "products": "Products",
+      "producers": "Producers",
+      "geographic": "Geographic Insights",
+      "customers": "Customer Insights",
+      "trends": "Trends",
+      "exports": "Export & Reports"
+    },
+    "scansVsSales": "Verifications vs Sales",
+    "series": {
+      "scans": "QR scans",
+      "sales": "Sales (TND)"
+    },
+    "categories": "Honey Types by Verification",
+    "verifiedBatchesLabel": "Verified batches",
+    "noVerifications": "No verification decided in this period.",
+    "topProducts": "Top Performing Honey Types",
+    "topProducers": "Top Producers",
+    "columns": {
+      "honeyType": "Honey type",
+      "verifiedBatches": "Verified batches",
+      "scans": "Total scans",
+      "revenue": "Revenue",
+      "units": "Units sold",
+      "date": "Date & time",
+      "batch": "Batch number",
+      "producer": "Producer",
+      "location": "Location",
+      "result": "Result"
+    },
+    "byRegion": "Verification Activity by Region (Tunisia)",
+    "origins": "Consumer Origins",
+    "funnel": {
+      "title": "Verification Funnel",
+      "subtitle": "From scan to trust",
+      "TOTAL_SCANS": "Total scans",
+      "VALID_SCANS": "Valid scans",
+      "VERIFIED_PRODUCTS": "Scans of verified products on sale",
+      "ORDERS": "Orders placed"
+    },
+    "recentVerifications": "Recent Verifications",
+    "result": {
+      "VERIFIED": "Valid",
+      "NOT_VERIFIED": "Invalid"
+    },
+    "insights": {
+      "title": "Key Insights",
+      "scanGrowth": "QR scan growth vs previous period",
+      "consumers": "unique consumers",
+      "scanToPurchase": "scan-to-purchase rate",
+      "fraudChange": "fraud attempts vs previous period"
+    },
+    "banner": {
+      "line1": "Real data.",
+      "line2": "Real trust.",
+      "line3": "A healthier tomorrow."
+    },
+    "verificationsOverTime": "Verified batches over time",
+    "sales": {
+      "orders": "Orders",
+      "averageOrder": "Average order value",
+      "byChannel": "Revenue by sales channel"
+    },
+    "customers": {
+      "scansPerConsumer": "Scans per consumer"
+    },
+    "trends": {
+      "verifications": "Verified batches — 12 months",
+      "scans": "QR scans — 12 months",
+      "sales": "Sales (TND) — 12 months",
+      "hint": "Trends always cover the last 12 months, whatever period is selected."
+    },
+    "exports": {
+      "title": "Data exports (CSV)",
+      "reportsTitle": "Operations reports",
+      "reportsText": "PDF and CSV operations reports (requests, samples, verifications, batches) remain available on the Reports page.",
+      "openReports": "Open reports",
+      "items": {
+        "business": {
+          "title": "Verification & business report",
+          "description": "KPIs, time series, honey types, regions, origins and funnel for the selected period."
+        },
+        "scans": {
+          "title": "QR scans",
+          "description": "Every scan of the period with result, location and device."
+        },
+        "alerts": {
+          "title": "Anti-counterfeit alerts",
+          "description": "Alerts created during the period with their status."
+        },
+        "audit": {
+          "title": "Audit log",
+          "description": "System and user actions of the period."
+        },
+        "producers": {
+          "title": "Producers",
+          "description": "All producers with status, verification and activity."
+        },
+        "laboratories": {
+          "title": "Laboratories",
+          "description": "Partner laboratories and accreditations."
+        },
+        "users": {
+          "title": "Users",
+          "description": "Every account with role, status and last login."
+        }
+      }
+    }
+  },
+  "enums": {
+    "producerStatus": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "SUSPENDED": "Suspended",
+      "REJECTED": "Rejected"
+    },
+    "labStatus": {
+      "ACTIVE": "Active",
+      "PENDING": "Pending",
+      "SUSPENDED": "Suspended"
+    },
+    "alertType": {
+      "SUSPECTED_DUPLICATE": "Suspected duplicate",
+      "UNUSUAL_LOCATION": "Unusual location",
+      "INVALID_QR": "Invalid QR code",
+      "TAMPERED_LABEL": "Tampered label",
+      "BULK_SCAN": "Bulk scan"
+    },
+    "alertStatus": {
+      "OPEN": "Open",
+      "INVESTIGATING": "Investigating",
+      "RESOLVED": "Resolved",
+      "DISMISSED": "Dismissed",
+      "CONFIRMED": "Confirmed incident"
+    },
+    "severity": {
+      "HIGH": "High",
+      "MEDIUM": "Medium",
+      "LOW": "Low"
+    },
+    "scanResult": {
+      "VALID": "Valid",
+      "SUSPICIOUS": "Suspicious",
+      "INVALID": "Invalid"
+    },
+    "device": {
+      "MOBILE": "Mobile",
+      "DESKTOP": "Desktop",
+      "TABLET": "Tablet",
+      "OTHER": "Others"
+    },
+    "actionType": {
+      "SYSTEM": "System",
+      "LOGIN": "Login",
+      "LOGOUT": "Logout",
+      "FAILED_LOGIN": "Failed login",
+      "GENERATE": "Generate",
+      "REJECT": "Reject",
+      "VERIFY": "Verify",
+      "DELETE": "Delete",
+      "CREATE": "Create",
+      "UPDATE": "Update"
+    },
+    "auditStatus": {
+      "SUCCESS": "Success",
+      "FAILED": "Failed",
+      "WARNING": "Warning"
+    },
+    "module": {
+      "AUTH": "Authentication",
+      "USER": "User",
+      "PRODUCER": "Producer",
+      "REQUEST": "Request",
+      "SAMPLE": "Sample",
+      "LABORATORY": "Laboratory",
+      "VERIFICATION": "Verification",
+      "BATCH": "Batch",
+      "PACKAGING": "Packaging",
+      "PRODUCT": "Product",
+      "QR_CODE": "QR code",
+      "ANTI_COUNTERFEIT": "Anti-counterfeit",
+      "SALES": "Sales",
+      "SYSTEM": "System",
+      "SETTINGS": "Settings"
+    },
+    "entity": {
+      "Producer": "producer",
+      "User": "user",
+      "VerificationRequest": "request",
+      "Sample": "sample",
+      "Batch": "batch",
+      "Product": "product",
+      "Laboratory": "laboratory",
+      "CounterfeitAlert": "alert"
+    },
+    "batchStatus": {
+      "CREATED": "Verified",
+      "VERIFIED": "Verified",
+      "READY_FOR_PACKAGING": "Ready for packaging",
+      "IN_PACKAGING": "In packaging",
+      "PACKAGED": "Packaged",
+      "READY": "Packaged",
+      "CONVERTED_TO_PRODUCT": "Converted to product",
+      "PUBLISHED": "Published",
+      "SUSPENDED": "Suspended",
+      "RECALLED": "Recalled"
+    },
+    "channel": {
+      "ONLINE_STORE": "Online store",
+      "MARKETPLACE": "Marketplace",
+      "RETAIL_PARTNER": "Retail partner"
+    }
+  },
+  "logActions": {
+    "LOGIN": "User logged in",
+    "LOGOUT": "User logged out",
+    "LOGIN_FAILED": "Failed login attempt",
+    "LOGIN_BLOCKED": "Login refused (account deactivated)",
+    "CHANGE_PASSWORD": "Password changed",
+    "CHANGE_EMAIL": "Email address changed",
+    "ENABLE_2FA": "Two-factor authentication enabled",
+    "DISABLE_2FA": "Two-factor authentication disabled",
+    "DEACTIVATE_OWN_ACCOUNT": "Account closed by its owner",
+    "CREATE_USER": "User account created",
+    "UPDATE_USER": "User information updated",
+    "CHANGE_USER_ROLE": "User role changed",
+    "ACTIVATE_USER": "User account activated",
+    "DEACTIVATE_USER": "User account deactivated",
+    "RESET_USER_PASSWORD": "User password reset",
+    "CREATE_PRODUCER": "New producer account created",
+    "PRODUCER_ACTIVE": "Producer approved / activated",
+    "PRODUCER_PENDING": "Producer set as pending",
+    "PRODUCER_SUSPENDED": "Producer suspended",
+    "PRODUCER_REJECTED": "Producer rejected",
+    "UPLOAD_PRODUCER_DOCUMENT": "Producer document uploaded",
+    "DELETE_PRODUCER_DOCUMENT": "Producer document deleted",
+    "DOCUMENT_VERIFIED": "Producer document verified",
+    "DOCUMENT_REJECTED": "Producer document rejected",
+    "CREATE_LABORATORY": "Laboratory created",
+    "UPDATE_LABORATORY": "Laboratory information updated",
+    "APPROVE_LABORATORY": "Laboratory approved",
+    "SUSPEND_LABORATORY": "Laboratory suspended",
+    "REACTIVATE_LABORATORY": "Laboratory reactivated",
+    "ADD_LAB_ACCREDITATION": "Accreditation added",
+    "DELETE_LAB_ACCREDITATION": "Accreditation removed",
+    "CREATE_VERIFICATION_REQUEST": "Verification request created",
+    "SUBMIT_VERIFICATION_REQUEST": "Verification request submitted",
+    "DELETE_REQUEST_DRAFT": "Request draft deleted",
+    "REQUEST_ASSIGNED": "Request assigned",
+    "REQUEST_NOTES_UPDATED": "Request internal notes updated",
+    "REQUEST_REVIEW_START_REVIEW": "Request review started",
+    "REQUEST_REVIEW_ACCEPT": "Request accepted",
+    "REQUEST_REVIEW_REJECT": "Request rejected",
+    "REQUEST_REVIEW_REQUEST_INFO": "Information requested from producer",
+    "CREATE_COLLECTION_ASSIGNMENT": "Collection mission scheduled",
+    "CLAIM_COLLECTION_ASSIGNMENT": "Collection mission claimed",
+    "START_COLLECTION_ASSIGNMENT": "Collection mission started",
+    "COMPLETE_COLLECTION_ASSIGNMENT": "Collection mission completed",
+    "RESCHEDULE_COLLECTION_ASSIGNMENT": "Collection mission rescheduled",
+    "CANCEL_COLLECTION_ASSIGNMENT": "Collection mission cancelled",
+    "CREATE_SAMPLE": "Created new sample",
+    "REGISTER_SAMPLE": "Sample registered",
+    "APPLY_SEAL": "Security seal applied",
+    "SAMPLE_IN_TRANSIT": "Sample in transit",
+    "SAMPLE_RECEIVED_AT_KOUNOUZ": "Sample received by Kounouz",
+    "SAMPLE_SENT_TO_LAB": "Sample sent to laboratory",
+    "SAMPLE_RECEIVED_AT_LAB": "Sample received at laboratory",
+    "SAMPLE_ISSUE_FLAGGED": "Sample issue flagged",
+    "OPEN_LAB_ANALYSIS": "Laboratory analysis opened",
+    "SAVE_LAB_RESULTS": "Updated lab result",
+    "COMPLETE_LAB_ANALYSIS": "Laboratory analysis completed",
+    "RECORD_LAB_ANALYSIS": "Laboratory analysis recorded",
+    "UPLOAD_ANALYSIS_FILE": "Analysis report uploaded",
+    "DELETE_ANALYSIS_FILE": "Analysis file deleted",
+    "STORE_REFERENCE_SAMPLE": "Reference sample stored",
+    "CREATE_REFERENCE_HONEY": "Reference honey created",
+    "UPDATE_REFERENCE_HONEY": "Reference honey updated",
+    "OPEN_VERIFICATION": "Verification opened",
+    "SAVE_VERIFICATION_DRAFT": "Verification draft saved",
+    "DECIDE_VERIFICATION": "Verification decided",
+    "VERIFICATION_VERIFIED": "Verified batch",
+    "VERIFICATION_NOT_VERIFIED": "Batch declared not compliant",
+    "VERIFICATION_ADDITIONAL_ANALYSIS": "Additional analysis requested",
+    "CREATE_BATCH": "Batch created",
+    "UPDATE_BATCH": "Batch updated",
+    "BATCH_RELEASED": "Batch released",
+    "BATCH_SUSPENDED": "Batch suspended",
+    "BATCH_RECALLED": "Batch recalled",
+    "PRODUCTS_WITHDRAWN": "Products withdrawn from sale",
+    "CREATE_PACKAGING": "Packaging created",
+    "SAVE_PACKAGING": "Packaging saved",
+    "COMPLETE_PACKAGING": "Packaging completed",
+    "ADD_PACKAGING_UNIT": "Packaging unit added",
+    "UPDATE_PACKAGING_UNIT": "Packaging unit updated",
+    "DELETE_PACKAGING_UNIT": "Packaging unit deleted",
+    "CREATE_PRODUCT": "Product created",
+    "CREATE_BATCH_PRODUCT": "Product created from batch",
+    "UPDATE_BATCH_PRODUCT": "Updated product information",
+    "ACTIVATE_PRODUCT": "Product activated",
+    "SUSPEND_PRODUCT": "Product suspended",
+    "PRODUCT_PUBLIE": "Product published",
+    "PRODUCT_SUSPENDU": "Product suspended",
+    "PRODUCT_BROUILLON": "Product set to draft",
+    "PRODUCT_RUPTURE": "Product out of stock",
+    "UPLOAD_PRODUCT_DOCUMENT": "Product document uploaded",
+    "DELETE_PRODUCT_DOCUMENT": "Product document deleted",
+    "GENERATE_QR_CODES": "Generated QR codes",
+    "QR_ACTIVE": "QR code activated",
+    "QR_DEACTIVATED": "QR code deactivated",
+    "QR_BULK_DEACTIVATE": "QR codes deactivated in bulk",
+    "RESOLVE_ALERT": "Anti-counterfeit alert resolved",
+    "DISMISS_ALERT": "Anti-counterfeit alert dismissed",
+    "INVESTIGATE_ALERT": "Alert investigation started",
+    "REOPEN_ALERT": "Anti-counterfeit alert reopened",
+    "CREATE_ORDER": "Order created",
+    "ORDER_CONFIRMED": "Order confirmed",
+    "ORDER_SHIPPED": "Order shipped",
+    "ORDER_DELIVERED": "Order delivered",
+    "ORDER_CANCELLED": "Order cancelled",
+    "PAY_SETTLEMENT": "Producer settlement paid",
+    "SYSTEM_BACKUP": "Daily database backup completed",
+    "SEED_ADMIN_CONSOLE": "Demonstration data loaded"
+  }
+}

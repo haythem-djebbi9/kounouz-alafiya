@@ -8,7 +8,31 @@ export type NotificationType =
   | 'ANALYSIS_COMPLETED'
   | 'VERIFICATION_RESULT'
   | 'BATCH_CREATED'
-  | 'PRODUCT_PUBLISHED';
+  | 'PRODUCT_PUBLISHED'
+  | 'SUPPORT_TICKET_UPDATE'
+  | 'DOCUMENT_REVIEWED'
+  | 'NEW_ORDER'
+  | 'PAYOUT_PAID'
+  | 'COLLECTION_ASSIGNED'
+  | 'COUNTERFEIT_ALERT'
+  | 'WORKFLOW_TASK';
+
+export const NOTIFICATION_TYPES: NotificationType[] = [
+  'REQUEST_ACCEPTED',
+  'COLLECTION_AVAILABLE',
+  'SAMPLE_RECEIVED',
+  'ANALYSIS_COMPLETED',
+  'VERIFICATION_RESULT',
+  'BATCH_CREATED',
+  'PRODUCT_PUBLISHED',
+  'SUPPORT_TICKET_UPDATE',
+  'DOCUMENT_REVIEWED',
+  'NEW_ORDER',
+  'PAYOUT_PAID',
+  'COLLECTION_ASSIGNED',
+  'COUNTERFEIT_ALERT',
+  'WORKFLOW_TASK',
+];
 
 export interface AppNotification {
   id: string;
@@ -55,6 +79,24 @@ export function useMarkAllNotificationsRead() {
     mutationFn: () => api.patch('/notifications/read-all'),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['notifications'] });
+    },
+  });
+}
+
+export function useNotificationPreferences() {
+  return useQuery({
+    queryKey: ['notifications', 'preferences'],
+    queryFn: () => api.get<{ mutedTypes: NotificationType[] }>('/notifications/preferences'),
+  });
+}
+
+export function useToggleNotificationPreference() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ type, enabled }: { type: NotificationType; enabled: boolean }) =>
+      api.patch<{ mutedTypes: NotificationType[] }>(`/notifications/preferences/${type}`, { enabled }),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['notifications', 'preferences'] });
     },
   });
 }

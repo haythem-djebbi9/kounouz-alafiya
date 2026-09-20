@@ -1,9 +1,10 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
-import { SampleStatus } from '@prisma/client';
+import { SampleEventType, SampleStatus } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { AuditService } from '../audit/audit.service.js';
 import { buildCode } from '../common/sequential-code.js';
 import { CreateSealDto } from './dto/create-seal.dto.js';
+import { SampleEventsService } from '../verification-portal/sample-events.service.js';
 
 // Le scellé n'est jamais modifiable après création : ce service n'expose
 // volontairement aucune méthode update/delete.
@@ -12,6 +13,7 @@ export class SealsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly custody: SampleEventsService,
   ) {}
 
   async create(userId: string, dto: CreateSealDto) {
@@ -34,20 +36,20 @@ export class SealsService {
 
     const count = await this.prisma.seal.count();
 
-    const [seal] = await this.prisma.$transaction([
-      this.prisma.seal.create({
-        data: {
-          sampleId: sample.id,
-          sealCode: buildCode('KZ-SEAL', count),
-        },
-      }),
-      this.prisma.sample.update({
-        where: { id: sample.id },
-        data: { status: SampleStatus.SEALED },
-      }),
-    ]);
+    const seal = await this.prisma.seal.create({
+      data: {
+        sampleId: sample.id,
+        sealCode: buildCode('KZ-SEAL', count),
+      },
+    });
+    // COC-02 : la pose du scellé est une étape tracée de la chaîne de possession
+    // (l'événement fait passer l'échantillon au statut SEALED).
+    await this.custody.record(sample.id, SampleEventType.SEALED, userId, { note: seal.sealCode });
 
-    await this.audit.log(userId, 'APPLY_SEAL', 'Seal', seal.id);
+    await this.audit.log(userId, 'APPLY_SEAL', 'Seal', seal.id, {
+      previousStatus: SampleStatus.COLLECTED,
+      newStatus: SampleStatus.SEALED,
+    });
     return seal;
   }
 

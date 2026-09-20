@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Plus } from 'lucide-react';
 import { useAdminVerifications, useCreateVerification } from '../hooks/useVerifications';
 import { useAdminSamples } from '../hooks/useSamplesAndSeals';
@@ -7,6 +8,7 @@ import { ApiError } from '../../../lib/api';
 import type { VerificationStatus } from '../../../lib/api-types';
 
 export const VerificationPage: React.FC = () => {
+  const { t } = useTranslation(['admin', 'common']);
   const { data: verifications, isLoading } = useAdminVerifications();
   const { data: samples } = useAdminSamples();
   const createVerification = useCreateVerification();
@@ -43,28 +45,28 @@ export const VerificationPage: React.FC = () => {
       setNotes('');
       setIsOpen(false);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : 'تعذر تسجيل القرار.');
+      setError(err instanceof ApiError ? err.message : t('admin:verification.createError'));
     }
   };
 
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-[#0C261B]">قرارات التحقق</h1>
+        <h1 className="text-2xl font-bold text-[#0C261B]">{t('admin:verification.heading')}</h1>
         <Button size="sm" onClick={() => setIsOpen(true)} disabled={eligibleSamples.length === 0}>
           <Plus className="w-4 h-4" />
-          قرار جديد
+          {t('admin:verification.new')}
         </Button>
       </div>
 
       {eligibleSamples.length === 0 && (
-        <Alert tone="info" className="mb-4">لا توجد عينات محللة بانتظار قرار التحقق حالياً.</Alert>
+        <Alert tone="info" className="mb-4">{t('admin:verification.noEligibleSamples')}</Alert>
       )}
 
-      {isLoading && <p className="text-sm text-gray-400">جارٍ التحميل...</p>}
+      {isLoading && <p className="text-sm text-gray-400">{t('common:status.loading')}</p>}
       {!isLoading && (verifications ?? []).length === 0 && (
         <Card>
-          <EmptyState title="لم يتم اتخاذ أي قرار تحقق بعد" />
+          <EmptyState title={t('admin:verification.empty')} />
         </Card>
       )}
 
@@ -75,18 +77,18 @@ export const VerificationPage: React.FC = () => {
               <p className="font-bold text-[#0C261B]">{v.request?.honeyType}</p>
               <StatusBadge kind="verification" status={v.status} />
             </div>
-            <p className="text-xs text-gray-400">{v.request?.producer?.name} · قرار {v.decidedBy?.name}</p>
+            <p className="text-xs text-gray-400">{t('admin:verification.decidedBy', { producer: v.request?.producer?.name, name: v.decidedBy?.name })}</p>
             {v.notes && <p className="text-sm text-gray-600 mt-2">{v.notes}</p>}
           </Card>
         ))}
       </div>
 
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="قرار تحقق جديد">
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('admin:verification.new')}>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && <Alert tone="error">{error}</Alert>}
 
-          <Select label="العينة" required value={selectedSampleId} onChange={(e) => setSelectedSampleId(e.target.value)}>
-            <option value="">اختر عينة محلَّلة</option>
+          <Select label={t('admin:laboratory.analyses.sample')} required value={selectedSampleId} onChange={(e) => setSelectedSampleId(e.target.value)}>
+            <option value="">{t('admin:verification.selectAnalyzedSample')}</option>
             {eligibleSamples.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.request?.honeyType} — {s.request?.producer?.name}
@@ -96,27 +98,27 @@ export const VerificationPage: React.FC = () => {
 
           {analysis && (
             <Card className="bg-[#FAF6EE]/60">
-              <p className="text-xs text-gray-500 mb-1">خلاصة التحليل المخبري</p>
+              <p className="text-xs text-gray-500 mb-1">{t('admin:verification.labAnalysisSummary')}</p>
               <StatusBadge kind="labAnalysis" status={analysis.status} />
               {analysis.status === 'NON_COMPLIANT' && (
                 <p className="text-xs text-rose-600 font-semibold mt-2">
-                  لا يمكن اعتبار العينة "متحقق منها" لأن التحليل غير مطابق — يمكنك فقط اختيار "غير مطابق".
+                  {t('admin:verification.nonCompliantWarning')}
                 </p>
               )}
             </Card>
           )}
 
-          <Select label="القرار" required value={status} onChange={(e) => setStatus(e.target.value as VerificationStatus)}>
+          <Select label={t('admin:verification.decision')} required value={status} onChange={(e) => setStatus(e.target.value as VerificationStatus)}>
             <option value="VERIFIED" disabled={analysis?.status === 'NON_COMPLIANT'}>
-              تم التحقق ✅
+              {t('admin:verification.decisionVerified')}
             </option>
-            <option value="NOT_VERIFIED">غير مطابق</option>
+            <option value="NOT_VERIFIED">{t('admin:verification.decisionNotVerified')}</option>
           </Select>
 
-          <Textarea label="ملاحظات (اختياري)" value={notes} onChange={(e) => setNotes(e.target.value)} />
+          <Textarea label={t('admin:verification.notesOptional')} value={notes} onChange={(e) => setNotes(e.target.value)} />
 
           <Button type="submit" fullWidth isLoading={createVerification.isPending} disabled={!selectedSampleId}>
-            تأكيد القرار
+            {t('admin:verification.confirmDecision')}
           </Button>
         </form>
       </Modal>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { usePriceFormatter } from '../lib/format-price';
 import { Product } from '../types';
 import { Search, X, ArrowLeft, Tag } from 'lucide-react';
 
@@ -15,6 +17,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onSelectProduct,
   products,
 }) => {
+  const { t } = useTranslation('marketplace');
+  const formatPrice = usePriceFormatter();
   const [query, setQuery] = useState('');
 
   if (!isOpen) return null;
@@ -29,7 +33,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       )
     : products.slice(0, 4);
 
-  const quickTags = ['عسل سدر', 'غذاء ملكات', 'أعواد عسل', 'عسل طبيعي فاخر', 'بروبوليس'];
+  const quickTags = t('marketplace:search.quickTags', { returnObjects: true }) as string[];
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24 bg-[#0C261B]/75 backdrop-blur-sm animate-fadeIn">
@@ -45,9 +49,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="ابحث عن عسل، نوع، فائدة، أو رمز دفعة..."
+            placeholder={t('marketplace:search.placeholder')}
             className="flex-grow text-sm sm:text-base text-[#0C261B] placeholder:text-[#9AA8A2] bg-transparent focus:outline-none font-medium"
-            dir="rtl"
           />
           <button
             onClick={onClose}
@@ -60,7 +63,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         {/* Quick Suggestion Tags */}
         <div className="px-4 py-2.5 bg-[#F5EFE1] border-b border-[#EAE1D2] flex items-center gap-2 flex-wrap text-xs">
           <span className="text-[#8C7A60] font-semibold flex items-center gap-1">
-            <Tag className="w-3 h-3 text-[#D49B37]" /> كلمات شائعة:
+            <Tag className="w-3 h-3 text-[#D49B37]" /> {t('marketplace:search.popularLabel')}
           </span>
           {quickTags.map((tag) => (
             <button
@@ -76,12 +79,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         {/* Results List */}
         <div className="p-4 overflow-y-auto space-y-2.5">
           <span className="text-xs font-bold text-[#8C7A60] block mb-1">
-            {query ? `نتائج البحث (${results.length})` : 'المنتجات المميزة'}
+            {query ? t('marketplace:search.resultsCount', { count: results.length }) : t('marketplace:search.featuredProducts')}
           </span>
 
           {results.length === 0 ? (
             <div className="py-8 text-center text-xs text-[#8C7A60]">
-              لم يتم العثور على منتجات مطابقة لـ "{query}".
+              {t('marketplace:search.noResults', { query })}
             </div>
           ) : (
             results.map((product) => (
@@ -104,7 +107,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       {product.name}
                     </h4>
                     <span className="text-[11px] text-[#6F827B]">
-                      {product.subtitle} • {product.price} ر.س
+                      {product.subtitle} • {formatPrice(product.price)}
                     </span>
                   </div>
                 </div>

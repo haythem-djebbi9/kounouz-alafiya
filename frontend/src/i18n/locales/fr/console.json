@@ -1,0 +1,995 @@
+{
+  "brand": {
+    "tagline": "Origines pures. Miel de confiance.",
+    "sloganLine1": "Plus que du miel…",
+    "sloganLine2": "Un avenir plus sain.",
+    "footerLine1": "Miel tunisien",
+    "footerLine2": "Un avenir plus riche",
+    "role": "Administrateur système"
+  },
+  "nav": {
+    "menu": "Menu",
+    "collapse": "Réduire le menu",
+    "expand": "Déplier le menu",
+    "dashboard": "Tableau de bord",
+    "usersRoles": "Utilisateurs & rôles",
+    "producers": "Producteurs",
+    "laboratories": "Laboratoires",
+    "requests": "Demandes",
+    "samples": "Échantillons",
+    "seals": "Scellés",
+    "verifiedBatches": "Lots vérifiés",
+    "products": "Produits",
+    "categories": "Catégories",
+    "packaging": "Emballage",
+    "qrCodes": "QR codes",
+    "verification": "Vérification",
+    "analytics": "Analyses",
+    "qrScanAnalytics": "Analyse des scans QR",
+    "antiCounterfeit": "Alertes anti-contrefaçon",
+    "businessAnalytics": "Vérification & activité",
+    "sales": "Ventes",
+    "orders": "Commandes",
+    "settlements": "Règlements producteurs",
+    "reports": "Rapports",
+    "auditLogs": "Journal d'audit",
+    "support": "Support",
+    "settings": "Paramètres",
+    "help": "Aide",
+    "verifierPortal": "Portail vérification"
+  },
+  "search": {
+    "placeholder": "Rechercher (producteurs, lots, QR codes, utilisateurs…)",
+    "minChars": "Saisissez au moins 2 caractères.",
+    "noResults": "Aucun résultat.",
+    "groups": {
+      "producers": "Producteurs",
+      "users": "Utilisateurs",
+      "batches": "Lots",
+      "qrCodes": "QR codes",
+      "products": "Produits",
+      "laboratories": "Laboratoires",
+      "alerts": "Alertes"
+    }
+  },
+  "actions": {
+    "add": "Ajouter",
+    "approve": "Approuver",
+    "activate": "Activer",
+    "cancel": "Annuler",
+    "clearFilters": "Effacer les filtres",
+    "close": "Fermer",
+    "columns": "Colonnes",
+    "confirm": "Confirmer",
+    "copied": "Copié dans le presse-papiers",
+    "copy": "Copier",
+    "deactivate": "Désactiver",
+    "delete": "Supprimer",
+    "dismiss": "Classer sans suite",
+    "edit": "Modifier",
+    "export": "Exporter",
+    "investigate": "Enquêter",
+    "lessFilters": "Moins de filtres",
+    "markResolved": "Marquer comme résolue",
+    "moreFilters": "Plus de filtres",
+    "reactivate": "Réactiver",
+    "reject": "Refuser",
+    "reopen": "Rouvrir",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "retry": "Réessayer",
+    "save": "Enregistrer",
+    "suspend": "Suspendre",
+    "view": "Voir",
+    "viewAll": "Tout voir",
+    "viewDetails": "Voir les détails",
+    "viewProfile": "Voir le profil",
+    "viewTrail": "Voir la piste d'audit"
+  },
+  "range": {
+    "lastDays": "{{days}} derniers jours",
+    "thisYear": "Cette année",
+    "custom": "Période personnalisée",
+    "from": "Du",
+    "to": "Au",
+    "apply": "Appliquer"
+  },
+  "table": {
+    "actions": "Actions",
+    "showing": "{{from}} à {{to}} sur {{total}}",
+    "perPage": "Lignes par page",
+    "perPageOption": "{{n}} par page"
+  },
+  "states": {
+    "loading": "Chargement…",
+    "error": "Impossible de charger ces données.",
+    "noData": "Aucune donnée sur cette période.",
+    "saveFailed": "La modification n'a pas pu être enregistrée.",
+    "exportFailed": "L'export a échoué. Réessayez."
+  },
+  "shared": {
+    "vsLastMonth": "vs mois dernier",
+    "vsLastYear": "vs année dernière",
+    "vsPrevious30": "vs 30 jours précédents",
+    "vsPreviousPeriod": "vs période précédente",
+    "system": "Système",
+    "unknown": "Inconnu",
+    "others": "Autres",
+    "status": "Statut",
+    "allStatuses": "Tous les statuts",
+    "region": "Région",
+    "allRegions": "Toutes les régions",
+    "country": "Pays",
+    "allCountries": "Tous les pays",
+    "sort": "Tri",
+    "days": "{{days}} jours",
+    "points": "pts",
+    "noteOptional": "Note (facultative)"
+  },
+  "roles": {
+    "ADMIN": "Admin",
+    "VERIFICATION_TEAM": "Vérification",
+    "FIELD_AGENT": "Agent terrain",
+    "PRODUCER": "Producteur",
+    "CONSUMER": "Client"
+  },
+  "dashboard": {
+    "title": "Tableau de bord administrateur",
+    "subtitle": "Bon retour, {{name}} ! Voici une vue d'ensemble de la plateforme Kounouz Alafiya.",
+    "kpi": {
+      "producers": "Producteurs",
+      "laboratories": "Laboratoires",
+      "products": "Produits",
+      "batches": "Lots",
+      "qrCodes": "QR codes générés",
+      "verifiedBatches": "Lots vérifiés"
+    },
+    "scansOverTime": "Scans QR dans le temps",
+    "lastMonths": "{{months}} derniers mois",
+    "scans": "Scans",
+    "verificationStatus": "Statut de vérification des produits",
+    "qrCodesLabel": "QR codes",
+    "qrStatus": {
+      "VERIFIED": "Vérifié",
+      "PENDING": "En attente",
+      "SUSPENDED": "Suspendu"
+    },
+    "recentActivities": "Activités récentes",
+    "scanLocations": "Lieux de scan",
+    "scope": {
+      "ALL": "Tous les scans",
+      "VALID": "Scans valides",
+      "SUSPICIOUS": "Scans suspects"
+    },
+    "topRegions": "Principales régions",
+    "topProducts": "Produits les plus scannés",
+    "alerts": "Alertes & notifications",
+    "noAlerts": "Rien ne requiert votre attention.",
+    "alertItems": {
+      "counterfeit": "{{code}} · {{n}} scans",
+      "batch": {
+        "SUSPENDED": "Lot en cours d'enquête",
+        "RECALLED": "Lot rappelé"
+      },
+      "labPending": "Résultat de laboratoire en attente",
+      "invalidScans": "Scans de QR invalides détectés",
+      "invalidScansDetail": "{{n}} scans invalides sur les dernières 24 heures"
+    },
+    "bannerLine1": "Miel tunisien authentique.",
+    "bannerLine2": "De notre terre à votre famille.",
+    "systemOverview": "Vue d'ensemble du système",
+    "system": {
+      "users": "Utilisateurs",
+      "activeUsers": "Utilisateurs actifs",
+      "producers": "Producteurs",
+      "verificationTeam": "Équipe de vérification",
+      "samples": "Échantillons",
+      "labResults": "Résultats de laboratoire",
+      "referenceSamples": "Échantillons de référence",
+      "storage": "Stockage utilisé",
+      "files": "{{files}} fichiers"
+    },
+    "support": {
+      "title": "Besoin d'aide ?",
+      "subtitle": "La boîte de support rassemble les demandes des producteurs et de l'équipe.",
+      "action": "Ouvrir le support"
+    }
+  },
+  "users": {
+    "title": "Gestion des utilisateurs & rôles",
+    "subtitle": "Gérez les utilisateurs, les rôles et les permissions de la plateforme Kounouz Alafiya.",
+    "addUser": "Ajouter un utilisateur",
+    "tiles": {
+      "ALL": "Utilisateurs",
+      "PRODUCER": "Producteurs",
+      "VERIFICATION_TEAM": "Équipe de vérification",
+      "FIELD_AGENT": "Agents terrain",
+      "ADMIN": "Administrateurs",
+      "CONSUMER": "Clients"
+    },
+    "tabs": {
+      "ALL": "Tous",
+      "PRODUCER": "Producteurs",
+      "VERIFICATION_TEAM": "Équipe de vérification",
+      "FIELD_AGENT": "Agents terrain",
+      "ADMIN": "Administrateurs",
+      "CONSUMER": "Clients"
+    },
+    "searchPlaceholder": "Rechercher par nom, e-mail ou organisation…",
+    "status": {
+      "ACTIVE": "Actif",
+      "INACTIVE": "Inactif"
+    },
+    "lastLogin": "Dernière connexion",
+    "lastLoginFilter": {
+      "ALL": "Toute connexion",
+      "LAST_7_DAYS": "7 derniers jours",
+      "LAST_30_DAYS": "30 derniers jours",
+      "OVER_30_DAYS": "Il y a plus de 30 jours",
+      "NEVER": "Jamais connecté"
+    },
+    "sort": {
+      "RECENT": "Plus récents",
+      "NAME": "Nom (A–Z)",
+      "LAST_LOGIN": "Dernière connexion"
+    },
+    "columns": {
+      "user": "Utilisateur",
+      "role": "Rôle",
+      "organization": "Organisation",
+      "location": "Localisation",
+      "status": "Statut",
+      "lastLogin": "Dernière connexion"
+    },
+    "empty": "Aucun utilisateur ne correspond à ces filtres.",
+    "neverLoggedIn": "Jamais",
+    "twoFactor": "2FA",
+    "drawer": {
+      "title": "Détails de l'utilisateur",
+      "information": "Informations",
+      "activity": "Activité récente"
+    },
+    "fields": {
+      "name": "Nom complet",
+      "email": "E-mail",
+      "password": "Mot de passe provisoire",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "role": "Rôle",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "createdAt": "Créé le"
+    },
+    "form": {
+      "createTitle": "Ajouter un membre de l'équipe",
+      "editTitle": "Modifier l'utilisateur",
+      "passwordHint": "8 caractères minimum. Transmettez-le de façon sûre : l'utilisateur pourra le changer dans ses paramètres.",
+      "roleLocked": "Les rôles producteur et client relèvent de leur propre inscription, et vous ne pouvez pas modifier votre propre rôle.",
+      "staffOnly": "Les producteurs se créent depuis la page Producteurs ; les clients s'inscrivent depuis la boutique."
+    },
+    "reset": {
+      "title": "Réinitialiser le mot de passe — {{name}}",
+      "description": "L'ancien mot de passe cesse immédiatement de fonctionner et toutes les sessions ouvertes sont fermées.",
+      "mismatch": "Les mots de passe ne correspondent pas."
+    },
+    "toggle": {
+      "deactivateTitle": "Désactiver {{name}} ?",
+      "activateTitle": "Réactiver {{name}} ?",
+      "deactivateText": "Le compte ne peut plus se connecter et ses sessions sont révoquées. Son historique est conservé.",
+      "activateText": "Le compte pourra de nouveau se connecter avec son mot de passe actuel."
+    },
+    "toasts": {
+      "created": "Utilisateur créé.",
+      "updated": "Utilisateur mis à jour.",
+      "passwordReset": "Mot de passe réinitialisé.",
+      "activated": "Compte réactivé.",
+      "deactivated": "Compte désactivé."
+    }
+  },
+  "producers": {
+    "title": "Gestion des producteurs",
+    "subtitle": "Gérez les producteurs de miel, leurs informations, certifications et activité.",
+    "addProducer": "Ajouter un producteur",
+    "kpi": {
+      "total": "Producteurs",
+      "active": "Producteurs actifs",
+      "pending": "En attente d'approbation",
+      "suspended": "Suspendus",
+      "regions": "Régions",
+      "acrossTunisia": "En Tunisie"
+    },
+    "byRegion": "Producteurs par région",
+    "unknownRegion": "Région non renseignée",
+    "statusBreakdown": "Statut des producteurs",
+    "producersLabel": "Producteurs",
+    "newProducers": "Nouveaux producteurs (30 derniers jours)",
+    "avgVerification": "Délai moyen de vérification",
+    "vsPrevious90": "vs 90 jours précédents",
+    "avgVerificationHint": "De la soumission de la demande à la décision, sur {{n}} décisions des 90 derniers jours.",
+    "searchPlaceholder": "Rechercher par nom, e-mail, téléphone…",
+    "allHoneyTypes": "Tous les types de miel",
+    "allVerification": "Tout état de vérification",
+    "columns": {
+      "producer": "Producteur",
+      "location": "Localisation",
+      "honeyTypes": "Types de miel",
+      "status": "Statut",
+      "verification": "Vérification",
+      "batches": "Lots",
+      "products": "Produits",
+      "joined": "Inscription"
+    },
+    "verification": {
+      "VERIFIED": "Vérifié",
+      "IN_REVIEW": "En cours d'examen",
+      "ISSUE": "Anomalie",
+      "NONE": "Aucune demande"
+    },
+    "empty": "Aucun producteur ne correspond à ces filtres.",
+    "form": {
+      "title": "Ajouter un producteur",
+      "name": "Nom complet du producteur",
+      "farmName": "Nom de l'exploitation / rucher",
+      "chooseRegion": "Choisir un gouvernorat",
+      "passwordHint": "Mot de passe provisoire (8 caractères minimum) à transmettre au producteur."
+    },
+    "statusDialog": {
+      "ACTIVE": "Activer {{name}}",
+      "PENDING": "Remettre {{name}} en attente",
+      "SUSPENDED": "Suspendre {{name}}",
+      "REJECTED": "Refuser {{name}}",
+      "description": "Le statut passera de « {{from}} » à « {{to}} ». La modification est inscrite au journal d'audit."
+    },
+    "toasts": {
+      "created": "Producteur créé.",
+      "statusChanged": "Statut du producteur mis à jour."
+    }
+  },
+  "labs": {
+    "title": "Gestion des laboratoires",
+    "subtitle": "Gérez les laboratoires partenaires, leurs informations, accréditations et activité.",
+    "analysesLink": "Analyses & échantillons de référence",
+    "addLab": "Ajouter un laboratoire",
+    "kpi": {
+      "total": "Laboratoires",
+      "active": "Laboratoires actifs",
+      "pending": "En attente d'approbation",
+      "suspended": "Suspendus",
+      "countries": "Pays"
+    },
+    "tabs": {
+      "ALL": "Tous les laboratoires",
+      "ACTIVE": "Actifs",
+      "PENDING": "En attente d'approbation",
+      "SUSPENDED": "Suspendus"
+    },
+    "searchPlaceholder": "Rechercher par nom, e-mail ou lieu…",
+    "allAccreditations": "Toutes les accréditations",
+    "columns": {
+      "laboratory": "Laboratoire",
+      "location": "Localisation",
+      "accreditations": "Accréditations",
+      "status": "Statut",
+      "samples": "Échantillons analysés",
+      "joined": "Partenaire depuis"
+    },
+    "empty": "Aucun laboratoire ne correspond à ces filtres.",
+    "panel": {
+      "title": "Laboratoire",
+      "noTagline": "Pas encore de slogan",
+      "tabs": {
+        "overview": "Aperçu",
+        "contact": "Contact",
+        "accreditations": "Accréditations",
+        "activity": "Activité",
+        "notes": "Notes"
+      },
+      "basicInfo": "Informations générales",
+      "accreditations": "Accréditations & certificats",
+      "noAccreditations": "Aucune accréditation enregistrée.",
+      "validUntil": "Valable jusqu'au {{date}}",
+      "noExpiry": "Sans date d'expiration",
+      "confirmRemove": "Retirer l'accréditation « {{name}} » ?",
+      "statistics": "Statistiques",
+      "period": {
+        "1": "30 derniers jours",
+        "12": "12 derniers mois",
+        "0": "Depuis toujours"
+      },
+      "recentActivity": "Activité récente",
+      "notesHint": "Notes internes, visibles des seuls administrateurs."
+    },
+    "stats": {
+      "samples": "Échantillons",
+      "batches": "Lots",
+      "verified": "Conformes",
+      "avgTime": "Délai moyen"
+    },
+    "accreditationState": {
+      "VALID": "Accrédité",
+      "EXPIRED": "Expiré"
+    },
+    "fields": {
+      "name": "Nom du laboratoire",
+      "tagline": "Slogan",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "city": "Ville",
+      "address": "Adresse",
+      "website": "Site web",
+      "contactName": "Personne de contact",
+      "accreditationNo": "N° d'accréditation"
+    },
+    "form": {
+      "createTitle": "Ajouter un laboratoire",
+      "editTitle": "Modifier le laboratoire",
+      "statusHint": "Un laboratoire en attente ne peut recevoir aucune analyse tant qu'il n'est pas approuvé."
+    },
+    "accreditationForm": {
+      "title": "Ajouter une accréditation",
+      "name": "Accréditation",
+      "nameHint": "Par exemple ISO 17025, TUNAC, COFRAC.",
+      "issuingBody": "Organisme émetteur",
+      "certificateNumber": "N° de certificat",
+      "validUntil": "Valable jusqu'au"
+    },
+    "statusDialog": {
+      "approve": {
+        "title": "Approuver {{name}}",
+        "text": "Le laboratoire devient actif et peut recevoir des analyses d'échantillons."
+      },
+      "suspend": {
+        "title": "Suspendre {{name}}",
+        "text": "Aucune nouvelle analyse ne pourra lui être confiée. Les résultats passés restent valables."
+      },
+      "reactivate": {
+        "title": "Réactiver {{name}}",
+        "text": "Le laboratoire peut de nouveau recevoir des analyses."
+      }
+    },
+    "toasts": {
+      "created": "Laboratoire créé.",
+      "updated": "Laboratoire mis à jour.",
+      "statusChanged": "Statut du laboratoire mis à jour.",
+      "accreditationAdded": "Accréditation ajoutée.",
+      "accreditationRemoved": "Accréditation retirée.",
+      "notesSaved": "Notes enregistrées."
+    }
+  },
+  "audit": {
+    "title": "Journal d'audit du système",
+    "subtitle": "Suivez toutes les activités, modifications et actions des utilisateurs, en toute transparence.",
+    "kpi": {
+      "totalLogs": "Entrées du journal",
+      "activeUsers": "Utilisateurs actifs",
+      "securityAlerts": "Alertes de sécurité",
+      "uptime": "Disponibilité de l'API",
+      "uptimeSince": "Depuis le {{date}}"
+    },
+    "allModules": "Tous les modules",
+    "allActions": "Toutes les actions",
+    "allUsers": "Tous les utilisateurs",
+    "searchPlaceholder": "Rechercher (utilisateur, action, IP, référence)…",
+    "entityPlaceholder": "Identifiant de référence (historique complet d'un élément)",
+    "trailMode": "Historique complet d'un élément",
+    "columns": {
+      "date": "Date & heure",
+      "user": "Utilisateur",
+      "action": "Action",
+      "module": "Module",
+      "details": "Détails",
+      "ip": "Adresse IP",
+      "status": "Statut"
+    },
+    "empty": "Aucune entrée pour ces filtres.",
+    "anonymous": "Tentative non identifiée",
+    "automated": "Automatique",
+    "filterUser": "Voir les actions de cet utilisateur",
+    "openEntity": "Ouvrir l'élément concerné",
+    "detail": {
+      "title": "Détails de l'entrée",
+      "reference": "Référence",
+      "userAgent": "Navigateur",
+      "changes": "Détails",
+      "field": "Champ modifié",
+      "oldValue": "Ancienne valeur",
+      "newValue": "Nouvelle valeur",
+      "notes": "Notes",
+      "noChanges": "Aucune modification de champ enregistrée pour cette action.",
+      "relatedLinks": "Liens associés",
+      "openEntity": "Voir le/la {{entity}}",
+      "openUser": "Voir le profil de l'utilisateur",
+      "viewTrail": "Voir la piste d'audit ({{n}} entrées)",
+      "noLinks": "Aucun élément associé."
+    }
+  },
+  "scans": {
+    "title": "Analyse des scans QR",
+    "subtitle": "Suivez l'engagement des consommateurs et l'authenticité des produits en temps réel.",
+    "kpi": {
+      "total": "Scans",
+      "uniqueScanners": "Scanneurs uniques",
+      "valid": "Scans valides",
+      "suspicious": "Invalides / suspects",
+      "countries": "Pays"
+    },
+    "tabs": {
+      "overview": "Vue d'ensemble",
+      "locations": "Lieux",
+      "products": "Produits",
+      "batches": "Lots",
+      "devices": "Appareils",
+      "flow": "Flux de scans",
+      "journey": "Parcours consommateur",
+      "antiCounterfeit": "Anti-contrefaçon"
+    },
+    "granularity": {
+      "day": "Par jour",
+      "week": "Par semaine",
+      "month": "Par mois"
+    },
+    "scans": "Scans",
+    "totalScans": "Scans au total",
+    "overTime": "Scans dans le temps",
+    "resultBreakdown": "Résultat des scans",
+    "byDevice": "Scans par appareil",
+    "byCountry": "Scans par pays",
+    "byRegion": "Scans par région (Tunisie)",
+    "topProducts": "Produits les plus scannés",
+    "topBatches": "Lots les plus scannés",
+    "recentScans": "Scans récents",
+    "validVsSuspicious": "Scans valides et suspects",
+    "columns": {
+      "date": "Date & heure",
+      "location": "Lieu",
+      "product": "Produit",
+      "result": "Résultat",
+      "scanner": "Scanneur",
+      "share": "Part",
+      "batch": "Lot",
+      "honeyType": "Type de miel",
+      "scannedCodes": "Codes scannés"
+    },
+    "scannerType": {
+      "NEW": "Nouveau scanneur",
+      "RETURNING": "Récurrent"
+    },
+    "insights": {
+      "title": "Enseignements",
+      "newScanners": "des scanneurs sont nouveaux sur la période",
+      "avgPerScanner": "scans en moyenne par scanneur",
+      "growth": "d'évolution des scans vs période précédente",
+      "trusted": "des scans confirment l'authenticité"
+    },
+    "flow": {
+      "byHour": "Scans par heure de la journée",
+      "byWeekday": "Scans par jour de la semaine",
+      "utcHint": "Heures affichées en UTC (la Tunisie est à UTC+1)."
+    },
+    "journey": {
+      "frequency": "Scanneurs par nombre de scans",
+      "bucket": "{{range}} scan(s)",
+      "newVsReturning": "Nouveaux et récurrents",
+      "repeatShare": "des scanneurs ont scanné plus d'une fois"
+    },
+    "banner": {
+      "line1": "De vraies personnes.",
+      "line2": "Une vraie confiance.",
+      "line3": "Un avenir plus sain."
+    }
+  },
+  "alerts": {
+    "title": "Alertes anti-contrefaçon",
+    "subtitle": "Détectez et surveillez les activités suspectes pour protéger l'authenticité du miel Kounouz Alafiya.",
+    "kpi": {
+      "total": "Alertes",
+      "duplicates": "Doublons suspectés",
+      "unusualLocations": "Lieux inhabituels",
+      "invalidOrTampered": "QR invalides / altérés",
+      "resolved": "Alertes résolues"
+    },
+    "openBanner": "{{n}} alertes sont encore ouvertes ou en cours d'enquête.",
+    "showOpen": "Voir les alertes ouvertes",
+    "tabs": {
+      "ALL": "Toutes les alertes",
+      "SUSPECTED_DUPLICATE": "Doublons suspectés",
+      "UNUSUAL_LOCATION": "Lieux inhabituels",
+      "INVALID_QR": "QR codes invalides",
+      "TAMPERED_LABEL": "Étiquettes altérées",
+      "BULK_SCAN": "Scans en masse",
+      "RESOLVED": "Résolues"
+    },
+    "searchPlaceholder": "Rechercher par QR code, lot, produit, lieu ou identifiant d'alerte…",
+    "allTypes": "Tous les types",
+    "allProducts": "Tous les produits",
+    "severity": "Gravité",
+    "allSeverities": "Toutes les gravités",
+    "severityLabel": "Gravité : {{level}}",
+    "overTime": "Alertes dans le temps",
+    "series": {
+      "total": "Alertes",
+      "duplicates": "Doublons suspectés",
+      "resolved": "Résolues"
+    },
+    "byType": "Alertes par type",
+    "totalAlerts": "Alertes",
+    "byCountry": "Alertes par pays",
+    "risk": {
+      "HIGH": "Risque élevé",
+      "MEDIUM": "Risque moyen",
+      "LOW": "Risque faible"
+    },
+    "recent": "Alertes récentes",
+    "columns": {
+      "date": "Date & heure",
+      "type": "Type d'alerte",
+      "qrCode": "QR code",
+      "product": "Produit",
+      "location": "Lieu",
+      "details": "Détails",
+      "status": "Statut"
+    },
+    "empty": "Aucune alerte pour ces filtres.",
+    "detail": {
+      "title": "Détails de l'alerte",
+      "unknownCode": "Code inconnu (non émis par Kounouz)",
+      "batch": "Numéro de lot",
+      "device": "Appareil",
+      "ip": "Adresse IP",
+      "scanCount": "Nombre de scans",
+      "scanCountValue": "{{n}} scans · vu pour la dernière fois {{when}}",
+      "note": "Note d'enquête",
+      "notePlaceholder": "Actions menées, contacts, conclusion…",
+      "resolvedBy": "Clôturée par {{name}} le {{date}}",
+      "relatedScans": "Derniers scans de ce code",
+      "relatedAlerts": "Autres alertes sur ce code",
+      "history": "Historique"
+    },
+    "toasts": {
+      "OPEN": "Alerte rouverte.",
+      "INVESTIGATING": "Enquête ouverte.",
+      "RESOLVED": "Alerte marquée comme résolue.",
+      "DISMISSED": "Alerte classée sans suite.",
+      "CONFIRMED": "Incident confirmé : conclusion enregistrée."
+    }
+  },
+  "business": {
+    "title": "Vérification & activité commerciale",
+    "subtitle": "Transformez les données de vérification en décisions pour une filière du miel plus sûre et plus forte.",
+    "exportReport": "Exporter le rapport",
+    "kpi": {
+      "verifiedBatches": "Lots vérifiés",
+      "totalScans": "Scans QR",
+      "uniqueConsumers": "Consommateurs uniques",
+      "totalSales": "Ventes (TND)",
+      "fraudAttempts": "Tentatives de fraude",
+      "verificationRate": "Taux de vérification réussie",
+      "decisions": "{{n}} décisions"
+    },
+    "tabs": {
+      "overview": "Vue d'ensemble",
+      "verifications": "Vérifications",
+      "sales": "Ventes & revenus",
+      "products": "Produits",
+      "producers": "Producteurs",
+      "geographic": "Géographie",
+      "customers": "Consommateurs",
+      "trends": "Tendances",
+      "exports": "Exports & rapports"
+    },
+    "scansVsSales": "Vérifications et ventes",
+    "series": {
+      "scans": "Scans QR",
+      "sales": "Ventes (TND)"
+    },
+    "categories": "Types de miel vérifiés",
+    "verifiedBatchesLabel": "Lots vérifiés",
+    "noVerifications": "Aucune vérification décidée sur cette période.",
+    "topProducts": "Types de miel les plus performants",
+    "topProducers": "Meilleurs producteurs",
+    "columns": {
+      "honeyType": "Type de miel",
+      "verifiedBatches": "Lots vérifiés",
+      "scans": "Scans",
+      "revenue": "Chiffre d'affaires",
+      "units": "Unités vendues",
+      "date": "Date & heure",
+      "batch": "Numéro de lot",
+      "producer": "Producteur",
+      "location": "Lieu",
+      "result": "Résultat"
+    },
+    "byRegion": "Vérifications par région (Tunisie)",
+    "origins": "Origine des consommateurs",
+    "funnel": {
+      "title": "Entonnoir de vérification",
+      "subtitle": "Du scan à la confiance",
+      "TOTAL_SCANS": "Scans",
+      "VALID_SCANS": "Scans valides",
+      "VERIFIED_PRODUCTS": "Scans de produits vérifiés en vente",
+      "ORDERS": "Commandes passées"
+    },
+    "recentVerifications": "Vérifications récentes",
+    "result": {
+      "VERIFIED": "Conforme",
+      "NOT_VERIFIED": "Non conforme"
+    },
+    "insights": {
+      "title": "Chiffres clés",
+      "scanGrowth": "d'évolution des scans vs période précédente",
+      "consumers": "consommateurs uniques",
+      "scanToPurchase": "taux de conversion scan → achat",
+      "fraudChange": "de tentatives de fraude vs période précédente"
+    },
+    "banner": {
+      "line1": "Des données réelles.",
+      "line2": "Une vraie confiance.",
+      "line3": "Un avenir plus sain."
+    },
+    "verificationsOverTime": "Lots vérifiés dans le temps",
+    "sales": {
+      "orders": "Commandes",
+      "averageOrder": "Panier moyen",
+      "byChannel": "Chiffre d'affaires par canal"
+    },
+    "customers": {
+      "scansPerConsumer": "Scans par consommateur"
+    },
+    "trends": {
+      "verifications": "Lots vérifiés — 12 mois",
+      "scans": "Scans QR — 12 mois",
+      "sales": "Ventes (TND) — 12 mois",
+      "hint": "Les tendances couvrent toujours les 12 derniers mois, quelle que soit la période choisie."
+    },
+    "exports": {
+      "title": "Exports de données (CSV)",
+      "reportsTitle": "Rapports d'activité",
+      "reportsText": "Les rapports PDF et CSV des opérations (demandes, échantillons, vérifications, lots) restent disponibles dans la page Rapports.",
+      "openReports": "Ouvrir les rapports",
+      "items": {
+        "business": {
+          "title": "Rapport vérification & activité",
+          "description": "Indicateurs, séries, types de miel, régions, origines et entonnoir sur la période."
+        },
+        "scans": {
+          "title": "Scans QR",
+          "description": "Chaque scan de la période avec résultat, lieu et appareil."
+        },
+        "alerts": {
+          "title": "Alertes anti-contrefaçon",
+          "description": "Alertes créées sur la période avec leur statut."
+        },
+        "audit": {
+          "title": "Journal d'audit",
+          "description": "Actions système et utilisateurs de la période."
+        },
+        "producers": {
+          "title": "Producteurs",
+          "description": "Tous les producteurs avec statut, vérification et activité."
+        },
+        "laboratories": {
+          "title": "Laboratoires",
+          "description": "Laboratoires partenaires et accréditations."
+        },
+        "users": {
+          "title": "Utilisateurs",
+          "description": "Tous les comptes avec rôle, statut et dernière connexion."
+        }
+      }
+    }
+  },
+  "enums": {
+    "producerStatus": {
+      "ACTIVE": "Actif",
+      "PENDING": "En attente",
+      "SUSPENDED": "Suspendu",
+      "REJECTED": "Refusé"
+    },
+    "labStatus": {
+      "ACTIVE": "Actif",
+      "PENDING": "En attente",
+      "SUSPENDED": "Suspendu"
+    },
+    "alertType": {
+      "SUSPECTED_DUPLICATE": "Doublon suspecté",
+      "UNUSUAL_LOCATION": "Lieu inhabituel",
+      "INVALID_QR": "QR code invalide",
+      "TAMPERED_LABEL": "Étiquette altérée",
+      "BULK_SCAN": "Scan en masse"
+    },
+    "alertStatus": {
+      "OPEN": "Ouverte",
+      "INVESTIGATING": "En enquête",
+      "RESOLVED": "Résolue",
+      "DISMISSED": "Classée",
+      "CONFIRMED": "Incident confirmé"
+    },
+    "severity": {
+      "HIGH": "Élevée",
+      "MEDIUM": "Moyenne",
+      "LOW": "Faible"
+    },
+    "scanResult": {
+      "VALID": "Valide",
+      "SUSPICIOUS": "Suspect",
+      "INVALID": "Invalide"
+    },
+    "device": {
+      "MOBILE": "Mobile",
+      "DESKTOP": "Ordinateur",
+      "TABLET": "Tablette",
+      "OTHER": "Autres"
+    },
+    "actionType": {
+      "SYSTEM": "Système",
+      "LOGIN": "Connexion",
+      "LOGOUT": "Déconnexion",
+      "FAILED_LOGIN": "Échec de connexion",
+      "GENERATE": "Génération",
+      "REJECT": "Refus",
+      "VERIFY": "Validation",
+      "DELETE": "Suppression",
+      "CREATE": "Création",
+      "UPDATE": "Modification"
+    },
+    "auditStatus": {
+      "SUCCESS": "Succès",
+      "FAILED": "Échec",
+      "WARNING": "Avertissement"
+    },
+    "module": {
+      "AUTH": "Authentification",
+      "USER": "Utilisateur",
+      "PRODUCER": "Producteur",
+      "REQUEST": "Demande",
+      "SAMPLE": "Échantillon",
+      "LABORATORY": "Laboratoire",
+      "VERIFICATION": "Vérification",
+      "BATCH": "Lot",
+      "PACKAGING": "Emballage",
+      "PRODUCT": "Produit",
+      "QR_CODE": "QR code",
+      "ANTI_COUNTERFEIT": "Anti-contrefaçon",
+      "SALES": "Ventes",
+      "SYSTEM": "Système",
+      "SETTINGS": "Paramètres"
+    },
+    "entity": {
+      "Producer": "producteur",
+      "User": "utilisateur",
+      "VerificationRequest": "demande",
+      "Sample": "échantillon",
+      "Batch": "lot",
+      "Product": "produit",
+      "Laboratory": "laboratoire",
+      "CounterfeitAlert": "alerte"
+    },
+    "batchStatus": {
+      "CREATED": "Vérifié",
+      "VERIFIED": "Vérifié",
+      "READY_FOR_PACKAGING": "Prêt à emballer",
+      "IN_PACKAGING": "En emballage",
+      "PACKAGED": "Emballé",
+      "READY": "Emballé",
+      "CONVERTED_TO_PRODUCT": "Converti en produit",
+      "PUBLISHED": "Publié",
+      "SUSPENDED": "Suspendu",
+      "RECALLED": "Rappelé"
+    },
+    "channel": {
+      "ONLINE_STORE": "Boutique en ligne",
+      "MARKETPLACE": "Marketplace",
+      "RETAIL_PARTNER": "Revendeur partenaire"
+    }
+  },
+  "logActions": {
+    "LOGIN": "Connexion de l'utilisateur",
+    "LOGOUT": "Déconnexion de l'utilisateur",
+    "LOGIN_FAILED": "Échec de connexion",
+    "LOGIN_BLOCKED": "Connexion refusée (compte désactivé)",
+    "CHANGE_PASSWORD": "Mot de passe modifié",
+    "CHANGE_EMAIL": "Adresse e-mail modifiée",
+    "ENABLE_2FA": "Double authentification activée",
+    "DISABLE_2FA": "Double authentification désactivée",
+    "DEACTIVATE_OWN_ACCOUNT": "Compte fermé par son titulaire",
+    "CREATE_USER": "Compte utilisateur créé",
+    "UPDATE_USER": "Informations utilisateur modifiées",
+    "CHANGE_USER_ROLE": "Rôle utilisateur modifié",
+    "ACTIVATE_USER": "Compte utilisateur activé",
+    "DEACTIVATE_USER": "Compte utilisateur désactivé",
+    "RESET_USER_PASSWORD": "Mot de passe utilisateur réinitialisé",
+    "CREATE_PRODUCER": "Nouveau compte producteur créé",
+    "PRODUCER_ACTIVE": "Producteur approuvé / activé",
+    "PRODUCER_PENDING": "Producteur remis en attente",
+    "PRODUCER_SUSPENDED": "Producteur suspendu",
+    "PRODUCER_REJECTED": "Producteur refusé",
+    "UPLOAD_PRODUCER_DOCUMENT": "Pièce producteur déposée",
+    "DELETE_PRODUCER_DOCUMENT": "Pièce producteur supprimée",
+    "DOCUMENT_VERIFIED": "Pièce producteur validée",
+    "DOCUMENT_REJECTED": "Pièce producteur refusée",
+    "CREATE_LABORATORY": "Laboratoire créé",
+    "UPDATE_LABORATORY": "Informations du laboratoire modifiées",
+    "APPROVE_LABORATORY": "Laboratoire approuvé",
+    "SUSPEND_LABORATORY": "Laboratoire suspendu",
+    "REACTIVATE_LABORATORY": "Laboratoire réactivé",
+    "ADD_LAB_ACCREDITATION": "Accréditation ajoutée",
+    "DELETE_LAB_ACCREDITATION": "Accréditation retirée",
+    "CREATE_VERIFICATION_REQUEST": "Demande de vérification créée",
+    "SUBMIT_VERIFICATION_REQUEST": "Demande de vérification soumise",
+    "DELETE_REQUEST_DRAFT": "Brouillon de demande supprimé",
+    "REQUEST_ASSIGNED": "Demande attribuée",
+    "REQUEST_NOTES_UPDATED": "Notes internes de la demande modifiées",
+    "REQUEST_REVIEW_START_REVIEW": "Examen de la demande commencé",
+    "REQUEST_REVIEW_ACCEPT": "Demande acceptée",
+    "REQUEST_REVIEW_REJECT": "Demande rejetée",
+    "REQUEST_REVIEW_REQUEST_INFO": "Informations demandées au producteur",
+    "CREATE_COLLECTION_ASSIGNMENT": "Mission de collecte planifiée",
+    "CLAIM_COLLECTION_ASSIGNMENT": "Mission de collecte prise en charge",
+    "START_COLLECTION_ASSIGNMENT": "Mission de collecte démarrée",
+    "COMPLETE_COLLECTION_ASSIGNMENT": "Mission de collecte terminée",
+    "RESCHEDULE_COLLECTION_ASSIGNMENT": "Mission de collecte reprogrammée",
+    "CANCEL_COLLECTION_ASSIGNMENT": "Mission de collecte annulée",
+    "CREATE_SAMPLE": "Nouvel échantillon créé",
+    "REGISTER_SAMPLE": "Échantillon enregistré",
+    "APPLY_SEAL": "Scellé de sécurité posé",
+    "SAMPLE_IN_TRANSIT": "Échantillon en transit",
+    "SAMPLE_RECEIVED_AT_KOUNOUZ": "Échantillon réceptionné par Kounouz",
+    "SAMPLE_SENT_TO_LAB": "Échantillon envoyé au laboratoire",
+    "SAMPLE_RECEIVED_AT_LAB": "Échantillon reçu au laboratoire",
+    "SAMPLE_ISSUE_FLAGGED": "Anomalie signalée sur l'échantillon",
+    "OPEN_LAB_ANALYSIS": "Analyse de laboratoire ouverte",
+    "SAVE_LAB_RESULTS": "Résultat de laboratoire mis à jour",
+    "COMPLETE_LAB_ANALYSIS": "Analyse de laboratoire terminée",
+    "RECORD_LAB_ANALYSIS": "Analyse de laboratoire enregistrée",
+    "UPLOAD_ANALYSIS_FILE": "Bulletin d'analyse déposé",
+    "DELETE_ANALYSIS_FILE": "Fichier d'analyse supprimé",
+    "STORE_REFERENCE_SAMPLE": "Échantillon de référence stocké",
+    "CREATE_REFERENCE_HONEY": "Miel étalon créé",
+    "UPDATE_REFERENCE_HONEY": "Miel étalon modifié",
+    "OPEN_VERIFICATION": "Vérification ouverte",
+    "SAVE_VERIFICATION_DRAFT": "Brouillon de vérification enregistré",
+    "DECIDE_VERIFICATION": "Décision de vérification",
+    "VERIFICATION_VERIFIED": "Lot vérifié",
+    "VERIFICATION_NOT_VERIFIED": "Lot déclaré non conforme",
+    "VERIFICATION_ADDITIONAL_ANALYSIS": "Analyse complémentaire demandée",
+    "CREATE_BATCH": "Lot créé",
+    "UPDATE_BATCH": "Lot modifié",
+    "BATCH_RELEASED": "Lot remis en circulation",
+    "BATCH_SUSPENDED": "Lot suspendu",
+    "BATCH_RECALLED": "Lot rappelé",
+    "PRODUCTS_WITHDRAWN": "Produits retirés de la vente",
+    "CREATE_PACKAGING": "Emballage créé",
+    "SAVE_PACKAGING": "Emballage enregistré",
+    "COMPLETE_PACKAGING": "Emballage terminé",
+    "ADD_PACKAGING_UNIT": "Unité d'emballage ajoutée",
+    "UPDATE_PACKAGING_UNIT": "Unité d'emballage modifiée",
+    "DELETE_PACKAGING_UNIT": "Unité d'emballage supprimée",
+    "CREATE_PRODUCT": "Produit créé",
+    "CREATE_BATCH_PRODUCT": "Produit créé depuis un lot",
+    "UPDATE_BATCH_PRODUCT": "Informations produit modifiées",
+    "ACTIVATE_PRODUCT": "Produit activé",
+    "SUSPEND_PRODUCT": "Produit suspendu",
+    "PRODUCT_PUBLIE": "Produit publié",
+    "PRODUCT_SUSPENDU": "Produit suspendu",
+    "PRODUCT_BROUILLON": "Produit repassé en brouillon",
+    "PRODUCT_RUPTURE": "Produit en rupture",
+    "UPLOAD_PRODUCT_DOCUMENT": "Document produit déposé",
+    "DELETE_PRODUCT_DOCUMENT": "Document produit supprimé",
+    "GENERATE_QR_CODES": "QR codes générés",
+    "QR_ACTIVE": "QR code activé",
+    "QR_DEACTIVATED": "QR code désactivé",
+    "QR_BULK_DEACTIVATE": "QR codes désactivés en masse",
+    "RESOLVE_ALERT": "Alerte anti-contrefaçon résolue",
+    "DISMISS_ALERT": "Alerte anti-contrefaçon classée",
+    "INVESTIGATE_ALERT": "Enquête ouverte sur une alerte",
+    "REOPEN_ALERT": "Alerte anti-contrefaçon rouverte",
+    "CREATE_ORDER": "Commande créée",
+    "ORDER_CONFIRMED": "Commande confirmée",
+    "ORDER_SHIPPED": "Commande expédiée",
+    "ORDER_DELIVERED": "Commande livrée",
+    "ORDER_CANCELLED": "Commande annulée",
+    "PAY_SETTLEMENT": "Règlement producteur versé",
+    "SYSTEM_BACKUP": "Sauvegarde quotidienne de la base terminée",
+    "SEED_ADMIN_CONSOLE": "Données de démonstration chargées"
+  }
+}

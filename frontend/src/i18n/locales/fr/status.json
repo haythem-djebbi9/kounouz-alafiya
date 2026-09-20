@@ -1,0 +1,48 @@
+{
+  "request": {
+    "DRAFT": "Brouillon",
+    "NEW": "En cours d'envoi",
+    "IN_REVIEW": "En cours d'examen",
+    "ACCEPTED": "Acceptée",
+    "REJECTED": "Refusée"
+  },
+  "sample": {
+    "COLLECTED": "Échantillon prélevé",
+    "SEALED": "Scellé",
+    "IN_TRANSIT": "En route vers le laboratoire",
+    "RECEIVED_AT_LAB": "Arrivé au laboratoire",
+    "ANALYZED": "Analysé"
+  },
+  "verification": {
+    "PENDING": "Vérification en cours",
+    "VERIFIED": "Vérifié ✅",
+    "NOT_VERIFIED": "Non conforme"
+  },
+  "batch": {
+    "CREATED": "Lot créé",
+    "PACKAGED": "En cours d'emballage",
+    "READY": "Prêt"
+  },
+  "product": {
+    "BROUILLON": "Brouillon",
+    "PUBLIE": "Publié",
+    "RUPTURE": "Rupture de stock",
+    "SUSPENDU": "Suspendu",
+    "ARCHIVE": "Archivé"
+  },
+  "labAnalysis": {
+    "PENDING": "En attente de résultat",
+    "COMPLIANT": "Conforme",
+    "NON_COMPLIANT": "Non conforme"
+  },
+  "packaging": {
+    "IN_PROGRESS": "En cours d'emballage",
+    "COMPLETED": "Terminé"
+  },
+  "supportTicket": {
+    "OPEN": "Ouverte",
+    "IN_PROGRESS": "En cours de traitement",
+    "RESOLVED": "Résolue",
+    "CLOSED": "Fermée"
+  }
+}

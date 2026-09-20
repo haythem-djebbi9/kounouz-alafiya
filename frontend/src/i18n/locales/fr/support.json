@@ -1,0 +1,58 @@
+{
+  "title": "Aide et support",
+  "helpCenter": {
+    "heading": "Centre d'aide",
+    "intro": "Réponses rapides aux questions les plus fréquentes sur Kounouz Alafiya.",
+    "topics": [
+      { "title": "Comment fonctionne la vérification du miel ?", "body": "Chaque demande suit une chaîne complète : collecte d'échantillon, analyse en laboratoire, puis décision finale de l'équipe de vérification. Suivez chaque étape depuis \"Mes demandes\"." },
+      { "title": "Comment savoir si un produit est authentique ?", "body": "Scannez le code QR présent sur le produit, ou saisissez le code imprimé sur la page de vérification publique pour voir toute la chaîne de traçabilité." },
+      { "title": "Comment créer une nouvelle demande de vérification ?", "body": "Depuis le tableau de bord producteur, cliquez sur \"Vérifier mon miel\" et suivez les trois étapes." },
+      { "title": "Qui répond aux tickets de support ?", "body": "L'équipe Admin et l'équipe de vérification suivent et répondent à tous les tickets de support depuis l'application." }
+    ]
+  },
+  "faq": {
+    "heading": "Questions fréquentes",
+    "items": [
+      { "q": "Puis-je modifier une demande après l'avoir envoyée ?", "a": "Non, mais vous pouvez envoyer une nouvelle demande ou contacter le support pour ajuster les détails avant qu'elle ne soit acceptée." },
+      { "q": "Pourquoi je ne reçois pas certaines notifications ?", "a": "Vérifiez vos préférences de notifications dans la page Paramètres — ce type de notification est peut-être désactivé." },
+      { "q": "Le paiement en ligne est-il disponible ?", "a": "Pas encore — cette fonctionnalité est en cours de développement." },
+      { "q": "Comment récupérer mon mot de passe ?", "a": "Contactez le support en ouvrant un ticket, un membre de l'équipe vous aidera." }
+    ]
+  },
+  "contact": {
+    "heading": "Contacter Kounouz Alafiya",
+    "intro": "Envoyez-nous un message, notre équipe vous répondra.",
+    "nameLabel": "Nom",
+    "emailLabel": "E-mail",
+    "subjectLabel": "Sujet",
+    "messageLabel": "Message",
+    "submit": "Envoyer le message",
+    "success": "Votre message a bien été envoyé, merci de nous avoir contactés."
+  },
+  "tickets": {
+    "heading": "Tickets de support",
+    "myTickets": "Mes tickets",
+    "newTicket": "Ouvrir un nouveau ticket",
+    "subjectLabel": "Sujet",
+    "messageLabel": "Détails du problème",
+    "submit": "Envoyer le ticket",
+    "success": "Ticket de support ouvert avec succès.",
+    "empty": "Aucun ticket de support pour le moment.",
+    "openedOn": "Ouvert le",
+    "viewTicket": "Voir le ticket",
+    "backToList": "Retour à la liste",
+    "conversation": "Conversation",
+    "replyPlaceholder": "Écrivez votre réponse ici...",
+    "closedNotice": "Ce ticket est fermé, vous ne pouvez plus ajouter de messages.",
+    "statusLabel": "Statut"
+  },
+  "inbox": {
+    "heading": "Boîte des tickets de support",
+    "filterAll": "Tous",
+    "noTickets": "Aucun ticket de support.",
+    "contactHeading": "Messages de contact",
+    "noContactMessages": "Aucun message de contact.",
+    "unread": "Non lu",
+    "changeStatus": "Changer le statut"
+  }
+}

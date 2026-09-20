@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../lib/auth-context';
 import type { Role } from '../lib/api-types';
+import { roleHomePath } from '../lib/role-routing';
 
 interface ProtectedRouteProps {
   allowedRoles?: Role[];
@@ -24,8 +25,11 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles, ch
     return <Navigate to="/connexion" replace state={{ from: location.pathname }} />;
   }
 
+  // Un rôle qui arrive sur un portail qui n'est pas le sien (ancien favori,
+  // retour après connexion vers la page précédente...) est renvoyé vers son
+  // propre espace plutôt que vers l'accueil.
   if (allowedRoles && !allowedRoles.includes(user.role)) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={roleHomePath(user.role)} replace />;
   }
 
   return <>{children}</>;

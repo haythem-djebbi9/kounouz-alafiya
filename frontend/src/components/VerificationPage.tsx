@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   ShieldCheck,
   Smartphone,
@@ -17,6 +18,7 @@ const DEMO_CODES = ['KZ-QR-2026-000001', 'KZ-QR-2026-000002'];
 
 export const VerificationPage: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation('marketplace');
   const [inputCode, setInputCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const guideRef = useRef<HTMLDivElement>(null);
@@ -24,7 +26,7 @@ export const VerificationPage: React.FC = () => {
   const handleVerify = (codeToVerify?: string) => {
     const code = (codeToVerify || inputCode).trim().toUpperCase();
     if (!code) {
-      setErrorMsg('الرجاء إدخال رمز التحقق المطبوع على العبوة');
+      setErrorMsg(t('marketplace:verifyPage.errorEmpty'));
       return;
     }
     setErrorMsg('');
@@ -45,7 +47,6 @@ export const VerificationPage: React.FC = () => {
         backgroundColor: '#FAF6EE',
         backgroundAttachment: 'scroll',
       }}
-      dir="rtl"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-7 sm:space-y-9">
 
@@ -55,29 +56,29 @@ export const VerificationPage: React.FC = () => {
 
             <div className="inline-flex items-center gap-1.5 bg-[#E7F3EE] text-[#1E6B56] px-3.5 py-1.5 rounded-full text-xs font-extrabold mb-3.5 border border-[#1E6B56]/20">
               <ShieldCheck className="w-4 h-4 text-[#1E6B56]" />
-              <span>نظام التحقق المعتمد من كنوز العافية</span>
+              <span>{t('marketplace:verifyPage.badge')}</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0C261B] mb-2 tracking-tight">
-              التحقق من أصالة وجودة المنتج
+              {t('marketplace:verifyPage.title')}
             </h1>
 
             <p className="text-sm sm:text-base font-bold text-[#0C261B] mb-1.5">
-              نضمن لك أن كل قطرة من كنوز العافية نقية 100% وموثوقة المصدر
+              {t('marketplace:verifyPage.subtitle')}
             </p>
 
             {/* Scan direct par la caméra du téléphone — pas besoin de cette page */}
             <div className="flex items-start gap-3 bg-[#FAF0DC] border border-[#D49B37]/40 rounded-xl p-3.5 mb-4">
               <Smartphone className="w-5 h-5 text-[#C68A28] shrink-0 mt-0.5" />
               <p className="text-xs sm:text-sm text-[#576B64] leading-relaxed">
-                امسح رمز QR الموجود على المنتج مباشرة بكاميرا هاتفك — ستفتح صفحة التحقق تلقائياً دون الحاجة لهذا الموقع.
+                {t('marketplace:verifyPage.scanHint')}
               </p>
             </div>
 
             <div className="w-full text-center my-2 relative flex items-center justify-center">
               <div className="border-t border-[#DED4C3] w-full absolute" />
               <span className="bg-white px-3 text-[11px] font-bold text-[#8C7A60] relative z-10">
-                أو أدخل الرمز يدوياً
+                {t('marketplace:verifyPage.orEnterManually')}
               </span>
             </div>
 
@@ -96,9 +97,8 @@ export const VerificationPage: React.FC = () => {
                     setInputCode(e.target.value);
                     setErrorMsg('');
                   }}
-                  placeholder="أدخل رمز التحقق هنا (مثال: KZ-QR-2026-000001)"
+                  placeholder={t('marketplace:verifyPage.inputPlaceholder')}
                   className="w-full px-3.5 py-2.5 sm:py-3 pl-10 rounded-xl bg-white border border-[#D5C7B0] text-xs sm:text-sm text-[#0C261B] placeholder:text-[#9BAAA2] focus:outline-none focus:ring-2 focus:ring-[#C68A28] shadow-inner font-medium text-right"
-                  dir="rtl"
                 />
                 <ShieldCheck className="w-5 h-5 text-[#C68A28] absolute left-3 pointer-events-none" />
               </div>
@@ -114,14 +114,14 @@ export const VerificationPage: React.FC = () => {
                 className="w-full flex items-center justify-center gap-2 bg-[#0C261B] hover:bg-[#143B2B] text-white font-bold text-xs sm:text-sm py-2.5 sm:py-3 rounded-xl transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg"
               >
                 <ShieldCheck className="w-4 h-4 text-[#D49B37]" />
-                <span>تحقق الآن</span>
+                <span>{t('marketplace:verifyPage.verifyCta')}</span>
               </button>
             </form>
 
             <div className="flex flex-wrap items-center justify-start gap-1.5 mt-4 text-[11px]">
               <span className="font-bold text-[#0C261B] flex items-center gap-1 text-[11px]">
                 <Sparkles className="w-3 h-3 text-[#C68A28]" />
-                رموز تجريبية:
+                {t('marketplace:verifyPage.demoCodesLabel')}
               </span>
               {DEMO_CODES.map((code) => (
                 <button
@@ -141,7 +141,7 @@ export const VerificationPage: React.FC = () => {
               className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0C261B] hover:text-[#C68A28] mt-3.5 transition-colors cursor-pointer"
             >
               <Info className="w-3.5 h-3.5 text-[#C68A28]" />
-              <span>أين أجد رمز التحقق على العبوة؟</span>
+              <span>{t('marketplace:verifyPage.findCodeLink')}</span>
             </button>
 
           </div>
@@ -155,8 +155,8 @@ export const VerificationPage: React.FC = () => {
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-extrabold text-[#0C261B]">100% أصلي ومضمون</h4>
-                <p className="text-xs text-[#7A8C85] mt-0.5">نضمن لك جودة وأصالة كل منتج</p>
+                <h4 className="text-sm font-extrabold text-[#0C261B]">{t('marketplace:verifyPage.trust.authentic.title')}</h4>
+                <p className="text-xs text-[#7A8C85] mt-0.5">{t('marketplace:verifyPage.trust.authentic.description')}</p>
               </div>
             </div>
 
@@ -165,8 +165,8 @@ export const VerificationPage: React.FC = () => {
                 <MapPin className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-extrabold text-[#0C261B]">مصدر موثوق</h4>
-                <p className="text-xs text-[#7A8C85] mt-0.5">منتجاتنا من أفضل المناحل المختارة</p>
+                <h4 className="text-sm font-extrabold text-[#0C261B]">{t('marketplace:verifyPage.trust.source.title')}</h4>
+                <p className="text-xs text-[#7A8C85] mt-0.5">{t('marketplace:verifyPage.trust.source.description')}</p>
               </div>
             </div>
 
@@ -175,8 +175,8 @@ export const VerificationPage: React.FC = () => {
                 <FlaskConical className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-extrabold text-[#0C261B]">مختبر ومعتمد</h4>
-                <p className="text-xs text-[#7A8C85] mt-0.5">تم اختباره وفق أعلى المعايير</p>
+                <h4 className="text-sm font-extrabold text-[#0C261B]">{t('marketplace:verifyPage.trust.lab.title')}</h4>
+                <p className="text-xs text-[#7A8C85] mt-0.5">{t('marketplace:verifyPage.trust.lab.description')}</p>
               </div>
             </div>
 
@@ -185,8 +185,8 @@ export const VerificationPage: React.FC = () => {
                 <Leaf className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-extrabold text-[#0C261B]">طبيعي بالكامل</h4>
-                <p className="text-xs text-[#7A8C85] mt-0.5">بدون إضافات أو مواد حافظة</p>
+                <h4 className="text-sm font-extrabold text-[#0C261B]">{t('marketplace:verifyPage.trust.natural.title')}</h4>
+                <p className="text-xs text-[#7A8C85] mt-0.5">{t('marketplace:verifyPage.trust.natural.description')}</p>
               </div>
             </div>
           </div>
@@ -196,9 +196,9 @@ export const VerificationPage: React.FC = () => {
         <div ref={guideRef} className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-[#EAE1D2]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             <div className="lg:col-span-4 flex flex-col items-start text-right border-b lg:border-b-0 lg:border-l lg:border-[#EAE1D2] pb-6 lg:pb-0 lg:pl-8">
-              <h3 className="text-lg sm:text-xl font-extrabold text-[#0C261B] mb-2">أين أجد رمز التحقق؟</h3>
+              <h3 className="text-lg sm:text-xl font-extrabold text-[#0C261B] mb-2">{t('marketplace:verifyPage.guide.findTitle')}</h3>
               <p className="text-xs sm:text-sm text-[#61746C] leading-relaxed mb-6">
-                ستجد رمز التحقق (QR) على الملصق الجانبي للمنتج أو أسفل العبوة.
+                {t('marketplace:verifyPage.guide.findDescription')}
               </p>
               <div className="w-full flex justify-center mt-auto">
                 <div className="relative p-4 bg-[#FAF6EE] rounded-2xl border border-[#EAE1D2] flex items-center justify-center max-w-[220px]">
@@ -223,7 +223,7 @@ export const VerificationPage: React.FC = () => {
 
             <div className="lg:col-span-8 flex flex-col text-right">
               <div className="flex items-center gap-2 mb-6">
-                <h3 className="text-lg sm:text-xl font-extrabold text-[#0C261B]">ماذا تعني نتيجة التحقق؟</h3>
+                <h3 className="text-lg sm:text-xl font-extrabold text-[#0C261B]">{t('marketplace:verifyPage.guide.resultTitle')}</h3>
                 <div className="w-10 h-0.5 bg-[#D49B37] rounded-full" />
               </div>
 
@@ -232,9 +232,9 @@ export const VerificationPage: React.FC = () => {
                   <div className="w-10 h-10 rounded-full bg-[#1E6B56] text-white flex items-center justify-center mb-3 shadow-sm">
                     <Check className="w-6 h-6 stroke-[3]" />
                   </div>
-                  <h4 className="text-sm font-extrabold text-[#0C261B] mb-2">منتج موثّق</h4>
+                  <h4 className="text-sm font-extrabold text-[#0C261B] mb-2">{t('marketplace:verifyPage.guide.verified.title')}</h4>
                   <p className="text-xs font-bold text-[#1E6B56] leading-relaxed">
-                    تم التحقق من هذا المنتج مخبرياً — أصلي 100%
+                    {t('marketplace:verifyPage.guide.verified.description')}
                   </p>
                 </div>
 
@@ -242,9 +242,9 @@ export const VerificationPage: React.FC = () => {
                   <div className="w-10 h-10 rounded-full bg-[#E59819] text-white flex items-center justify-center mb-3 shadow-sm">
                     <AlertCircle className="w-6 h-6" />
                   </div>
-                  <h4 className="text-sm font-extrabold text-[#0C261B] mb-2">موقوف مؤقتاً</h4>
+                  <h4 className="text-sm font-extrabold text-[#0C261B] mb-2">{t('marketplace:verifyPage.guide.suspended.title')}</h4>
                   <p className="text-xs text-[#7A8C85] leading-relaxed">
-                    غير متاح حالياً للبيع. إذا اشتريته، يرجى التواصل معنا.
+                    {t('marketplace:verifyPage.guide.suspended.description')}
                   </p>
                 </div>
               </div>

@@ -1,0 +1,53 @@
+{
+  "title": "User Guide",
+  "intro": "How to use Kounouz Alafiya, step by step, based on your role.",
+  "backHome": "Back to home",
+  "loginCta": "Log in",
+  "tabs": {
+    "consumer": "Consumer",
+    "producer": "Producer",
+    "agent": "Field agent",
+    "admin": "Admin / Verification team"
+  },
+  "consumer": {
+    "heading": "As a consumer",
+    "steps": [
+      { "title": "Scan the QR code", "body": "Scan the code printed on the product with your phone's camera, or type the code manually on the \"Verify a product\" page." },
+      { "title": "Check the traceability", "body": "See the honey's origin, the producer, the batch, and the lab results." },
+      { "title": "Shop with confidence", "body": "Browse the online store and add verified products to your cart." },
+      { "title": "Create an account (optional)", "body": "Create a customer account to keep track of your order history." }
+    ]
+  },
+  "producer": {
+    "heading": "As a producer",
+    "steps": [
+      { "title": "Create your producer account", "body": "Sign up with your apiary/farm name and location." },
+      { "title": "Log in", "body": "Access your producer dashboard to track your requests and products." },
+      { "title": "Submit a verification request", "body": "Describe your honey (type, quantity) to start the verification process." },
+      { "title": "Track the status", "body": "Follow progress: request received, sample collected, at the lab, verified." },
+      { "title": "Product published", "body": "Once the batch is verified, your product appears on the marketplace with its own QR code." }
+    ]
+  },
+  "agent": {
+    "heading": "As a field agent",
+    "steps": [
+      { "title": "Log in to your space", "body": "Your dashboard lists today's tasks." },
+      { "title": "Check collection requests", "body": "See verification requests waiting for a sample to be collected." },
+      { "title": "Visit the producer", "body": "Collect the honey sample on site." },
+      { "title": "Record the sample", "body": "Enter the details (weight, photos) directly from the mobile app." },
+      { "title": "Sent to the lab", "body": "The recorded sample is automatically queued for lab analysis." }
+    ]
+  },
+  "admin": {
+    "heading": "As admin / verification team",
+    "steps": [
+      { "title": "Log in to the admin space", "body": "Your dashboard gives an overview of current activity." },
+      { "title": "Process requests", "body": "Under \"Traceability → Requests\", accept or reject each verification request." },
+      { "title": "Track samples and seals", "body": "Make sure each collected sample is properly sealed before it's sent to the lab." },
+      { "title": "Enter the lab result", "body": "Under \"Laboratory\", record the analysis results you receive." },
+      { "title": "Validate the verification", "body": "Under \"Verification\", approve or reject the batch based on the results." },
+      { "title": "Manage the catalog", "body": "Once the batch is verified, manage its packaging, products, categories, and QR code under \"Catalog\"." },
+      { "title": "Steer the operation", "body": "Check reports, manage the team, and handle support requests under \"Steering\"." }
+    ]
+  }
+}

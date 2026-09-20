@@ -1,0 +1,67 @@
+{
+  "appName": "Kounouz Alafiya",
+  "appTagline": "Une qualité vérifiable",
+  "actions": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "close": "Fermer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "submit": "Envoyer",
+    "search": "Rechercher",
+    "back": "Retour",
+    "retry": "Réessayer",
+    "viewAll": "Tout voir",
+    "viewDetails": "Voir les détails",
+    "markAllRead": "Tout marquer comme lu",
+    "markAsRead": "Marquer comme lu",
+    "reply": "Répondre",
+    "send": "Envoyer",
+    "view": "Voir",
+    "download": "Télécharger",
+    "add": "Ajouter"
+  },
+  "status": {
+    "loading": "Chargement...",
+    "saving": "Enregistrement...",
+    "empty": "Aucune donnée pour le moment",
+    "error": "Une erreur est survenue, réessayez"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "settings": "Paramètres",
+    "help": "Aide et support",
+    "logout": "Déconnexion",
+    "account": "Mon compte",
+    "menu": "Menu de navigation"
+  },
+  "language": {
+    "label": "Langue",
+    "ar": "العربية",
+    "fr": "Français",
+    "en": "English"
+  },
+  "notifications": {
+    "heading": "Notifications",
+    "empty": "Aucune notification pour le moment"
+  },
+  "override": {
+    "title": "Override administratif",
+    "explanation": "Cette action relève de l'Équipe de Vérification. En tant qu'administrateur, vous pouvez l'exécuter, mais le motif sera enregistré dans le journal d'audit avec votre identité.",
+    "reasonLabel": "Motif de l'override",
+    "reasonHint": "{{min}} caractères minimum — visible dans le journal d'audit.",
+    "confirm": "Confirmer l'override"
+  },
+  "assistant": {
+    "title": "Assistant",
+    "run": "Analyser",
+    "refresh": "Actualiser",
+    "facts": "Faits",
+    "suggestions": "Suggestions",
+    "unknowns": "Non établi",
+    "error": "L'assistant est indisponible pour le moment."
+  }
+}

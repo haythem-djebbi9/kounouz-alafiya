@@ -14,6 +14,8 @@ export interface Product {
   image: string;
   description: string;
   origin: string;
+  // Localité réelle du rucher (ex: « Zaghouan, Tunisie »), absente sans producteur rattaché.
+  producerLocation?: string;
   batchCode: string;
   benefits: string[];
   purity: string;
@@ -22,6 +24,17 @@ export interface Product {
   // Identifiant réel du QR code (branché sur l'API) — absent pour les données
   // d'exemple restantes du template.
   qrId?: string;
+  // Formats en vente (SKU) : chacun a son prix et son stock.
+  variants?: MarketVariant[];
+}
+
+export interface MarketVariant {
+  id: string;
+  sku: string;
+  packageSize: string;
+  price: number;
+  stock: number;
+  isDefault: boolean;
 }
 
 export interface Testimonial {
@@ -49,6 +62,14 @@ export interface CartItem {
   product: Product;
   quantity: number;
   selectedWeight: string;
+  // SKU commandé et son prix unitaire : la vente se fait au format choisi.
+  variantId?: string;
+  unitPrice?: number;
 }
 
-export type PageView = 'home' | 'products' | 'story' | 'verify' | 'contact';
+/** Une ligne de panier = un produit dans un format donné. */
+export function cartLineKey(item: Pick<CartItem, 'product' | 'variantId' | 'selectedWeight'>): string {
+  return `${item.product.id}:${item.variantId ?? item.selectedWeight}`;
+}
+
+export type PageView = 'home' | 'products' | 'story' | 'verify' | 'contact' | 'help' | 'settings';

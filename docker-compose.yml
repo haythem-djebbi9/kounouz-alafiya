@@ -1,21 +1,35 @@
+# Déploiement Kounouz Alafiya — Postgres + API NestJS + front statique (nginx).
+#
+#   cp .env.deploy.example .env   puis   docker compose up -d --build
+#
+# Le front est servi par nginx sur le port 80 et relaie /api vers le backend :
+# le navigateur ne voit qu'une seule origine (pas de CORS en production).
 services:
   postgres:
     image: postgres:16-alpine
     container_name: kounouz-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: kounouz
-      POSTGRES_PASSWORD: kounouz
-      POSTGRES_DB: kounouz_alafiya
+      POSTGRES_USER: ${POSTGRES_USER:-kounouz}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kounouz}
+      POSTGRES_DB: ${POSTGRES_DB:-kounouz_alafiya}
     ports:
-      - '5433:5432'
+      # Lié à 127.0.0.1 : joignable depuis la machine (Prisma Studio, psql,
+      # tunnel SSH) mais jamais depuis Internet. Docker contourne le pare-feu
+      # UFW : une publication sur 0.0.0.0 exposerait la base au monde.
+      - '127.0.0.1:${POSTGRES_PORT:-5433}:5432'
     volumes:
       - kounouz_postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U kounouz -d kounouz_alafiya']
+      test:
+        ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-kounouz} -d ${POSTGRES_DB:-kounouz_alafiya}']
       interval: 5s
       timeout: 5s
       retries: 10
+      # Premier démarrage : l'initialisation d'une base vide peut dépasser
+      # une minute sur une petite machine ; les échecs pendant ce délai ne
+      # comptent pas (sinon l'API refuse de démarrer).
+      start_period: 90s
 
   backend:
     build:
@@ -27,30 +41,51 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://kounouz:kounouz@postgres:5432/kounouz_alafiya?schema=public
+      DATABASE_URL: postgresql://${POSTGRES_USER:-kounouz}:${POSTGRES_PASSWORD:-kounouz}@postgres:5432/${POSTGRES_DB:-kounouz_alafiya}?schema=public
       PORT: 3000
-      JWT_ACCESS_SECRET: change-me-access-secret
-      JWT_ACCESS_EXPIRES_IN: 15m
-      JWT_REFRESH_SECRET: change-me-refresh-secret
-      JWT_REFRESH_EXPIRES_IN: 7d
-      PUBLIC_APP_URL: http://localhost:5173
-    ports:
-      - '3000:3000'
+      NODE_ENV: production
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?JWT_ACCESS_SECRET est obligatoire}
+      JWT_ACCESS_EXPIRES_IN: ${JWT_ACCESS_EXPIRES_IN:-15m}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?JWT_REFRESH_SECRET est obligatoire}
+      JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN:-7d}
+      PUBLIC_APP_URL: ${PUBLIC_APP_URL:-http://localhost}
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+      KOUNOUZ_COMMISSION_RATE: ${KOUNOUZ_COMMISSION_RATE:-0.2}
+      THROTTLE_TTL: ${THROTTLE_TTL:-60000}
+      THROTTLE_LIMIT: ${THROTTLE_LIMIT:-120}
+      # Nombre de proxys devant l'API : 1 = nginx du conteneur frontend ;
+      # 2 = proxy HTTPS de l'hôte (Caddy) + nginx. Voir main.ts.
+      TRUST_PROXY: ${TRUST_PROXY:-1}
+      # Signature des liens vers les fichiers privés (par défaut : le secret JWT).
+      FILES_SIGNING_SECRET: ${FILES_SIGNING_SECRET:-}
     volumes:
-      - ./backend/uploads:/app/uploads
+      # Preuves de collecte et bulletins : à sauvegarder comme la base.
+      - kounouz_uploads:/app/uploads
+      # Documents d'identité des producteurs (CIN, attestations) : données
+      # personnelles, jamais servies publiquement. Même sauvegarde.
+      - kounouz_private_uploads:/app/private-uploads
+    expose:
+      - '3000'
+    ports:
+      # Utile pour Swagger (/api/docs) et les sondes depuis la machine. Le
+      # public passe par nginx (/api) : l'API n'écoute que sur 127.0.0.1.
+      - '127.0.0.1:${BACKEND_PORT:-3000}:3000'
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        # Chemin relatif : nginx relaie /api vers le backend (voir nginx.conf).
+        VITE_API_URL: ${VITE_API_URL:-/api}
     container_name: kounouz-frontend
     restart: unless-stopped
     depends_on:
       - backend
-    environment:
-      VITE_API_URL: http://localhost:3000/api
     ports:
-      - '5173:5173'
+      - '${FRONTEND_PORT:-80}:80'
 
 volumes:
   kounouz_postgres_data:
+  kounouz_uploads:
+  kounouz_private_uploads:

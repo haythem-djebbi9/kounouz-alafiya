@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Award,
   Leaf,
@@ -21,15 +22,16 @@ interface StoryPageProps {
 }
 
 export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
+  const { t } = useTranslation('marketplace');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [activeSlide, setActiveSlide] = useState(1);
 
   const stats = [
-    { value: '+10', label: 'سنوات خبرة', icon: Award },
-    { value: '100%', label: 'طبيعي', icon: Leaf },
-    { value: '+5000', label: 'عميل راضي', icon: Users },
-    { value: '+20', label: 'منتج طبيعي', icon: Box },
+    { value: '+10', label: t('marketplace:storyPage.stats.experience'), icon: Award },
+    { value: '100%', label: t('marketplace:storyPage.stats.natural'), icon: Leaf },
+    { value: '+5000', label: t('marketplace:storyPage.stats.happyClients'), icon: Users },
+    { value: '+20', label: t('marketplace:storyPage.stats.naturalProducts'), icon: Box },
   ];
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -52,7 +54,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
   };
 
   return (
-    <div id="story-page" className="bg-[#FAF6EE] min-h-screen text-[#0C261B] pb-16" dir="rtl">
+    <div id="story-page" className="bg-[#FAF6EE] min-h-screen text-[#0C261B] pb-16">
       
       {/* 1. Full-Width Edge-to-Edge Hero Banner with beekeeperZZZ.jpg at 100% opacity (Not boxed) */}
       <div
@@ -74,13 +76,13 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
             {/* Pyramid formatted Text & CTA block on the Left side of the page */}
             <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-center max-w-md mx-auto lg:mr-auto lg:ml-0">
               <span className="text-sm sm:text-base font-bold text-[#0C261B] mb-2 tracking-wide">
-                قصتنا
+                {t('marketplace:nav.story')}
               </span>
 
               <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-[#0C261B] leading-tight mb-4 tracking-tight">
-                من الطبيعة،
+                {t('marketplace:storyPage.heroTitleLine1')}
                 <br />
-                إلى بيتك.
+                {t('marketplace:storyPage.heroTitleLine2')}
               </h1>
 
               {/* Subtle Ornamental Accent */}
@@ -91,7 +93,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
               </div>
 
               <p className="text-xs sm:text-sm text-[#3A4F46] font-medium leading-relaxed mb-6 max-w-xs sm:max-w-sm">
-                في كنوز العافية، نؤمن أن أفضل المنتجات تأتي من الطبيعة. نعمل بشغف لنقدم لك عسلاً نقياً 100% خالٍ من أي إضافات، لنشاركك فوائد الطبيعة في كل قطرة.
+                {t('marketplace:storyPage.heroDescription')}
               </p>
 
               <button
@@ -99,7 +101,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                 onClick={onDiscoverProducts}
                 className="inline-flex items-center gap-3 bg-[#0C261B] hover:bg-[#15473A] text-white font-bold text-xs sm:text-sm px-8 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group"
               >
-                <span>اكتشف رحلتنا</span>
+                <span>{t('marketplace:storyPage.discoverJourneyCta')}</span>
                 <ArrowLeft className="w-4 h-4 text-[#D49B37] transition-transform group-hover:-translate-x-1" />
               </button>
             </div>
@@ -146,7 +148,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
         <div>
           <div className="text-center max-w-2xl mx-auto mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0C261B] mb-2">
-              ماذا يقول عملاؤنا
+              {t('marketplace:storyPage.testimonialsTitle')}
             </h2>
             {/* Golden Ornamental Divider */}
             <div className="flex items-center justify-center gap-3 my-2">
@@ -161,7 +163,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
             {/* Left Carousel Arrow */}
             <button
               onClick={handlePrevSlide}
-              aria-label="Previous testimonials"
+              aria-label={t('marketplace:storyPage.prevTestimonialsAria')}
               className="hidden lg:flex absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white border border-[#EAE1D2] shadow-md items-center justify-center text-[#0C261B] hover:bg-[#FAF6EE] hover:text-[#D49B37] transition-all cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -170,7 +172,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
             {/* Right Carousel Arrow */}
             <button
               onClick={handleNextSlide}
-              aria-label="Next testimonials"
+              aria-label={t('marketplace:storyPage.nextTestimonialsAria')}
               className="hidden lg:flex absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white border border-[#EAE1D2] shadow-md items-center justify-center text-[#0C261B] hover:bg-[#FAF6EE] hover:text-[#D49B37] transition-all cursor-pointer"
             >
               <ChevronRight className="w-5 h-5" />
@@ -182,7 +184,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                 <span className="text-3xl font-serif text-[#C68A28] font-bold block text-right mb-2">”</span>
                 
                 <p className="text-sm sm:text-base text-[#0C261B] font-semibold leading-relaxed mb-6">
-                  أحب عسل السدر، طعمه أصيل وفوائده كثيرة. أنصح الجميع بتجربته.
+                  {t('marketplace:storyPage.testimonials.card1.quote')}
                 </p>
 
                 <div className="pt-4 border-t border-[#F2EAE0] flex items-center justify-between">
@@ -196,11 +198,11 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                   {/* Author on right */}
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold text-[#0C261B]">
-                      محمد ع.
+                      {t('marketplace:storyPage.testimonials.card1.author')}
                     </span>
                     <img
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-                      alt="محمد ع."
+                      alt={t('marketplace:storyPage.testimonials.card1.author')}
                       className="w-10 h-10 rounded-full object-cover border border-[#EAE1D2]"
                     />
                   </div>
@@ -212,7 +214,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                 <span className="text-3xl font-serif text-[#C68A28] font-bold block text-right mb-2">”</span>
                 
                 <p className="text-sm sm:text-base text-[#0C261B] font-semibold leading-relaxed mb-6">
-                  منتجات ممتازة وخدمة رائعة. التوصيل سريع والتغليف أنيق.
+                  {t('marketplace:storyPage.testimonials.card2.quote')}
                 </p>
 
                 <div className="pt-4 border-t border-[#F2EAE0] flex items-center justify-between">
@@ -226,11 +228,11 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                   {/* Author on right */}
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold text-[#0C261B]">
-                      سارة ن.
+                      {t('marketplace:storyPage.testimonials.card2.author')}
                     </span>
                     <img
                       src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
-                      alt="سارة ن."
+                      alt={t('marketplace:storyPage.testimonials.card2.author')}
                       className="w-10 h-10 rounded-full object-cover border border-[#EAE1D2]"
                     />
                   </div>
@@ -242,7 +244,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                 <span className="text-3xl font-serif text-[#C68A28] font-bold block text-right mb-2">”</span>
                 
                 <p className="text-sm sm:text-base text-[#0C261B] font-semibold leading-relaxed mb-6">
-                  عسل طبيعي 100% وطعمه رائع. أثق في كنوز العافية لجودة منتجاتها.
+                  {t('marketplace:storyPage.testimonials.card3.quote')}
                 </p>
 
                 <div className="pt-4 border-t border-[#F2EAE0] flex items-center justify-between">
@@ -256,11 +258,11 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                   {/* Author on right */}
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold text-[#0C261B]">
-                      أحمد م.
+                      {t('marketplace:storyPage.testimonials.card3.author')}
                     </span>
                     <img
                       src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
-                      alt="أحمد م."
+                      alt={t('marketplace:storyPage.testimonials.card3.author')}
                       className="w-10 h-10 rounded-full object-cover border border-[#EAE1D2]"
                     />
                   </div>
@@ -303,10 +305,10 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
               </div>
               <div>
                 <h3 className="text-xl sm:text-2xl font-extrabold text-[#FAF6EE]">
-                  اشترك في نشرتنا البريدية
+                  {t('marketplace:storyPage.newsletter.title')}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#A3B8B0] font-normal mt-1">
-                  احصل على نصائح حصرية وعروض خاصة مباشرة إلى بريدك
+                  {t('marketplace:storyPage.newsletter.subtitle')}
                 </p>
               </div>
             </div>
@@ -322,16 +324,15 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
                   required
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="أدخل بريدك الإلكتروني"
+                  placeholder={t('marketplace:storyPage.newsletter.placeholder')}
                   className="w-full py-2.5 px-2 bg-transparent text-[#0C261B] placeholder-[#8C7A60] text-sm focus:outline-none font-medium"
-                  dir="rtl"
                 />
                 <button
                   type="submit"
                   className="inline-flex items-center justify-center gap-2 bg-[#C68A28] hover:bg-[#B37A20] text-white font-bold text-sm px-6 py-2.5 rounded-lg transition-colors cursor-pointer shrink-0 shadow-sm"
                 >
                   <Send className="w-4 h-4 rotate-180" />
-                  <span>اشترك الآن</span>
+                  <span>{t('marketplace:storyPage.newsletter.subscribeCta')}</span>
                 </button>
               </div>
             </form>
@@ -340,7 +341,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
 
           {subscribed && (
             <p className="text-xs font-bold text-[#E5AC44] text-center mt-4 animate-fadeIn">
-              ✓ تم الاشتراك بنجاح في نشرة كنوز العافية!
+              {t('marketplace:storyPage.newsletter.successMessage')}
             </p>
           )}
         </div>
@@ -350,26 +351,26 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
           
           <div className="flex flex-col items-center pt-4 md:pt-0">
             <Truck className="w-8 h-8 text-[#C68A28] mb-2 stroke-[1.5]" />
-            <h4 className="text-sm font-bold text-[#0C261B]">توصيل سريع</h4>
-            <p className="text-xs text-[#6F827B] mt-0.5">إلى جميع أنحاء المملكة</p>
+            <h4 className="text-sm font-bold text-[#0C261B]">{t('marketplace:storyPage.perks.delivery.title')}</h4>
+            <p className="text-xs text-[#6F827B] mt-0.5">{t('marketplace:storyPage.perks.delivery.description')}</p>
           </div>
 
           <div className="flex flex-col items-center pt-4 md:pt-0">
             <ShieldCheck className="w-8 h-8 text-[#C68A28] mb-2 stroke-[1.5]" />
-            <h4 className="text-sm font-bold text-[#0C261B]">الدفع آمن 100%</h4>
-            <p className="text-xs text-[#6F827B] mt-0.5">وسائل دفع موثوقة</p>
+            <h4 className="text-sm font-bold text-[#0C261B]">{t('marketplace:storyPage.perks.payment.title')}</h4>
+            <p className="text-xs text-[#6F827B] mt-0.5">{t('marketplace:storyPage.perks.payment.description')}</p>
           </div>
 
           <div className="flex flex-col items-center pt-4 md:pt-0">
             <Box className="w-8 h-8 text-[#C68A28] mb-2 stroke-[1.5]" />
-            <h4 className="text-sm font-bold text-[#0C261B]">ضمان الجودة</h4>
-            <p className="text-xs text-[#6F827B] mt-0.5">منتجات طبيعية مضمونة</p>
+            <h4 className="text-sm font-bold text-[#0C261B]">{t('marketplace:storyPage.perks.quality.title')}</h4>
+            <p className="text-xs text-[#6F827B] mt-0.5">{t('marketplace:storyPage.perks.quality.description')}</p>
           </div>
 
           <div className="flex flex-col items-center pt-4 md:pt-0">
             <Award className="w-8 h-8 text-[#C68A28] mb-2 stroke-[1.5]" />
-            <h4 className="text-sm font-bold text-[#0C261B]">إرضاء العملاء</h4>
-            <p className="text-xs text-[#6F827B] mt-0.5">دعم عملاء على مدار الساعة</p>
+            <h4 className="text-sm font-bold text-[#0C261B]">{t('marketplace:storyPage.perks.support.title')}</h4>
+            <p className="text-xs text-[#6F827B] mt-0.5">{t('marketplace:storyPage.perks.support.description')}</p>
           </div>
 
         </div>

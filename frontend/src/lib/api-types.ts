@@ -10,8 +10,16 @@ export interface Producer {
   location: string;
   description: string | null;
   isVerified: boolean;
+  status?: 'PENDING' | 'ACTIVE' | 'SUSPENDED' | 'REJECTED';
+  phone?: string | null;
+  governorate?: string | null;
+  farmGovernorate?: string | null;
+  farmDelegation?: string | null;
+  hivesCount?: number | null;
+  avatarUrl?: string | null;
   createdAt: string;
   updatedAt: string;
+  user?: { email: string; isActive: boolean; createdAt: string };
 }
 
 export interface Consumer {
@@ -28,6 +36,10 @@ export interface AuthUser {
   email: string;
   role: Role;
   isActive: boolean;
+  language: string;
+  mutedNotificationTypes: string[];
+  passwordChangedAt: string | null;
+  twoFactorEnabled: boolean;
   createdAt: string;
   producer: Producer | null;
   consumer: Consumer | null;
@@ -39,14 +51,36 @@ export interface AuthResponse {
   refreshToken: string;
 }
 
-export type VerificationRequestStatus = 'NEW' | 'IN_REVIEW' | 'ACCEPTED' | 'REJECTED';
-export type SampleStatus = 'COLLECTED' | 'SEALED' | 'IN_TRANSIT' | 'RECEIVED_AT_LAB' | 'ANALYZED';
+// Le producteur ne pilote que DRAFT -> NEW ; les statuts suivants reflètent
+// l'avancement réel du dossier côté Kounouz (collecte, analyse, décision).
+export type VerificationRequestStatus =
+  | 'DRAFT'
+  | 'NEW'
+  | 'IN_REVIEW'
+  | 'INFO_REQUESTED'
+  | 'ACCEPTED'
+  | 'COLLECTION_SCHEDULED'
+  | 'SAMPLE_COLLECTED'
+  | 'UNDER_ANALYSIS'
+  | 'VERIFICATION_PENDING'
+  | 'VERIFIED'
+  | 'NOT_VERIFIED'
+  | 'REJECTED';
+// RECEIVED = réceptionné chez Kounouz ; RECEIVED_AT_LAB = confié au laboratoire.
+export type SampleStatus =
+  | 'COLLECTED'
+  | 'SEALED'
+  | 'IN_TRANSIT'
+  | 'RECEIVED'
+  | 'RECEIVED_AT_LAB'
+  | 'ANALYZED'
+  | 'ISSUE';
 export type SealStatus = 'INTACT' | 'BROKEN';
-export type VerificationStatus = 'PENDING' | 'VERIFIED' | 'NOT_VERIFIED';
+export type VerificationStatus = 'PENDING' | 'VERIFIED' | 'NOT_VERIFIED' | 'ADDITIONAL_ANALYSIS';
 export type LabAnalysisStatus = 'PENDING' | 'COMPLIANT' | 'NON_COMPLIANT';
 export type BatchStatus = 'CREATED' | 'PACKAGED' | 'READY';
 export type PackagingStatus = 'IN_PROGRESS' | 'COMPLETED';
-export type ProductStatut = 'BROUILLON' | 'PUBLIE' | 'RUPTURE' | 'SUSPENDU';
+export type ProductStatut = 'BROUILLON' | 'PUBLIE' | 'RUPTURE' | 'SUSPENDU' | 'ARCHIVE';
 
 export interface Seal {
   id: string;
@@ -79,6 +113,22 @@ export interface LabAnalysis {
   laboratory?: Laboratory;
 }
 
+/** Déclinaison commerciale (SKU) : un format de pot, son prix et son stock. */
+export interface ProductVariant {
+  id: string;
+  productId?: string;
+  sku: string;
+  packageSize: string;
+  netWeightG: number | null;
+  unit?: string;
+  price: string | number;
+  stock: number;
+  status?: 'ACTIVE' | 'INACTIVE';
+  isDefault: boolean;
+}
+
+export type ReferenceSampleStatus = 'STORED' | 'USED_FOR_RETEST' | 'DISPOSED';
+
 export interface ReferenceSample {
   id: string;
   sampleId: string;
@@ -87,6 +137,9 @@ export interface ReferenceSample {
   storedAt: string;
   storageConditions: string;
   retentionPeriod: string;
+  status?: ReferenceSampleStatus;
+  condition?: string | null;
+  storedById?: string | null;
   sample?: Sample;
 }
 
@@ -157,6 +210,22 @@ export interface VerificationRequest {
   collectionLocation: string;
   quantity: string;
   status: VerificationRequestStatus;
+  requestCode?: string | null;
+  submittedAt?: string | null;
+  preferredCollectionMethod?: 'KOUNOUZ_VISIT' | 'PRODUCER_DELIVERY' | null;
+  floralOrigin?: string | null;
+  floralCategory?: 'MONOFLORAL' | 'MULTIFLORAL' | null;
+  productionSeason?: string | null;
+  harvestStartDate?: string | null;
+  harvestEndDate?: string | null;
+  governorate?: string | null;
+  delegation?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  hivesCount?: number | null;
+  beekeepingMethod?: string | null;
+  hiveType?: string | null;
+  farmSize?: string | null;
   createdAt: string;
   updatedAt: string;
   producer?: Producer;

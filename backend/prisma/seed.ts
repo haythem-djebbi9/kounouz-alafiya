@@ -1,6 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
+import { seedVerificationPortal } from './seed-verification-portal.js';
+import { seedCommercialChain } from './seed-commercial-chain.js';
+import { seedFieldAgent } from './seed-field-agent.js';
+import { seedAdminConsole } from './seed-admin-console.js';
+import { seedPhase1Compliance } from './seed-phase1-compliance.js';
+
 const prisma = new PrismaClient();
 
 async function hash(password: string) {
@@ -10,13 +16,28 @@ async function hash(password: string) {
 async function main() {
   console.log('Nettoyage de la base...');
   // Ordre inverse des dépendances.
+  await prisma.counterfeitAlert.deleteMany();
+  await prisma.payout.deleteMany();
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.producerDocument.deleteMany();
   await prisma.qRScan.deleteMany();
   await prisma.qRCode.deleteMany();
   await prisma.product.deleteMany();
   await prisma.categorie.deleteMany();
   await prisma.packaging.deleteMany();
   await prisma.batch.deleteMany();
+  await prisma.qrGeneration.deleteMany();
+  await prisma.packagingUnit.deleteMany();
+  await prisma.productDocument.deleteMany();
   await prisma.verification.deleteMany();
+  await prisma.labTestResult.deleteMany();
+  await prisma.labAnalysisFile.deleteMany();
+  await prisma.referenceHoney.deleteMany();
+  await prisma.collectionAssignment.deleteMany();
+  await prisma.sampleEvent.deleteMany();
+  await prisma.requestComment.deleteMany();
+  await prisma.requestDocument.deleteMany();
   await prisma.referenceSample.deleteMany();
   await prisma.laboratoryAnalysis.deleteMany();
   await prisma.laboratory.deleteMany();
@@ -92,6 +113,28 @@ async function main() {
       location: 'Le Kef, Tunisie',
       description: "Apiculteur depuis 3 générations, spécialisé dans le miel de jujubier (sedra) des montagnes du Kef.",
       isVerified: true,
+      status: 'ACTIVE',
+      phone: '+216 22 123 456',
+      address: 'Rue de la République',
+      governorate: 'Le Kef',
+      postalCode: '7100',
+      activityType: 'BEEKEEPING',
+      registrationStatus: 'REGISTERED',
+      registrationNumber: 'TN-AP-2024-1587',
+      farmGovernorate: 'Le Kef',
+      farmDelegation: 'Sakiet Sidi Youssef',
+      farmAddress: 'Douar El Ouled, Le Kef',
+      latitude: 36.1742,
+      longitude: 8.7049,
+      farmPhotos: ['/images/beekeeper.jpg'],
+      hivesCount: 120,
+      productionStartMonth: 3,
+      productionEndMonth: 9,
+      mainFlora: ['Jujubier (Sedra)', 'Thym', 'Romarin'],
+      annualProductionKg: 1500,
+      paymentMethod: 'BANK_TRANSFER',
+      bankName: 'BIAT',
+      iban: 'TN59 08 0101 1234 5678 9012',
     },
   });
 
@@ -103,6 +146,7 @@ async function main() {
       location: 'Zaghouan, Tunisie',
       description: 'Petite exploitation familiale produisant du miel de fleurs sauvages en altitude.',
       isVerified: true,
+      status: 'ACTIVE',
     },
   });
 
@@ -503,6 +547,103 @@ async function main() {
     },
   });
 
+  // Identifiants lisibles VR-AAAA-NNN, attribués dans l'ordre de soumission.
+  const allRequests = await prisma.verificationRequest.findMany({ orderBy: { createdAt: 'asc' } });
+  for (const [index, request] of allRequests.entries()) {
+    await prisma.verificationRequest.update({
+      where: { id: request.id },
+      data: {
+        requestCode: `VR-2026-${String(index + 1).padStart(3, '0')}`,
+        submittedAt: request.createdAt,
+        preferredCollectionMethod: index % 2 === 0 ? 'KOUNOUZ_VISIT' : 'PRODUCER_DELIVERY',
+      },
+    });
+  }
+
+  // ---------------------------------------------------------------------
+  // Ventes -> commission Kounouz (20 %) -> règlements mensuels
+  // ---------------------------------------------------------------------
+  console.log('Création des commandes et règlements de démonstration...');
+  const COMMISSION_RATE = 0.2;
+  const CHANNELS = ['ONLINE_STORE', 'MARKETPLACE', 'RETAIL_PARTNER'] as const;
+  const CITIES = ['Tunis', 'Sfax', 'Sousse', 'Nabeul', 'Bizerte', 'Le Kef'];
+  const unitsPerMonth: Record<string, number[]> = {
+    '2026-03': [2, 1, 3],
+    '2026-04': [3, 2, 2, 1],
+    '2026-05': [1, 2, 2],
+    '2026-06': [4, 2, 3, 1],
+    '2026-07': [2, 3, 2, 2],
+    '2026-08': [4, 2, 1, 3, 2],
+    '2026-09': [2, 1],
+  };
+  let orderIndex = 0;
+  for (const [period, quantities] of Object.entries(unitsPerMonth)) {
+    const [year, month] = period.split('-').map(Number);
+    let gross = 0;
+    let itemsSold = 0;
+    for (const [i, quantity] of quantities.entries()) {
+      orderIndex += 1;
+      const createdAt = new Date(year, month - 1, 3 + i * 5, 10, 0, 0);
+      const isCurrentMonth = period === '2026-09';
+      const status = isCurrentMonth && i === quantities.length - 1 ? 'CONFIRMED' : 'DELIVERED';
+      const deliveredAt = status === 'DELIVERED' ? new Date(createdAt.getTime() + 2 * 24 * 3600 * 1000) : null;
+      const lineTotal = Math.round(89.9 * quantity * 100) / 100;
+      const commissionAmount = Math.round(lineTotal * COMMISSION_RATE * 100) / 100;
+      await prisma.order.create({
+        data: {
+          orderNumber: `KZ${1000 + orderIndex}`,
+          customerName: 'Client Démo',
+          customerPhone: '+216 20 000 000',
+          shippingAddress: 'Adresse de démonstration',
+          city: CITIES[orderIndex % CITIES.length],
+          channel: CHANNELS[orderIndex % CHANNELS.length],
+          status,
+          subtotal: lineTotal,
+          shippingFee: lineTotal > 200 ? 0 : 25,
+          total: lineTotal + (lineTotal > 200 ? 0 : 25),
+          createdAt,
+          deliveredAt,
+          items: {
+            create: {
+              productId: product1.id,
+              producerId: producer1.id,
+              productName: product1.nom,
+              packageSize: '500g',
+              quantity,
+              unitPrice: 89.9,
+              lineTotal,
+              commissionRate: COMMISSION_RATE,
+              commissionAmount,
+              netAmount: Math.round((lineTotal - commissionAmount) * 100) / 100,
+            },
+          },
+        },
+      });
+      if (status === 'DELIVERED') {
+        gross += lineTotal;
+        itemsSold += quantity;
+      }
+    }
+    // Mars à juillet réglés ; août en cours de traitement ; septembre ouvert.
+    if (period <= '2026-07') {
+      const commission = Math.round(gross * COMMISSION_RATE * 100) / 100;
+      await prisma.payout.create({
+        data: {
+          producerId: producer1.id,
+          period,
+          orderCount: quantities.length,
+          itemsSold,
+          grossAmount: Math.round(gross * 100) / 100,
+          commissionAmount: commission,
+          netAmount: Math.round((gross - commission) * 100) / 100,
+          reference: `VIR-${period.replace('-', '')}-BS`,
+          paidById: admin.id,
+          paidAt: new Date(year, month, 15, 9, 0, 0),
+        },
+      });
+    }
+  }
+
   console.log('Journalisation des actions clés...');
   await prisma.auditLog.createMany({
     data: [
@@ -512,6 +653,12 @@ async function main() {
       { userId: verifTeamUser.id, action: 'SUSPEND_PRODUCT', entite: 'Product', entiteId: product2.id },
     ],
   });
+
+  await seedVerificationPortal(prisma);
+  await seedCommercialChain(prisma);
+  await seedFieldAgent(prisma);
+  await seedAdminConsole(prisma);
+  await seedPhase1Compliance(prisma);
 
   console.log('Seed terminé.');
   console.log('---');

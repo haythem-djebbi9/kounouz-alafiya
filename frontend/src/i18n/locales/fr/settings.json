@@ -1,0 +1,42 @@
+{
+  "title": "Paramètres",
+  "account": {
+    "heading": "Informations du compte",
+    "nameLabel": "Nom complet",
+    "emailLabel": "Adresse e-mail",
+    "emailHint": "L'adresse e-mail ne peut pas être modifiée pour le moment.",
+    "saveSuccess": "Modifications enregistrées avec succès."
+  },
+  "language": {
+    "heading": "Langue"
+  },
+  "notifications": {
+    "heading": "Notifications",
+    "description": "Choisissez les notifications que vous souhaitez recevoir dans l'application.",
+    "types": {
+      "REQUEST_ACCEPTED": "Acceptation d'une demande de vérification",
+      "COLLECTION_AVAILABLE": "Nouvelle collecte disponible",
+      "COLLECTION_ASSIGNED": "Mission de collecte assignée ou programmée",
+      "COUNTERFEIT_ALERT": "Alerte anti-contrefaçon (risque élevé)",
+      "SAMPLE_RECEIVED": "Réception de l'échantillon au laboratoire",
+      "ANALYSIS_COMPLETED": "Analyse de laboratoire terminée",
+      "VERIFICATION_RESULT": "Résultat de vérification",
+      "BATCH_CREATED": "Création d'un nouveau lot",
+      "PRODUCT_PUBLISHED": "Publication d'un produit",
+      "SUPPORT_TICKET_UPDATE": "Mises à jour des tickets de support",
+      "DOCUMENT_REVIEWED": "Résultat de la vérification d'un document",
+      "NEW_ORDER": "Nouvelle commande de mes produits",
+      "PAYOUT_PAID": "Paiement effectué",
+      "WORKFLOW_TASK": "Tâches internes (revue, décision, lot, emballage, produit, QR)"
+    }
+  },
+  "security": {
+    "heading": "Sécurité et mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "submit": "Mettre à jour le mot de passe",
+    "mismatch": "Les mots de passe ne correspondent pas.",
+    "success": "Mot de passe mis à jour avec succès."
+  }
+}

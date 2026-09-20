@@ -1,0 +1,42 @@
+{
+  "title": "الإعدادات",
+  "account": {
+    "heading": "معلومات الحساب",
+    "nameLabel": "الاسم الكامل",
+    "emailLabel": "البريد الإلكتروني",
+    "emailHint": "لا يمكن تغيير البريد الإلكتروني حالياً.",
+    "saveSuccess": "تم حفظ التغييرات بنجاح."
+  },
+  "language": {
+    "heading": "اللغة"
+  },
+  "notifications": {
+    "heading": "الإشعارات",
+    "description": "اختر الإشعارات التي تريد استقبالها داخل التطبيق.",
+    "types": {
+      "REQUEST_ACCEPTED": "قبول طلب التحقق",
+      "COLLECTION_AVAILABLE": "توفر جمع عينة جديدة",
+      "COLLECTION_ASSIGNED": "تعيين أو برمجة زيارة جمع العينة",
+      "COUNTERFEIT_ALERT": "تنبيه مكافحة التقليد (خطر مرتفع)",
+      "SAMPLE_RECEIVED": "استلام العينة في المخبر",
+      "ANALYSIS_COMPLETED": "اكتمال التحليل المخبري",
+      "VERIFICATION_RESULT": "نتيجة التحقق",
+      "BATCH_CREATED": "إنشاء دفعة جديدة",
+      "PRODUCT_PUBLISHED": "نشر منتج",
+      "SUPPORT_TICKET_UPDATE": "تحديثات طلبات الدعم",
+      "DOCUMENT_REVIEWED": "نتيجة مراجعة وثيقة",
+      "NEW_ORDER": "طلب جديد على منتجاتي",
+      "PAYOUT_PAID": "تم تحويل الدفعة",
+      "WORKFLOW_TASK": "مهام داخلية (مراجعة، قرار، دفعة، تعبئة، منتج، رمز QR)"
+    }
+  },
+  "security": {
+    "heading": "الأمان وكلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور الجديدة",
+    "submit": "تحديث كلمة المرور",
+    "mismatch": "كلمتا المرور غير متطابقتين.",
+    "success": "تم تحديث كلمة المرور بنجاح."
+  }
+}

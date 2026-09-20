@@ -7,6 +7,8 @@ import { buildCode } from '../common/sequential-code.js';
 import { CreateLaboratoryDto } from './dto/create-laboratory.dto.js';
 import { CreateLabAnalysisDto } from './dto/create-lab-analysis.dto.js';
 import { CreateReferenceSampleDto } from './dto/create-reference-sample.dto.js';
+import { DomainEventsService } from '../events/domain-events.service.js';
+import { EventType } from '../events/event-types.js';
 
 @Injectable()
 export class LaboratoryService {
@@ -14,6 +16,7 @@ export class LaboratoryService {
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
     private readonly notifications: NotificationsService,
+    private readonly domainEvents: DomainEventsService,
   ) {}
 
   // --- Laboratoires --------------------------------------------------
@@ -50,6 +53,10 @@ export class LaboratoryService {
     const lab = await this.prisma.laboratory.findUnique({ where: { id: dto.labId } });
     if (!lab) {
       throw new NotFoundException('Laboratoire introuvable.');
+    }
+    // Un laboratoire en attente d'approbation ou suspendu ne reçoit aucune analyse.
+    if (lab.status !== 'ACTIVE') {
+      throw new BadRequestException("Ce laboratoire n'est pas actif : il ne peut pas recevoir d'analyse.");
     }
 
     const [analysis] = await this.prisma.$transaction([
@@ -114,9 +121,16 @@ export class LaboratoryService {
   // --- Échantillons de référence ---------------------------------------
 
   async createReferenceSample(userId: string, dto: CreateReferenceSampleDto) {
-    const sample = await this.prisma.sample.findUnique({ where: { id: dto.sampleId } });
+    const sample = await this.prisma.sample.findUnique({ where: { id: dto.sampleId }, include: { seal: true } });
     if (!sample) {
       throw new NotFoundException('Échantillon introuvable.');
+    }
+    // Même règle que le portail : seule une portion d'un échantillon contrôlé
+    // (scellé, sans anomalie) peut servir de référence.
+    if (!sample.seal || sample.status === SampleStatus.ISSUE) {
+      throw new BadRequestException(
+        "Seul un échantillon scellé et sans anomalie peut fournir une portion de référence.",
+      );
     }
 
     const existing = await this.prisma.referenceSample.findUnique({ where: { sampleId: dto.sampleId } });
@@ -132,10 +146,18 @@ export class LaboratoryService {
         storageLocation: dto.storageLocation,
         storageConditions: dto.storageConditions,
         retentionPeriod: dto.retentionPeriod,
+        storedById: userId,
       },
     });
 
-    await this.audit.log(userId, 'STORE_REFERENCE_SAMPLE', 'ReferenceSample', referenceSample.id);
+    await this.audit.log(userId, 'STORE_REFERENCE_SAMPLE', 'ReferenceSample', referenceSample.id, {
+      newStatus: 'STORED',
+    });
+    await this.domainEvents.publish(EventType.REFERENCE_SAMPLE_REGISTERED, 'ReferenceSample', referenceSample.id, {
+      referenceCode: referenceSample.referenceCode,
+      sampleId: sample.id,
+      sampleCode: sample.sampleCode,
+    });
     return referenceSample;
   }
 

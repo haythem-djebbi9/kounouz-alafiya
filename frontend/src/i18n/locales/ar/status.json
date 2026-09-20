@@ -1,0 +1,48 @@
+{
+  "request": {
+    "DRAFT": "مسودة",
+    "NEW": "قيد الإرسال",
+    "IN_REVIEW": "قيد المراجعة",
+    "ACCEPTED": "مقبولة",
+    "REJECTED": "مرفوضة"
+  },
+  "sample": {
+    "COLLECTED": "تم أخذ العينة",
+    "SEALED": "مختومة",
+    "IN_TRANSIT": "في الطريق للمخبر",
+    "RECEIVED_AT_LAB": "وصلت المخبر",
+    "ANALYZED": "تم التحليل"
+  },
+  "verification": {
+    "PENDING": "قيد التحقق",
+    "VERIFIED": "تم التحقق ✅",
+    "NOT_VERIFIED": "غير مطابق"
+  },
+  "batch": {
+    "CREATED": "تم إنشاء الدفعة",
+    "PACKAGED": "قيد التعبئة",
+    "READY": "جاهزة"
+  },
+  "product": {
+    "BROUILLON": "مسودة",
+    "PUBLIE": "منشور",
+    "RUPTURE": "نفدت الكمية",
+    "SUSPENDU": "موقوف مؤقتاً",
+    "ARCHIVE": "مؤرشف"
+  },
+  "labAnalysis": {
+    "PENDING": "بانتظار النتيجة",
+    "COMPLIANT": "مطابقة",
+    "NON_COMPLIANT": "غير مطابقة"
+  },
+  "packaging": {
+    "IN_PROGRESS": "قيد التعبئة",
+    "COMPLETED": "مكتملة"
+  },
+  "supportTicket": {
+    "OPEN": "مفتوحة",
+    "IN_PROGRESS": "قيد المعالجة",
+    "RESOLVED": "تم الحل",
+    "CLOSED": "مغلقة"
+  }
+}

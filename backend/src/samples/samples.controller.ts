@@ -6,9 +6,12 @@ import { CreateSampleDto } from './dto/create-sample.dto.js';
 import { Roles } from '../auth/decorators/roles.decorator.js';
 import { CurrentUser } from '../auth/decorators/current-user.decorator.js';
 import type { JwtPayload } from '../auth/types/jwt-payload.type.js';
+import { SensitiveAction } from '../common/admin-override.js';
 
 @ApiBearerAuth()
 @ApiTags('samples')
+// Actions opérationnelles « A* » : override admin motivé et audité.
+@SensitiveAction()
 @Controller('samples')
 export class SamplesController {
   constructor(private readonly service: SamplesService) {}
@@ -31,6 +34,17 @@ export class SamplesController {
     return this.service.findMine(user.sub);
   }
 
+  // Portail Producteur : suivi en lecture seule de ses échantillons.
+  @Roles(Role.PRODUCER)
+  @Get('producer')
+  findForProducer(@CurrentUser() user: JwtPayload) {
+    return this.service.findForProducer(user.sub);
+  }
+
+  // Fiche interne d'un échantillon (chaîne de custody, scellé, preuves) :
+  // jamais accessible à un CONSUMER, même authentifié (§Sécurité 19.5).
+  // L'appartenance Agent / Producteur est vérifiée dans le service.
+  @Roles(Role.ADMIN, Role.VERIFICATION_TEAM, Role.FIELD_AGENT, Role.PRODUCER)
   @Get(':id')
   findOne(@Param('id') id: string, @CurrentUser() user: JwtPayload) {
     return this.service.findOneForUser(id, user);

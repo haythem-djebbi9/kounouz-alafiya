@@ -4,7 +4,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't-1',
     name: 'محمد ع.',
-    location: 'الرياض، المملكة العربية السعودية',
+    location: 'تونس العاصمة',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     rating: 5,
     quote: 'أحب عسل السدر. طعمه أصيل وفوائده كثيرة. أنصح الجميع بتجربته.',
@@ -14,7 +14,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't-2',
     name: 'سارة ن.',
-    location: 'جدة، المملكة العربية السعودية',
+    location: 'صفاقس',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
     rating: 5,
     quote: 'منتجات ممتازة وخدمة رائعة. التوصيل سريع والتغليف أنيق.',
@@ -24,7 +24,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't-3',
     name: 'أحمد م.',
-    location: 'الدمام، المملكة العربية السعودية',
+    location: 'سوسة',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
     rating: 5,
     quote: 'عسل طبيعي 100% وطعمه رائع. أثق في كنوز العافية لجودة منتجاتها وإمكانية التحقق من كل دفعة.',
