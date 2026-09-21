@@ -15,39 +15,18 @@ async function hash(password: string) {
 
 async function main() {
   console.log('Nettoyage de la base...');
-  // Ordre inverse des dépendances.
-  await prisma.counterfeitAlert.deleteMany();
-  await prisma.payout.deleteMany();
-  await prisma.orderItem.deleteMany();
-  await prisma.order.deleteMany();
-  await prisma.producerDocument.deleteMany();
-  await prisma.qRScan.deleteMany();
-  await prisma.qRCode.deleteMany();
-  await prisma.product.deleteMany();
-  await prisma.categorie.deleteMany();
-  await prisma.packaging.deleteMany();
-  await prisma.batch.deleteMany();
-  await prisma.qrGeneration.deleteMany();
-  await prisma.packagingUnit.deleteMany();
-  await prisma.productDocument.deleteMany();
-  await prisma.verification.deleteMany();
-  await prisma.labTestResult.deleteMany();
-  await prisma.labAnalysisFile.deleteMany();
-  await prisma.referenceHoney.deleteMany();
-  await prisma.collectionAssignment.deleteMany();
-  await prisma.sampleEvent.deleteMany();
-  await prisma.requestComment.deleteMany();
-  await prisma.requestDocument.deleteMany();
-  await prisma.referenceSample.deleteMany();
-  await prisma.laboratoryAnalysis.deleteMany();
-  await prisma.laboratory.deleteMany();
-  await prisma.seal.deleteMany();
-  await prisma.sample.deleteMany();
-  await prisma.verificationRequest.deleteMany();
-  await prisma.producer.deleteMany();
-  await prisma.consumer.deleteMany();
-  await prisma.auditLog.deleteMany();
-  await prisma.user.deleteMany();
+  // Vide toutes les tables de l'application d'un coup (sauf l'historique des
+  // migrations). Une liste de deleteMany() oublie tôt ou tard une table : c'est
+  // arrivé avec product_variants, et le seed échouait alors sur une base déjà
+  // remplie en la laissant à moitié vidée. TRUNCATE ... CASCADE ne dépend ni de
+  // l'ordre des clés étrangères ni des tables ajoutées par les futures migrations.
+  const tables = await prisma.$queryRaw<{ tablename: string }[]>`
+    SELECT tablename FROM pg_tables
+    WHERE schemaname = 'public' AND tablename <> '_prisma_migrations'`;
+  if (tables.length > 0) {
+    const list = tables.map((t) => `"public"."${t.tablename}"`).join(', ');
+    await prisma.$executeRawUnsafe(`TRUNCATE TABLE ${list} RESTART IDENTITY CASCADE`);
+  }
 
   console.log('Création des utilisateurs...');
   const admin = await prisma.user.create({
