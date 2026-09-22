@@ -47,5 +47,10 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=5 \
 
 ENTRYPOINT ["/sbin/tini", "--"]
 # Les migrations sont appliquées au démarrage (migrate deploy : jamais
-# destructif, contrairement à migrate dev).
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
+# destructif, contrairement à migrate dev). Elles passent par le port 5432,
+# que certains hébergeurs n'atteignent pas sur une base Neon : leur échec ne
+# doit alors pas empêcher l'API de démarrer, puisque celle-ci sait se
+# rabattre sur le WebSocket (KZ_DB_WEBSOCKET, voir prisma.service.ts). Dans
+# ce cas, appliquez les migrations depuis votre poste avec
+# `scripts/charger-donnees-neon.ps1`.
+CMD ["sh", "-c", "npx prisma migrate deploy || echo '[demarrage] migrations non appliquees : port 5432 injoignable, poursuite du demarrage'; node dist/main.js"]

@@ -1,4 +1,3 @@
-import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 import { seedVerificationPortal } from './seed-verification-portal.js';
@@ -6,8 +5,11 @@ import { seedCommercialChain } from './seed-commercial-chain.js';
 import { seedFieldAgent } from './seed-field-agent.js';
 import { seedAdminConsole } from './seed-admin-console.js';
 import { seedPhase1Compliance } from './seed-phase1-compliance.js';
+import { createDbClient } from './db-client.js';
 
-const prisma = new PrismaClient();
+// KZ_DB_WEBSOCKET=1 fait passer la connexion par le port 443 quand le réseau
+// bloque le 5432 (VPN, pare-feu) — voir db-client.ts.
+const prisma = await createDbClient();
 
 async function hash(password: string) {
   return bcrypt.hash(password, 10);
@@ -20,8 +22,12 @@ async function main() {
   // arrivé avec product_variants, et le seed échouait alors sur une base déjà
   // remplie en la laissant à moitié vidée. TRUNCATE ... CASCADE ne dépend ni de
   // l'ordre des clés étrangères ni des tables ajoutées par les futures migrations.
+  // tablename::text : pg_tables renvoie le type PostgreSQL `name`, que les
+  // pilotes autres que le moteur natif de Prisma ne savent pas lire (le
+  // chargement par WebSocket échouait ici avec « Failed to deserialize column
+  // of type 'name' »).
   const tables = await prisma.$queryRaw<{ tablename: string }[]>`
-    SELECT tablename FROM pg_tables
+    SELECT tablename::text AS tablename FROM pg_tables
     WHERE schemaname = 'public' AND tablename <> '_prisma_migrations'`;
   if (tables.length > 0) {
     const list = tables.map((t) => `"public"."${t.tablename}"`).join(', ');

@@ -148,9 +148,35 @@ postgresql://neondb_owner:npg_XXXXXXXX@ep-quiet-sun-123456.eu-central-1.aws.neon
 
 Cette étape se fait **depuis votre ordinateur** : elle crée les tables dans Neon, puis y met les données de démonstration (les six comptes, les producteurs, les demandes, les produits, les codes QR, les commandes…).
 
-> **Attention : le chargement commence par vider entièrement la base visée.** Il ne doit viser que Neon. La commande de contrôle ci-dessous affiche l'adresse visée : lisez-la avant de continuer. Votre base de développement locale n'est jamais concernée si l'adresse affichée contient `neon.tech`.
+> **Attention : le chargement commence par vider entièrement la base visée.** Il ne doit viser que Neon. Le script refuse de démarrer si l'adresse ne contient pas `neon.tech` : votre base de développement locale n'est jamais concernée.
 
-Ouvrez **PowerShell** et placez-vous dans le dossier de l'API :
+### 6.1 En une commande (recommandé)
+
+Ouvrez **PowerShell**, placez-vous dans le dossier du projet et lancez :
+
+```powershell
+cd "C:\Users\djebb\Desktop\kounouz affia"
+```
+
+```powershell
+.\scripts\charger-donnees-neon.ps1
+```
+
+Le script lit l'adresse dans `backend\.env`, crée les tables, charge les données, puis compte les lignes obtenues. Pour viser une autre base, passez l'adresse directement :
+
+```powershell
+.\scripts\charger-donnees-neon.ps1 -DatabaseUrl "postgresql://neondb_owner:npg_XXXXXXXX@ep-quiet-sun-123456.eu-central-1.aws.neon.tech/neondb?sslmode=require&connect_timeout=30&connection_limit=5"
+```
+
+Comptez **3 à 8 minutes**. À la fin, le script affiche les nombres attendus (45 utilisateurs, 4 catégories, 7 produits, 1 002 codes QR) puis la liste des comptes de démonstration.
+
+> **Si vous utilisez un VPN**, vous n'avez rien à faire : les VPN bloquent le port 5432 de PostgreSQL, et le script s'en aperçoit tout seul. Il bascule alors sur le WebSocket de Neon, qui emprunte le port 443 — celui des sites web — et le chargement se déroule normalement. La ligne `le port 5432 est bloqué par votre réseau` est un avertissement, pas une erreur.
+
+### 6.2 Étape par étape (si vous préférez voir chaque commande)
+
+> Cette variante passe par le port 5432 : **désactivez le VPN** avant de commencer, ou utilisez la commande unique de la section 6.1.
+
+Placez-vous dans le dossier de l'API :
 
 ```powershell
 cd "C:\Users\djebb\Desktop\kounouz affia\backend"
@@ -182,7 +208,7 @@ Datasource "db": PostgreSQL database "neondb", schema "public" at "ep-quiet-sun-
 Following migrations have not yet been applied: ...
 ```
 
-> **Si vous lisez `P1001: Can't reach database server` au lieu de la ligne ci-dessus**, ce n'est ni Neon ni votre adresse : votre réseau bloque le port 5432 (celui de PostgreSQL). C'est fréquent avec un **VPN** (Proton VPN, NordVPN…), un pare-feu d'entreprise ou certains opérateurs. **Désactivez le VPN** et relancez la commande. Si l'erreur persiste sans VPN, passez sur un autre réseau (partage de connexion du téléphone) ou consultez le dépannage de la section 14. Attention : `Test-NetConnection` peut afficher « ouvert » alors que le port est bloqué ; seule la commande `migrate status` fait foi.
+> **Si vous lisez `P1001: Can't reach database server` au lieu de la ligne ci-dessus**, ce n'est ni Neon ni votre adresse : votre réseau bloque le port 5432 (celui de PostgreSQL). C'est fréquent avec un **VPN** (Proton VPN, NordVPN…), un pare-feu d'entreprise ou certains opérateurs. Deux solutions : **désactivez le VPN** et relancez la commande, ou revenez à la section 6.1, dont le script contourne le blocage sans rien changer à votre réseau. Attention : `Test-NetConnection` peut afficher « ouvert » alors que le port est bloqué ; seule la commande `migrate status` fait foi.
 
 Créez les tables (quelques secondes) :
 
@@ -499,7 +525,7 @@ Pour la reprendre plus tard : **Resume** chez Render, puis réveillez l'API (sec
 | **404** sur `/verify/…` ou après un rafraîchissement | `frontend/vercel.json` absent de GitHub | Faites l'étape 0, puis attendez le déploiement automatique |
 | Render : **Build failed** | Erreur pendant la construction | Onglet **Logs** : lisez les dernières lignes. Vérifiez **Root Directory** = `backend` et **Language** = `Docker` |
 | Render : le déploiement échoue au démarrage avec `JWT_ACCESS_SECRET` | Un secret est manquant | Ajoutez les variables de l'étape 3 (point 5) |
-| Sur **votre ordinateur**, `P1001: Can't reach database server` alors que l'adresse est juste | Le réseau bloque le port 5432 (VPN actif, pare-feu, opérateur). Le port s'ouvre mais le serveur ne répond jamais | Désactivez le VPN ; sinon changez de réseau (partage de connexion du téléphone). Vérifiez avec `npx prisma migrate status` |
+| Sur **votre ordinateur**, `P1001: Can't reach database server` alors que l'adresse est juste | Le réseau bloque le port 5432 (VPN actif, pare-feu, opérateur). Le port s'ouvre mais le serveur ne répond jamais | Utilisez `.\scripts\charger-donnees-neon.ps1` (section 6.1) : il bascule seul sur le port 443. Sinon, désactivez le VPN ou changez de réseau (partage de connexion du téléphone) |
 | Sur **Render**, `/ready` indique `"database":"down"`, ou `Can't reach database server` | Adresse Neon mal recopiée, ou mot de passe faux | Recopiez l'adresse depuis Neon. Vérifiez qu'elle se termine par `?sslmode=require&connect_timeout=30&connection_limit=5` et qu'elle ne contient pas `-pooler` |
 | `Invalid credentials` à la connexion | Les données n'ont pas été chargées dans **Neon** | Refaites l'étape 2 en contrôlant que l'adresse affichée contient `neon.tech` |
 | Le chargement (`prisma:seed`) échoue avec « Foreign key constraint » | Ancienne version du seed | Faites l'étape 0 puis récupérez la dernière version du dépôt |
