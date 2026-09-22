@@ -29,8 +29,15 @@ function optionsDuClient(): ConstructorParameters<typeof PrismaClient>[0] {
   if (!connectionString) {
     throw new Error('KZ_DB_WEBSOCKET=1 exige DATABASE_URL.');
   }
+  // Le WebSocket est propre à Neon. Sur une autre base, la variable est
+  // simplement ignorée : mieux vaut démarrer en TCP, qui fonctionne, que
+  // refuser de démarrer parce qu'un réglage est resté d'un hébergeur
+  // précédent.
   if (!/neon\.tech/.test(connectionString)) {
-    throw new Error("KZ_DB_WEBSOCKET=1 ne fonctionne qu'avec une base Neon.");
+    new Logger('PrismaService').warn(
+      'KZ_DB_WEBSOCKET=1 ignoré : la base visée n’est pas une base Neon. Connexion en TCP.',
+    );
+    return undefined;
   }
 
   // Node n'expose pas de WebSocket utilisable par le pilote Neon.

@@ -25,11 +25,11 @@ export async function createDbClient(): Promise<PrismaClient> {
   if (!connectionString) {
     throw new Error('KZ_DB_WEBSOCKET=1 exige DATABASE_URL.');
   }
+  // Le WebSocket est propre à Neon : sur une autre base, on repasse en TCP
+  // plutôt que d'échouer à cause d'un réglage resté d'un hébergeur précédent.
   if (!/neon\.tech/.test(connectionString)) {
-    throw new Error(
-      "KZ_DB_WEBSOCKET=1 ne fonctionne qu'avec une base Neon. " +
-        'Retirez la variable pour une base locale ou un autre hébergeur.',
-    );
+    console.warn('KZ_DB_WEBSOCKET=1 ignoré : la base visée n’est pas une base Neon. Connexion en TCP.');
+    return new PrismaClient();
   }
 
   // Importés ici seulement : ces paquets ne servent qu'au chargement des

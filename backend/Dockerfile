@@ -32,6 +32,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package*.json ./
 COPY prisma ./prisma
+COPY demarrage.sh ./demarrage.sh
 
 # Fichiers téléversés (volumes montés) : publics/signés dans uploads,
 # documents d'identité des producteurs dans private-uploads. Les dossiers
@@ -46,11 +47,6 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=5 \
   CMD wget -qO- http://localhost:3000/health >/dev/null 2>&1 || exit 1
 
 ENTRYPOINT ["/sbin/tini", "--"]
-# Les migrations sont appliquées au démarrage (migrate deploy : jamais
-# destructif, contrairement à migrate dev). Elles passent par le port 5432,
-# que certains hébergeurs n'atteignent pas sur une base Neon : leur échec ne
-# doit alors pas empêcher l'API de démarrer, puisque celle-ci sait se
-# rabattre sur le WebSocket (KZ_DB_WEBSOCKET, voir prisma.service.ts). Dans
-# ce cas, appliquez les migrations depuis votre poste avec
-# `scripts/charger-donnees-neon.ps1`.
-CMD ["sh", "-c", "npx prisma migrate deploy || echo '[demarrage] migrations non appliquees : port 5432 injoignable, poursuite du demarrage'; node dist/main.js"]
+# Le démarrage (migrations, chargement initial, lancement) est décrit dans
+# demarrage.sh, trop long pour tenir lisiblement sur une ligne CMD.
+CMD ["sh", "./demarrage.sh"]
