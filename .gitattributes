@@ -1,0 +1,4 @@
+# Les scripts shell tournent dans des conteneurs Linux : des fins de ligne
+# Windows (CRLF) y rendent le script illisible par /bin/sh.
+*.sh text eol=lf
+Dockerfile text eol=lf
