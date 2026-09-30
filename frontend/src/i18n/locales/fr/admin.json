@@ -230,7 +230,7 @@
   },
   "units": {
     "kg": "kg",
-    "currency": "TND"
+    "currency": "DT"
   },
   "products": {
     "createError": "Impossible de créer le produit.",
@@ -240,7 +240,7 @@
     "stock": "Stock",
     "productName": "Nom du produit",
     "selectCategory": "Choisir une catégorie",
-    "price": "Prix (TND)",
+    "price": "Prix (DT)",
     "rangeOptional": "Gamme (facultatif)",
     "linkedBatch": "Lot associé (facultatif pour l'instant, requis pour la publication)",
     "noBatch": "— Sans lot —",
@@ -334,5 +334,87 @@
     "markPaid": "Marquer comme payé",
     "openHint": "Période non clôturée",
     "referencePrompt": "Référence du virement pour {{producer}} ({{amount}}) - facultatif :"
+  },
+  "commission": {
+    "heading": "Commission Kounouz",
+    "subtitle": "Pourcentage prélevé par Kounouz Alafiya sur chaque vente ; le reste revient au producteur.",
+    "current": "Taux en vigueur",
+    "updatedBy": "Modifié par {{name}} le {{date}}",
+    "defaultValue": "Taux par défaut ({{rate}}) — jamais modifié",
+    "newRate": "Nouveau taux (%)",
+    "rateHint": "Entre 0 et {{max}} %. Exemple : 20 pour 20 %.",
+    "rangeError": "Saisissez un taux entre 0 et {{max}} %.",
+    "reason": "Motif (facultatif)",
+    "reasonPlaceholder": "Ex. : offre de lancement pour les nouveaux producteurs",
+    "futureOnly": "Le nouveau taux s’applique aux commandes passées après l’enregistrement. Les ventes déjà réalisées gardent leur taux : aucun montant passé n’est recalculé.",
+    "saved": "Taux enregistré : {{rate}}. Il s’applique dès la prochaine commande.",
+    "save": "Enregistrer le taux",
+    "simulator": "Simulateur",
+    "simulatorHint": "Répartition d’une vente avec le taux saisi.",
+    "saleAmount": "Montant de la vente (DT)",
+    "kounouzShare": "Commission Kounouz ({{rate}})",
+    "producerShare": "Revient au producteur",
+    "history": "Historique des changements",
+    "noHistory": "Le taux n’a encore jamais été modifié."
+  },
+  "blog": {
+    "heading": "Blog",
+    "subtitle": "Rédigez, publiez et retirez les articles affichés sur le site, en arabe, français et anglais.",
+    "new": "Nouvel article",
+    "filters": {
+      "ALL": "Tous",
+      "PUBLISHED": "Publiés",
+      "DRAFT": "Brouillons"
+    },
+    "search": "Rechercher un article",
+    "empty": "Aucun article. Commencez par en créer un.",
+    "noMatch": "Aucun article ne correspond à ces filtres.",
+    "status": {
+      "PUBLISHED": "Publié",
+      "DRAFT": "Brouillon"
+    },
+    "featured": "À la une",
+    "languages": "Langues rédigées",
+    "publishedOn": "Publié le {{date}}",
+    "updatedOn": "Modifié le {{date}}",
+    "edit": "Modifier",
+    "publish": "Publier",
+    "unpublish": "Dépublier",
+    "viewOnSite": "Voir sur le site",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer définitivement l’article « {{title}} » ?",
+    "back": "Tous les articles",
+    "editor": {
+      "newTitle": "Nouvel article",
+      "editTitle": "Modifier l’article",
+      "saveDraft": "Enregistrer le brouillon",
+      "update": "Mettre à jour",
+      "savedNotice": "Article enregistré.",
+      "publishedNotice": "Article publié : il est visible sur le site.",
+      "languages": {
+        "ar": "العربية",
+        "fr": "Français",
+        "en": "English"
+      },
+      "write": "Rédaction",
+      "preview": "Aperçu",
+      "title": "Titre",
+      "excerpt": "Chapô",
+      "excerptHint": "Une ou deux phrases affichées sur la carte de l’article.",
+      "content": "Contenu",
+      "formatHelp": "Mise en forme : ligne vide = nouveau paragraphe · « ## » intertitre · « - » liste · « > » encadré · **gras**",
+      "languageHint": "Une langue laissée vide affiche la version d’une autre langue. Pour publier, au moins une langue doit avoir un titre et un contenu.",
+      "category": "Rubrique",
+      "slug": "Adresse de l’article",
+      "slugHint": "Visible dans le lien /blog/… — générée depuis le titre si vide.",
+      "featured": "Mettre à la une",
+      "featuredHint": "L’article s’affiche en grand en tête de la page Blog.",
+      "cover": "Image de couverture",
+      "upload": "Téléverser une photo",
+      "removeUpload": "Retirer",
+      "pendingUpload": "La photo sera envoyée à l’enregistrement.",
+      "orSiteImage": "Ou choisissez une image du site :",
+      "coverUrl": "Ou collez l’adresse d’une image"
+    }
   }
 }

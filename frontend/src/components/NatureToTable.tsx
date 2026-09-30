@@ -32,7 +32,7 @@ export const NatureToTable: React.FC<NatureToTableProps> = ({ onDiscoverStory, o
           <div className="absolute -inset-3 rounded-[2rem] border-2 border-dashed border-[#D49B37]/40 rotate-2 pointer-events-none" />
           <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl shadow-[#0C261B]/20">
             <motion.img
-              src="/images/jabal.png"
+              src="/images/jabal.webp"
               alt={t('marketplace:home.terroir.imageAlt')}
               loading="lazy"
               style={{ y: imageY, top: '-8%' }}

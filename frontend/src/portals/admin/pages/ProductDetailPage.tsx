@@ -7,9 +7,10 @@ import { useAdminCategories } from '../hooks/useAdminCategories';
 import { useBatches } from '../hooks/useBatchesAndPackaging';
 import { Card, Button, Input, Textarea, Select, Modal, StatusBadge, Alert, QRCodeDisplay } from '../../../design-system';
 import { resolveFileUrl, ApiError } from '../../../lib/api';
+import { formatTnd } from '../../../lib/format-price';
 
 export const ProductDetailPage: React.FC = () => {
-  const { t } = useTranslation(['admin', 'common']);
+  const { t, i18n } = useTranslation(['admin', 'common']);
   const { id } = useParams<{ id: string }>();
   const { data: product, isLoading } = useAdminProductDetail(id);
   const { data: categories } = useAdminCategories();
@@ -98,7 +99,7 @@ export const ProductDetailPage: React.FC = () => {
                 ))}
               </div>
             )}
-            <p className="text-2xl font-bold text-[#D49B37] mb-2">{product.prix} {t('admin:units.currency')}</p>
+            <p className="text-2xl font-bold text-[#D49B37] mb-2">{formatTnd(product.prix, i18n.language)}</p>
             {product.description && <p className="text-sm text-gray-600 mb-3">{product.description}</p>}
             <div className="flex items-center gap-3 text-xs text-gray-400">
               {product.gamme && <span>{t('admin:productDetail.range')}: {product.gamme}</span>}

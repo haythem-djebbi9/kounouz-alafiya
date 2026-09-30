@@ -86,3 +86,10 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
 }
+
+/* Fond de carte discret sous les cartes de données de la console : les
+   bulles et les tracés ressortent, le fond reste lisible. */
+.kz-tiles-muted {
+  filter: grayscale(1) brightness(1.06) contrast(0.88);
+  opacity: 0.85;
+}

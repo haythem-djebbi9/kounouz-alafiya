@@ -327,6 +327,7 @@ model User {
   assignmentsCreated     CollectionAssignment[] @relation("AssignmentCreator")
   resolvedAlerts         CounterfeitAlert[]     @relation("AlertResolvedBy")
   storedReferenceSamples ReferenceSample[]      @relation("ReferenceSampleStoredBy")
+  blogPosts              BlogPost[]             @relation("BlogPostAuthor")
 
   @@map("users")
 }
@@ -1520,4 +1521,42 @@ model PlatformSetting {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   @@map("platform_settings")
+}
+
+// ---------------------------------------------------------------------------
+// Blog de la vitrine
+// ---------------------------------------------------------------------------
+
+enum BlogPostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+// Article rédigé depuis la console d'administration. Titre, chapô et contenu
+// sont stockés par langue ({ ar, fr, en }) : une langue laissée vide se rabat
+// sur une autre à l'affichage. L'image de couverture est soit une adresse
+// (image du site ou lien externe), soit un fichier téléversé gardé en base —
+// le disque des hébergeurs gratuits est effacé à chaque redémarrage.
+model BlogPost {
+  id             String         @id @default(uuid())
+  slug           String         @unique
+  category       String         @default("CONSEILS")
+  title          Json
+  excerpt        Json
+  content        Json
+  coverImage     String?        @map("cover_image")
+  coverData      Bytes?         @map("cover_data")
+  coverMime      String?        @map("cover_mime")
+  readingMinutes Int            @default(3) @map("reading_minutes")
+  status         BlogPostStatus @default(DRAFT)
+  featured       Boolean        @default(false)
+  publishedAt    DateTime?      @map("published_at")
+  authorId       String?        @map("author_id")
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+
+  author User? @relation("BlogPostAuthor", fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([status, publishedAt])
+  @@map("blog_posts")
 }

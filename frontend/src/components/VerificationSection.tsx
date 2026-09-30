@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { QrCode, ShieldCheck, FlaskConical, MapPin, Layers, BadgeCheck, Smartphone } from 'lucide-react';
 import { ForwardArrow, SectionHeading } from './home/ui';
 
-// Zone du QR sur /images/scan.png (image 3:2) — en pourcentages physiques, le
+// Zone du QR sur /images/scan.webp (image 3:2) — en pourcentages physiques, le
 // cadre d'animation se superpose exactement au code imprimé sur la carte.
 const QR_ZONE = { left: '45.6%', top: '56.4%', width: '10.4%', height: '13.4%' };
 
@@ -141,7 +141,7 @@ export const VerificationSection: React.FC = () => {
           className="relative"
         >
           <div className="relative aspect-[3/2] rounded-3xl overflow-hidden shadow-2xl shadow-black/40 ring-1 ring-white/10">
-            <img src="/images/scan.png" alt={t('marketplace:home.verify.imageAlt')} loading="lazy" className="w-full h-full object-cover" />
+            <img src="/images/scan.webp" alt={t('marketplace:home.verify.imageAlt')} loading="lazy" className="w-full h-full object-cover" />
 
             <div className="absolute" style={QR_ZONE}>
               {/* coins du viseur */}

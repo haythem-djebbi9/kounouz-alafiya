@@ -3,9 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import { ShieldCheck, PauseCircle, AlertTriangle, MapPin, Layers, FlaskConical, ChevronDown, ChevronUp, Flag } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useReportLabel, useVerify, type LabelReportReason } from '../lib/marketplace-hooks';
-import { resolveFileUrl, API_URL } from '../lib/api';
+import { API_URL } from '../lib/api';
 import { Logo } from '../components/Logo';
 import { dateLocale } from '../i18n';
+import { productImageUrl } from '../lib/product-adapter';
 
 export const PublicVerifyPage: React.FC = () => {
   const { t, i18n } = useTranslation(['auth']);
@@ -76,7 +77,7 @@ export const PublicVerifyPage: React.FC = () => {
             <div className="bg-white rounded-2xl border border-[#EAE1D2] overflow-hidden">
               {data.product.images[0] && (
                 <img
-                  src={resolveFileUrl(data.product.images[0])}
+                  src={productImageUrl(data.product.images[0])}
                   alt={data.product.nom}
                   className="w-full aspect-video object-cover"
                 />

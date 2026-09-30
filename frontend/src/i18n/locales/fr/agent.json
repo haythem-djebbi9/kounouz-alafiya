@@ -167,7 +167,8 @@
       "heading": "Tournée du jour",
       "start": "Votre position",
       "empty": "Aucune visite localisée aujourd'hui.",
-      "noStops": "Aucune visite prévue aujourd'hui."
+      "noStops": "Aucune visite prévue aujourd'hui.",
+      "backlog": "Aucune visite prévue aujourd’hui : voici vos missions ouvertes, les plus anciennes d’abord."
     },
     "notifications": {
       "heading": "Notifications récentes",

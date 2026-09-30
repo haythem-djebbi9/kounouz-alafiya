@@ -81,7 +81,7 @@ export const ProducerLayout: React.FC = () => {
     <aside className="flex flex-col h-full w-64 bg-gradient-to-b from-[#0A3B27] via-[#08301F] to-[#06261A] text-white">
       <div className="px-6 pt-6 pb-5 flex flex-col items-center text-center">
         <Link to="/" className="flex flex-col items-center" onClick={() => setMobileOpen(false)}>
-          <img src="/images/knozafialogo-removebg-preview.png" alt="" className="w-16 h-16 object-contain" />
+          <img src="/images/logo.webp" alt="" className="w-16 h-16 object-contain" />
           <span className="font-['Cairo'] text-2xl font-bold leading-tight mt-1">كنوز العافية</span>
           <span className="text-[11px] font-bold tracking-[0.18em] mt-0.5">KOUNOUZ ALAFIYA</span>
           <span className="text-[11px] text-[#F4B63F] mt-1">{t('producer:brand.tagline')}</span>
@@ -131,7 +131,7 @@ export const ProducerLayout: React.FC = () => {
       </nav>
 
       <div className="relative h-44 mt-4 shrink-0 overflow-hidden">
-        <img src="/images/beekeeper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-left opacity-80" />
+        <img src="/images/beekeeper.webp" alt="" className="absolute inset-0 w-full h-full object-cover object-left opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#06261A] via-[#06261A]/40 to-[#06261A]/90" />
         <div className="absolute bottom-5 start-6 end-6">
           <p className="text-xs font-bold tracking-wide leading-relaxed uppercase">{t('producer:brand.sidebarMotto')}</p>

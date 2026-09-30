@@ -91,3 +91,28 @@ export function useUpdateProducerStatus() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin', 'producers'] }),
   });
 }
+
+// --- Commission Kounouz --------------------------------------------------------
+
+export interface CommissionSettings {
+  rate: number;
+  defaultRate: number;
+  maxRate: number;
+  updatedAt: string | null;
+  updatedBy: string | null;
+  history: { id: string; at: string; by: string | null; from: number | null; to: number | null; reason: string | null }[];
+}
+
+export function useCommission() {
+  return useQuery({ queryKey: ['admin', 'commission'], queryFn: () => api.get<CommissionSettings>('/commission') });
+}
+
+export function useUpdateCommission() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (body: { rate: number; reason?: string }) => api.put<CommissionSettings>('/commission', body),
+    onSuccess: (data) => {
+      queryClient.setQueryData(['admin', 'commission'], data);
+    },
+  });
+}

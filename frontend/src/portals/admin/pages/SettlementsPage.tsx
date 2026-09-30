@@ -6,6 +6,7 @@ import { dateLocale } from '../../../i18n';
 import { useAdminSettlements, usePaySettlement } from '../hooks/useSales';
 import type { AdminSettlement } from '../hooks/useSales';
 import { Card, Badge, Button, EmptyState, Alert } from '../../../design-system';
+import { formatTnd } from '../../../lib/format-price';
 
 const TONE = { OPEN: 'blue', PROCESSING: 'gold', PAID: 'green' } as const;
 
@@ -19,7 +20,7 @@ export const SettlementsPage: React.FC = () => {
   const [error, setError] = useState('');
   const isAdmin = user?.role === 'ADMIN';
 
-  const money = (value: number) => `${value.toFixed(2)} ${t('producer:common.currency')}`;
+  const money = (value: number) => formatTnd(value, i18n.language);
   const month = (period: string) => {
     const [y, m] = period.split('-').map(Number);
     return new Date(y, m - 1, 1).toLocaleDateString(dateLocale(i18n.language), { month: 'long', year: 'numeric' });

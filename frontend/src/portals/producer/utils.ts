@@ -4,6 +4,7 @@ import { tokenStorage } from '../../lib/tokenStorage';
 import { dateLocale } from '../../i18n';
 import type { ProducerRequest, SaleItem } from './types';
 import type { BatchStatus } from '../../lib/api-types';
+import { formatTnd } from '../../lib/format-price';
 
 // ---------------------------------------------------------------------------
 // Formatage
@@ -13,12 +14,10 @@ export function formatNumber(value: number, lang: string, maxFractionDigits = 0)
   return new Intl.NumberFormat(dateLocale(lang), { maximumFractionDigits: maxFractionDigits }).format(value);
 }
 
-export function formatMoney(value: number, lang: string, t: TFunction, fractionDigits = 0): string {
-  const amount = new Intl.NumberFormat(dateLocale(lang), {
-    minimumFractionDigits: fractionDigits,
-    maximumFractionDigits: fractionDigits,
-  }).format(value);
-  return `${amount} ${t('producer:common.currency')}`;
+// `fractionDigits` à 0 : montant arrondi au dinar (graphiques, totaux) ;
+// sinon précision au millime, comme partout ailleurs sur la plateforme.
+export function formatMoney(value: number, lang: string, _t: TFunction, fractionDigits = 0): string {
+  return formatTnd(value, lang, { round: fractionDigits === 0 });
 }
 
 export function formatDate(value: string | Date | null | undefined, lang: string, options?: Intl.DateTimeFormatOptions) {

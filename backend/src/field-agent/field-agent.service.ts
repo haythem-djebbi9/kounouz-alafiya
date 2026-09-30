@@ -173,6 +173,21 @@ export class FieldAgentService {
       }),
     ]);
 
+    // Aucune visite aujourd'hui : la carte montre plutôt les missions ouvertes
+    // (en retard d'abord, puis à venir), pour que l'agent sache où aller.
+    const backlog =
+      today.length > 0
+        ? []
+        : await this.prisma.collectionAssignment.findMany({
+            where: {
+              agentId,
+              status: { in: [CollectionAssignmentStatus.PENDING, CollectionAssignmentStatus.IN_PROGRESS] },
+            },
+            include: ASSIGNMENT_INCLUDE,
+            orderBy: [{ scheduledDate: 'asc' }, { timeWindowStart: 'asc' }],
+            take: 8,
+          });
+
     return {
       range: { from, to },
       stats: {
@@ -183,6 +198,7 @@ export class FieldAgentService {
         overdue,
       },
       assignments: today.map((a) => this.present(a, from)),
+      backlog: backlog.map((a) => this.present(a, from)),
       samplesInCustody: recentSamples,
     };
   }

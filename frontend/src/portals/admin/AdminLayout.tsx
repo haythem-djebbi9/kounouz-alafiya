@@ -16,7 +16,9 @@ import {
   LineChart,
   LogOut,
   Menu,
+  Newspaper,
   Package,
+  Percent,
   QrCode,
   ScrollText,
   Search,
@@ -87,8 +89,10 @@ const NAV: NavEntry[] = [
     children: [
       { to: '/admin/commandes', labelKey: 'nav.orders', icon: ShoppingCart },
       { to: '/admin/reglements', labelKey: 'nav.settlements', icon: Banknote },
+      { to: '/admin/commission', labelKey: 'nav.commission', icon: Percent },
     ],
   },
+  { to: '/admin/blog', labelKey: 'nav.blog', icon: Newspaper },
   { to: '/admin/rapports', labelKey: 'nav.reports', icon: BarChart3 },
   { to: '/admin/journal', labelKey: 'nav.auditLogs', icon: ScrollText },
   { to: '/admin/support', labelKey: 'nav.support', icon: LifeBuoy },
@@ -149,7 +153,7 @@ export const AdminLayout: React.FC = () => {
     >
       <div className={`relative ${compact ? 'px-2 pt-5 pb-4' : 'px-6 pt-6 pb-5'} flex flex-col items-center text-center`}>
         <Link to="/admin" className="flex flex-col items-center">
-          <img src="/images/knozafialogo-removebg-preview.png" alt="" className={compact ? 'w-11 h-11 object-contain' : 'w-16 h-16 object-contain'} />
+          <img src="/images/logo.webp" alt="" className={compact ? 'w-11 h-11 object-contain' : 'w-16 h-16 object-contain'} />
           {!compact && (
             <>
               <span className="font-['Cairo'] text-2xl font-bold leading-tight mt-1">كنوز العافية</span>
@@ -212,7 +216,7 @@ export const AdminLayout: React.FC = () => {
 
       {!compact && (
         <div className="relative h-40 shrink-0 overflow-hidden">
-          <img src="/images/jabal.png" alt="" className="absolute inset-0 w-full h-full object-cover object-[50%_18%] opacity-75" />
+          <img src="/images/jabal.webp" alt="" className="absolute inset-0 w-full h-full object-cover object-[50%_18%] opacity-75" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#06261A] via-[#06261A]/35 to-[#06261A]/90" />
           <div className="absolute bottom-5 start-6 end-6">
             <p className="text-xs font-bold tracking-wide leading-relaxed uppercase">

@@ -8,7 +8,7 @@ import { ApiError } from '../../../lib/api';
 import { dateLocale } from '../../../i18n';
 
 export const RequestDetailPage: React.FC = () => {
-  const { t, i18n } = useTranslation(['admin', 'common']);
+  const { t, i18n } = useTranslation(['admin', 'producer', 'common']);
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { data: request, isLoading } = useAdminRequestDetail(id);

@@ -36,7 +36,9 @@
     "support": "Support",
     "settings": "Paramètres",
     "help": "Aide",
-    "verifierPortal": "Portail vérification"
+    "verifierPortal": "Portail vérification",
+    "commission": "Commission",
+    "blog": "Blog"
   },
   "search": {
     "placeholder": "Rechercher (producteurs, lots, QR codes, utilisateurs…)",
@@ -661,7 +663,7 @@
       "verifiedBatches": "Lots vérifiés",
       "totalScans": "Scans QR",
       "uniqueConsumers": "Consommateurs uniques",
-      "totalSales": "Ventes (TND)",
+      "totalSales": "Ventes (DT)",
       "fraudAttempts": "Tentatives de fraude",
       "verificationRate": "Taux de vérification réussie",
       "decisions": "{{n}} décisions"
@@ -680,7 +682,7 @@
     "scansVsSales": "Vérifications et ventes",
     "series": {
       "scans": "Scans QR",
-      "sales": "Ventes (TND)"
+      "sales": "Ventes (DT)"
     },
     "categories": "Types de miel vérifiés",
     "verifiedBatchesLabel": "Lots vérifiés",
@@ -738,7 +740,7 @@
     "trends": {
       "verifications": "Lots vérifiés — 12 mois",
       "scans": "Scans QR — 12 mois",
-      "sales": "Ventes (TND) — 12 mois",
+      "sales": "Ventes (DT) — 12 mois",
       "hint": "Les tendances couvrent toujours les 12 derniers mois, quelle que soit la période choisie."
     },
     "exports": {
@@ -852,7 +854,8 @@
       "ANTI_COUNTERFEIT": "Anti-contrefaçon",
       "SALES": "Ventes",
       "SYSTEM": "Système",
-      "SETTINGS": "Paramètres"
+      "SETTINGS": "Paramètres",
+      "CONTENT": "Contenu du site"
     },
     "entity": {
       "Producer": "producteur",
@@ -862,7 +865,8 @@
       "Batch": "lot",
       "Product": "produit",
       "Laboratory": "laboratoire",
-      "CounterfeitAlert": "alerte"
+      "CounterfeitAlert": "alerte",
+      "BlogPost": "article"
     },
     "batchStatus": {
       "CREATED": "Vérifié",
@@ -990,6 +994,12 @@
     "ORDER_CANCELLED": "Commande annulée",
     "PAY_SETTLEMENT": "Règlement producteur versé",
     "SYSTEM_BACKUP": "Sauvegarde quotidienne de la base terminée",
-    "SEED_ADMIN_CONSOLE": "Données de démonstration chargées"
+    "SEED_ADMIN_CONSOLE": "Données de démonstration chargées",
+    "CREATE_BLOG_POST": "Article de blog créé",
+    "UPDATE_BLOG_POST": "Article de blog modifié",
+    "PUBLISH_BLOG_POST": "Article de blog publié",
+    "UNPUBLISH_BLOG_POST": "Article de blog dépublié",
+    "DELETE_BLOG_POST": "Article de blog supprimé",
+    "UPDATE_COMMISSION_RATE": "Taux de commission modifié"
   }
 }

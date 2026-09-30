@@ -5,6 +5,7 @@ import { AuditService } from '../audit/audit.service.js';
 import { allocateYearCode } from '../common/sequential-code.js';
 import { ProductVariantInputDto, UpdateProductVariantDto } from './dto/product-variant.dto.js';
 import { buildSku, formatGrams, parsePackageSizeToGrams } from './sku.js';
+import { formatDt } from '../common/money.js';
 
 /**
  * Déclinaisons commerciales (SKU) d'un produit (§12 Ventes, PRD-03/04).
@@ -109,7 +110,7 @@ export class ProductVariantsService {
     const variant = await this.createOne(productId, productCode, input, existing.length === 0);
     await this.recomputeProductSummary(productId);
     await this.audit.log(userId, 'CREATE_PRODUCT_VARIANT', 'ProductVariant', variant.id, {
-      details: `${variant.sku} — ${variant.packageSize} — ${variant.price} TND`,
+      details: `${variant.sku} — ${variant.packageSize} — ${formatDt(variant.price)}`,
     });
     return variant;
   }

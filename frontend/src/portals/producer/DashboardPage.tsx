@@ -182,7 +182,7 @@ export const DashboardPage: React.FC = () => {
         </Panel>
 
         <div className="lg:col-span-3 flex flex-col gap-4">
-          <ImageBanner image="/images/beekeeper.jpg" title={t('producer:brand.promoTitle')} className="h-32" />
+          <ImageBanner image="/images/beekeeper.webp" title={t('producer:brand.promoTitle')} className="h-32" />
           <div className="rounded-xl border border-[#F5E5C2] bg-[#FFF8EA] p-4 flex-1">
             <div className="flex items-start gap-3">
               <span className="w-10 h-10 rounded-full bg-[#0B4A2F] text-white flex items-center justify-center shrink-0">

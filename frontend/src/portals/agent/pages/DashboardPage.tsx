@@ -57,7 +57,10 @@ export const DashboardPage: React.FC = () => {
   const greetingKey = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
   const firstName = user?.name?.split(' ')[0] ?? '';
 
-  const assignments = data?.assignments ?? [];
+  const today = data?.assignments ?? [];
+  // Sans visite aujourd'hui, la tournée présente les missions ouvertes.
+  const showingBacklog = today.length === 0 && (data?.backlog?.length ?? 0) > 0;
+  const assignments = showingBacklog ? data!.backlog! : today;
   const next = nextAssignment(assignments);
   const startCollectionPath = next ? `/agent/collecte/${next.id}` : '/agent/collecte';
   const agentPosition = geo.state.status === 'ready' ? geo.state.position : null;
@@ -178,6 +181,8 @@ export const DashboardPage: React.FC = () => {
           {isLoading ? (
             <LoadingBlock label={t('common.loading')} />
           ) : (
+            <>
+            {showingBacklog && <p className="text-sm text-[#96661A] font-semibold mb-3">{t('dashboard.route.backlog')}</p>}
             <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_240px] gap-4">
               <MapView
                 className="h-64 md:h-72"
@@ -202,7 +207,9 @@ export const DashboardPage: React.FC = () => {
                       </span>
                       <span className="min-w-0 flex-1">
                         <span className="block text-xs text-gray-500 tabular-nums">
-                          {a.timeWindowStart ?? formatTime(a.scheduledDate, locale)}
+                          {showingBacklog
+                            ? new Date(a.scheduledDate).toLocaleDateString(locale, { day: 'numeric', month: 'short' })
+                            : (a.timeWindowStart ?? formatTime(a.scheduledDate, locale))}
                         </span>
                         <span className="block text-sm font-bold text-[#0C261B] truncate">{a.request.producer.name}</span>
                         <span className="block text-xs text-gray-500 truncate">
@@ -215,6 +222,7 @@ export const DashboardPage: React.FC = () => {
                 ))}
               </ol>
             </div>
+            </>
           )}
         </SectionCard>
 

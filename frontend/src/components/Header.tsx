@@ -60,23 +60,28 @@ export const Header: React.FC<HeaderProps> = ({
       id="main-header"
       className="sticky top-0 z-40 w-full bg-[#F6F1EB]/95 backdrop-blur-md border-b border-[#EAE1D2] transition-colors duration-200"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Force LTR order so Logo is on the Left, Nav is in Center, and Actions are on the Right */}
         <div dir="ltr" className="flex items-center justify-between h-24 sm:h-28">
 
           {/* Brand Logo on the LEFT (Enlarged & Prominent) */}
-          {/* Sur téléphone, logo compact : le panier et le menu doivent rester visibles. */}
+          {/* Logo compact sur téléphone (le panier et le menu doivent rester
+              visibles) et quand le menu complet est affiché (il doit tenir sur
+              une ligne) ; logo complet sur tablette. */}
           <div className="flex-shrink-0 flex items-center pr-2">
-            <div className="sm:hidden">
+            <div className="sm:hidden xl:block">
               <Logo compact onClick={() => onNavigate('home')} />
             </div>
-            <div className="hidden sm:block">
+            <div className="hidden sm:block xl:hidden">
               <Logo onClick={() => onNavigate('home')} />
             </div>
           </div>
 
           {/* Navigation Links in the CENTER */}
-          <nav id="desktop-navigation" dir="ltr" className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-10">
+          {/* Chaque lien reste sur une seule ligne (whitespace-nowrap) avec un
+              espacement fixe : un libellé long ne se replie plus sur deux ou
+              trois lignes. En dessous de 1280 px, le menu passe dans le tiroir. */}
+          <nav id="desktop-navigation" dir="ltr" className="hidden xl:flex items-center gap-6 2xl:gap-9 mx-4">
             {navItems.map((item) => {
               const isActive = currentPage === item.page;
               return (
@@ -84,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
                   key={item.page}
                   id={`nav-link-${item.page}`}
                   onClick={() => onNavigate(item.page)}
-                  className={`relative text-[15px] lg:text-[16.5px] font-semibold transition-colors py-2 group cursor-pointer ${
+                  className={`relative whitespace-nowrap px-1 text-[15px] 2xl:text-[16px] font-semibold transition-colors py-2 group cursor-pointer ${
                     isActive
                       ? 'text-[#0C261B] font-bold'
                       : 'text-[#0C261B]/80 hover:text-[#D19A44]'
@@ -120,23 +125,13 @@ export const Header: React.FC<HeaderProps> = ({
               <Search className="w-5 h-5 stroke-[2]" />
             </button>
 
-            {/* Se connecter (visible, logged out only) */}
-            {!isAuthenticated && (
-              <button
-                id="header-login-btn"
-                onClick={() => navigate('/connexion')}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-bold text-[#0C261B] hover:text-[#D19A44] transition-colors rounded-full hover:bg-[#EAE1D2]/50 cursor-pointer"
-              >
-                <LogIn className="w-4 h-4 stroke-[2]" />
-                <span>{t('actions.login')}</span>
-              </button>
-            )}
-
-            {/* Account Icon */}
+            {/* Compte : mène à la connexion tant que l'on n'est pas connecté
+                (le tiroir mobile garde, lui, un bouton « Se connecter »). */}
             <button
               id="header-account-btn"
               onClick={handleAccountClick}
               aria-label={isAuthenticated ? t('actions.account') : t('actions.login')}
+              title={isAuthenticated ? t('actions.account') : t('actions.login')}
               className="hidden sm:inline-flex p-2 text-[#0C261B] hover:text-[#D19A44] transition-colors rounded-full hover:bg-[#EAE1D2]/50 cursor-pointer"
             >
               <User className="w-5 h-5 stroke-[2]" />
@@ -164,7 +159,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="header-verify-cta-btn"
               onClick={onOpenVerify}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#0C261B] hover:bg-[#143B2B] text-white text-xs lg:text-sm font-bold px-4 py-2.5 rounded-lg border border-[#D19A44]/40 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer group"
+              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap bg-[#0C261B] hover:bg-[#143B2B] text-white text-xs 2xl:text-sm font-bold px-4 py-2.5 rounded-lg border border-[#D19A44]/40 shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer group"
             >
               <QrCode className="w-4 h-4 text-[#D19A44] group-hover:scale-110 transition-transform" />
               <span>{t('actions.verifyProduct')}</span>
@@ -174,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#0C261B] hover:text-[#D19A44] transition-colors rounded-md"
+              className="xl:hidden p-2 text-[#0C261B] hover:text-[#D19A44] transition-colors rounded-md"
               aria-label={t('actions.menu')}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -187,7 +182,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div id="mobile-navigation" className="md:hidden border-t border-[#EAE1D2] bg-[#F6F1EB] px-4 pt-3 pb-6 space-y-2">
+        <div id="mobile-navigation" className="xl:hidden border-t border-[#EAE1D2] bg-[#F6F1EB] px-4 pt-3 pb-6 space-y-2">
           {navItems.map((item) => {
             const isActive = currentPage === item.page;
             return (

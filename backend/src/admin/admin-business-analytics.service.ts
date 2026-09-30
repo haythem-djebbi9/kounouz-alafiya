@@ -15,6 +15,7 @@ import {
   startOfUtcMonth,
   toNumber,
 } from './admin-common.js';
+import { formatDt } from '../common/money.js';
 
 const SCANNER_KEY_SQL = 'COALESCE(visitor_id, ip_address, id)';
 
@@ -383,8 +384,8 @@ export class AdminBusinessAnalyticsService {
         value: 'total' in value ? value.total : '',
         extra: 'delta' in value ? (value.delta ?? '') : 'deltaPoints' in value ? (value.deltaPoints ?? '') : '',
       })),
-      ...data.series.map((p) => ({ section: 'Série', label: p.date, value: p.scans, extra: `${p.sales} TND / ${p.verifications} vérifications` })),
-      ...data.topHoneyTypes.map((t) => ({ section: 'Types de miel', label: t.honeyType, value: t.scans, extra: `${t.verifiedBatches} lots / ${t.revenue} TND` })),
+      ...data.series.map((p) => ({ section: 'Série', label: p.date, value: p.scans, extra: `${formatDt(p.sales)} / ${p.verifications} vérifications` })),
+      ...data.topHoneyTypes.map((t) => ({ section: 'Types de miel', label: t.honeyType, value: t.scans, extra: `${t.verifiedBatches} lots / ${formatDt(t.revenue)}` })),
       ...data.regions.map((r) => ({ section: 'Régions', label: r.governorate, value: r.count, extra: `${r.share}%` })),
       ...data.origins.map((c) => ({ section: 'Pays', label: c.code ?? '—', value: c.count, extra: `${c.share}%` })),
       ...data.funnel.map((f) => ({ section: 'Entonnoir', label: f.key, value: f.count, extra: `${f.share}%` })),

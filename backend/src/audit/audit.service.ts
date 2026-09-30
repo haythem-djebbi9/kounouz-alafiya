@@ -45,6 +45,7 @@ const MODULE_BY_ENTITY: Record<string, string> = {
   DomainEvent: 'SYSTEM',
   System: 'SYSTEM',
   Settings: 'SETTINGS',
+  BlogPost: 'CONTENT',
 };
 
 export function moduleOfEntity(entite: string): string {

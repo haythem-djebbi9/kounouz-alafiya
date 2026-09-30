@@ -1,9 +1,10 @@
 import PDFDocument from 'pdfkit';
 import type { SalesService } from './sales.service.js';
+import { formatDt } from '../common/money.js';
 
 type SettlementDetail = Awaited<ReturnType<SalesService['findMySettlement']>>;
 
-const money = (value: number) => `${value.toFixed(2)} TND`;
+const money = (value: number) => formatDt(value);
 const day = (date: Date | string) => new Date(date).toLocaleDateString('fr-FR');
 
 // Reçu de versement d'une période réglée (téléchargé depuis "Historique des

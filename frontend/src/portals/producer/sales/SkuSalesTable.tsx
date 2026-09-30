@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { EmptyRow, Panel, Table, Td, Th } from '../ui';
 import { formatNumber } from '../utils';
 import type { SaleItem } from '../types';
+import { formatTnd } from '../../../lib/format-price';
 
 interface SkuRow {
   key: string;
@@ -49,7 +50,7 @@ export const SkuSalesTable: React.FC<{ items: SaleItem[]; title?: string }> = ({
     return [...bySku.values()].sort((a, b) => b.gross - a.gross);
   }, [items]);
 
-  const money = (v: number) => `${formatNumber(Math.round(v * 100) / 100, lang)} ${t('producer:common.currency')}`;
+  const money = (v: number) => formatTnd(v, lang);
   const total = rows.reduce(
     (acc, r) => ({ units: acc.units + r.units, gross: acc.gross + r.gross, commission: acc.commission + r.commission, net: acc.net + r.net }),
     { units: 0, gross: 0, commission: 0, net: 0 },

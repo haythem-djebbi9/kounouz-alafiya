@@ -1,87 +1,113 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import App from './App';
-import { LoginPage } from './pages/LoginPage';
-import { RegisterProducerPage } from './pages/RegisterProducerPage';
-import { RegisterConsumerPage } from './pages/RegisterConsumerPage';
 import { PublicVerifyPage } from './pages/PublicVerifyPage';
-import { GuidePage } from './pages/GuidePage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
-import { ProducerLayout } from './portals/producer/ProducerLayout';
-import { DashboardPage } from './portals/producer/DashboardPage';
-import { RequestsListPage } from './portals/producer/RequestsListPage';
-import { NewRequestPage } from './portals/producer/NewRequestPage';
-import { RequestDetailPage } from './portals/producer/RequestDetailPage';
-import { ProfilePage } from './portals/producer/ProfilePage';
-import { ProductsPage as ProducerProductsPage } from './portals/producer/ProductsPage';
-import { SettingsPage as ProducerSettingsPage } from './portals/producer/SettingsPage';
-import { HelpPage as ProducerHelpPage } from './portals/producer/HelpPage';
-import { SamplesPage as ProducerSamplesPage } from './portals/producer/SamplesPage';
-import { BatchesPage as ProducerBatchesPage } from './portals/producer/BatchesPage';
-import { NotificationsPage as ProducerNotificationsPage } from './portals/producer/NotificationsPage';
-import { SalesDashboardPage } from './portals/producer/sales/SalesDashboardPage';
-import { SalesHistoryPage } from './portals/producer/sales/SalesHistoryPage';
-import { EarningsPage } from './portals/producer/sales/EarningsPage';
-import { SettlementDetailsPage } from './portals/producer/sales/SettlementDetailsPage';
-import { AgentLayout } from './portals/agent/AgentLayout';
-import { DashboardPage as AgentDashboardPage } from './portals/agent/pages/DashboardPage';
-import { AssignmentsPage as AgentAssignmentsPage } from './portals/agent/pages/AssignmentsPage';
-import { AssignmentDetailPage as AgentAssignmentDetailPage } from './portals/agent/pages/AssignmentDetailPage';
-import { CollectionHomePage as AgentCollectionHomePage } from './portals/agent/pages/CollectionHomePage';
-import { CollectionWizardPage as AgentCollectionWizardPage } from './portals/agent/pages/CollectionWizardPage';
-import { SealsPage as AgentSealsPage } from './portals/agent/pages/SealsPage';
-import { CustodyListPage as AgentCustodyListPage } from './portals/agent/pages/CustodyListPage';
-import { CustodyDetailPage as AgentCustodyDetailPage } from './portals/agent/pages/CustodyDetailPage';
-import { VisitsPage as AgentVisitsPage } from './portals/agent/pages/VisitsPage';
-import { ReportsPage as AgentReportsPage } from './portals/agent/pages/ReportsPage';
-import { NotificationsPage as AgentNotificationsPage } from './portals/agent/pages/NotificationsPage';
-import { MessagesPage as AgentMessagesPage } from './portals/agent/pages/MessagesPage';
-import { SettingsPage as AgentSettingsPage } from './portals/agent/SettingsPage';
-import { HelpPage as AgentHelpPage } from './portals/agent/HelpPage';
-import { AdminLayout } from './portals/admin/AdminLayout';
-import { DashboardPage as AdminDashboardPage } from './portals/admin/console/pages/DashboardPage';
-import { UsersRolesPage } from './portals/admin/console/pages/UsersRolesPage';
-import { ProducersManagementPage } from './portals/admin/console/pages/ProducersManagementPage';
-import { LaboratoriesManagementPage } from './portals/admin/console/pages/LaboratoriesManagementPage';
-import { AuditLogPage } from './portals/admin/console/pages/AuditLogPage';
-import { QrScanAnalyticsPage } from './portals/admin/console/pages/QrScanAnalyticsPage';
-import { AntiCounterfeitAlertsPage } from './portals/admin/console/pages/AntiCounterfeitAlertsPage';
-import { BusinessAnalyticsPage } from './portals/admin/console/pages/BusinessAnalyticsPage';
-import { ProducerDetailPage } from './portals/admin/pages/ProducerDetailPage';
-import { RequestsPage as AdminRequestsPage } from './portals/admin/pages/RequestsPage';
-import { RequestDetailPage as AdminRequestDetailPage } from './portals/admin/pages/RequestDetailPage';
-import { SamplesPage } from './portals/admin/pages/SamplesPage';
-import { SampleDetailPage as AdminSampleDetailPage } from './portals/admin/pages/SampleDetailPage';
-import { SealsPage } from './portals/admin/pages/SealsPage';
-import { LaboratoryPage } from './portals/admin/pages/LaboratoryPage';
-import { VerificationPage } from './portals/admin/pages/VerificationPage';
-import { BatchesPage } from './portals/admin/pages/BatchesPage';
-import { PackagingPage } from './portals/admin/pages/PackagingPage';
-import { ProductsPage as AdminProductsPage } from './portals/admin/pages/ProductsPage';
-import { ProductDetailPage } from './portals/admin/pages/ProductDetailPage';
-import { CategoriesPage } from './portals/admin/pages/CategoriesPage';
-import { QrCodesPage } from './portals/admin/pages/QrCodesPage';
-import { ReportsPage } from './portals/admin/pages/ReportsPage';
-import { TeamPage } from './portals/admin/pages/TeamPage';
-import { SettingsPage as AdminSettingsPage } from './portals/admin/pages/SettingsPage';
-import { HelpPage as AdminHelpPage } from './portals/admin/pages/HelpPage';
-import { SupportInboxPage } from './portals/admin/pages/SupportInboxPage';
-import { OrdersPage as AdminOrdersPage } from './portals/admin/pages/OrdersPage';
-import { SettlementsPage as AdminSettlementsPage } from './portals/admin/pages/SettlementsPage';
-import { VerifierLayout } from './portals/verifier/VerifierLayout';
-import { DashboardPage as VerifierDashboardPage } from './portals/verifier/pages/DashboardPage';
-import { VerificationCenterPage } from './portals/verifier/pages/VerificationCenterPage';
-import { RequestReviewPage } from './portals/verifier/pages/RequestReviewPage';
-import { SampleManagementPage } from './portals/verifier/pages/SampleManagementPage';
-import { LaboratoryPage as VerifierLaboratoryPage } from './portals/verifier/pages/LaboratoryPage';
-import { ReferenceSamplesPage } from './portals/verifier/pages/ReferenceSamplesPage';
-import { VerificationDecisionPage } from './portals/verifier/pages/VerificationDecisionPage';
-import { VerifiedBatchesPage } from './portals/verifier/pages/VerifiedBatchesPage';
-import { BatchDetailPage } from './portals/verifier/pages/BatchDetailPage';
-import { PackagingPage as VerifierPackagingPage } from './portals/verifier/pages/PackagingPage';
-import { ProductCreationPage } from './portals/verifier/pages/ProductCreationPage';
-import { QrGenerationPage } from './portals/verifier/pages/QrGenerationPage';
-import { QrManagementPage } from './portals/verifier/pages/QrManagementPage';
+
+// Chaque portail (producteur, agent, vérification, administration) et les
+// pages de connexion sont chargés à la demande : un visiteur de la vitrine ne
+// télécharge que la vitrine. La page de vérification publique (/verify, ouverte
+// par un scan de QR) reste dans le paquet principal pour s'afficher d'emblée.
+const PageLoader: React.FC = () => (
+  <div className="min-h-[50vh] grid place-items-center" role="status" aria-live="polite">
+    <span className="w-9 h-9 rounded-full border-4 border-[#EAE1D2] border-t-[#D49B37] animate-spin" />
+  </div>
+);
+
+function lazyPage<M extends Record<string, unknown>>(load: () => Promise<M>, name: keyof M & string): React.FC {
+  const Inner = lazy(async () => ({ default: (await load())[name] as React.ComponentType }));
+  const Page: React.FC = () => (
+    <Suspense fallback={<PageLoader />}>
+      <Inner />
+    </Suspense>
+  );
+  Page.displayName = name;
+  return Page;
+}
+
+const LoginPage = lazyPage(() => import('./pages/LoginPage'), 'LoginPage');
+const RegisterProducerPage = lazyPage(() => import('./pages/RegisterProducerPage'), 'RegisterProducerPage');
+const RegisterConsumerPage = lazyPage(() => import('./pages/RegisterConsumerPage'), 'RegisterConsumerPage');
+const GuidePage = lazyPage(() => import('./pages/GuidePage'), 'GuidePage');
+const ProducerLayout = lazyPage(() => import('./portals/producer/ProducerLayout'), 'ProducerLayout');
+const DashboardPage = lazyPage(() => import('./portals/producer/DashboardPage'), 'DashboardPage');
+const RequestsListPage = lazyPage(() => import('./portals/producer/RequestsListPage'), 'RequestsListPage');
+const NewRequestPage = lazyPage(() => import('./portals/producer/NewRequestPage'), 'NewRequestPage');
+const RequestDetailPage = lazyPage(() => import('./portals/producer/RequestDetailPage'), 'RequestDetailPage');
+const ProfilePage = lazyPage(() => import('./portals/producer/ProfilePage'), 'ProfilePage');
+const ProducerProductsPage = lazyPage(() => import('./portals/producer/ProductsPage'), 'ProductsPage');
+const ProducerSettingsPage = lazyPage(() => import('./portals/producer/SettingsPage'), 'SettingsPage');
+const ProducerHelpPage = lazyPage(() => import('./portals/producer/HelpPage'), 'HelpPage');
+const ProducerSamplesPage = lazyPage(() => import('./portals/producer/SamplesPage'), 'SamplesPage');
+const ProducerBatchesPage = lazyPage(() => import('./portals/producer/BatchesPage'), 'BatchesPage');
+const ProducerNotificationsPage = lazyPage(() => import('./portals/producer/NotificationsPage'), 'NotificationsPage');
+const SalesDashboardPage = lazyPage(() => import('./portals/producer/sales/SalesDashboardPage'), 'SalesDashboardPage');
+const SalesHistoryPage = lazyPage(() => import('./portals/producer/sales/SalesHistoryPage'), 'SalesHistoryPage');
+const EarningsPage = lazyPage(() => import('./portals/producer/sales/EarningsPage'), 'EarningsPage');
+const SettlementDetailsPage = lazyPage(() => import('./portals/producer/sales/SettlementDetailsPage'), 'SettlementDetailsPage');
+const AgentLayout = lazyPage(() => import('./portals/agent/AgentLayout'), 'AgentLayout');
+const AgentDashboardPage = lazyPage(() => import('./portals/agent/pages/DashboardPage'), 'DashboardPage');
+const AgentAssignmentsPage = lazyPage(() => import('./portals/agent/pages/AssignmentsPage'), 'AssignmentsPage');
+const AgentAssignmentDetailPage = lazyPage(() => import('./portals/agent/pages/AssignmentDetailPage'), 'AssignmentDetailPage');
+const AgentCollectionHomePage = lazyPage(() => import('./portals/agent/pages/CollectionHomePage'), 'CollectionHomePage');
+const AgentCollectionWizardPage = lazyPage(() => import('./portals/agent/pages/CollectionWizardPage'), 'CollectionWizardPage');
+const AgentSealsPage = lazyPage(() => import('./portals/agent/pages/SealsPage'), 'SealsPage');
+const AgentCustodyListPage = lazyPage(() => import('./portals/agent/pages/CustodyListPage'), 'CustodyListPage');
+const AgentCustodyDetailPage = lazyPage(() => import('./portals/agent/pages/CustodyDetailPage'), 'CustodyDetailPage');
+const AgentVisitsPage = lazyPage(() => import('./portals/agent/pages/VisitsPage'), 'VisitsPage');
+const AgentReportsPage = lazyPage(() => import('./portals/agent/pages/ReportsPage'), 'ReportsPage');
+const AgentNotificationsPage = lazyPage(() => import('./portals/agent/pages/NotificationsPage'), 'NotificationsPage');
+const AgentMessagesPage = lazyPage(() => import('./portals/agent/pages/MessagesPage'), 'MessagesPage');
+const AgentSettingsPage = lazyPage(() => import('./portals/agent/SettingsPage'), 'SettingsPage');
+const AgentHelpPage = lazyPage(() => import('./portals/agent/HelpPage'), 'HelpPage');
+const AdminLayout = lazyPage(() => import('./portals/admin/AdminLayout'), 'AdminLayout');
+const AdminDashboardPage = lazyPage(() => import('./portals/admin/console/pages/DashboardPage'), 'DashboardPage');
+const UsersRolesPage = lazyPage(() => import('./portals/admin/console/pages/UsersRolesPage'), 'UsersRolesPage');
+const ProducersManagementPage = lazyPage(() => import('./portals/admin/console/pages/ProducersManagementPage'), 'ProducersManagementPage');
+const LaboratoriesManagementPage = lazyPage(() => import('./portals/admin/console/pages/LaboratoriesManagementPage'), 'LaboratoriesManagementPage');
+const AuditLogPage = lazyPage(() => import('./portals/admin/console/pages/AuditLogPage'), 'AuditLogPage');
+const QrScanAnalyticsPage = lazyPage(() => import('./portals/admin/console/pages/QrScanAnalyticsPage'), 'QrScanAnalyticsPage');
+const AntiCounterfeitAlertsPage = lazyPage(() => import('./portals/admin/console/pages/AntiCounterfeitAlertsPage'), 'AntiCounterfeitAlertsPage');
+const BusinessAnalyticsPage = lazyPage(() => import('./portals/admin/console/pages/BusinessAnalyticsPage'), 'BusinessAnalyticsPage');
+const ProducerDetailPage = lazyPage(() => import('./portals/admin/pages/ProducerDetailPage'), 'ProducerDetailPage');
+const AdminRequestsPage = lazyPage(() => import('./portals/admin/pages/RequestsPage'), 'RequestsPage');
+const AdminRequestDetailPage = lazyPage(() => import('./portals/admin/pages/RequestDetailPage'), 'RequestDetailPage');
+const SamplesPage = lazyPage(() => import('./portals/admin/pages/SamplesPage'), 'SamplesPage');
+const AdminSampleDetailPage = lazyPage(() => import('./portals/admin/pages/SampleDetailPage'), 'SampleDetailPage');
+const SealsPage = lazyPage(() => import('./portals/admin/pages/SealsPage'), 'SealsPage');
+const LaboratoryPage = lazyPage(() => import('./portals/admin/pages/LaboratoryPage'), 'LaboratoryPage');
+const VerificationPage = lazyPage(() => import('./portals/admin/pages/VerificationPage'), 'VerificationPage');
+const BatchesPage = lazyPage(() => import('./portals/admin/pages/BatchesPage'), 'BatchesPage');
+const PackagingPage = lazyPage(() => import('./portals/admin/pages/PackagingPage'), 'PackagingPage');
+const AdminProductsPage = lazyPage(() => import('./portals/admin/pages/ProductsPage'), 'ProductsPage');
+const ProductDetailPage = lazyPage(() => import('./portals/admin/pages/ProductDetailPage'), 'ProductDetailPage');
+const CategoriesPage = lazyPage(() => import('./portals/admin/pages/CategoriesPage'), 'CategoriesPage');
+const QrCodesPage = lazyPage(() => import('./portals/admin/pages/QrCodesPage'), 'QrCodesPage');
+const ReportsPage = lazyPage(() => import('./portals/admin/pages/ReportsPage'), 'ReportsPage');
+const TeamPage = lazyPage(() => import('./portals/admin/pages/TeamPage'), 'TeamPage');
+const AdminSettingsPage = lazyPage(() => import('./portals/admin/pages/SettingsPage'), 'SettingsPage');
+const AdminHelpPage = lazyPage(() => import('./portals/admin/pages/HelpPage'), 'HelpPage');
+const SupportInboxPage = lazyPage(() => import('./portals/admin/pages/SupportInboxPage'), 'SupportInboxPage');
+const AdminOrdersPage = lazyPage(() => import('./portals/admin/pages/OrdersPage'), 'OrdersPage');
+const AdminSettlementsPage = lazyPage(() => import('./portals/admin/pages/SettlementsPage'), 'SettlementsPage');
+const VerifierLayout = lazyPage(() => import('./portals/verifier/VerifierLayout'), 'VerifierLayout');
+const VerifierDashboardPage = lazyPage(() => import('./portals/verifier/pages/DashboardPage'), 'DashboardPage');
+const VerificationCenterPage = lazyPage(() => import('./portals/verifier/pages/VerificationCenterPage'), 'VerificationCenterPage');
+const RequestReviewPage = lazyPage(() => import('./portals/verifier/pages/RequestReviewPage'), 'RequestReviewPage');
+const SampleManagementPage = lazyPage(() => import('./portals/verifier/pages/SampleManagementPage'), 'SampleManagementPage');
+const VerifierLaboratoryPage = lazyPage(() => import('./portals/verifier/pages/LaboratoryPage'), 'LaboratoryPage');
+const ReferenceSamplesPage = lazyPage(() => import('./portals/verifier/pages/ReferenceSamplesPage'), 'ReferenceSamplesPage');
+const VerificationDecisionPage = lazyPage(() => import('./portals/verifier/pages/VerificationDecisionPage'), 'VerificationDecisionPage');
+const VerifiedBatchesPage = lazyPage(() => import('./portals/verifier/pages/VerifiedBatchesPage'), 'VerifiedBatchesPage');
+const BatchDetailPage = lazyPage(() => import('./portals/verifier/pages/BatchDetailPage'), 'BatchDetailPage');
+const VerifierPackagingPage = lazyPage(() => import('./portals/verifier/pages/PackagingPage'), 'PackagingPage');
+const ProductCreationPage = lazyPage(() => import('./portals/verifier/pages/ProductCreationPage'), 'ProductCreationPage');
+const QrGenerationPage = lazyPage(() => import('./portals/verifier/pages/QrGenerationPage'), 'QrGenerationPage');
+const QrManagementPage = lazyPage(() => import('./portals/verifier/pages/QrManagementPage'), 'QrManagementPage');
+
+const CommissionPage = lazyPage(() => import('./portals/admin/pages/CommissionPage'), 'CommissionPage');
+const BlogListPage = lazyPage(() => import('./portals/admin/pages/BlogListPage'), 'BlogListPage');
+const BlogEditorPage = lazyPage(() => import('./portals/admin/pages/BlogEditorPage'), 'BlogEditorPage');
 
 const LegacySampleRedirect: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -220,6 +246,10 @@ export const AppRouter: React.FC = () => {
         <Route path="qr-codes" element={<QrCodesPage />} />
         <Route path="commandes" element={<AdminOrdersPage />} />
         <Route path="reglements" element={<AdminSettlementsPage />} />
+        <Route path="commission" element={<CommissionPage />} />
+        <Route path="blog" element={<BlogListPage />} />
+        <Route path="blog/nouveau" element={<BlogEditorPage />} />
+        <Route path="blog/:id" element={<BlogEditorPage />} />
         <Route path="rapports" element={<ReportsPage />} />
         <Route path="support" element={<SupportInboxPage />} />
         <Route path="parametres" element={<AdminSettingsPage />} />

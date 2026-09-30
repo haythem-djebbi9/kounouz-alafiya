@@ -27,6 +27,8 @@ const PRODUCT_INCLUDE = {
 
 // Catalogue public : ajoute la provenance (producteur/lot) nécessaire à
 // l'affichage de la traçabilité sur la fiche produit du marketplace.
+const CATALOG_CACHE_MS = 30_000;
+
 const PUBLIC_PRODUCT_INCLUDE = {
   categorie: true,
   qrCodes: PRIMARY_QR_SELECT,
@@ -234,7 +236,15 @@ export class ProductsService {
   }
 
   // Catalogue public (marketplace) : uniquement les produits publiés.
+  // Catalogue public : chaque visiteur de la vitrine le demande, alors qu'il
+  // change rarement. Gardé 30 s en mémoire ; la commande revérifie de toute
+  // façon le stock au moment de l'achat.
+  private readonly catalogCache = new Map<string, { at: number; data: unknown }>();
+
   async findPublicCatalog(categorieSlug?: string) {
+    const key = categorieSlug ?? '*';
+    const cached = this.catalogCache.get(key);
+    if (cached && Date.now() - cached.at < CATALOG_CACHE_MS) return cached.data;
     const products = await this.prisma.product.findMany({
       where: {
         statut: ProductStatus.PUBLIE,
@@ -243,7 +253,10 @@ export class ProductsService {
       include: PUBLIC_PRODUCT_INCLUDE,
       orderBy: { createdAt: 'desc' },
     });
-    return withPrimaryQrAll(products);
+    const data = withPrimaryQrAll(products);
+    if (this.catalogCache.size > 50) this.catalogCache.clear();
+    this.catalogCache.set(key, { at: Date.now(), data });
+    return data;
   }
 
   async findPublicOne(id: string) {

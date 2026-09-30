@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, MotionConfig } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { PageView, Product, CartItem, Article, cartLineKey } from './types';
+import { PageView, Product, CartItem, cartLineKey } from './types';
 import { usePublicCategories, usePublicProducts } from './lib/marketplace-hooks';
 import { toMockProduct } from './lib/product-adapter';
 import { useAuth } from './lib/auth-context';
@@ -33,6 +33,7 @@ import { HomeFaq } from './components/home/HomeFaq';
 import { ProductsPage } from './components/ProductsPage';
 import { StoryPage } from './components/StoryPage';
 import { VerificationPage } from './components/VerificationPage';
+import { BlogPage } from './components/BlogPage';
 import { HelpSupportPanel } from './components/support/HelpSupportPanel';
 import { SettingsPanel } from './components/settings/SettingsPanel';
 
@@ -46,9 +47,16 @@ import { InteractiveBee } from './components/InteractiveBee';
 
 export default function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation('marketplace');
   const { isAuthenticated } = useAuth();
-  const [currentPage, setCurrentPage] = useState<PageView>('home');
+  // Le blog a de vraies adresses (/blog, /blog/<article>) pour être partagé ;
+  // les autres pages de la vitrine restent sur « / ».
+  const blogMatch = location.pathname.match(/^\/blog(?:\/([^/]+))?\/?$/);
+  const articleSlug = blogMatch?.[1] ? decodeURIComponent(blogMatch[1]) : null;
+  const [currentPage, setCurrentPage] = useState<PageView>(() => (blogMatch ? 'blog' : 'home'));
+  // Page d'où l'article a été ouvert, pour y revenir à la fermeture.
+  const articleReturnPath = useRef<string | null>(null);
 
   const { data: apiCategories } = usePublicCategories();
   const { data: apiProducts, isLoading: productsLoading } = usePublicProducts();
@@ -75,7 +83,6 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
 
   // Scroll to top on navigation
   const handleNavigate = (page: PageView) => {
@@ -86,8 +93,34 @@ export default function App() {
       return;
     }
     setCurrentPage(page);
+    const target = page === 'blog' ? '/blog' : '/';
+    if (location.pathname !== target) navigate(target);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Retour / avance du navigateur entre « / » et « /blog ».
+  useEffect(() => {
+    if (location.pathname === '/blog' || location.pathname === '/blog/') setCurrentPage('blog');
+    else if (location.pathname === '/') setCurrentPage((page) => (page === 'blog' ? 'home' : page));
+  }, [location.pathname]);
+
+  const openArticle = useCallback(
+    (slug: string) => {
+      if (!articleSlug) articleReturnPath.current = location.pathname;
+      navigate(`/blog/${encodeURIComponent(slug)}`);
+    },
+    [articleSlug, location.pathname, navigate],
+  );
+
+  const closeArticle = useCallback(() => {
+    if (articleReturnPath.current !== null) {
+      articleReturnPath.current = null;
+      navigate(-1);
+    } else {
+      // Article ouvert directement par son lien : on reste sur le blog.
+      navigate('/blog', { replace: true });
+    }
+  }, [navigate]);
 
   const handleAddToCart = (
     product: Product,
@@ -212,8 +245,8 @@ export default function App() {
 
                 {/* 8. Articles */}
                 <FromWorldSection
-                  onOpenArticle={(art) => setSelectedArticle(art)}
-                  onShowAll={() => handleNavigate('products')}
+                  onOpenArticle={openArticle}
+                  onShowAll={() => handleNavigate('blog')}
                 />
 
                 {/* 9. Questions fréquentes */}
@@ -235,7 +268,8 @@ export default function App() {
                 categories={categories}
                 onSelectProduct={(p) => setSelectedProduct(p)}
                 onAddToCart={(p) => handleAddToCart(p, 1, p.weight)}
-                onOpenArticle={(art) => setSelectedArticle(art)}
+                onOpenArticle={openArticle}
+                onShowBlog={() => handleNavigate('blog')}
                 onVerifyProduct={handleOpenVerify}
               />
             </motion.div>
@@ -264,6 +298,18 @@ export default function App() {
               transition={{ duration: 0.28, ease: 'easeOut' }}
             >
               <VerificationPage />
+            </motion.div>
+          )}
+
+          {currentPage === 'blog' && (
+            <motion.div
+              key="blog"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: 'easeOut' }}
+            >
+              <BlogPage onOpenArticle={openArticle} />
             </motion.div>
           )}
 
@@ -348,8 +394,12 @@ export default function App() {
       />
 
       <ArticleModal
-        article={selectedArticle}
-        onClose={() => setSelectedArticle(null)}
+        slug={articleSlug}
+        onClose={closeArticle}
+        onVerify={() => {
+          articleReturnPath.current = null;
+          handleOpenVerify();
+        }}
       />
 
       {/* Playful Interactive Honey Bee Companion */}

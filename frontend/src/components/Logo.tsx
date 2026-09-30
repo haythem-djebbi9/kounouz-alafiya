@@ -30,7 +30,7 @@ export const Logo: React.FC<LogoProps> = ({
       <div className="relative shrink-0 flex items-center justify-center">
         {!imgError ? (
           <img
-            src="/images/knozafialogo-removebg-preview.png"
+            src="/images/logo.webp"
             alt="شعار كنوز العافية"
             onError={() => setImgError(true)}
             className={`object-contain transition-all duration-200 ${

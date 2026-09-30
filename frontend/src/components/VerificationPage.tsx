@@ -41,7 +41,7 @@ export const VerificationPage: React.FC = () => {
     <div
       className="relative min-h-screen pt-3 pb-8 sm:pt-5 sm:pb-12 text-[#0C261B] bg-no-repeat overflow-hidden"
       style={{
-        backgroundImage: "url('/images/cover.png')",
+        backgroundImage: "url('/images/cover.webp')",
         backgroundSize: 'contain',
         backgroundPosition: 'center top',
         backgroundColor: '#FAF6EE',

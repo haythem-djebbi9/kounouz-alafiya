@@ -82,7 +82,7 @@ export async function seedFieldAgent(prisma: PrismaClient): Promise<void> {
           latitude: p.lat,
           longitude: p.lng,
           hivesCount: p.hives,
-          farmPhotos: ['/images/beekeeper.jpg'],
+          farmPhotos: ['/images/beekeeper.webp'],
           mainFlora: [p.honey.replace(/^Miel (de |d')?/, '')],
           activityType: 'BEEKEEPING',
         },
@@ -208,7 +208,7 @@ export async function seedFieldAgent(prisma: PrismaClient): Promise<void> {
         latitude: p.lat,
         longitude: p.lng,
         gpsAccuracy: 5,
-        photos: ['/images/beekeeper.jpg'],
+        photos: ['/images/beekeeper.webp'],
         status: visit.received ? 'RECEIVED_AT_LAB' : 'IN_TRANSIT',
         weather: { temperature: 24, humidity: 62, windSpeed: 12, code: 0 },
         createdAt: collectedAt,
@@ -219,7 +219,7 @@ export async function seedFieldAgent(prisma: PrismaClient): Promise<void> {
         sampleId: sample.id,
         sealCode: `KS-${year}-${String(784520 + i + 1)}`,
         sealedAt: new Date(collectedAt.getTime() + 4 * 60000),
-        photoUrl: '/images/beekeeper.jpg',
+        photoUrl: '/images/beekeeper.webp',
         latitude: p.lat,
         longitude: p.lng,
       },
@@ -239,10 +239,10 @@ export async function seedFieldAgent(prisma: PrismaClient): Promise<void> {
       evidenceUrl?: string;
     }[] = [
       { type: 'REGISTERED', occurredAt: minutes(0), userId: agent.id, ...farm },
-      { type: 'COLLECTED', occurredAt: minutes(0), userId: agent.id, ...farm, note: 'Prélevé sur ruches en production.', evidenceUrl: '/images/beekeeper.jpg' },
-      { type: 'SEALED', occurredAt: minutes(4), userId: agent.id, ...farm, note: seal.sealCode, evidenceUrl: '/images/beekeeper.jpg' },
+      { type: 'COLLECTED', occurredAt: minutes(0), userId: agent.id, ...farm, note: 'Prélevé sur ruches en production.', evidenceUrl: '/images/beekeeper.webp' },
+      { type: 'SEALED', occurredAt: minutes(4), userId: agent.id, ...farm, note: seal.sealCode, evidenceUrl: '/images/beekeeper.webp' },
       { type: 'RELEASED_FOR_TRANSPORT', occurredAt: minutes(246), userId: agent.id, location: `${p.town}, Tunisie`, latitude: p.lat + 0.0034, longitude: p.lng + 0.0048, handlerName: 'Cap Bon Express', note: 'Remis au transporteur partenaire.' },
-      { type: 'IN_TRANSIT', occurredAt: minutes(246), userId: agent.id, location: 'A1, Tunis, Tunisie', latitude: 36.6123, longitude: 10.3915, handlerName: 'Cap Bon Express', note: 'Véhicule en route vers le centre de vérification Kounouz.', evidenceUrl: '/images/beekeeper.jpg' },
+      { type: 'IN_TRANSIT', occurredAt: minutes(246), userId: agent.id, location: 'A1, Tunis, Tunisie', latitude: 36.6123, longitude: 10.3915, handlerName: 'Cap Bon Express', note: 'Véhicule en route vers le centre de vérification Kounouz.', evidenceUrl: '/images/beekeeper.webp' },
     ];
     if (visit.received) {
       events.push(

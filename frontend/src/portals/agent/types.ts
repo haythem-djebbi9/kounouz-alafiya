@@ -134,6 +134,8 @@ export interface DashboardData {
   range: { from: string; to: string };
   stats: { today: number; completed: number; inProgress: number; upcoming: number; overdue: number };
   assignments: Assignment[];
+  /** Missions ouvertes, renvoyées seulement quand aucune visite n'est prévue aujourd'hui. */
+  backlog?: Assignment[];
   samplesInCustody: (SampleSummary & { request: { honeyType: string; producer: { name: string } } })[];
 }
 

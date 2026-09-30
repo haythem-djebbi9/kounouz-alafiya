@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Header, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ProductStatus, Role } from '@prisma/client';
 import { ProductsService } from './products.service.js';
@@ -22,6 +22,7 @@ export class ProductsController {
 
   @Public()
   @Get('catalog')
+  @Header('Cache-Control', 'public, max-age=30, stale-while-revalidate=120')
   findPublicCatalog(@Query('categorie') categorieSlug?: string) {
     return this.service.findPublicCatalog(categorieSlug);
   }

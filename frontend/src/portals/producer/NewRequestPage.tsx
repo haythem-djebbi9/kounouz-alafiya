@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import i18n from '../../i18n';
+import i18n, { ensureNamespaceInAllLanguages } from '../../i18n';
 import {
   CalendarDays,
   Check,
@@ -138,10 +138,16 @@ export const NewRequestPage: React.FC = () => {
   const [notice, setNotice] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState<ProducerRequest | null>(null);
   const [initialized, setInitialized] = useState(!routeId);
+  // findKey compare le libellé enregistré aux trois langues : leurs textes
+  // doivent être chargés avant le pré-remplissage.
+  const [labelsReady, setLabelsReady] = useState(false);
+  useEffect(() => {
+    void ensureNamespaceInAllLanguages('producer').finally(() => setLabelsReady(true));
+  }, []);
 
   // Pré-remplissage : brouillon existant, sinon localisation de l'exploitation.
   useEffect(() => {
-    if (routeId && existing && !initialized) {
+    if (routeId && existing && !initialized && labelsReady) {
       const honeyKey = findKey(existing.honeyType, HONEY_TYPES.map((h) => h.key), 'honey.types');
       const [seasonKey, seasonYear] = (existing.productionSeason ?? '').split('_');
       setForm({
@@ -167,7 +173,7 @@ export const NewRequestPage: React.FC = () => {
       });
       setInitialized(true);
     }
-  }, [routeId, existing, initialized]);
+  }, [routeId, existing, initialized, labelsReady]);
 
   // Nouvelle demande : rucher principal proposé par défaut (ERD : demande -> rucher).
   useEffect(() => {
@@ -355,7 +361,7 @@ export const NewRequestPage: React.FC = () => {
             {step === 0 && (
               <>
                 <div className="relative overflow-hidden rounded-xl bg-[#EEF4EE] border border-[#DCEAE0] min-h-[120px]">
-                  <img src="/images/beekeeper.jpg" alt="" className="absolute inset-y-0 end-0 w-1/2 h-full object-cover object-left opacity-90 hidden sm:block" />
+                  <img src="/images/beekeeper.webp" alt="" className="absolute inset-y-0 end-0 w-1/2 h-full object-cover object-left opacity-90 hidden sm:block" />
                   <div className="absolute inset-y-0 end-0 w-1/2 bg-gradient-to-r rtl:bg-gradient-to-l from-[#EEF4EE] to-transparent hidden sm:block" />
                   <div className="relative flex items-center gap-4 p-5 sm:max-w-[60%]">
                     <span className="w-14 h-14 rounded-full bg-[#0B4A2F] text-white flex items-center justify-center shrink-0">
@@ -776,7 +782,7 @@ export const NewRequestPage: React.FC = () => {
                 <InfoCard tone="blue" icon={<Info className="w-5 h-5 text-[#1F5F9C]" />} title={t('producer:wizard.importantTitle')}>
                   <p>{t('producer:wizard.importantBody')}</p>
                 </InfoCard>
-                <ImageBanner image="/images/beekeeper.jpg" title={t('producer:brand.promoTitle')} className="h-28" />
+                <ImageBanner image="/images/beekeeper.webp" title={t('producer:brand.promoTitle')} className="h-28" />
                 <InfoCard tone="gold" icon={<Lightbulb className="w-5 h-5 text-[#D08C1A]" />} title={t('producer:wizard.tips.title')}>
                   <ul className="list-disc ps-4 space-y-1">
                     {(t('producer:wizard.tips.items', { returnObjects: true }) as string[]).map((item) => (

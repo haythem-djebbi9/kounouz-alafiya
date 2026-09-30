@@ -216,6 +216,29 @@ sous-système Commande/Paiement, hors périmètre de cette itération.
 Endpoints : `GET /notifications` (50 dernières), `GET /notifications/unread-count`,
 `PATCH /notifications/:id/read`, `PATCH /notifications/read-all`.
 
+## Version 1.0 — commission, blog, cartes, performances
+
+- **Prix en dinars tunisiens partout** : un seul formateur (`frontend/src/lib/format-price.ts`,
+  `backend/src/common/money.ts`) pour la vitrine, les portails, les reçus PDF et les
+  notifications — `89,900 DT`, `35 د.ت`, `35 TND` selon la langue, sans inversion dans une
+  phrase de sens contraire. Le prix d'un format suit son poids (migration
+  `20260930130000_variant_prices_by_weight`).
+- **Commission Kounouz réglable** : 20 % par défaut, modifiable par l'administrateur dans
+  *Ventes → Commission* (`GET/PUT /commission`), journalisée. Chaque ligne de commande fige le
+  taux du jour de la vente : un changement ne réécrit jamais le passé.
+- **Blog géré depuis la console** (*Blog*) : articles en arabe, français et anglais, brouillon
+  ou publié, image téléversée gardée en base. Vitrine : page `/blog`, liens partageables
+  `/blog/<article>`. API : `GET /blog`, `GET /blog/:slug`, CRUD admin sous `/blog`.
+- **Cartes** : fond OpenStreetMap sans clé, bascule automatique sur un fond de secours
+  (`frontend/src/lib/map-tiles.ts`). Les tuiles CARTO utilisées auparavant exigent désormais
+  une clé. Fournisseur avec clé possible via `VITE_MAP_TILE_URL` (voir `frontend/.env.example`).
+- **Performances** : portails et traductions chargés à la demande (script principal
+  584 → 139 Ko gzip), images en WebP (≈ 20 Mo → 1,5 Mo), réponses de l'API compressées,
+  catalogue public mis en cache 30 s, en-têtes de cache sur Vercel et nginx.
+- **Recette automatique** : `node scripts/scenario-demo.mjs` rejoue le scénario de
+  démonstration (51 contrôles) et remet les données dans leur état. Contre la démo en ligne :
+  `API_URL=https://kounouz-alafiya.onrender.com/api SITE_URL=https://kounouz-alafiya.vercel.app node scripts/scenario-demo.mjs`.
+
 ## Structure du dépôt
 
 ```

@@ -1,33 +1,23 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Article } from '../types';
-import { Clock, Instagram } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { ForwardArrow, SectionHeading } from './home/ui';
+import { usePublicBlogPosts } from '../lib/blog';
+import { BlogCard, BlogCardSkeleton } from './blog/BlogCard';
 
 interface FromWorldSectionProps {
-  onOpenArticle: (article: Article) => void;
+  onOpenArticle: (slug: string) => void;
   onShowAll: () => void;
 }
 
-const STORIES = [
-  { key: 'story1', id: 'art-4', image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=600&q=80' },
-  { key: 'story2', id: 'art-5', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80' },
-  { key: 'story3', id: 'art-6', image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=600&q=80' },
-  { key: 'story4', id: 'art-1', image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=600&q=80' },
-] as const;
-
+// Derniers articles du blog sur l'accueil (gérés depuis la console
+// d'administration). Sans article publié, la section disparaît.
 export const FromWorldSection: React.FC<FromWorldSectionProps> = ({ onOpenArticle, onShowAll }) => {
   const { t } = useTranslation('marketplace');
-  const articles: Article[] = STORIES.map(({ key, id, image }) => ({
-    id,
-    image,
-    title: t(`marketplace:fromWorld.stories.${key}.articleTitle`),
-    date: t(`marketplace:fromWorld.stories.${key}.date`),
-    readTime: t(`marketplace:fromWorld.stories.${key}.readTime`),
-    snippet: t(`marketplace:fromWorld.stories.${key}.snippet`),
-    category: t(`marketplace:fromWorld.stories.${key}.category`),
-  }));
+  const { data: posts, isLoading } = usePublicBlogPosts(4);
+
+  if (!isLoading && (!posts || posts.length === 0)) return null;
 
   return (
     <section id="from-world-section" className="py-16 sm:py-24 bg-[#FAF6EE]">
@@ -39,46 +29,17 @@ export const FromWorldSection: React.FC<FromWorldSectionProps> = ({ onOpenArticl
         />
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-          {articles.map((article, idx) => (
-            <motion.button
-              type="button"
-              key={article.id}
+          {isLoading && [0, 1, 2, 3].map((i) => <BlogCardSkeleton key={i} />)}
+          {posts?.map((post, idx) => (
+            <motion.div
+              key={post.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.45, delay: idx * 0.1 }}
-              whileHover={{ y: -6 }}
-              onClick={() => onOpenArticle(article)}
-              className="group flex flex-col text-start bg-white rounded-2xl overflow-hidden border border-[#EAE1D2] hover:border-[#D49B37]/60 shadow-sm hover:shadow-lg transition-[border-color,box-shadow] cursor-pointer"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#EAE1D2]/50">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <span className="absolute top-3 start-3 bg-white/90 backdrop-blur-sm text-[#96661A] text-[11px] font-bold px-2.5 py-1 rounded-full">
-                  {article.category}
-                </span>
-              </div>
-              <div className="flex flex-col flex-grow p-4 sm:p-5">
-                <h3 className="text-base font-bold text-[#0C261B] leading-snug group-hover:text-[#96661A] transition-colors">
-                  {article.title}
-                </h3>
-                <p className="mt-2 text-sm text-[#6F827B] leading-relaxed line-clamp-2">{article.snippet}</p>
-                <div className="mt-auto pt-4 flex items-center justify-between text-xs text-[#8C7A60]">
-                  <span className="inline-flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    {article.readTime}
-                  </span>
-                  <span className="inline-flex items-center gap-1 font-bold text-[#C68A28]">
-                    {t('marketplace:home.articles.read')}
-                    <ForwardArrow className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
-            </motion.button>
+              <BlogCard post={post} onOpen={onOpenArticle} />
+            </motion.div>
           ))}
         </div>
 
@@ -106,9 +67,9 @@ export const FromWorldSection: React.FC<FromWorldSectionProps> = ({ onOpenArticl
           <button
             id="blog-show-more-btn"
             onClick={onShowAll}
-            className="inline-flex items-center justify-center gap-2 bg-[#0C261B] hover:bg-[#143B2B] text-white font-bold text-sm px-7 py-2.5 rounded-xl transition-colors cursor-pointer group"
+            className="inline-flex items-center justify-center gap-2 bg-[#0C261B] hover:bg-[#143B2B] text-white font-bold text-sm px-7 py-2.5 rounded-xl transition-colors cursor-pointer group whitespace-nowrap"
           >
-            {t('marketplace:fromWorld.showMore')}
+            {t('marketplace:blog.allArticles')}
             <ForwardArrow className="w-4 h-4 text-[#D49B37]" />
           </button>
         </motion.div>

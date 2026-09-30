@@ -36,6 +36,7 @@ import { EventsModule } from './events/events.module.js';
 import { VariantsModule } from './products/variants.module.js';
 import { OperationsModule } from './operations/operations.module.js';
 import { AssistantModule } from './assistant/assistant.module.js';
+import { BlogModule } from './blog/blog.module.js';
 import { ActorContextInterceptor } from './common/actor-context.interceptor.js';
 import { AdminOverrideInterceptor } from './common/admin-override.js';
 import { IdempotencyInterceptor, IdempotencyJanitor } from './common/idempotency.js';
@@ -87,6 +88,7 @@ import { requestContextMiddleware } from './common/request-context.js';
     HealthModule,
     OperationsModule,
     AssistantModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [

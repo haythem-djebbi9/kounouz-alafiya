@@ -36,7 +36,9 @@
     "support": "الدعم",
     "settings": "الإعدادات",
     "help": "المساعدة",
-    "verifierPortal": "بوابة التحقق"
+    "verifierPortal": "بوابة التحقق",
+    "commission": "العمولة",
+    "blog": "المدونة"
   },
   "search": {
     "placeholder": "ابحث عن أي شيء (منتجون، دفعات، رموز QR، مستخدمون…)",
@@ -852,7 +854,8 @@
       "ANTI_COUNTERFEIT": "مكافحة التقليد",
       "SALES": "المبيعات",
       "SYSTEM": "النظام",
-      "SETTINGS": "الإعدادات"
+      "SETTINGS": "الإعدادات",
+      "CONTENT": "محتوى الموقع"
     },
     "entity": {
       "Producer": "المنتج",
@@ -862,7 +865,8 @@
       "Batch": "الدفعة",
       "Product": "المنتج",
       "Laboratory": "المخبر",
-      "CounterfeitAlert": "التنبيه"
+      "CounterfeitAlert": "التنبيه",
+      "BlogPost": "مقال"
     },
     "batchStatus": {
       "CREATED": "موثّقة",
@@ -990,6 +994,12 @@
     "ORDER_CANCELLED": "إلغاء طلبية",
     "PAY_SETTLEMENT": "صرف مستحقات منتج",
     "SYSTEM_BACKUP": "اكتمال النسخ الاحتياطي اليومي للقاعدة",
-    "SEED_ADMIN_CONSOLE": "تحميل بيانات العرض التوضيحي"
+    "SEED_ADMIN_CONSOLE": "تحميل بيانات العرض التوضيحي",
+    "CREATE_BLOG_POST": "إنشاء مقال في المدونة",
+    "UPDATE_BLOG_POST": "تعديل مقال في المدونة",
+    "PUBLISH_BLOG_POST": "نشر مقال في المدونة",
+    "UNPUBLISH_BLOG_POST": "إلغاء نشر مقال",
+    "DELETE_BLOG_POST": "حذف مقال من المدونة",
+    "UPDATE_COMMISSION_RATE": "تعديل نسبة العمولة"
   }
 }

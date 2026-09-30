@@ -1,5 +1,4 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import {
   NotificationType,
   OrderStatus,
@@ -15,6 +14,8 @@ import { ProductVariantsService } from '../products/product-variants.service.js'
 import { DomainEventsService } from '../events/domain-events.service.js';
 import { EventType } from '../events/event-types.js';
 import { aggregateBySku, lineAmounts } from './sku-report.js';
+import { CommissionService } from './commission.service.js';
+import { formatDt } from '../common/money.js';
 
 // Frais de livraison alignés sur le panier de la vitrine (CartDrawer).
 const SHIPPING_FEE = 25;
@@ -73,15 +74,10 @@ export class SalesService {
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
     private readonly notifications: NotificationsService,
-    private readonly config: ConfigService,
+    private readonly commission: CommissionService,
     private readonly variants: ProductVariantsService,
     private readonly domainEvents: DomainEventsService,
   ) {}
-
-  private commissionRate(): number {
-    const raw = Number(this.config.get<string>('KOUNOUZ_COMMISSION_RATE', '0.2'));
-    return Number.isFinite(raw) && raw >= 0 && raw < 1 ? raw : 0.2;
-  }
 
   private async producerForUser(userId: string) {
     const producer = await this.prisma.producer.findUnique({ where: { userId } });
@@ -120,7 +116,7 @@ export class SalesService {
       bySku.set(variant.id, entry);
     }
 
-    const rate = this.commissionRate();
+    const rate = await this.commission.currentRate();
     const lines = [...bySku.values()].map(({ variant, quantity }) => {
       const product = productById.get(variant.productId)!;
       const producerId = product.batch?.verification.request.producerId;
@@ -277,13 +273,13 @@ export class SalesService {
       orderBy: { order: { createdAt: 'desc' } },
     });
     // P09 : ventes par SKU (unités, brut, commission, net).
-    return { commissionRate: this.commissionRate(), items, bySku: aggregateBySku(items) };
+    return { commissionRate: await this.commission.currentRate(), items, bySku: aggregateBySku(items) };
   }
 
   // Une période de règlement = les lignes LIVRÉES au cours du mois. Une fois
   // payée, la période est figée dans Payout (les montants ne bougent plus).
   private async computeSettlements(producerId: string) {
-    const [deliveredItems, payouts] = await Promise.all([
+    const [deliveredItems, payouts, currentRate] = await Promise.all([
       this.prisma.orderItem.findMany({
         where: { producerId, order: { status: OrderStatus.DELIVERED, deliveredAt: { not: null } } },
         select: {
@@ -296,6 +292,7 @@ export class SalesService {
         },
       }),
       this.prisma.payout.findMany({ where: { producerId } }),
+      this.commission.currentRate(),
     ]);
 
     const byPeriod = new Map<
@@ -336,7 +333,7 @@ export class SalesService {
         grossAmount: gross,
         commissionAmount: commission,
         netAmount: payout ? Number(payout.netAmount) : round2(bucket?.net ?? 0),
-        commissionRate: gross > 0 ? round2((commission / gross) * 10000) / 10000 : this.commissionRate(),
+        commissionRate: gross > 0 ? round2((commission / gross) * 10000) / 10000 : currentRate,
         paidAt: payout?.paidAt ?? null,
         reference: payout?.reference ?? null,
       };
@@ -347,7 +344,7 @@ export class SalesService {
     const producer = await this.producerForUser(userId);
     const settlements = await this.computeSettlements(producer.id);
     return {
-      commissionRate: this.commissionRate(),
+      commissionRate: await this.commission.currentRate(),
       payment: { paymentMethod: producer.paymentMethod, bankName: producer.bankName, iban: producer.iban },
       settlements,
     };
@@ -443,7 +440,7 @@ export class SalesService {
       producer.userId,
       NotificationType.PAYOUT_PAID,
       'Paiement effectué',
-      `Vos gains de la période ${dto.period} (${settlement.netAmount.toFixed(2)} TND) ont été versés.`,
+      `Vos gains de la période ${dto.period} (${formatDt(settlement.netAmount)}) ont été versés.`,
       'Payout',
       payout.id,
     );

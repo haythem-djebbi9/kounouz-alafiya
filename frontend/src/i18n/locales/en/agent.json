@@ -167,7 +167,8 @@
       "heading": "Today's Route",
       "start": "Your position",
       "empty": "No located visits today.",
-      "noStops": "No visits planned today."
+      "noStops": "No visits planned today.",
+      "backlog": "No visits planned today: here are your open missions, oldest first."
     },
     "notifications": {
       "heading": "Recent Notifications",

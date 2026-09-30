@@ -3,6 +3,7 @@ import { ValidationPipe, VERSION_NEUTRAL, VersioningType } from '@nestjs/common'
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { join } from 'node:path';
+import compression from 'compression';
 import { AppModule } from './app.module.js';
 import { uploadsAccessMiddleware } from './files/uploads-access.middleware.js';
 
@@ -18,6 +19,11 @@ async function bootstrap() {
   if (trustProxy) {
     app.set('trust proxy', /^\d+$/.test(trustProxy) ? Number(trustProxy) : trustProxy);
   }
+
+  // Réponses compressées (gzip) : le catalogue et les tableaux de bord pèsent
+  // plusieurs fois moins lourd sur le réseau. L'hébergeur ne le fait pas
+  // toujours à notre place, et derrière nginx cela ne coûte rien de plus.
+  app.use(compression({ threshold: 1024 }));
 
   // CORS : en production on restreint aux origines déclarées (§Sécurité 12).
   // CORS_ORIGINS accepte une liste séparée par des virgules ; vide = tout

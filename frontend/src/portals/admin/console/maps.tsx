@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { addBaseLayer } from '../../../lib/map-tiles';
 
 // Cartes à bulles sur fond cartographique réel : la position des gouvernorats
 // et des pays est exacte, la surface de chaque bulle suit la valeur.
@@ -72,11 +73,7 @@ export const BubbleMap: React.FC<{
       worldCopyJump: view === 'world',
       minZoom: VIEWS[view].minZoom,
     });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-      maxZoom: 10,
-      subdomains: 'abcd',
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-    }).addTo(map);
+    addBaseLayer(map, { muted: true, maxZoom: 10 });
     map.attributionControl.setPrefix(false);
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     map.fitBounds(VIEWS[view].bounds, { padding: [8, 8] });

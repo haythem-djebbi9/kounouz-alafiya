@@ -1,7 +1,7 @@
 {
   "nav": {
     "contact": "Contact",
-    "verify": "Verify a product",
+    "verify": "Verify",
     "story": "Our story",
     "shop": "Shop",
     "home": "Home",
@@ -471,6 +471,119 @@
           "a": "Create a producer account and submit a verification request. Our team reviews it and arranges sampling (an agent visit or you drop it off), then the lab analysis. Once verified, your honey is packaged and listed in the shop."
         }
       }
+    }
+  },
+  "blog": {
+    "title": "The Kounouz Alafiya blog",
+    "subtitle": "Tips, terroir and behind the scenes: to choose, store and enjoy Tunisian honey better.",
+    "allCategories": "All",
+    "allArticles": "All articles",
+    "searchPlaceholder": "Search articles",
+    "readTime": "{{count}} min read",
+    "notFound": "This article is no longer available.",
+    "loadError": "Articles cannot be loaded right now. Please try again in a moment.",
+    "empty": "No articles yet.",
+    "otherLanguage": "This article has not been translated into your language yet.",
+    "categories": {
+      "CONSEILS": "Tips",
+      "SANTE": "Health",
+      "TERROIR": "Terroir",
+      "APICULTURE": "Beekeeping",
+      "TRACABILITE": "Traceability",
+      "ACTUALITES": "News"
+    }
+  },
+  "shop": {
+    "badge": "Official shop • honey from Tunisian apiaries",
+    "title": "The Kounouz Alafiya shop",
+    "subtitle": "Our honeys, royal jelly and hive products, each with a laboratory analysis you can check by QR code.",
+    "pills": {
+      "lab": "Lab-tested",
+      "natural": "100% natural",
+      "delivery": "Delivery across Tunisia",
+      "cod": "Cash on delivery"
+    },
+    "searchPlaceholder": "Search for a honey, a region, a category…",
+    "clearSearch": "Clear search",
+    "showcase": {
+      "eyebrow": "Discover",
+      "verified": "Lab-verified batch"
+    },
+    "results": "Available products: {{count}}",
+    "searchFor": "Results for “{{query}}”",
+    "sortBy": "Sort by:",
+    "sort": {
+      "featured": "Kounouz selection",
+      "bestseller": "Best sellers",
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low"
+    },
+    "empty": {
+      "title": "No matching products",
+      "text": "Try another word or browse all the categories above.",
+      "reset": "Show all products"
+    },
+    "badges": {
+      "discount": "-{{percent}}%",
+      "bestseller": "Best seller",
+      "new": "New",
+      "labVerified": "Lab-tested"
+    },
+    "favorite": "Add to favourites",
+    "reviews": "({{count}} reviews)",
+    "added": "Added to cart",
+    "addToCart": "Add to cart",
+    "details": "View details",
+    "verify": "Verify",
+    "verifyTitle": "See the laboratory analysis",
+    "perks": {
+      "shipping": {
+        "title": "Delivery across Tunisia",
+        "text": "Free for orders over {{amount}}"
+      },
+      "lab": {
+        "title": "Laboratory analysis",
+        "text": "A QR code and an analysis report for every jar"
+      },
+      "cod": {
+        "title": "Cash on delivery",
+        "text": "You pay in cash when your order arrives"
+      },
+      "support": {
+        "title": "A team ready to help",
+        "text": "By phone, WhatsApp or contact form"
+      }
+    },
+    "journey": {
+      "title": "Quality, from hive to jar",
+      "subtitle": "From the Tunisian apiary to your table, every step is checked and recorded.",
+      "steps": {
+        "origin": {
+          "title": "Identified apiaries",
+          "text": "Every honey comes from a known beekeeper in a known region"
+        },
+        "harvest": {
+          "title": "A careful harvest",
+          "text": "Cold-packed to preserve the enzymes"
+        },
+        "lab": {
+          "title": "Lab-tested",
+          "text": "Moisture, HMF, sugars and pollen checked"
+        },
+        "qr": {
+          "title": "Verifiable by QR code",
+          "text": "Every jar carries the proof of its analysis"
+        }
+      }
+    },
+    "blog": {
+      "title": "Tips and articles",
+      "subtitle": "To choose, store and enjoy honey better."
+    },
+    "verifyCta": {
+      "title": "Holding a jar? Check it.",
+      "text": "Type or scan the QR code on the label: origin, batch and lab results appear in three seconds.",
+      "button": "Verify a product"
     }
   }
 }

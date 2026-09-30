@@ -217,7 +217,7 @@ const OverviewTab: React.FC<{ data: ScanAnalytics; onTab: (tab: TabKey) => void 
           </div>
         </Card>
         <div className="relative rounded-2xl overflow-hidden min-h-[200px] bg-[#0C261B]">
-          <img src="/images/beekeeper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-left" />
+          <img src="/images/beekeeper.webp" alt="" className="absolute inset-0 w-full h-full object-cover object-left" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C261B]/90 via-[#0C261B]/30 to-transparent" />
           <p className="absolute bottom-5 start-5 end-5 font-['Playfair_Display',serif] italic text-white text-lg leading-snug">
             {t('scans.banner.line1')}

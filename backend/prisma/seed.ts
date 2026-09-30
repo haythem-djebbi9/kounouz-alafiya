@@ -6,6 +6,8 @@ import { seedFieldAgent } from './seed-field-agent.js';
 import { seedAdminConsole } from './seed-admin-console.js';
 import { seedPhase1Compliance } from './seed-phase1-compliance.js';
 import { createDbClient } from './db-client.js';
+import { BLOG_ARTICLES } from './blog-articles.js';
+import { readingMinutes } from '../src/blog/blog-text.js';
 
 // KZ_DB_WEBSOCKET=1 fait passer la connexion par le port 443 quand le réseau
 // bloque le 5432 (VPN, pare-feu) — voir db-client.ts.
@@ -111,7 +113,7 @@ async function main() {
       farmAddress: 'Douar El Ouled, Le Kef',
       latitude: 36.1742,
       longitude: 8.7049,
-      farmPhotos: ['/images/beekeeper.jpg'],
+      farmPhotos: ['/images/beekeeper.webp'],
       hivesCount: 120,
       productionStartMonth: 3,
       productionEndMonth: 9,
@@ -292,7 +294,7 @@ async function main() {
         "Miel rare de jujubier, récolté à la main dans les montagnes du Kef. Traçabilité complète du rucher jusqu'à votre table.",
       prix: 89.9,
       stock: 120,
-      images: ['/images/sedre.png', '/images/beekeeper.jpg'],
+      images: ['/images/sedre.webp', '/images/beekeeper.webp'],
       gamme: 'Premium',
       statut: 'PUBLIE',
     },
@@ -445,7 +447,7 @@ async function main() {
       description: 'Miel polyfloral léger, récolté au printemps sur les hauteurs de Zaghouan.',
       prix: 54.9,
       stock: 40,
-      images: ['/images/jabal.png'],
+      images: ['/images/jabal.webp'],
       gamme: 'Classique',
       statut: 'SUSPENDU',
     },
@@ -644,6 +646,23 @@ async function main() {
   await seedFieldAgent(prisma);
   await seedAdminConsole(prisma);
   await seedPhase1Compliance(prisma);
+
+  console.log('Articles du blog...');
+  await prisma.blogPost.createMany({
+    data: BLOG_ARTICLES.map((a) => ({
+      slug: a.slug,
+      category: a.category,
+      title: a.title,
+      excerpt: a.excerpt,
+      content: a.content,
+      coverImage: a.coverImage,
+      featured: a.featured,
+      readingMinutes: readingMinutes(a.content),
+      status: 'PUBLISHED' as const,
+      publishedAt: new Date(a.publishedAt),
+      authorId: admin.id,
+    })),
+  });
 
   console.log('Seed terminé.');
   console.log('---');

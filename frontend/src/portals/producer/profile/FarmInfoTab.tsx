@@ -146,7 +146,7 @@ export const FarmInfoTab: React.FC<{ profile: ProducerProfile }> = ({ profile })
       {notice && <Notice tone={notice.tone} onClose={() => setNotice(null)}>{notice.text}</Notice>}
 
       <div className="grid md:grid-cols-[1.1fr_1.3fr_1fr] rounded-xl overflow-hidden border border-[#E6E8E3] bg-white">
-        <img src="/images/beekeeper.jpg" alt="" className="h-36 md:h-full w-full object-cover object-left" />
+        <img src="/images/beekeeper.webp" alt="" className="h-36 md:h-full w-full object-cover object-left" />
         <div className="flex items-center gap-4 p-5 bg-[#F4F7F2]">
           <span className="w-12 h-12 rounded-full bg-[#0B4A2F] text-white flex items-center justify-center shrink-0">
             <Leaf className="w-6 h-6" />

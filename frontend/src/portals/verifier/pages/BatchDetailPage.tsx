@@ -33,6 +33,7 @@ import {
 } from '../ui';
 import { dateLocale } from '../../../i18n';
 import type { BatchTimelineStep } from '../types';
+import { formatTnd } from '../../../lib/format-price';
 
 type DetailTab = 'overview' | 'traceability' | 'lab' | 'products' | 'notes';
 
@@ -302,7 +303,7 @@ export const BatchDetailPage: React.FC = () => {
                 {batch.products.map((item) => (
                   <li key={item.id} className="flex items-center gap-3 px-4 py-2.5">
                     <span className="text-sm text-[#0C261B] truncate flex-1">{item.nom}</span>
-                    <span className="text-xs text-gray-500 tabular-nums">{item.prix} DT</span>
+                    <span className="text-xs text-gray-500 tabular-nums">{formatTnd(item.prix, i18n.language)}</span>
                     <StatusPill
                       tone={PRODUCT_STATUS_TONE[item.statut]}
                       label={t(`verifier:status.product.${item.statut}`)}

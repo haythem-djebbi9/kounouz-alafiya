@@ -29,6 +29,7 @@ import {
 import { formatDate, formatMoney, formatNumber } from './utils';
 import type { Tone } from './utils';
 import type { ProducerProduct } from './types';
+import { productImageUrl } from '../../lib/product-adapter';
 
 // Regroupement des statuts catalogue pour la vue producteur.
 type ProductGroup = 'ACTIVE' | 'PENDING' | 'INACTIVE';
@@ -173,7 +174,7 @@ export const ProductsPage: React.FC = () => {
                 <tr key={product.id} className="hover:bg-[#FAFBF9]">
                   <Td>
                     <div className="flex items-center gap-3 min-w-[200px]">
-                      <ProductThumb src={product.images[0] ? resolveFileUrl(product.images[0]) : undefined} alt={product.nom} size={44} />
+                      <ProductThumb src={product.images[0] ? productImageUrl(product.images[0]) : undefined} alt={product.nom} size={44} />
                       <div className="min-w-0">
                         <p className="font-bold text-[#14215B] truncate">{product.nom}</p>
                         <p className="text-xs text-gray-500 truncate">{product.batch?.verification.request.collectionLocation ?? product.categorie.nom}</p>
@@ -267,7 +268,7 @@ export const ProductsPage: React.FC = () => {
                     <div className="grid grid-cols-3 gap-2 mt-3 text-center">
                       <div className="rounded-md bg-[#F6F7F5] py-2">
                         <p className="text-[11px] text-gray-500">{t('producer:products.cols.price')}</p>
-                        <p className="text-sm font-bold text-[#14215B]">{formatNumber(Number(product.prix), lang, 2)}</p>
+                        <p className="text-sm font-bold text-[#14215B]">{formatMoney(Number(product.prix), lang, t, 2)}</p>
                       </div>
                       <div className="rounded-md bg-[#F6F7F5] py-2">
                         <p className="text-[11px] text-gray-500">{t('producer:products.cols.stock')}</p>

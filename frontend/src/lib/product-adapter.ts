@@ -2,6 +2,27 @@ import type { Product as MockProduct } from '../types';
 import type { PublicProduct } from './marketplace-hooks';
 import { resolveFileUrl } from './api';
 
+// Images du site enregistrées en base avant leur conversion en WebP (2 à 4 Mo
+// chacune) : on sert la version allégée, même pour les produits existants.
+const OPTIMIZED_IMAGES: Record<string, string> = {
+  '/images/sedre.png': '/images/sedre.webp',
+  '/images/jabal.png': '/images/jabal.webp',
+  '/images/beekeeper.jpg': '/images/beekeeper.webp',
+  '/images/cover.png': '/images/cover.webp',
+  '/images/scan.png': '/images/scan.webp',
+  '/images/aawed.png': '/images/aawed.webp',
+  '/images/3sal.jpg': '/images/3sal.webp',
+  '/images/kisatona.jpg': '/images/kisatona.webp',
+  '/images/propolis.jpg.jpeg': '/images/propolis.webp',
+  '/images/royal-jelly.jpg': '/images/royal-jelly.webp',
+  '/images/klalatus.jpg.jpeg': '/images/klalatus.webp',
+  '/images/jarjir.jpg.jpeg': '/images/jarjir.webp',
+};
+
+export function productImageUrl(path: string): string {
+  return OPTIMIZED_IMAGES[path] ?? resolveFileUrl(path);
+}
+
 // Le template de vitrine (composants existants) attend la forme `Product` de
 // ../types.ts. Cet adaptateur relie les vraies données de l'API à cette forme
 // sans réécrire les composants d'affichage déjà en place. Les champs sans
@@ -35,7 +56,7 @@ export function toMockProduct(p: PublicProduct): MockProduct {
     // que d'inventer une note ou un nombre d'avis.
     rating: 0,
     reviewsCount: 0,
-    image: p.images[0] ? resolveFileUrl(p.images[0]) : '/images/cover.png',
+    image: p.images[0] ? productImageUrl(p.images[0]) : '/images/cover.webp',
     description: p.description ?? '',
     origin: producer ? `${producer.location}` : p.categorie.nom,
     producerLocation: producer?.location || undefined,

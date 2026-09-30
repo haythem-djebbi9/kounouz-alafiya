@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { addBaseLayer } from '../../lib/map-tiles';
 import type { LatLng } from './types';
 
 export type MarkerKind = 'numbered' | 'home' | 'pin' | 'truck' | 'done' | 'destination' | 'dot';
@@ -80,9 +81,14 @@ async function fetchRoadRoute(points: LatLng[], signal: AbortSignal): Promise<La
   const key = points.map((p) => `${p.longitude.toFixed(5)},${p.latitude.toFixed(5)}`).join(';');
   const cached = routeCache.get(key);
   if (cached) return cached;
+  // Le serveur public OSRM est parfois lent : au-delà de 8 s, on garde le
+  // tracé en lignes droites plutôt que de laisser la carte en attente.
+  const timeout = new AbortController();
+  const timer = setTimeout(() => timeout.abort(), 8000);
+  signal.addEventListener('abort', () => timeout.abort(), { once: true });
   const res = await fetch(`https://router.project-osrm.org/route/v1/driving/${key}?overview=full&geometries=geojson`, {
-    signal,
-  });
+    signal: timeout.signal,
+  }).finally(() => clearTimeout(timer));
   if (!res.ok) throw new Error('route');
   const data = await res.json();
   const coords: [number, number][] = data.routes?.[0]?.geometry?.coordinates ?? [];
@@ -119,10 +125,7 @@ export const MapView: React.FC<{
       doubleClickZoom: interactive,
       touchZoom: interactive,
     }).setView([36.6, 10.4], 8);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap',
-    }).addTo(map);
+    addBaseLayer(map);
     map.attributionControl.setPrefix(false);
     layerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
@@ -196,7 +199,9 @@ export const MapView: React.FC<{
 
   return (
     <div className={`relative rounded-lg overflow-hidden border border-[#EAE1D2] z-0 ${className}`}>
-      <div ref={containerRef} className="absolute inset-0" />
+      {/* Leaflet se positionne en coordonnées gauche/droite : en page arabe
+          (RTL), la carte doit rester en LTR sous peine de tuiles décalées. */}
+      <div ref={containerRef} dir="ltr" className="absolute inset-0" />
       {!hasContent && emptyLabel && (
         <div className="absolute inset-0 grid place-items-center bg-white/70 text-xs text-gray-500 z-[500] px-4 text-center">
           {emptyLabel}

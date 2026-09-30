@@ -1,5 +1,6 @@
 import { dateLocale } from '../../../i18n';
 import { GOVERNORATES } from '../../producer/constants';
+import { formatTnd } from '../../../lib/format-price';
 
 // Mise en forme des nombres, dates et lieux selon la langue active.
 
@@ -18,7 +19,7 @@ export function formatPercent(value: number | null | undefined, lang: string, di
 }
 
 export function formatMoney(value: number, lang: string): string {
-  return `${value.toLocaleString(dateLocale(lang), { maximumFractionDigits: 0 })} TND`;
+  return formatTnd(value, lang, { round: true });
 }
 
 export function formatDate(value: string | Date | null | undefined, lang: string, options?: Intl.DateTimeFormatOptions): string {

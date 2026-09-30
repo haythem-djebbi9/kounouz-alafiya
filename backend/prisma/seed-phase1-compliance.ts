@@ -85,14 +85,18 @@ export async function seedPhase1Compliance(prisma: PrismaClient) {
     if (sizes.size === 0) sizes.set(product.netWeightG ?? 500, product.stock);
 
     let first = true;
-    for (const [grams, stock] of [...sizes.entries()].sort((a, b) => a[0] - b[0])) {
+    const ordered = [...sizes.entries()].sort((a, b) => a[0] - b[0]);
+    const baseGrams = ordered[0][0];
+    for (const [grams, stock] of ordered) {
       await prisma.productVariant.create({
         data: {
           productId: product.id,
           sku: `${code}-${grams}G`,
           packageSize: grams >= 1000 && grams % 1000 === 0 ? `${grams / 1000} kg` : `${grams} g`,
           netWeightG: grams,
-          price: product.prix,
+          // Le plus petit format au prix du produit ; les plus grands suivent
+          // le poids avec 10 % de remise au volume, arrondis au demi-dinar.
+          price: grams === baseGrams ? product.prix : Math.round(Number(product.prix) * (grams / baseGrams) * 0.9 * 2) / 2,
           stock,
           isDefault: first,
         },

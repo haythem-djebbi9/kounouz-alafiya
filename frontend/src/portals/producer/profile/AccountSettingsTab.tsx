@@ -166,7 +166,7 @@ export const AccountSettingsTab: React.FC<{ profile: ProducerProfile }> = ({ pro
 
       <div className="grid md:grid-cols-[2fr_1fr] gap-4">
         <div className="relative overflow-hidden rounded-xl border border-[#DCEAE0] bg-[#EEF4EE] min-h-[110px]">
-          <img src="/images/beekeeper.jpg" alt="" className="absolute inset-y-0 end-0 w-1/2 h-full object-cover object-left hidden sm:block" />
+          <img src="/images/beekeeper.webp" alt="" className="absolute inset-y-0 end-0 w-1/2 h-full object-cover object-left hidden sm:block" />
           <div className="absolute inset-y-0 end-0 w-1/2 bg-gradient-to-r rtl:bg-gradient-to-l from-[#EEF4EE] to-transparent hidden sm:block" />
           <div className="relative flex items-center gap-4 p-5">
             <span className="w-14 h-14 rounded-full bg-[#0B4A2F] text-white flex items-center justify-center shrink-0">

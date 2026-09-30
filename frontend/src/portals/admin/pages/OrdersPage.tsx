@@ -6,6 +6,7 @@ import { Card, Badge, Button, EmptyState, Alert } from '../../../design-system';
 import { ApiError } from '../../../lib/api';
 import { dateLocale } from '../../../i18n';
 import type { OrderStatus } from '../../producer/types';
+import { formatTnd } from '../../../lib/format-price';
 
 const TABS: (OrderStatus | 'ALL')[] = ['ALL', 'PENDING', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED'];
 
@@ -96,7 +97,7 @@ export const OrdersPage: React.FC = () => {
                 </ul>
               </div>
               <div className="flex flex-col items-start md:items-end gap-2 shrink-0">
-                <p className="text-lg font-bold text-[#D49B37]">{Number(order.total).toFixed(2)} {t('producer:common.currency')}</p>
+                <p className="text-lg font-bold text-[#D49B37]">{formatTnd(order.total, i18n.language)}</p>
                 <div className="flex flex-wrap gap-2">
                   {NEXT[order.status].map((status) => (
                     <Button

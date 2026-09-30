@@ -53,7 +53,7 @@ function targetOf(n: AppNotification): string | null {
 }
 
 export const NotificationsPage: React.FC = () => {
-  const { t, i18n } = useTranslation(['producer', 'common']);
+  const { t, i18n } = useTranslation(['producer', 'settings', 'common']);
   const lang = i18n.language;
   const navigate = useNavigate();
   const { data: notifications = [], isLoading, isError } = useNotifications();

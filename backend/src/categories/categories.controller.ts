@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Header, Param, Patch, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Role } from '@prisma/client';
 import { CategoriesService } from './categories.service.js';
@@ -15,6 +15,7 @@ export class CategoriesController {
   // Catalogue public (marketplace) : catégories actives uniquement.
   @Public()
   @Get()
+  @Header('Cache-Control', 'public, max-age=300, stale-while-revalidate=600')
   findPublic() {
     return this.service.findPublic();
   }

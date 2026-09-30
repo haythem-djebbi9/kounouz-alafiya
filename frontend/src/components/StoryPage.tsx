@@ -60,7 +60,7 @@ export const StoryPage: React.FC<StoryPageProps> = ({ onDiscoverProducts }) => {
       <div
         className="relative w-full overflow-hidden shadow-lg"
         style={{
-          backgroundImage: "url('/images/beekeeperZZZ.jpg')",
+          backgroundImage: "url('/images/beekeeperZZZ.webp')",
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',

@@ -422,21 +422,53 @@ def mettre_en_page(corps_md: str) -> str:
     return html
 
 
-def convertir(chemin_md: Path, dossier_sortie: Path, navigateur: str) -> Path:
+# Mode « une page » : ni couverture, ni saut de page sur les titres, et une
+# composition plus serrée. Sert aux documents d'une feuille, qu'on tend en
+# main ou qu'on affiche — un aide-mémoire, un scénario de démonstration.
+CSS_UNE_PAGE = """
+@page { margin: 10mm 11mm 10mm 11mm; }
+body { font-size: 8.1pt; line-height: 1.26; }
+h1, h2, h3 { page-break-before: avoid !important; break-before: avoid !important; }
+h1 { font-size: 14pt; margin: 0 0 3mm 0; padding-bottom: 1.5mm; }
+h2 { font-size: 10.5pt; margin: 4mm 0 1.5mm 0; }
+h3 { font-size: 9.2pt; margin: 3mm 0 1mm 0; }
+p, ul, ol { margin: 0 0 2mm 0; }
+li { margin: 0 0 0.6mm 0; }
+table { font-size: 8pt; margin: 1.5mm 0 3mm 0; }
+th, td { padding: 1.1mm 1.8mm; }
+pre { font-size: 7.6pt; padding: 2mm; margin: 1.5mm 0 3mm 0; }
+blockquote { margin: 2mm 0; padding: 1.5mm 3mm; }
+hr { margin: 3mm 0; }
+"""
+
+
+def convertir(
+    chemin_md: Path, dossier_sortie: Path, navigateur: str, une_page: bool = False
+) -> Path:
     texte = chemin_md.read_text(encoding="utf-8")
     titre, sous_titre, corps_md = extraire_entete(texte)
+    if une_page:
+        # Sans couverture, l'en-tête (titre, adresse du site, comptes) doit
+        # rester en haut de la feuille : c'est ce qu'on y cherche en premier.
+        corps_md = texte
     html_corps = mettre_en_page(corps_md)
 
     # Ne pas repeter la baseline si le document la porte deja dans son
     # sous-titre (cas de DOCUMENTATION.md).
     baseline = "" if "Plateforme de confiance" in sous_titre else BASELINE
     couverture = (
-        COUVERTURE.replace("__TITRE__", titre)
-        .replace("__SOUS_TITRE__", sous_titre)
-        .replace("__BASELINE__", baseline)
-        .replace("__DATE__", date.today().strftime("%d/%m/%Y"))
+        ""
+        if une_page
+        else (
+            COUVERTURE.replace("__TITRE__", titre)
+            .replace("__SOUS_TITRE__", sous_titre)
+            .replace("__BASELINE__", baseline)
+            .replace("__DATE__", date.today().strftime("%d/%m/%Y"))
+        )
     )
     css = CSS.replace("__VERT__", VERT_FONCE).replace("__OR__", OR).replace("__CREME__", CREME)
+    if une_page:
+        css += CSS_UNE_PAGE
     html = (
         GABARIT.replace("__CSS__", css)
         .replace("__COUVERTURE__", couverture)
@@ -547,6 +579,11 @@ def main() -> None:
     parseur.add_argument(
         "--out-dir", default="docs", help="dossier de sortie (par défaut : docs/)"
     )
+    parseur.add_argument(
+        "--une-page",
+        action="store_true",
+        help="document d'une feuille : sans couverture, sans saut de page, composition serrée",
+    )
     args = parseur.parse_args()
 
     navigateur = trouver_navigateur()
@@ -558,7 +595,7 @@ def main() -> None:
         if not chemin.is_file():
             print(f"  introuvable, ignoré : {nom}")
             continue
-        pdf = convertir(chemin, dossier, navigateur)
+        pdf = convertir(chemin, dossier, navigateur, une_page=args.une_page)
         taille = pdf.stat().st_size / 1024
         print(f"  {chemin.name}  ->  {pdf}  ({taille:.0f} Ko)")
 

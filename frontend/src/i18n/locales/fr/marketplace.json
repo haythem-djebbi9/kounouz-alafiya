@@ -1,7 +1,7 @@
 {
   "nav": {
     "contact": "Contact",
-    "verify": "Vérifier un produit",
+    "verify": "Vérification",
     "story": "Notre histoire",
     "shop": "Boutique",
     "home": "Accueil",
@@ -471,6 +471,119 @@
           "a": "Créez un compte producteur puis déposez une demande de vérification. Notre équipe l’examine et organise le prélèvement (visite d’un agent ou dépôt par vos soins), puis l’analyse en laboratoire. Une fois vérifié, votre miel est conditionné et mis en vente."
         }
       }
+    }
+  },
+  "blog": {
+    "title": "Le blog Kounouz Alafiya",
+    "subtitle": "Conseils, terroir et coulisses : pour mieux choisir, conserver et apprécier le miel tunisien.",
+    "allCategories": "Tout",
+    "allArticles": "Tous les articles",
+    "searchPlaceholder": "Rechercher un article",
+    "readTime": "{{count}} min de lecture",
+    "notFound": "Cet article n’est plus disponible.",
+    "loadError": "Impossible de charger les articles pour le moment. Réessayez dans un instant.",
+    "empty": "Aucun article pour le moment.",
+    "otherLanguage": "Cet article n’est pas encore traduit dans votre langue.",
+    "categories": {
+      "CONSEILS": "Conseils",
+      "SANTE": "Santé",
+      "TERROIR": "Terroir",
+      "APICULTURE": "Apiculture",
+      "TRACABILITE": "Traçabilité",
+      "ACTUALITES": "Actualités"
+    }
+  },
+  "shop": {
+    "badge": "Boutique officielle • miels de ruchers tunisiens",
+    "title": "La boutique Kounouz Alafiya",
+    "subtitle": "Nos miels, notre gelée royale et nos produits de la ruche, chacun avec son analyse de laboratoire consultable par QR code.",
+    "pills": {
+      "lab": "Analysé en laboratoire",
+      "natural": "100 % naturel",
+      "delivery": "Livraison partout en Tunisie",
+      "cod": "Paiement à la livraison"
+    },
+    "searchPlaceholder": "Rechercher un miel, une région, une catégorie…",
+    "clearSearch": "Effacer la recherche",
+    "showcase": {
+      "eyebrow": "À découvrir",
+      "verified": "Lot vérifié en laboratoire"
+    },
+    "results": "Produits disponibles : {{count}}",
+    "searchFor": "Résultats pour « {{query}} »",
+    "sortBy": "Trier par :",
+    "sort": {
+      "featured": "Sélection Kounouz",
+      "bestseller": "Meilleures ventes",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant"
+    },
+    "empty": {
+      "title": "Aucun produit ne correspond",
+      "text": "Essayez un autre mot ou parcourez toutes les catégories ci-dessus.",
+      "reset": "Voir tous les produits"
+    },
+    "badges": {
+      "discount": "-{{percent}} %",
+      "bestseller": "Meilleure vente",
+      "new": "Nouveau",
+      "labVerified": "Analysé en labo"
+    },
+    "favorite": "Ajouter aux favoris",
+    "reviews": "({{count}} avis)",
+    "added": "Ajouté au panier",
+    "addToCart": "Ajouter au panier",
+    "details": "Voir le détail",
+    "verify": "Vérifier",
+    "verifyTitle": "Consulter l’analyse de laboratoire",
+    "perks": {
+      "shipping": {
+        "title": "Livraison partout en Tunisie",
+        "text": "Offerte au-delà de {{amount}} d’achat"
+      },
+      "lab": {
+        "title": "Analyse en laboratoire",
+        "text": "Un QR code et un rapport d’analyse pour chaque pot"
+      },
+      "cod": {
+        "title": "Paiement à la livraison",
+        "text": "Vous réglez en espèces à la réception"
+      },
+      "support": {
+        "title": "Une équipe à votre écoute",
+        "text": "Par téléphone, WhatsApp ou formulaire de contact"
+      }
+    },
+    "journey": {
+      "title": "La qualité, de la ruche au pot",
+      "subtitle": "Du rucher tunisien à votre table, chaque étape est contrôlée et enregistrée.",
+      "steps": {
+        "origin": {
+          "title": "Des ruchers identifiés",
+          "text": "Chaque miel vient d’un apiculteur connu, dans une région connue"
+        },
+        "harvest": {
+          "title": "Une récolte respectée",
+          "text": "Mise en pot à froid pour préserver les enzymes"
+        },
+        "lab": {
+          "title": "Analysé en laboratoire",
+          "text": "Humidité, HMF, sucres et pollens contrôlés"
+        },
+        "qr": {
+          "title": "Vérifiable par QR code",
+          "text": "Chaque pot porte la preuve de son analyse"
+        }
+      }
+    },
+    "blog": {
+      "title": "Conseils et articles",
+      "subtitle": "Pour mieux choisir, conserver et apprécier le miel."
+    },
+    "verifyCta": {
+      "title": "Un pot entre les mains ? Vérifiez-le.",
+      "text": "Saisissez ou scannez le code QR de l’étiquette : origine, lot et résultats d’analyse s’affichent en trois secondes.",
+      "button": "Vérifier un produit"
     }
   }
 }

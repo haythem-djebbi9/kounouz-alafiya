@@ -109,7 +109,7 @@ export const AgentLayout: React.FC = () => {
       <div className={`py-5 border-b border-white/10 flex flex-col items-center gap-1 ${compact ? 'px-2' : 'px-5'}`}>
         <Link to="/agent" aria-label={t('agent:nav.dashboard')} className="flex flex-col items-center">
           <img
-            src="/images/knozafialogo-removebg-preview.png"
+            src="/images/logo.webp"
             alt=""
             className={`object-contain ${compact ? 'w-11 h-11' : 'w-16 h-16'}`}
           />
@@ -132,7 +132,7 @@ export const AgentLayout: React.FC = () => {
 
       {!compact && (
         <div className="relative h-40 shrink-0 overflow-hidden">
-          <img src="/images/beekeeper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" />
+          <img src="/images/beekeeper.webp" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C261B] via-[#0C261B]/60 to-transparent" />
           <div className="absolute bottom-4 start-5">
             <p className="text-[11px] font-bold text-white uppercase tracking-wide leading-snug">

@@ -42,7 +42,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
     >
       {/* Image de fond : léger zoom lent (effet Ken Burns) */}
       <motion.img
-        src="/images/banner.png"
+        src="/images/banner.webp"
         alt={t('marketplace:hero.imageAlt')}
         initial={{ scale: 1.08, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

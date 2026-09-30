@@ -36,7 +36,9 @@
     "support": "Support",
     "settings": "Settings",
     "help": "Help",
-    "verifierPortal": "Verification portal"
+    "verifierPortal": "Verification portal",
+    "commission": "Commission",
+    "blog": "Blog"
   },
   "search": {
     "placeholder": "Search anything (producers, batches, QR codes, users…)",
@@ -852,7 +854,8 @@
       "ANTI_COUNTERFEIT": "Anti-counterfeit",
       "SALES": "Sales",
       "SYSTEM": "System",
-      "SETTINGS": "Settings"
+      "SETTINGS": "Settings",
+      "CONTENT": "Site content"
     },
     "entity": {
       "Producer": "producer",
@@ -862,7 +865,8 @@
       "Batch": "batch",
       "Product": "product",
       "Laboratory": "laboratory",
-      "CounterfeitAlert": "alert"
+      "CounterfeitAlert": "alert",
+      "BlogPost": "article"
     },
     "batchStatus": {
       "CREATED": "Verified",
@@ -990,6 +994,12 @@
     "ORDER_CANCELLED": "Order cancelled",
     "PAY_SETTLEMENT": "Producer settlement paid",
     "SYSTEM_BACKUP": "Daily database backup completed",
-    "SEED_ADMIN_CONSOLE": "Demonstration data loaded"
+    "SEED_ADMIN_CONSOLE": "Demonstration data loaded",
+    "CREATE_BLOG_POST": "Blog article created",
+    "UPDATE_BLOG_POST": "Blog article edited",
+    "PUBLISH_BLOG_POST": "Blog article published",
+    "UNPUBLISH_BLOG_POST": "Blog article unpublished",
+    "DELETE_BLOG_POST": "Blog article deleted",
+    "UPDATE_COMMISSION_RATE": "Commission rate changed"
   }
 }

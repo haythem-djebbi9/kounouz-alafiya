@@ -8,9 +8,11 @@ import {
   IsEmail,
   IsEnum,
   IsInt,
+  IsNumber,
   IsOptional,
   IsString,
   Matches,
+  Max,
   MaxLength,
   Min,
   MinLength,
@@ -99,4 +101,18 @@ export class PaySettlementDto {
   @IsString()
   @MaxLength(120)
   reference?: string;
+}
+
+export class UpdateCommissionDto {
+  @ApiProperty({ example: 0.2, description: 'Taux entre 0 et 0,5 (0,2 = 20 %)' })
+  @IsNumber({ maxDecimalPlaces: 4 }, { message: 'Le taux doit être un nombre (0,2 = 20 %).' })
+  @Min(0, { message: 'Le taux ne peut pas être négatif.' })
+  @Max(0.5, { message: 'Le taux ne peut pas dépasser 50 %.' })
+  rate!: number;
+
+  @ApiProperty({ required: false, description: 'Motif du changement, gardé dans le journal' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(300)
+  reason?: string;
 }

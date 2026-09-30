@@ -24,7 +24,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ onReadMore }) => {
     >
       {/* L'image a sa zone verte à droite : le texte s'y place toujours */}
       <motion.img
-        src="/images/beekeeper.jpg"
+        src="/images/beekeeper.webp"
         alt={t('marketplace:home.story.imageAlt')}
         loading="lazy"
         style={{ y: imageY, top: '-6%' }}

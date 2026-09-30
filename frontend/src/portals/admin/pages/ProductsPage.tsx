@@ -8,13 +8,14 @@ import { useBatches } from '../hooks/useBatchesAndPackaging';
 import { Card, Button, Input, Textarea, Select, Modal, StatusBadge, Alert, EmptyState } from '../../../design-system';
 import { ApiError } from '../../../lib/api';
 import type { ProductStatut } from '../../../lib/api-types';
+import { formatTnd } from '../../../lib/format-price';
 
 const TAB_VALUES: (ProductStatut | 'ALL')[] = ['ALL', 'BROUILLON', 'PUBLIE', 'RUPTURE', 'SUSPENDU'];
 
 const EMPTY_FORM = { categorieId: '', nom: '', description: '', prix: '', stock: '0', gamme: '', batchId: '', images: '' };
 
 export const ProductsPage: React.FC = () => {
-  const { t } = useTranslation(['admin', 'common']);
+  const { t, i18n } = useTranslation(['admin', 'common']);
   const [tab, setTab] = useState<ProductStatut | 'ALL'>('ALL');
   const [search, setSearch] = useState('');
   const { data: products, isLoading } = useAdminProducts(tab === 'ALL' ? undefined : tab);
@@ -102,7 +103,7 @@ export const ProductsPage: React.FC = () => {
                 <StatusBadge kind="product" status={p.statut} />
               </div>
               <p className="text-xs text-gray-400 mb-2">{p.categorie?.nom}</p>
-              <p className="text-sm font-bold text-[#D49B37]">{p.prix} {t('admin:units.currency')}</p>
+              <p className="text-sm font-bold text-[#D49B37]">{formatTnd(p.prix, i18n.language)}</p>
               <p className="text-xs text-gray-400">{t('admin:products.stock')}: {p.stock}</p>
             </Card>
           </Link>
@@ -158,7 +159,7 @@ export const ProductsPage: React.FC = () => {
             label={t('admin:products.imageUrls')}
             value={form.images}
             onChange={(e) => setForm((f) => ({ ...f, images: e.target.value }))}
-            placeholder="/images/sedre.png, /images/beekeeper.jpg"
+            placeholder="/images/sedre.webp, /images/beekeeper.webp"
           />
           <Button type="submit" fullWidth isLoading={createProduct.isPending}>
             {t('admin:products.createAsDraft')}

@@ -226,7 +226,7 @@ export const DashboardPage: React.FC = () => {
 
           <div className="grid gap-4 xl:grid-cols-[1fr_1.4fr_0.9fr]">
             <div className="relative rounded-2xl overflow-hidden min-h-[180px] bg-[#0C261B]">
-              <img src="/images/beekeeper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-left" />
+              <img src="/images/beekeeper.webp" alt="" className="absolute inset-0 w-full h-full object-cover object-left" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0C261B]/30 to-[#0C261B]/85 rtl:bg-gradient-to-l" />
               <div className="relative h-full flex items-center justify-end p-6">
                 <p className="font-['Playfair_Display',serif] italic text-white text-xl leading-snug text-end max-w-[60%]">

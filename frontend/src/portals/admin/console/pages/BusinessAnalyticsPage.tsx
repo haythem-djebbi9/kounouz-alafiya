@@ -44,6 +44,7 @@ import { BarChart, DonutChart, Funnel, LineChart } from '../charts';
 import { BubbleMap, GOVERNORATE_CENTERS } from '../maps';
 import { CountryList, RegionList } from './QrScanAnalyticsPage';
 import { countryName, formatBucket, formatDate, formatMoney, formatNumber, formatPercent, formatTime, governorateName } from '../format';
+import { currencyLabel } from '../../../../lib/format-price';
 
 type TabKey = 'overview' | 'verifications' | 'sales' | 'products' | 'producers' | 'geographic' | 'customers' | 'trends' | 'exports';
 const TABS: TabKey[] = ['overview', 'verifications', 'sales', 'products', 'producers', 'geographic', 'customers', 'trends', 'exports'];
@@ -368,7 +369,7 @@ const OverviewTab: React.FC<{ data: BusinessAnalytics; onTab: (tab: TabKey) => v
         <RecentVerifications data={data} />
         <KeyInsights data={data} />
         <div className="relative rounded-2xl overflow-hidden min-h-[200px] bg-[#0C261B]">
-          <img src="/images/beekeeper.jpg" alt="" className="absolute inset-0 w-full h-full object-cover object-left" />
+          <img src="/images/beekeeper.webp" alt="" className="absolute inset-0 w-full h-full object-cover object-left" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0C261B]/90 via-[#0C261B]/30 to-transparent" />
           <p className="absolute bottom-5 start-5 end-5 font-['Playfair_Display',serif] italic text-white text-lg leading-snug">
             {t('business.banner.line1')}
@@ -437,7 +438,7 @@ const SalesTab: React.FC<{ data: BusinessAnalytics }> = ({ data }) => {
             valueFormat={(v) => formatMoney(v, lang)}
             slices={data.salesByChannel.map((c, i) => ({ key: c.channel, label: t(`enums.channel.${c.channel}`, { defaultValue: c.channel }), value: c.revenue, color: SERIES[i] }))}
             centerValue={formatNumber(data.kpis.totalSales.total, lang)}
-            centerLabel="TND"
+            centerLabel={currencyLabel(lang)}
             emptyLabel={t('states.noData')}
           />
         </Card>
