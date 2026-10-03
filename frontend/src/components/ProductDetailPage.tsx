@@ -159,9 +159,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         }`}
                       >
                         <span className="block">{w}</span>
-                        {variant && (
+                        {soldOut && (
                           <span className={`block text-[11px] font-semibold ${active ? 'text-white/80' : 'text-[#8C7A60]'}`}>
-                            {soldOut ? t('marketplace:productDetail.soldOut') : formatPrice(variant.price)}
+                            {t('marketplace:productDetail.soldOut')}
                           </span>
                         )}
                       </button>
