@@ -36,9 +36,9 @@ import { VerificationPage } from './components/VerificationPage';
 import { BlogPage } from './components/BlogPage';
 import { HelpSupportPanel } from './components/support/HelpSupportPanel';
 import { SettingsPanel } from './components/settings/SettingsPanel';
+import { ProductDetailPage } from './components/ProductDetailPage';
 
 // Modals & Drawers
-import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { SearchModal } from './components/SearchModal';
 import { AccountModal } from './components/AccountModal';
@@ -54,7 +54,14 @@ export default function App() {
   // les autres pages de la vitrine restent sur « / ».
   const blogMatch = location.pathname.match(/^\/blog(?:\/([^/]+))?\/?$/);
   const articleSlug = blogMatch?.[1] ? decodeURIComponent(blogMatch[1]) : null;
-  const [currentPage, setCurrentPage] = useState<PageView>(() => (blogMatch ? 'blog' : 'home'));
+  // La fiche produit a aussi sa propre adresse (/produit/<id>).
+  const productMatch = location.pathname.match(/^\/produit\/([^/]+)\/?$/);
+  const productId = productMatch ? decodeURIComponent(productMatch[1]) : null;
+  const [currentPage, setCurrentPage] = useState<PageView>(() =>
+    blogMatch ? 'blog' : productMatch ? 'product' : 'home',
+  );
+  // Page de la vitrine d'où la fiche produit a été ouverte, pour y revenir.
+  const productReturnPage = useRef<PageView | null>(null);
   // Page d'où l'article a été ouvert, pour y revenir à la fermeture.
   const articleReturnPath = useRef<string | null>(null);
 
@@ -78,8 +85,12 @@ export default function App() {
 
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  const selectedProduct = useMemo(
+    () => (productId ? products.find((p) => p.id === productId) ?? null : null),
+    [productId, products],
+  );
+
   // Modals state
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
@@ -98,11 +109,33 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Retour / avance du navigateur entre « / » et « /blog ».
+  // Retour / avance du navigateur entre « / », « /blog » et « /produit/<id> ».
   useEffect(() => {
     if (location.pathname === '/blog' || location.pathname === '/blog/') setCurrentPage('blog');
-    else if (location.pathname === '/') setCurrentPage((page) => (page === 'blog' ? 'home' : page));
+    else if (/^\/produit\/[^/]+\/?$/.test(location.pathname)) setCurrentPage('product');
+    else if (location.pathname === '/') {
+      setCurrentPage((page) => {
+        if (page === 'product') return productReturnPage.current ?? 'home';
+        return page === 'blog' ? 'home' : page;
+      });
+    }
   }, [location.pathname]);
+
+  const openProduct = useCallback(
+    (product: Product) => {
+      setIsSearchOpen(false);
+      if (currentPage !== 'product') productReturnPage.current = currentPage;
+      navigate(`/produit/${encodeURIComponent(product.id)}`);
+      window.scrollTo({ top: 0 });
+    },
+    [currentPage, navigate],
+  );
+
+  const closeProduct = () => {
+    const returnPage = productReturnPage.current;
+    productReturnPage.current = null;
+    handleNavigate(returnPage && returnPage !== 'blog' ? returnPage : 'products');
+  };
 
   const openArticle = useCallback(
     (slug: string) => {
@@ -223,7 +256,7 @@ export default function App() {
                 <DiscoverTreasures
                   products={products}
                   loading={productsLoading}
-                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onSelectProduct={openProduct}
                   onAddToCart={(p) => handleAddToCart(p, 1, p.weight)}
                   onViewAll={() => handleNavigate('products')}
                 />
@@ -266,11 +299,29 @@ export default function App() {
               <ProductsPage
                 products={products}
                 categories={categories}
-                onSelectProduct={(p) => setSelectedProduct(p)}
+                onSelectProduct={openProduct}
                 onAddToCart={(p) => handleAddToCart(p, 1, p.weight)}
                 onOpenArticle={openArticle}
                 onShowBlog={() => handleNavigate('blog')}
                 onVerifyProduct={handleOpenVerify}
+              />
+            </motion.div>
+          )}
+
+          {currentPage === 'product' && (
+            <motion.div
+              key={`product-${productId ?? ''}`}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: 'easeOut' }}
+            >
+              <ProductDetailPage
+                product={selectedProduct}
+                loading={productsLoading}
+                onBack={closeProduct}
+                onAddToCart={handleAddToCart}
+                onVerifyBatch={handleVerifyProduct}
               />
             </motion.div>
           )}
@@ -361,16 +412,6 @@ export default function App() {
       />
 
       {/* Modals and Drawers */}
-      <ProductDetailModal
-        product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-        onAddToCart={handleAddToCart}
-        onVerifyBatch={(product) => {
-          setSelectedProduct(null);
-          handleVerifyProduct(product);
-        }}
-      />
-
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -383,7 +424,7 @@ export default function App() {
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        onSelectProduct={(p) => setSelectedProduct(p)}
+        onSelectProduct={openProduct}
         products={products}
       />
 

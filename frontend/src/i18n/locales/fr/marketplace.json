@@ -298,11 +298,10 @@
     "placeholder": "Recherchez un miel, un type, un bienfait ou un code de lot...",
     "popularLabel": "Recherches populaires :",
     "quickTags": [
-      "Miel de jujubier",
-      "Gelée royale",
-      "Bâtonnets de miel",
-      "Miel naturel premium",
-      "Propolis"
+      "Miel de Sedra",
+      "Romarin",
+      "Agrumes",
+      "Fleurs sauvages"
     ],
     "resultsCount": "Résultats de recherche ({{count}})",
     "featuredProducts": "Produits phares",
@@ -319,7 +318,9 @@
     "viewCertificate": "Voir le certificat",
     "addedToCart": "Ajouté au panier !",
     "addToCartCta": "Ajouter au panier",
-    "soldOut": "Épuisé"
+    "soldOut": "Épuisé",
+    "back": "Retour à la boutique",
+    "notFound": "Ce produit n'est plus disponible."
   },
   "verifySection": {
     "headingPart1": "Ne vous contentez pas de faire confiance.",

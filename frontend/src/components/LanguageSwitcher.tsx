@@ -6,10 +6,12 @@ import { useAuth } from '../lib/auth-context';
 
 interface LanguageSwitcherProps {
   compact?: boolean;
+  /** Toutes les langues visibles côte à côte (menu mobile) au lieu d'une liste déroulante. */
+  inline?: boolean;
   className?: string;
 }
 
-export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ compact, className }) => {
+export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ compact, inline, className }) => {
   const { t, i18n } = useTranslation();
   const { isAuthenticated, updateProfile } = useAuth();
   const [open, setOpen] = useState(false);
@@ -42,6 +44,37 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ compact, cla
       }
     }
   };
+
+  if (inline) {
+    return (
+      <div
+        role="group"
+        aria-label={t('language.label')}
+        className={`flex items-center gap-2 w-full ${className ?? ''}`}
+      >
+        <Globe className="w-4 h-4 text-[#0C261B] shrink-0" />
+        <div className="flex flex-1 gap-1.5">
+          {SUPPORTED_LANGUAGES.map((lang) => {
+            const active = lang === currentLang;
+            return (
+              <button
+                key={lang}
+                onClick={() => handleSelect(lang)}
+                aria-pressed={active}
+                className={`flex-1 min-h-[40px] px-2 rounded-lg text-sm font-bold border transition-colors ${
+                  active
+                    ? 'bg-[#0C261B] text-white border-[#0C261B]'
+                    : 'bg-white text-[#0C261B] border-[#D5C7B0] hover:bg-[#FAF6EE]'
+                }`}
+              >
+                {t(`language.${lang}`)}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className={`relative ${className ?? ''}`}>

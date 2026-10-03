@@ -27,7 +27,7 @@ export const ArticleBody: React.FC<{ content: string; className?: string }> = ({
     .filter(Boolean);
 
   return (
-    <div className={`space-y-4 text-[15px] leading-8 text-[#3F524B] ${className}`}>
+    <div className={`space-y-4 text-base leading-8 text-[#2E3F38] ${className}`}>
       {blocks.map((block, i) => {
         const lines = block.split('\n').map((l) => l.trim());
         if (block.startsWith('## ')) {

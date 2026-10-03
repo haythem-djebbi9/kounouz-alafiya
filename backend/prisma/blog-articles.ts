@@ -306,7 +306,7 @@ The approved batch is packed and each jar receives a unique code. Scan it and yo
 - استعمل ملعقة نظيفة وجافة.
 - لا حاجة إلى الثلاجة: فهي تسرّع التبلور.
 
-> لا تُعطِ العسل أبداً لطفل دون السنة من عمره.`,
+> لا تُعطِ العسل أبداً لطفل دون السنة من عمره، ويوصي بعض الأطباء بالانتظار حتى سنتين. استشر طبيب الأطفال.`,
       fr: `Le miel est l’un des rares aliments qui se conservent très longtemps. Encore faut-il éviter les quelques erreurs qui l’altèrent.
 
 ## La cristallisation n’est pas un défaut
@@ -326,7 +326,7 @@ Tous les miels finissent par cristalliser, plus ou moins vite selon les fleurs d
 - Utilisez une cuillère propre et sèche.
 - Le réfrigérateur est inutile : il accélère la cristallisation.
 
-> Ne donnez jamais de miel à un enfant de moins d’un an.`,
+> Ne donnez jamais de miel à un enfant de moins d’un an ; certains médecins conseillent même d’attendre ses deux ans. Demandez l’avis de votre pédiatre.`,
       en: `Honey is one of the few foods that keeps for a very long time — provided you avoid the few mistakes that spoil it.
 
 ## Crystallisation is not a flaw
@@ -346,7 +346,7 @@ All honeys eventually crystallise, more or less quickly depending on their flowe
 - Use a clean, dry spoon.
 - The fridge is unnecessary: it speeds up crystallisation.
 
-> Never give honey to a child under one year old.`,
+> Never give honey to a child under one year old; some doctors even advise waiting until age two. Ask your paediatrician.`,
     },
   },
   {

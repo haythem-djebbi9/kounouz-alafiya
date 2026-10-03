@@ -123,7 +123,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ slug, onClose, onVer
                 </div>
               )}
 
-              <p className="flex gap-2 text-sm text-[#576B64] bg-white border border-[#EAE1D2] rounded-xl p-4">
+              <p className="flex gap-2 text-sm text-[#3F524B] bg-white border border-[#EAE1D2] rounded-xl p-4">
                 <QrCode className="w-5 h-5 text-[#1E6B56] shrink-0" />
                 {t('marketplace:article.qrReminder')}
               </p>

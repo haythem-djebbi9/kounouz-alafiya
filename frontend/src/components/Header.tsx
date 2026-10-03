@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
               trois lignes. En dessous de 1280 px, le menu passe dans le tiroir. */}
           <nav id="desktop-navigation" dir="ltr" className="hidden xl:flex items-center gap-6 2xl:gap-9 mx-4">
             {navItems.map((item) => {
-              const isActive = currentPage === item.page;
+              const isActive = currentPage === item.page || (item.page === 'products' && currentPage === 'product');
               return (
                 <button
                   key={item.page}
@@ -184,7 +184,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div id="mobile-navigation" className="xl:hidden border-t border-[#EAE1D2] bg-[#F6F1EB] px-4 pt-3 pb-6 space-y-2">
           {navItems.map((item) => {
-            const isActive = currentPage === item.page;
+            const isActive = currentPage === item.page || (item.page === 'products' && currentPage === 'product');
             return (
               <button
                 key={item.page}
@@ -205,9 +205,11 @@ export const Header: React.FC<HeaderProps> = ({
           })}
 
           <div className="pt-3 border-t border-[#EAE1D2] space-y-2">
-            <div className="flex items-center justify-between gap-3 sm:hidden">
-              <LanguageSwitcher />
-              {isAuthenticated && (
+            <div className="sm:hidden">
+              <LanguageSwitcher inline />
+            </div>
+            {isAuthenticated && (
+              <div className="flex items-center justify-end gap-3 sm:hidden">
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
@@ -218,8 +220,8 @@ export const Header: React.FC<HeaderProps> = ({
                   <User className="w-4 h-4" />
                   <span>{t('actions.account')}</span>
                 </button>
-              )}
-            </div>
+              </div>
+            )}
             {!isAuthenticated && (
               <button
                 onClick={() => {

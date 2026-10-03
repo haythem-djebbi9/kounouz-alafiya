@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePriceFormatter } from '../lib/format-price';
 import { Product } from '../types';
+import { searchProducts } from '../lib/product-search';
 import { Search, X, ArrowLeft, Tag } from 'lucide-react';
 
 interface SearchModalProps {
@@ -23,15 +24,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   if (!isOpen) return null;
 
-  const results = query.trim()
-    ? products.filter(
-        (p) =>
-          p.name.includes(query) ||
-          p.subtitle.includes(query) ||
-          p.description.includes(query) ||
-          p.categoryLabel.includes(query)
-      )
-    : products.slice(0, 4);
+  const results = query.trim() ? searchProducts(products, query) : products.slice(0, 4);
 
   const quickTags = t('marketplace:search.quickTags', { returnObjects: true }) as string[];
 
@@ -39,7 +32,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 sm:pt-24 bg-[#0C261B]/75 backdrop-blur-sm animate-fadeIn">
       <div
         id="search-modal"
-        className="w-full max-w-xl bg-[#FAF6EE] rounded-2xl shadow-2xl border border-[#D49B37]/40 overflow-hidden flex flex-col max-h-[80vh] text-right"
+        className="w-full max-w-xl bg-[#FAF6EE] rounded-2xl shadow-2xl border border-[#D49B37]/40 overflow-hidden flex flex-col max-h-[80vh] text-start"
       >
         {/* Search Bar Input */}
         <div className="p-4 bg-white border-b border-[#EAE1D2] flex items-center gap-3">
@@ -91,8 +84,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
               <div
                 key={product.id}
                 onClick={() => {
-                  onSelectProduct(product);
                   onClose();
+                  onSelectProduct(product);
                 }}
                 className="p-3 bg-white hover:bg-[#FAF0DC] rounded-xl border border-[#EAE1D2] flex items-center justify-between gap-3 transition-colors cursor-pointer group"
               >
@@ -112,7 +105,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   </div>
                 </div>
 
-                <ArrowLeft className="w-4 h-4 text-[#8C7A60] group-hover:text-[#C68A28] group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft className="w-4 h-4 text-[#8C7A60] group-hover:text-[#C68A28] ltr:rotate-180 transition-transform" />
               </div>
             ))
           )}

@@ -90,7 +90,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
             {t('marketplace:home.hero.eyebrow')}
           </motion.span>
 
-          <h1 className="text-[34px] sm:text-5xl lg:text-[56px] font-extrabold leading-[1.2] tracking-tight text-[#0C261B] mb-5">
+          <h1 className="text-[34px] sm:text-5xl lg:text-[56px] font-extrabold leading-[1.6] text-[#0C261B] mb-5">
             {lines.map((line, i) => (
               <motion.span
                 key={i}
@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
               </motion.span>
             ))}
             <motion.span
-              className="block mt-1 text-[0.8em] bg-gradient-to-r from-[#B8802A] via-[#E5AC44] to-[#B8802A] bg-[length:200%_auto] bg-clip-text text-transparent"
+              className="block text-[0.8em] bg-gradient-to-r from-[#B8802A] via-[#E5AC44] to-[#B8802A] bg-[length:200%_auto] bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)', backgroundPosition: ['0% 50%', '200% 50%'] }}
               transition={{

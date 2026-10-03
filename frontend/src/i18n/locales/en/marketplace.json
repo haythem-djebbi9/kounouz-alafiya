@@ -299,10 +299,9 @@
     "popularLabel": "Popular searches:",
     "quickTags": [
       "Sidr honey",
-      "Royal jelly",
-      "Honey sticks",
-      "Premium natural honey",
-      "Propolis"
+      "Rosemary",
+      "Citrus honey",
+      "Wildflower honey"
     ],
     "resultsCount": "Search results ({{count}})",
     "featuredProducts": "Featured products",
@@ -319,7 +318,9 @@
     "viewCertificate": "View certificate",
     "addedToCart": "Added to cart!",
     "addToCartCta": "Add to cart",
-    "soldOut": "Sold out"
+    "soldOut": "Sold out",
+    "back": "Back to the shop",
+    "notFound": "This product is no longer available."
   },
   "verifySection": {
     "headingPart1": "Don't just trust.",

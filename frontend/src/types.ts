@@ -72,4 +72,4 @@ export function cartLineKey(item: Pick<CartItem, 'product' | 'variantId' | 'sele
   return `${item.product.id}:${item.variantId ?? item.selectedWeight}`;
 }
 
-export type PageView = 'home' | 'products' | 'story' | 'verify' | 'contact' | 'help' | 'settings' | 'blog';
+export type PageView = 'home' | 'products' | 'story' | 'verify' | 'contact' | 'help' | 'settings' | 'blog' | 'product';
