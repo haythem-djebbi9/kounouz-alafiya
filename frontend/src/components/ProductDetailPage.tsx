@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePriceFormatter } from '../lib/format-price';
 import { Product } from '../types';
-import { ArrowLeft, Star, Check, Plus, Minus, ShoppingCart, QrCode, MapPin, Sparkles } from 'lucide-react';
+import { ArrowLeft, Star, Check, Plus, Minus, ShoppingCart, QrCode, MapPin, Sparkles, AlertTriangle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface ProductDetailPageProps {
@@ -233,6 +233,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </div>
             </div>
           )}
+
+          <p role="note" className="flex gap-2.5 items-start rounded-xl border border-[#E8C98A] bg-[#FFF6E5] p-4 text-sm font-semibold leading-relaxed text-[#6B4410]">
+            <AlertTriangle className="w-5 h-5 text-[#C68A28] shrink-0 mt-0.5" />
+            <span>{t('marketplace:productDetail.healthNotice')}</span>
+          </p>
         </div>
 
         {product.batchCode && (

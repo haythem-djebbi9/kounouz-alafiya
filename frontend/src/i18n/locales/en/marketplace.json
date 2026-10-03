@@ -320,7 +320,8 @@
     "addToCartCta": "Add to cart",
     "soldOut": "Sold out",
     "back": "Back to the shop",
-    "notFound": "This product is no longer available."
+    "notFound": "This product is no longer available.",
+    "healthNotice": "Health note: do not give honey to a child under one year old; some doctors even advise waiting until age two. Ask your paediatrician."
   },
   "verifySection": {
     "headingPart1": "Don't just trust.",
@@ -470,6 +471,10 @@
         "producer": {
           "q": "I’m a beekeeper — how do I sell my honey on Kounouz?",
           "a": "Create a producer account and submit a verification request. Our team reviews it and arranges sampling (an agent visit or you drop it off), then the lab analysis. Once verified, your honey is packaged and listed in the shop."
+        },
+        "children": {
+          "q": "Can I give honey to a baby?",
+          "a": "No, not before one year of age; some doctors even advise waiting until age two. Always ask your paediatrician before introducing honey or other bee products into a child’s diet."
         }
       }
     }

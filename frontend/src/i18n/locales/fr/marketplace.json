@@ -320,7 +320,8 @@
     "addToCartCta": "Ajouter au panier",
     "soldOut": "Épuisé",
     "back": "Retour à la boutique",
-    "notFound": "Ce produit n'est plus disponible."
+    "notFound": "Ce produit n'est plus disponible.",
+    "healthNotice": "Conseil santé : ne donnez pas de miel à un enfant de moins d’un an ; certains médecins conseillent même d’attendre ses deux ans. Demandez l’avis de votre pédiatre."
   },
   "verifySection": {
     "headingPart1": "Ne vous contentez pas de faire confiance.",
@@ -470,6 +471,10 @@
         "producer": {
           "q": "Je suis apiculteur : comment vendre mon miel sur Kounouz ?",
           "a": "Créez un compte producteur puis déposez une demande de vérification. Notre équipe l’examine et organise le prélèvement (visite d’un agent ou dépôt par vos soins), puis l’analyse en laboratoire. Une fois vérifié, votre miel est conditionné et mis en vente."
+        },
+        "children": {
+          "q": "Peut-on donner du miel à un bébé ?",
+          "a": "Non, pas avant un an ; certains médecins conseillent même d’attendre deux ans. Demandez toujours l’avis de votre pédiatre avant d’introduire le miel ou les produits de la ruche dans l’alimentation d’un enfant."
         }
       }
     }

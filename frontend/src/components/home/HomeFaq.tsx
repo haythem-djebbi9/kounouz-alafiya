@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Plus, MessageCircle } from 'lucide-react';
 import { SectionHeading } from './ui';
 
-const QUESTIONS = ['verified', 'whereQr', 'problem', 'prices', 'producer'] as const;
+const QUESTIONS = ['verified', 'whereQr', 'problem', 'prices', 'children', 'producer'] as const;
 
 interface HomeFaqProps {
   onContact: () => void;
