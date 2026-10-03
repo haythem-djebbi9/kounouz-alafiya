@@ -3,6 +3,7 @@
  * à recopier dans la migration qui crée la table :
  *
  *   npx tsx prisma/generer-sql-blog.ts
+ *   npx tsx prisma/generer-sql-blog.ts <slug> [<slug>…]   (articles ajoutés après coup)
  *
  * Les textes sont passés en « dollar quoting » PostgreSQL : aucun échappement
  * à gérer, quelle que soit la langue. ON CONFLICT rend l'insertion rejouable.
@@ -12,7 +13,10 @@ import { readingMinutes } from '../src/blog/blog-text.js';
 
 const quote = (value: string) => `$kz$${value}$kz$`;
 
-const lignes = BLOG_ARTICLES.map((a) =>
+const slugs = process.argv.slice(2);
+const articles = slugs.length ? BLOG_ARTICLES.filter((a) => slugs.includes(a.slug)) : BLOG_ARTICLES;
+
+const lignes = articles.map((a) =>
   [
     '(',
     `  gen_random_uuid()::text, ${quote(a.slug)}, ${quote(a.category)},`,

@@ -25,6 +25,85 @@ export interface BlogArticleSeed {
 
 export const BLOG_ARTICLES: BlogArticleSeed[] = [
   {
+    slug: 'miel-et-nourrissons',
+    category: 'SANTE',
+    coverImage: '/images/jabal.webp',
+    featured: true,
+    publishedAt: '2026-10-03T08:00:00.000Z',
+    title: {
+      ar: 'العسل والأطفال الرضّع: لماذا ننتظر؟',
+      fr: 'Miel et nourrissons : pourquoi attendre ?',
+      en: 'Honey and babies: why wait?',
+    },
+    excerpt: {
+      ar: 'لا يُعطى العسل للأطفال دون سنة من العمر، ويوصي بعض الأطباء بالانتظار حتى سنتين. إليك السبب.',
+      fr: 'Pas de miel avant un an ; certains médecins conseillent même d’attendre deux ans. Voici pourquoi.',
+      en: 'No honey before one year of age; some doctors even advise waiting until two. Here is why.',
+    },
+    content: {
+      ar: `العسل غذاء طبيعي غني، لكنه لا يناسب كل الأعمار. عند الأطفال الصغار جداً، يجب الانتظار قبل إدخاله إلى غذائهم.
+
+> لا يُعطى العسل للأطفال دون سنة من العمر، ويوصي بعض الأطباء بالانتظار حتى سنتين. استشر طبيب الأطفال.
+
+## لماذا لا يُعطى العسل قبل السنة؟
+
+قد يحتوي العسل، حتى الطبيعي والنقي، على أبواغ بكتيريا تسمى **كلوستريديوم البوتولينوم**. جهاز الهضم عند البالغ يتخلص منها دون مشكلة، أما عند الرضيع فهو غير مكتمل بعد، فقد تتكاثر هذه البكتيريا وتسبب مرضاً نادراً لكنه خطير يسمى **التسمم الوشيقي عند الرضّع**.
+
+لا يتعلق الأمر بجودة العسل: العسل المفحوص مخبرياً معنيّ بهذا التنبيه مثل أي عسل آخر.
+
+## ماذا يعني ذلك عملياً؟
+
+- لا تضع العسل على اللهاية ولا في رضّاعة الحليب.
+- تجنب الأطعمة والحلويات المحضرة بالعسل للأطفال دون سنة.
+- ينطبق التنبيه نفسه على منتجات النحل الأخرى (غذاء الملكات، البروبوليس، حبوب اللقاح).
+- بعد السنة، أدخل العسل بكميات صغيرة، ويفضل بعد استشارة طبيب الأطفال، خاصة أن بعض الأطباء ينصحون بالانتظار حتى سنتين.
+
+## علامات تستدعي استشارة الطبيب فوراً
+
+إذا تناول رضيع العسل وظهر عليه إمساك غير معتاد، أو ضعف في الرضاعة، أو خمول، أو بكاء ضعيف، فاستشر الطبيب دون تأخير.`,
+      fr: `Le miel est un aliment naturel et riche, mais il ne convient pas à tous les âges. Chez les tout-petits, il faut attendre avant de l’introduire.
+
+> Ne donnez pas de miel à un enfant de moins d’un an ; certains médecins conseillent même d’attendre ses deux ans. Demandez l’avis de votre pédiatre.
+
+## Pourquoi pas de miel avant un an ?
+
+Même pur et naturel, le miel peut contenir des spores d’une bactérie, **Clostridium botulinum**. L’intestin d’un adulte les élimine sans problème ; celui d’un nourrisson n’est pas encore mature, et la bactérie peut s’y développer et provoquer une maladie rare mais grave, le **botulisme infantile**.
+
+La qualité du miel n’est pas en cause : un miel analysé en laboratoire est concerné au même titre que les autres.
+
+## Concrètement
+
+- Ne trempez jamais la tétine dans le miel et n’en mettez pas dans le biberon.
+- Évitez les préparations et pâtisseries au miel avant un an.
+- La même précaution vaut pour les autres produits de la ruche (gelée royale, propolis, pollen).
+- Après un an, introduisez le miel en petites quantités, de préférence après avis du pédiatre, d’autant que certains médecins conseillent d’attendre deux ans.
+
+## Quand consulter sans attendre
+
+Si un bébé a mangé du miel et présente une constipation inhabituelle, une succion faible, une grande fatigue ou des pleurs affaiblis, consultez un médecin sans tarder.`,
+      en: `Honey is a rich, natural food, but it does not suit every age. With very young children, you need to wait before introducing it.
+
+> Do not give honey to a child under one year old; some doctors even advise waiting until age two. Ask your paediatrician.
+
+## Why no honey before one year?
+
+Even pure, natural honey can contain spores of a bacterium called **Clostridium botulinum**. An adult’s gut gets rid of them without trouble; a baby’s gut is not yet mature, so the bacterium can grow and cause a rare but serious illness, **infant botulism**.
+
+This has nothing to do with honey quality: laboratory-tested honey is affected just as much as any other.
+
+## In practice
+
+- Never dip a dummy in honey or add it to a baby’s bottle.
+- Avoid foods and pastries made with honey before one year.
+- The same precaution applies to other bee products (royal jelly, propolis, pollen).
+- After one year, introduce honey in small amounts, ideally after asking your paediatrician, especially as some doctors advise waiting until two.
+
+## When to see a doctor straight away
+
+If a baby has eaten honey and shows unusual constipation, weak feeding, marked tiredness or a weak cry, see a doctor without delay.`,
+    },
+  },
+  {
     slug: 'reconnaitre-un-miel-authentique',
     category: 'CONSEILS',
     coverImage: '/images/scan.webp',
