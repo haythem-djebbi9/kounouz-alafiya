@@ -125,7 +125,9 @@ export const InteractiveBee: React.FC = () => {
         style={{
           transform: `translate3d(${beePos.x}px, ${beePos.y}px, 0)`,
         }}
-        className="absolute pointer-events-auto cursor-pointer select-none group"
+        // left-0/top-0 : sans point d'ancrage, une page RTL placerait l'abeille
+        // au bord droit et la translation la sortirait de l'écran.
+        className="absolute left-0 top-0 pointer-events-auto cursor-pointer select-none group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleBeeClick}
