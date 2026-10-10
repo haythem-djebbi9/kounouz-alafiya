@@ -3,7 +3,8 @@
  *
  * Ils sont chargés par le seed sur une base neuve, et par la migration
  * `20260930120000_blog_posts` sur une base déjà en service (même contenu,
- * régénéré avec `npx tsx prisma/generer-sql-blog.ts`). L'administrateur peut
+ * régénéré avec `npx tsx prisma/generer-sql-blog.ts`), et copiés dans la
+ * vitrine par `npx tsx prisma/generer-blog-vitrine.ts`. L'administrateur peut
  * ensuite les modifier, les dépublier ou les supprimer depuis la console.
  *
  * Mise en forme du contenu : paragraphes séparés par une ligne vide,

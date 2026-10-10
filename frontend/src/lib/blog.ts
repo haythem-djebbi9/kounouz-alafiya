@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { API_URL, api, resolveFileUrl } from './api';
+import starterPosts from './blog-starter.json';
 
 // Blog de la vitrine : articles rédigés dans la console d'administration, en
 // arabe, français et anglais. Une langue laissée vide se rabat sur une autre.
@@ -54,10 +55,23 @@ export const BLOG_FALLBACK_COVER = '/images/3sal.webp';
 
 // --- Vitrine -------------------------------------------------------------------
 
+// Articles de départ embarqués dans la vitrine (générés depuis
+// backend/prisma/blog-articles.ts par prisma/generer-blog-vitrine.ts). Ils ne
+// servent que si l'API du blog ne répond pas (serveur pas encore à jour, hors
+// ligne) : l'accueil n'est jamais privé d'articles. Une liste vide renvoyée par
+// l'API reste vide : c'est un choix de l'administrateur.
+const STARTER_POSTS = starterPosts as BlogPost[];
+
 export function usePublicBlogPosts(limit?: number) {
   return useQuery({
     queryKey: ['public', 'blog', limit ?? 'all'],
-    queryFn: () => api.get<BlogPostSummary[]>(`/blog${limit ? `?limit=${limit}` : ''}`, { skipAuth: true }),
+    queryFn: async () => {
+      try {
+        return await api.get<BlogPostSummary[]>(`/blog${limit ? `?limit=${limit}` : ''}`, { skipAuth: true });
+      } catch {
+        return limit ? STARTER_POSTS.slice(0, limit) : STARTER_POSTS;
+      }
+    },
     staleTime: 5 * 60_000,
   });
 }
@@ -65,7 +79,15 @@ export function usePublicBlogPosts(limit?: number) {
 export function usePublicBlogPost(slug: string | null) {
   return useQuery({
     queryKey: ['public', 'blog', 'post', slug],
-    queryFn: () => api.get<BlogPost>(`/blog/${encodeURIComponent(slug!)}`, { skipAuth: true }),
+    queryFn: async () => {
+      try {
+        return await api.get<BlogPost>(`/blog/${encodeURIComponent(slug!)}`, { skipAuth: true });
+      } catch (error) {
+        const starter = STARTER_POSTS.find((p) => p.slug === slug);
+        if (starter) return starter;
+        throw error;
+      }
+    },
     enabled: !!slug,
     staleTime: 5 * 60_000,
   });
