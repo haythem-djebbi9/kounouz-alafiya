@@ -591,5 +591,102 @@
       "text": "Type or scan the QR code on the label: origin, batch and lab results appear in three seconds.",
       "button": "Verify a product"
     }
+  },
+  "card": {
+    "labVerified": "Lab-tested",
+    "keyPoints": "Key points",
+    "points": {
+      "lab": "Every batch is lab-tested before sale",
+      "origin": "From an apiary in {{origin}}",
+      "batch": "Batch {{code}}, traceable by QR code"
+    }
+  },
+  "productPage": {
+    "labCard": {
+      "title": "Lab result · {{lab}}",
+      "reference": "Reference value:",
+      "passed": "{{passed}} of {{total}} indicators within standards",
+      "viewAll": "See all results",
+      "fallback": "Verified product: lab analysis and a QR code on every jar"
+    },
+    "shipping": {
+      "free": "Free delivery on this order",
+      "remaining": "Add more than {{amount}} for free delivery"
+    },
+    "delivery": "Delivery to every governorate within 2 to 5 days, cash on delivery",
+    "question": "A question? Message us on WhatsApp",
+    "whatsappMessage": "Hello, I have a question about: {{product}}",
+    "trust": {
+      "cod": "Cash on delivery",
+      "lab": "Lab analysis",
+      "qr": "Traceability QR code"
+    },
+    "chips": {
+      "harvest": "Harvest {{season}}"
+    },
+    "why": {
+      "title": "Why choose it",
+      "lab": "Tested by {{lab}} on {{date}}",
+      "params": "{{passed}} of {{total}} indicators within reference standards",
+      "farm": "From {{farm}} in {{location}}, a named producer",
+      "batch": "Batch {{code}}, traceable with the QR code on the jar",
+      "natural": "Natural honey, nothing added, never heated"
+    },
+    "tabs": {
+      "title": "All the details",
+      "composition": {
+        "label": "Ingredients",
+        "text": "100% natural {{honey}} from a named Tunisian apiary. No added sugar, no preservatives, never heated, in a sealed glass jar."
+      },
+      "usage": {
+        "label": "How to use",
+        "text": "One spoonful in the morning, plain or in lukewarm water (below 40 °C), or in milk or tea that has cooled a little. Avoid boiling drinks, which destroy its enzymes."
+      },
+      "storage": {
+        "label": "Storage",
+        "text": "Keep tightly closed at room temperature (15 to 25 °C), away from light and moisture. No need to refrigerate. Crystallisation is natural: to make it runny again, stand the jar in warm water no hotter than 40 °C."
+      },
+      "safety": {
+        "label": "Safety"
+      }
+    },
+    "lab": {
+      "title": "Lab results with real numbers",
+      "accreditation": "accreditation no. {{number}}",
+      "batch": "Batch:",
+      "verify": "Verify by QR code",
+      "reference": "Reference:",
+      "status": {
+        "WITHIN_RANGE": "Within range",
+        "NOT_DETECTED": "Not detected",
+        "OUT_OF_RANGE": "Out of range",
+        "DETECTED": "Detected",
+        "NOT_APPLICABLE": "—"
+      }
+    },
+    "producer": {
+      "eyebrow": "From the apiary to your table",
+      "text": "We know every apiary by name: the sample is taken and sealed there, then analysed in an accredited lab before the batch goes on sale."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "crystallization": {
+        "q": "My honey has hardened. Is it fake?",
+        "a": "No. Crystallisation is natural and depends on the honey’s sugars, so on the flowers. Stand the jar in warm water (below 40 °C) to make it runny again without damaging it."
+      },
+      "verify": {
+        "q": "How do I check a jar is genuine?",
+        "a": "Scan the QR code on the jar or enter its code on the “Verify a product” page: the batch, the apiary and the lab results appear. If the code is unknown, contact us."
+      },
+      "storage": {
+        "q": "Should honey go in the fridge?",
+        "a": "No. Keep it at room temperature away from light and moisture; cold speeds up crystallisation."
+      },
+      "children": {
+        "q": "Can I give honey to a baby?",
+        "a": "No, not before one year of age; some doctors even advise waiting until two. Ask your paediatrician."
+      }
+    },
+    "related": "You may also like"
   }
 }

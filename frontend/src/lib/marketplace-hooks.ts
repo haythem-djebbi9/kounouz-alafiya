@@ -49,11 +49,31 @@ export function usePublicProducts(categorieSlug?: string) {
   });
 }
 
+/** Provenance du lot et analyse publiée, jointes à la fiche produit. */
+export interface PublicLabReport {
+  batchCode: string;
+  honeyType: string;
+  origin: string | null;
+  harvestSeason: string | null;
+  productionDate: string;
+  bestBefore: string | null;
+  verifiedAt: string | null;
+  producer: { name: string; farmName: string; location: string } | null;
+  analysis: {
+    analysisDate: string;
+    status: string;
+    laboratory: { name: string; accreditationNo: string; country: string };
+    parameters: PublicLabParameter[];
+  } | null;
+}
+
 export function usePublicProduct(id: string | undefined) {
   return useQuery({
     queryKey: ['public', 'products', 'detail', id],
-    queryFn: () => api.get<PublicProduct>(`/products/catalog/${id}`, { skipAuth: true }),
+    queryFn: () =>
+      api.get<PublicProduct & { labReport?: PublicLabReport | null }>(`/products/catalog/${id}`, { skipAuth: true }),
     enabled: !!id,
+    staleTime: 60_000,
   });
 }
 

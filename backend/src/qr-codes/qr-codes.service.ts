@@ -7,6 +7,7 @@ import { RecordScanDto, ReportLabelDto } from './dto/record-scan.dto.js';
 import { AntiFraudService } from '../anti-fraud/anti-fraud.service.js';
 import { DomainEventsService } from '../events/domain-events.service.js';
 import { EventType } from '../events/event-types.js';
+import { toPublicLabParameters } from '../common/public-lab-report.js';
 
 const VERIFY_PAYLOAD_INCLUDE = {
   product: {
@@ -206,24 +207,7 @@ export class QrCodesService {
         analysisDate: analysis.analysisDate,
         status: analysis.status,
         laboratory: analysis.laboratory.name,
-        // Représentation publique approuvée du bulletin : uniquement les
-        // paramètres normés saisis par Kounouz, jamais le JSON libre
-        // `analysis.results` ni `conclusion` / `internalNotes`.
-        parameters: analysis.testResults.map((test) => ({
-          parameterKey: test.parameterKey,
-          value: test.value,
-          unit: test.unit,
-          status: test.status,
-          reference:
-            test.referenceText ??
-            (test.referenceMin !== null && test.referenceMax !== null
-              ? `${test.referenceMin} – ${test.referenceMax}`
-              : test.referenceMax !== null
-                ? `≤ ${test.referenceMax}`
-                : test.referenceMin !== null
-                  ? `≥ ${test.referenceMin}`
-                  : null),
-        })),
+        parameters: toPublicLabParameters(analysis.testResults),
       },
     };
   }

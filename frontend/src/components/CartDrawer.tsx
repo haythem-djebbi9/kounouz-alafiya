@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   CheckCircle2
 } from 'lucide-react';
+import { SHIPPING_FEE, isShippingFree } from '../lib/shop-rules';
 import confetti from 'canvas-confetti';
 import { api, ApiError, NetworkError, newIdempotencyKey } from '../lib/api';
 
@@ -55,7 +56,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     (sum, item) => sum + (item.unitPrice ?? item.product.price) * item.quantity,
     0
   );
-  const shipping = subtotal > 200 || items.length === 0 ? 0 : 25;
+  const shipping = isShippingFree(subtotal) || items.length === 0 ? 0 : SHIPPING_FEE;
   const total = subtotal + shipping;
 
   // Commande réelle (POST /orders) : le backend revalide prix, stock et

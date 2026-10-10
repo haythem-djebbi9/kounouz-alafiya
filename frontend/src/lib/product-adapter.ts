@@ -57,9 +57,12 @@ export function toMockProduct(p: PublicProduct): MockProduct {
     rating: 0,
     reviewsCount: 0,
     image: p.images[0] ? productImageUrl(p.images[0]) : '/images/cover.webp',
+    images: p.images.length > 0 ? p.images.map(productImageUrl) : ['/images/cover.webp'],
     description: p.description ?? '',
     origin: producer ? `${producer.location}` : p.categorie.nom,
     producerLocation: producer?.location || undefined,
+    farmName: producer?.farmName || undefined,
+    honeyType: p.batch?.honeyType || undefined,
     batchCode: p.batch?.batchCode ?? '',
     benefits: [],
     // Chaque produit du catalogue public a, par construction, déjà traversé

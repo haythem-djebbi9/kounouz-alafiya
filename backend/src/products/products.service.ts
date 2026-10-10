@@ -16,6 +16,7 @@ import {
   withPrimaryQr,
   withPrimaryQrAll,
 } from '../common/primary-qr.js';
+import { toPublicLabParameters } from '../common/public-lab-report.js';
 
 const PRODUCT_INCLUDE = {
   categorie: true,
@@ -267,7 +268,57 @@ export class ProductsService {
     if (!product) {
       throw new NotFoundException('Produit introuvable.');
     }
-    return withPrimaryQr(product);
+    return { ...withPrimaryQr(product), labReport: await this.publicLabReport(product.batchId) };
+  }
+
+  // Fiche produit : provenance du lot et résultats d'analyse publiés, lus
+  // directement (sans passer par /verify, qui journalise un scan de QR).
+  private async publicLabReport(batchId: string | null) {
+    if (!batchId) return null;
+    const batch = await this.prisma.batch.findUnique({
+      where: { id: batchId },
+      select: {
+        batchCode: true,
+        honeyType: true,
+        origin: true,
+        harvestSeason: true,
+        productionDate: true,
+        bestBefore: true,
+        verification: {
+          select: {
+            verifiedAt: true,
+            request: { select: { producer: { select: { name: true, farmName: true, location: true } } } },
+            analysis: {
+              select: {
+                analysisDate: true,
+                status: true,
+                laboratory: { select: { name: true, accreditationNo: true, country: true } },
+                testResults: { orderBy: { position: 'asc' } },
+              },
+            },
+          },
+        },
+      },
+    });
+    if (!batch) return null;
+    const { verification } = batch;
+    const analysis = verification?.analysis;
+    return {
+      batchCode: batch.batchCode,
+      honeyType: batch.honeyType,
+      origin: batch.origin,
+      harvestSeason: batch.harvestSeason,
+      productionDate: batch.productionDate,
+      bestBefore: batch.bestBefore,
+      verifiedAt: verification?.verifiedAt ?? null,
+      producer: verification?.request.producer ?? null,
+      analysis: analysis && {
+        analysisDate: analysis.analysisDate,
+        status: analysis.status,
+        laboratory: analysis.laboratory,
+        parameters: toPublicLabParameters(analysis.testResults),
+      },
+    };
   }
 
   // Portail Producteur : produits créés par Kounouz à partir de ses lots

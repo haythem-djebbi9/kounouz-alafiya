@@ -12,10 +12,15 @@ export interface Product {
   rating: number;
   reviewsCount: number;
   image: string;
+  // Toutes les photos du produit (galerie de la fiche), la première = `image`.
+  images: string[];
   description: string;
   origin: string;
   // Localité réelle du rucher (ex: « Zaghouan, Tunisie »), absente sans producteur rattaché.
   producerLocation?: string;
+  // Exploitation d'origine (ex: « Rucher de Zaghouan ») et miel du lot.
+  farmName?: string;
+  honeyType?: string;
   batchCode: string;
   benefits: string[];
   purity: string;

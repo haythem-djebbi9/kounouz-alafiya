@@ -319,8 +319,10 @@ export default function App() {
               <ProductDetailPage
                 product={selectedProduct}
                 loading={productsLoading}
+                products={products}
                 onBack={closeProduct}
                 onAddToCart={handleAddToCart}
+                onSelectProduct={openProduct}
                 onVerifyBatch={handleVerifyProduct}
               />
             </motion.div>

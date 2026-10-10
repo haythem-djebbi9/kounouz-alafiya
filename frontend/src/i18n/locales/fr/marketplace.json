@@ -591,5 +591,102 @@
       "text": "Saisissez ou scannez le code QR de l’étiquette : origine, lot et résultats d’analyse s’affichent en trois secondes.",
       "button": "Vérifier un produit"
     }
+  },
+  "card": {
+    "labVerified": "Analysé en laboratoire",
+    "keyPoints": "Points clés",
+    "points": {
+      "lab": "Chaque lot est analysé en laboratoire avant la vente",
+      "origin": "D’un rucher à {{origin}}",
+      "batch": "Lot {{code}} traçable par QR code"
+    }
+  },
+  "productPage": {
+    "labCard": {
+      "title": "Résultat du laboratoire · {{lab}}",
+      "reference": "Valeur de référence :",
+      "passed": "{{passed}} indicateurs sur {{total}} conformes",
+      "viewAll": "Voir tous les résultats",
+      "fallback": "Produit vérifié : analyse en laboratoire et QR code sur chaque pot"
+    },
+    "shipping": {
+      "free": "Livraison offerte pour cette commande",
+      "remaining": "Ajoutez plus de {{amount}} pour la livraison offerte"
+    },
+    "delivery": "Livraison dans tous les gouvernorats sous 2 à 5 jours, paiement à la livraison",
+    "question": "Une question ? Écrivez-nous sur WhatsApp",
+    "whatsappMessage": "Bonjour, j’ai une question sur le produit : {{product}}",
+    "trust": {
+      "cod": "Paiement à la livraison",
+      "lab": "Analyse en laboratoire",
+      "qr": "QR code de traçabilité"
+    },
+    "chips": {
+      "harvest": "Récolte {{season}}"
+    },
+    "why": {
+      "title": "Pourquoi le choisir",
+      "lab": "Analysé par {{lab}} le {{date}}",
+      "params": "{{passed}} indicateurs sur {{total}} dans les normes de référence",
+      "farm": "De {{farm}} à {{location}}, un producteur identifié",
+      "batch": "Lot {{code}} traçable grâce au QR code du pot",
+      "natural": "Miel naturel, sans ajout ni chauffage"
+    },
+    "tabs": {
+      "title": "Tous les détails",
+      "composition": {
+        "label": "Composition",
+        "text": "{{honey}} 100 % naturel, d’un rucher tunisien identifié. Sans sucre ajouté, sans conservateur, non chauffé, en pot de verre scellé."
+      },
+      "usage": {
+        "label": "Utilisation",
+        "text": "Une cuillère le matin, nature ou dans de l’eau tiède (moins de 40 °C), ou dans un lait ou un thé un peu refroidi. Évitez les boissons bouillantes, qui détruisent ses enzymes."
+      },
+      "storage": {
+        "label": "Conservation",
+        "text": "Bien fermé, à température ambiante (15 à 25 °C), à l’abri de la lumière et de l’humidité. Inutile de le mettre au réfrigérateur. La cristallisation est naturelle : pour le rendre fluide, placez le pot au bain-marie sans dépasser 40 °C."
+      },
+      "safety": {
+        "label": "Sécurité"
+      }
+    },
+    "lab": {
+      "title": "Des résultats de laboratoire chiffrés",
+      "accreditation": "accréditation n° {{number}}",
+      "batch": "Lot :",
+      "verify": "Vérifier par QR code",
+      "reference": "Référence :",
+      "status": {
+        "WITHIN_RANGE": "Conforme",
+        "NOT_DETECTED": "Non détecté",
+        "OUT_OF_RANGE": "Hors norme",
+        "DETECTED": "Détecté",
+        "NOT_APPLICABLE": "—"
+      }
+    },
+    "producer": {
+      "eyebrow": "Du rucher à votre table",
+      "text": "Nous connaissons chaque rucher par son nom : l’échantillon y est prélevé et scellé, puis analysé dans un laboratoire accrédité avant la mise en vente du lot."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "crystallization": {
+        "q": "Mon miel a durci, est-il frelaté ?",
+        "a": "Non. La cristallisation est naturelle et dépend des sucres du miel, donc des fleurs butinées. Placez le pot au bain-marie (moins de 40 °C) pour le rendre fluide sans l’abîmer."
+      },
+      "verify": {
+        "q": "Comment vérifier l’authenticité d’un pot ?",
+        "a": "Scannez le QR code du pot ou saisissez son code sur la page « Vérifier un produit » : le lot, le rucher et les résultats du laboratoire s’affichent. Si le code est inconnu, contactez-nous."
+      },
+      "storage": {
+        "q": "Faut-il garder le miel au réfrigérateur ?",
+        "a": "Non. Gardez-le à température ambiante, à l’abri de la lumière et de l’humidité ; le froid accélère la cristallisation."
+      },
+      "children": {
+        "q": "Peut-on donner du miel à un bébé ?",
+        "a": "Non, pas avant un an ; certains médecins conseillent même d’attendre deux ans. Demandez l’avis de votre pédiatre."
+      }
+    },
+    "related": "Vous aimerez aussi"
   }
 }

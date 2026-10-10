@@ -1,15 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import confetti from 'canvas-confetti';
 import { useTranslation } from 'react-i18next';
 import { usePriceFormatter } from '../lib/format-price';
 import { usePublicBlogPosts } from '../lib/blog';
 import { Product } from '../types';
 import { BlogCard, BlogCardSkeleton } from './blog/BlogCard';
 import { ForwardArrow } from './home/ui';
+import { ProductCard } from './shop/ProductCard';
+import { FREE_SHIPPING_THRESHOLD } from '../lib/shop-rules';
 import {
-  Heart,
-  Star,
   Truck,
   ShieldCheck,
   Headphones,
@@ -18,8 +17,6 @@ import {
   Layers,
   Search,
   SlidersHorizontal,
-  ShoppingBag,
-  Check,
   QrCode,
   Award,
   Package,
@@ -43,8 +40,6 @@ interface ProductsPageProps {
   onVerifyProduct: () => void;
 }
 
-// Livraison offerte au-delà de ce montant (même règle que le panier et l'API).
-const FREE_SHIPPING_THRESHOLD = 200;
 
 type SortKey = 'featured' | 'bestseller' | 'price-asc' | 'price-desc';
 
@@ -63,8 +58,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<SortKey>('featured');
-  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
-  const [addedItemIds, setAddedItemIds] = useState<Record<string, boolean>>({});
 
   const filteredAndSortedProducts = useMemo(() => {
     let result = products.filter((p) => {
@@ -99,34 +92,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
   // Produit présenté dans l'encadré du haut : le plus cher du catalogue, en
   // général le miel le plus rare (sedra).
   const showcase = useMemo(() => [...products].sort((a, b) => b.price - a.price)[0], [products]);
-
-  const toggleFavorite = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setFavorites((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const handleQuickAdd = (product: Product, e: React.MouseEvent) => {
-    e.stopPropagation();
-    onAddToCart(product);
-    setAddedItemIds((prev) => ({ ...prev, [product.id]: true }));
-
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    confetti({
-      particleCount: 30,
-      spread: 55,
-      origin: {
-        x: (rect.left + rect.width / 2) / window.innerWidth,
-        y: (rect.top + rect.height / 2) / window.innerHeight,
-      },
-      colors: ['#D49B37', '#E8B958', '#1E6B56', '#FAF6EE', '#0C261B'],
-      shapes: ['circle'],
-      scalar: 0.85,
-    });
-
-    setTimeout(() => {
-      setAddedItemIds((prev) => ({ ...prev, [product.id]: false }));
-    }, 1800);
-  };
 
   const pills = [
     { key: 'lab', icon: <ShieldCheck className="w-4 h-4 text-[#1E6B56]" /> },
@@ -339,148 +304,17 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
             </button>
           </div>
         ) : (
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredAndSortedProducts.map((product, idx) => {
-                const isFav = !!favorites[product.id];
-                const isJustAdded = !!addedItemIds[product.id];
-                const discountPercentage = product.oldPrice
-                  ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)
-                  : 0;
-
-                return (
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.92 }}
-                    transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
-                    whileHover={{ y: -6 }}
-                    key={product.id}
-                    id={`catalog-card-${product.id}`}
-                    onClick={() => onSelectProduct(product)}
-                    className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-[#EAE1D2] hover:border-[#D49B37]/60 flex flex-col justify-between cursor-pointer relative"
-                  >
-                    <div className="relative aspect-[4/3.4] overflow-hidden bg-[#FAF6EE]">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-2.5 start-2.5 flex flex-col gap-1.5 items-start">
-                        {discountPercentage > 0 && (
-                          <span className="bg-rose-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm">
-                            {t('shop.badges.discount', { percent: discountPercentage })}
-                          </span>
-                        )}
-                        {product.isBestSeller && (
-                          <span className="bg-[#0C261B] text-[#D49B37] text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm border border-[#D49B37]/40">
-                            {t('shop.badges.bestseller')}
-                          </span>
-                        )}
-                        {product.isNew && (
-                          <span className="bg-[#1E6B56] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm">
-                            {t('shop.badges.new')}
-                          </span>
-                        )}
-                      </div>
-
-                      <motion.button
-                        whileHover={{ scale: 1.15 }}
-                        whileTap={{ scale: 0.85 }}
-                        onClick={(e) => toggleFavorite(product.id, e)}
-                        aria-label={t('shop.favorite')}
-                        aria-pressed={isFav}
-                        className="absolute top-2.5 end-2.5 p-2 rounded-full bg-white/90 hover:bg-white shadow-md text-[#0C261B] transition-colors cursor-pointer"
-                      >
-                        <Heart className={`w-4 h-4 transition-colors ${isFav ? 'fill-rose-500 text-rose-500' : 'text-[#8C7A60]'}`} />
-                      </motion.button>
-
-                      {product.weight && (
-                        <div className="absolute bottom-2.5 start-2.5 bg-[#0C261B]/90 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-md">
-                          {product.weight}
-                        </div>
-                      )}
-                      <div className="absolute bottom-2.5 end-2.5 bg-white/95 text-[#1E6B56] text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm border border-[#1E6B56]/20 flex items-center gap-1">
-                        <ShieldCheck className="w-3 h-3 text-[#1E6B56]" />
-                        <span>{t('shop.badges.labVerified')}</span>
-                      </div>
-                    </div>
-
-                    <div className="p-5 flex flex-col flex-grow justify-between text-start">
-                      <div>
-                        <p className="text-[11px] text-[#C68A28] font-extrabold mb-1">{product.categoryLabel}</p>
-                        <h3 className="text-base sm:text-lg font-bold text-[#0C261B] mb-1 group-hover:text-[#C68A28] transition-colors leading-snug">
-                          {product.name}
-                        </h3>
-                        <p className="text-xs text-[#6F827B] font-medium line-clamp-2 mb-3 leading-relaxed">{product.description}</p>
-
-                        {/* Aucune note inventée : les étoiles n'apparaissent qu'avec de vrais avis. */}
-                        {product.reviewsCount > 0 && (
-                          <div className="flex items-center gap-1 mb-3 text-[#D49B37]">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className={`w-3.5 h-3.5 ${i < Math.round(product.rating) ? 'fill-[#D49B37]' : ''}`} />
-                            ))}
-                            <span className="text-[11px] text-[#8C7A60] ms-1">{t('shop.reviews', { count: product.reviewsCount })}</span>
-                          </div>
-                        )}
-
-                        <div className="flex items-baseline gap-2 mb-4">
-                          <span className="text-lg sm:text-xl font-extrabold text-[#0C261B]">{formatPrice(product.price)}</span>
-                          {product.oldPrice && (
-                            <span className="text-xs text-[#8C9E97] line-through font-medium">{formatPrice(product.oldPrice)}</span>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 pt-2 border-t border-[#EAE1D2]">
-                        <motion.button
-                          type="button"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.96 }}
-                          onClick={(e) => handleQuickAdd(product, e)}
-                          className={`w-full inline-flex items-center justify-center gap-2 font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl transition-all cursor-pointer shadow-sm ${
-                            isJustAdded ? 'bg-[#1E6B56] text-white ring-2 ring-[#D49B37]' : 'bg-[#0C261B] hover:bg-[#15473A] text-white'
-                          }`}
-                        >
-                          {isJustAdded ? <Check className="w-4 h-4 text-[#D49B37]" /> : <ShoppingBag className="w-4 h-4 text-[#D49B37]" />}
-                          <span>{isJustAdded ? t('shop.added') : t('shop.addToCart')}</span>
-                        </motion.button>
-
-                        <div className="flex items-center gap-2">
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onSelectProduct(product);
-                            }}
-                            className="flex-1 inline-flex items-center justify-center gap-1 bg-[#FAF6EE] hover:bg-[#EFE6D5] text-[#0C261B] font-bold text-xs py-2 px-3 rounded-lg transition-colors cursor-pointer border border-[#EAE1D2]"
-                          >
-                            <span>{t('shop.details')}</span>
-                            <ForwardArrow className="w-3 h-3" />
-                          </button>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onVerifyProduct();
-                            }}
-                            title={t('shop.verifyTitle')}
-                            className="inline-flex items-center justify-center gap-1 bg-white hover:bg-[#E7F3EE] text-[#1E6B56] font-bold text-xs py-2 px-3 rounded-lg transition-colors cursor-pointer border border-[#1E6B56]/30"
-                          >
-                            <QrCode className="w-3.5 h-3.5 text-[#1E6B56]" />
-                            <span>{t('shop.verify')}</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredAndSortedProducts.map((product, idx) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                index={idx}
+                onSelect={() => onSelectProduct(product)}
+                onAdd={() => onAddToCart(product)}
+              />
+            ))}
+          </div>
         )}
 
         {/* Engagements de la boutique */}
