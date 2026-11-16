@@ -44,6 +44,8 @@ import { SearchModal } from './components/SearchModal';
 import { AccountModal } from './components/AccountModal';
 import { ArticleModal } from './components/ArticleModal';
 import { InteractiveBee } from './components/InteractiveBee';
+import { NotFoundSection } from './components/NotFoundSection';
+import { SITE_URL, useJsonLd, usePageMeta } from './lib/page-meta';
 
 export default function App() {
   const navigate = useNavigate();
@@ -57,6 +59,9 @@ export default function App() {
   // La fiche produit a aussi sa propre adresse (/produit/<id>).
   const productMatch = location.pathname.match(/^\/produit\/([^/]+)\/?$/);
   const productId = productMatch ? decodeURIComponent(productMatch[1]) : null;
+  // Le routeur envoie ici toute adresse qu'il ne connaît pas. Seules « / »,
+  // le blog et les fiches produit existent : le reste n'est pas l'accueil.
+  const isKnownPath = location.pathname === '/' || !!blogMatch || !!productMatch;
   const [currentPage, setCurrentPage] = useState<PageView>(() =>
     blogMatch ? 'blog' : productMatch ? 'product' : 'home',
   );
@@ -88,6 +93,50 @@ export default function App() {
   const selectedProduct = useMemo(
     () => (productId ? products.find((p) => p.id === productId) ?? null : null),
     [productId, products],
+  );
+
+  // Un titre par page : avant, toutes portaient celui de l'accueil.
+  const pageTitles: Partial<Record<PageView, string>> = {
+    products: t('marketplace:nav.shop'),
+    story: t('marketplace:nav.story'),
+    verify: t('marketplace:nav.verify'),
+    contact: t('marketplace:nav.contact'),
+    help: t('marketplace:nav.help'),
+    blog: t('marketplace:footer.blog'),
+    settings: t('common:seo.settings'),
+  };
+  const pageTitle = !isKnownPath
+    ? t('common:seo.notFound.title')
+    : currentPage === 'product'
+      ? selectedProduct?.name
+      : pageTitles[currentPage];
+  usePageMeta(pageTitle, currentPage === 'product' ? selectedProduct?.description : undefined);
+
+  // Fiche produit : nom, image, prix et disponibilité pour les résultats
+  // enrichis de Google. Ni note ni avis : le site n'en recueille pas.
+  useJsonLd(
+    'product',
+    isKnownPath && currentPage === 'product' && selectedProduct
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: selectedProduct.name,
+          description: selectedProduct.description,
+          image: selectedProduct.images.map((src) => (src.startsWith('http') ? src : SITE_URL + src)),
+          sku: selectedProduct.batchCode,
+          brand: { '@type': 'Brand', name: 'Kounouz Alafiya' },
+          offers: {
+            '@type': 'Offer',
+            url: `${SITE_URL}/produit/${encodeURIComponent(selectedProduct.id)}`,
+            priceCurrency: 'TND',
+            price: selectedProduct.price,
+            availability:
+              (selectedProduct.variants ?? []).some((v) => v.stock > 0) || !selectedProduct.variants?.length
+                ? 'https://schema.org/InStock'
+                : 'https://schema.org/OutOfStock',
+          },
+        }
+      : null,
   );
 
   // Modals state
@@ -211,7 +260,9 @@ export default function App() {
     if (product.qrId) {
       navigate(`/verify/${product.qrId}`);
     } else {
-      navigate('/verify');
+      // « /verify » seul n'est pas une adresse : la page de vérification
+      // de la vitrine vit sur « / ».
+      handleOpenVerify();
     }
   };
 
@@ -231,6 +282,9 @@ export default function App() {
 
       {/* Main Content Area Based on Page Selection */}
       <main className="flex-grow">
+        {!isKnownPath ? (
+          <NotFoundSection onHome={() => handleNavigate('home')} onVerify={handleOpenVerify} />
+        ) : (
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
@@ -405,6 +459,7 @@ export default function App() {
             </motion.div>
           )}
         </AnimatePresence>
+        )}
       </main>
 
       {/* Main Footer */}

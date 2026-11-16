@@ -63,5 +63,18 @@
     "suggestions": "Suggestions",
     "unknowns": "Non établi",
     "error": "L'assistant est indisponible pour le moment."
+  },
+  "seo": {
+    "brand": "Kounouz Alafiya",
+    "homeTitle": "Miel tunisien vérifié en laboratoire",
+    "homeDescription": "Miel tunisien pur, analysé par un laboratoire agréé avant sa mise en vente. Chaque pot porte un code QR qui révèle son origine, son lot et ses résultats d'analyse.",
+    "settings": "Paramètres",
+    "verifyResult": "Vérification {{code}}",
+    "notFound": {
+      "title": "Page introuvable",
+      "description": "L'adresse que vous avez suivie ne correspond à aucune page du site.",
+      "home": "Retour à l'accueil",
+      "verify": "Vérifier un produit"
+    }
   }
 }

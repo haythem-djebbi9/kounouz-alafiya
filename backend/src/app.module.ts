@@ -32,6 +32,7 @@ import { VerificationPortalModule } from './verification-portal/verification-por
 import { FieldAgentModule } from './field-agent/field-agent.module.js';
 import { AdminModule } from './admin/admin.module.js';
 import { HealthModule } from './health/health.module.js';
+import { SeoModule } from './seo/seo.module.js';
 import { EventsModule } from './events/events.module.js';
 import { VariantsModule } from './products/variants.module.js';
 import { OperationsModule } from './operations/operations.module.js';
@@ -86,6 +87,7 @@ import { requestContextMiddleware } from './common/request-context.js';
     FieldAgentModule,
     AdminModule,
     HealthModule,
+    SeoModule,
     OperationsModule,
     AssistantModule,
     BlogModule,

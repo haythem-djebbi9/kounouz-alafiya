@@ -1,0 +1,17 @@
+# Kounouz Alafiya — consignes pour les robots d'indexation.
+
+User-agent: *
+# Portails réservés aux comptes connectés : rien à indexer.
+Disallow: /admin
+Disallow: /agent
+Disallow: /verificateur
+Disallow: /producteur
+Disallow: /connexion
+Disallow: /api/
+# Pages de vérification d'un pot : chaque visite est enregistrée comme un scan
+# et alimente la détection des contrefaçons. Un robot qui les parcourrait
+# fausserait cette analyse, et pourrait faire signaler à tort des codes
+# authentiques.
+Disallow: /verify/
+
+Sitemap: https://kounouzalafia.io/sitemap.xml

@@ -63,5 +63,18 @@
     "suggestions": "Suggestions",
     "unknowns": "Not established",
     "error": "The assistant is unavailable right now."
+  },
+  "seo": {
+    "brand": "Kounouz Alafiya",
+    "homeTitle": "Lab-verified Tunisian honey",
+    "homeDescription": "Pure Tunisian honey, analysed by an accredited laboratory before going on sale. Each jar carries a QR code revealing its origin, batch and analysis results.",
+    "settings": "Settings",
+    "verifyResult": "Verification {{code}}",
+    "notFound": {
+      "title": "Page not found",
+      "description": "The address you followed does not match any page on the site.",
+      "home": "Back to home",
+      "verify": "Verify a product"
+    }
   }
 }
