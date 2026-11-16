@@ -78,7 +78,17 @@ export type SampleStatus =
 export type SealStatus = 'INTACT' | 'BROKEN';
 export type VerificationStatus = 'PENDING' | 'VERIFIED' | 'NOT_VERIFIED' | 'ADDITIONAL_ANALYSIS';
 export type LabAnalysisStatus = 'PENDING' | 'COMPLIANT' | 'NON_COMPLIANT';
-export type BatchStatus = 'CREATED' | 'PACKAGED' | 'READY';
+export type BatchStatus =
+  | 'CREATED'
+  | 'VERIFIED'
+  | 'READY_FOR_PACKAGING'
+  | 'IN_PACKAGING'
+  | 'PACKAGED'
+  | 'READY'
+  | 'CONVERTED_TO_PRODUCT'
+  | 'PUBLISHED'
+  | 'SUSPENDED'
+  | 'RECALLED';
 export type PackagingStatus = 'IN_PROGRESS' | 'COMPLETED';
 export type ProductStatut = 'BROUILLON' | 'PUBLIE' | 'RUPTURE' | 'SUSPENDU' | 'ARCHIVE';
 

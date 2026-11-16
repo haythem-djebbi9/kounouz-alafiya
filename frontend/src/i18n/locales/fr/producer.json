@@ -408,8 +408,15 @@
   },
   "batchStatus": {
     "CREATED": "En attente",
+    "VERIFIED": "Vérifié",
+    "READY_FOR_PACKAGING": "Prêt à conditionner",
+    "IN_PACKAGING": "En conditionnement",
     "PACKAGED": "En conditionnement",
-    "READY": "Actif"
+    "READY": "Actif",
+    "CONVERTED_TO_PRODUCT": "Converti en produit",
+    "PUBLISHED": "Publié",
+    "SUSPENDED": "Suspendu",
+    "RECALLED": "Rappelé"
   },
   "packagingStatus": {
     "IN_PROGRESS": "En cours",

@@ -230,7 +230,9 @@ export const DashboardPage: React.FC = () => {
                     <Td className="text-[#1F4FA3]">{request.honeyType || '—'}</Td>
                     <Td className="whitespace-nowrap">{formatDate(request.submittedAt ?? request.createdAt, lang)}</Td>
                     <Td>
-                      <ToneBadge tone={STAGE_TONE[stage]}>{t(`producer:stage.${stage}`)}</ToneBadge>
+                      <ToneBadge tone={STAGE_TONE[stage]} className="whitespace-normal! text-start">
+                        {t(`producer:stage.${stage}`)}
+                      </ToneBadge>
                     </Td>
                   </tr>
                 );

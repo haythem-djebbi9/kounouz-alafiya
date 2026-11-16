@@ -23,11 +23,22 @@ import {
   Th,
   ToneBadge,
 } from './ui';
-import { BATCH_TONE, formatDate, formatNumber } from './utils';
+import { ACTIVE_BATCH_STATUSES, BATCH_TONE, WITHDRAWN_BATCH_STATUSES, formatDate, formatNumber } from './utils';
 import type { ProducerBatch } from './types';
 import type { BatchStatus } from '../../lib/api-types';
 
-const STATUSES: BatchStatus[] = ['CREATED', 'PACKAGED', 'READY'];
+const STATUSES: BatchStatus[] = [
+  'CREATED',
+  'VERIFIED',
+  'READY_FOR_PACKAGING',
+  'IN_PACKAGING',
+  'PACKAGED',
+  'READY',
+  'CONVERTED_TO_PRODUCT',
+  'PUBLISHED',
+  'SUSPENDED',
+  'RECALLED',
+];
 
 export const BatchesPage: React.FC = () => {
   const { t, i18n } = useTranslation(['producer', 'common']);
@@ -62,8 +73,8 @@ export const BatchesPage: React.FC = () => {
       <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-5">
         <StatCard tone="blue" icon={<Layers className="w-5 h-5" />} label={t('producer:batches.stats.total')} value={formatNumber(batches.length, lang)} />
         <StatCard tone="green" icon={<Scale className="w-5 h-5" />} label={t('producer:batches.stats.verifiedKg')} value={formatNumber(totalKg, lang, 1)} unit={t('producer:common.kgUnit')} />
-        <StatCard tone="gold" icon={<PackageOpen className="w-5 h-5" />} label={t('producer:batches.stats.packaging')} value={formatNumber(batches.filter((b) => b.status !== 'READY').length, lang)} />
-        <StatCard tone="green" icon={<PackageCheck className="w-5 h-5" />} label={t('producer:batches.stats.active')} value={formatNumber(batches.filter((b) => b.status === 'READY').length, lang)} />
+        <StatCard tone="gold" icon={<PackageOpen className="w-5 h-5" />} label={t('producer:batches.stats.packaging')} value={formatNumber(batches.filter((b) => !ACTIVE_BATCH_STATUSES.includes(b.status) && !WITHDRAWN_BATCH_STATUSES.includes(b.status)).length, lang)} />
+        <StatCard tone="green" icon={<PackageCheck className="w-5 h-5" />} label={t('producer:batches.stats.active')} value={formatNumber(batches.filter((b) => ACTIVE_BATCH_STATUSES.includes(b.status)).length, lang)} />
       </div>
 
       <InfoCard tone="gold" className="mb-5" icon={<PackageCheck className="w-5 h-5 text-[#A56A0B]" />}>

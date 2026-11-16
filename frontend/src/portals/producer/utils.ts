@@ -116,9 +116,21 @@ export const STAGE_TONE: Record<RequestStage, Tone> = {
 
 export const BATCH_TONE: Record<BatchStatus, Tone> = {
   CREATED: 'gold',
+  VERIFIED: 'gold',
+  READY_FOR_PACKAGING: 'gold',
+  IN_PACKAGING: 'blue',
   PACKAGED: 'blue',
   READY: 'green',
+  CONVERTED_TO_PRODUCT: 'green',
+  PUBLISHED: 'green',
+  SUSPENDED: 'red',
+  RECALLED: 'red',
 };
+
+// Lots qui sont (ou ont été) mis en marché : ils comptent comme « actifs ».
+export const ACTIVE_BATCH_STATUSES: readonly BatchStatus[] = ['READY', 'CONVERTED_TO_PRODUCT', 'PUBLISHED'];
+// Lots retirés de la circulation : ni en préparation, ni actifs.
+export const WITHDRAWN_BATCH_STATUSES: readonly BatchStatus[] = ['SUSPENDED', 'RECALLED'];
 
 export function requestLabel(request: ProducerRequest, t: TFunction): string {
   return request.requestCode ?? t('producer:requests.draftLabel');

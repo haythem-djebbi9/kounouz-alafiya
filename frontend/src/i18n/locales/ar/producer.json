@@ -407,8 +407,15 @@
   },
   "batchStatus": {
     "CREATED": "قيد الانتظار",
+    "VERIFIED": "موثّقة",
+    "READY_FOR_PACKAGING": "جاهزة للتعبئة",
+    "IN_PACKAGING": "قيد التعبئة",
     "PACKAGED": "قيد التعبئة",
-    "READY": "نشطة"
+    "READY": "نشطة",
+    "CONVERTED_TO_PRODUCT": "محوّلة إلى منتج",
+    "PUBLISHED": "منشورة",
+    "SUSPENDED": "معلّقة",
+    "RECALLED": "مسحوبة"
   },
   "packagingStatus": {
     "IN_PROGRESS": "جارية",
