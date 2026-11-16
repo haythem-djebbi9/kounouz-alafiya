@@ -173,12 +173,25 @@ export class QrCodesService {
     // produit était en vente. Le rappel prime sur toute autre information.
     const displayStatus = publicDisplayStatus(batch?.status ?? null, product.statut);
 
+    // Historique public du code : un pot fraîchement acheté n'a presque
+    // jamais été vérifié ; un code copié sur des pots contrefaits l'est
+    // souvent, et par des personnes différentes. Le scan en cours est déjà
+    // enregistré, il est donc compté.
+    const history = await this.prisma.qRScan.aggregate({
+      where: { qrCodeId: qrCode.id },
+      _count: { _all: true },
+      _min: { scannedAt: true },
+    });
+
     return {
       qrId: qrCode.qrId,
       qrCode: qrCode.qrCode,
       serialNumber: qrCode.serialNumber,
       displayStatus,
       product: {
+        // Sert au lien « Acheter ce produit » de la page de vérification.
+        id: product.id,
+        purchasable: product.statut === 'PUBLIE',
         nom: product.nom,
         description: product.description,
         images: product.images,
@@ -193,7 +206,13 @@ export class QrCodesService {
       batch: batch && {
         batchCode: batch.batchCode,
         honeyType: batch.honeyType,
-        productionDate: batch.productionDate,
+        // Un lot commercial ne peut naître que d'une vérification : cette
+        // date est celle du conditionnement, forcément postérieure à
+        // l'analyse et à la décision. Publiée sous le nom « productionDate »,
+        // elle laissait croire que le miel avait été analysé avant d'être
+        // produit. La récolte, elle, précède tout le reste.
+        packagingDate: batch.productionDate,
+        harvestSeason: batch.harvestSeason,
         bestBefore: batch.bestBefore,
         origin: batch.origin,
       },
@@ -208,6 +227,14 @@ export class QrCodesService {
         status: analysis.status,
         laboratory: analysis.laboratory.name,
         parameters: toPublicLabParameters(analysis.testResults),
+      },
+      scans: {
+        count: history._count._all,
+        firstScannedAt: history._min.scannedAt,
+        // Verdict de l'analyse anti-fraude sur ce scan (seuils définis dans
+        // anti-fraud.service.ts) : la page prévient le consommateur sans
+        // réinventer ici un second seuil, forcément différent.
+        suspicious: scanned.result === 'SUSPICIOUS',
       },
     };
   }

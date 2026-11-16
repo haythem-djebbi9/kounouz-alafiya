@@ -49,13 +49,28 @@ export function usePublicProducts(categorieSlug?: string) {
   });
 }
 
+/**
+ * Codes QR proposés en essai sur la vitrine, pris parmi les produits
+ * réellement en vente. Écrits en dur, ils divergeaient d'un environnement à
+ * l'autre : ceux du jeu de démonstration (…000001) n'existent pas en
+ * production, et le visiteur qui les essayait tombait sur « introuvable ».
+ */
+export function useSampleQrCodes(limit = 2): string[] {
+  const { data } = usePublicProducts();
+  return (data ?? [])
+    .map((product) => product.qrCode?.qrCode)
+    .filter((code): code is string => !!code)
+    .slice(0, limit);
+}
+
 /** Provenance du lot et analyse publiée, jointes à la fiche produit. */
 export interface PublicLabReport {
   batchCode: string;
   honeyType: string;
   origin: string | null;
   harvestSeason: string | null;
-  productionDate: string;
+  /** Conditionnement : après la vérification, jamais avant. */
+  packagingDate: string;
   bestBefore: string | null;
   verifiedAt: string | null;
   producer: { name: string; farmName: string; location: string } | null;
@@ -90,9 +105,29 @@ export interface VerifyResult {
   qrCode: string;
   // RECALLED : lot rappelé — affiché distinctement d'une suspension (§17).
   displayStatus: 'VERIFIED' | 'SUSPENDED' | 'RECALLED';
-  product: { nom: string; description: string | null; images: string[]; gamme: string | null; categorie: string };
+  product: {
+    id: string;
+    /** En vente : le lien « Acheter » n'apparaît que dans ce cas. */
+    purchasable: boolean;
+    nom: string;
+    description: string | null;
+    images: string[];
+    gamme: string | null;
+    categorie: string;
+  };
   producer: { name: string; farmName: string; location: string } | null;
-  batch: { batchCode: string; honeyType: string; productionDate: string } | null;
+  // packagingDate : le lot est conditionné après la décision de vérification,
+  // jamais avant. La récolte (harvestSeason) précède l'analyse.
+  batch: {
+    batchCode: string;
+    honeyType: string;
+    packagingDate: string;
+    harvestSeason: string | null;
+    bestBefore: string | null;
+    origin: string | null;
+  } | null;
+  /** Historique public du code : nombre de vérifications et première date. */
+  scans: { count: number; firstScannedAt: string | null; suspicious: boolean };
   // Pas de `notes` : les commentaires de décision restent internes (§10).
   verification: { status: string; verifiedAt: string | null } | null;
   analysis: {

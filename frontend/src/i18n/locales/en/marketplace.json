@@ -257,7 +257,7 @@
     "subtitle": "We guarantee that every drop of Kounouz Alafiya is 100% pure and from a verified source",
     "scanHint": "Scan the QR code on the product directly with your phone's camera — the verification page will open automatically, no need to visit this site.",
     "orEnterManually": "Or enter the code manually",
-    "inputPlaceholder": "Enter the verification code here (e.g. KZ-QR-2026-000001)",
+    "inputPlaceholder": "Enter the code printed under the QR (KZ-QR-…)",
     "errorEmpty": "Please enter the verification code printed on the packaging",
     "verifyCta": "Verify now",
     "demoCodesLabel": "Demo codes:",
@@ -327,7 +327,7 @@
     "headingPart1": "Don't just trust.",
     "headingPart2": "Verify.",
     "description": "Scan the QR code on your product or enter the verification code to see its information, origin, and test results.",
-    "inputPlaceholder": "Enter the verification code (e.g. KZ-QR-2026-000001)",
+    "inputPlaceholder": "Enter the code printed under the QR (KZ-QR-…)",
     "scanTitle": "More verification methods",
     "tryCodesLabel": "Try ready-made codes:"
   },
@@ -458,7 +458,7 @@
         },
         "whereQr": {
           "q": "Where do I find the verification code?",
-          "a": "On the jar label: a QR code with a written code underneath (e.g. KZ-QR-2026-000001). Scan the QR with your phone camera, or type the code into the verification field above."
+          "a": "On the jar label: a QR code with a written code underneath, starting with KZ-QR-. Scan the QR with your phone camera, or type the code into the verification field above."
         },
         "problem": {
           "q": "What if the product shows “suspended” or the code isn’t found?",

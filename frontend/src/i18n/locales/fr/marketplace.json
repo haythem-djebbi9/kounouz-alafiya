@@ -257,7 +257,7 @@
     "subtitle": "Nous vous garantissons que chaque goutte de Kounouz Alafiya est 100% pure et d'origine vérifiée",
     "scanHint": "Scannez le code QR présent sur le produit directement avec la caméra de votre téléphone — la page de vérification s'ouvrira automatiquement, sans besoin de ce site.",
     "orEnterManually": "Ou saisissez le code manuellement",
-    "inputPlaceholder": "Entrez le code de vérification ici (exemple : KZ-QR-2026-000001)",
+    "inputPlaceholder": "Entrez le code imprimé sous le QR (KZ-QR-…)",
     "errorEmpty": "Veuillez saisir le code de vérification imprimé sur l'emballage",
     "verifyCta": "Vérifier maintenant",
     "demoCodesLabel": "Codes de démonstration :",
@@ -327,7 +327,7 @@
     "headingPart1": "Ne vous contentez pas de faire confiance.",
     "headingPart2": "Vérifiez.",
     "description": "Scannez le code QR présent sur votre produit ou saisissez le code de vérification pour connaître ses informations, son origine et les résultats des analyses.",
-    "inputPlaceholder": "Entrez le code de vérification (exemple : KZ-QR-2026-000001)",
+    "inputPlaceholder": "Entrez le code imprimé sous le QR (KZ-QR-…)",
     "scanTitle": "Autres méthodes de vérification",
     "tryCodesLabel": "Essayez des codes prêts à l'emploi :"
   },
@@ -458,7 +458,7 @@
         },
         "whereQr": {
           "q": "Où trouver le code de vérification ?",
-          "a": "Sur l’étiquette du pot : un QR code et, en dessous, un code écrit (ex. KZ-QR-2026-000001). Scannez le QR avec l’appareil photo de votre téléphone, ou saisissez le code dans le champ de vérification ci-dessus."
+          "a": "Sur l’étiquette du pot : un QR code et, en dessous, un code écrit qui commence par KZ-QR-. Scannez le QR avec l’appareil photo de votre téléphone, ou saisissez le code dans le champ de vérification ci-dessus."
         },
         "problem": {
           "q": "Que faire si le produit est « suspendu » ou si le code est introuvable ?",

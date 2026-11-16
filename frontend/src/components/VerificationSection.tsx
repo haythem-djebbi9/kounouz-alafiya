@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { QrCode, ShieldCheck, FlaskConical, MapPin, Layers, BadgeCheck, Smartphone } from 'lucide-react';
 import { ForwardArrow, SectionHeading } from './home/ui';
+import { useSampleQrCodes } from '../lib/marketplace-hooks';
 
 // Zone du QR sur /images/scan.webp (image 3:2) — en pourcentages physiques, le
 // cadre d'animation se superpose exactement au code imprimé sur la carte.
@@ -26,7 +27,8 @@ export const VerificationSection: React.FC = () => {
     navigate(`/verify/${encodeURIComponent(code)}`);
   };
 
-  const sampleCodes = ['KZ-QR-2026-000001', 'KZ-QR-2026-000002'];
+  // Codes de produits réellement en vente : jamais un code introuvable.
+  const sampleCodes = useSampleQrCodes();
   const reveals = [
     { key: 'lab', icon: FlaskConical },
     { key: 'origin', icon: MapPin },
@@ -92,7 +94,8 @@ export const VerificationSection: React.FC = () => {
                     setInputCode(e.target.value);
                     setErrorMsg('');
                   }}
-                  placeholder="KZ-QR-2026-000001"
+                  placeholder={sampleCodes[0] ?? 'KZ-QR-2026-…'}
+                  aria-label={t('marketplace:verifyPage.inputPlaceholder')}
                   className="w-full ps-11 pe-3 py-3 text-base text-[#0C261B] placeholder:text-[#9AA8A2] bg-transparent focus:outline-none font-mono font-bold text-start"
                 />
               </div>
@@ -111,19 +114,23 @@ export const VerificationSection: React.FC = () => {
               </p>
             )}
 
+            {sampleCodes.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 mt-4 text-xs">
               <span className="font-semibold text-[#C3D3CB]">{t('marketplace:verifySection.tryCodesLabel')}</span>
               {sampleCodes.map((code) => (
                 <button
                   key={code}
                   type="button"
-                  onClick={() => navigate(`/verify/${code}`)}
+                  // « exemple » : la page de résultat sait que ce code est
+                  // vérifié par tous les visiteurs et n'affiche pas d'alerte.
+                  onClick={() => navigate(`/verify/${encodeURIComponent(code)}?exemple=1`)}
                   className="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-[#D49B37] hover:text-[#0C261B] text-white font-mono text-[11px] font-bold transition-colors cursor-pointer border border-white/15"
                 >
                   {code}
                 </button>
               ))}
             </div>
+            )}
           </form>
 
           <p className="mt-6 flex items-start gap-2 text-sm text-[#A3B8B0] max-w-lg">

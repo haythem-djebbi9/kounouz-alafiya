@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useSampleQrCodes } from '../lib/marketplace-hooks';
 import {
   ShieldCheck,
   Smartphone,
@@ -14,14 +15,14 @@ import {
   Check,
 } from 'lucide-react';
 
-const DEMO_CODES = ['KZ-QR-2026-000001', 'KZ-QR-2026-000002'];
-
 export const VerificationPage: React.FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation('marketplace');
   const [inputCode, setInputCode] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const guideRef = useRef<HTMLDivElement>(null);
+  // Codes de produits réellement en vente : jamais un code introuvable.
+  const demoCodes = useSampleQrCodes();
 
   const handleVerify = (codeToVerify?: string) => {
     const code = (codeToVerify || inputCode).trim().toUpperCase();
@@ -30,7 +31,9 @@ export const VerificationPage: React.FC = () => {
       return;
     }
     setErrorMsg('');
-    navigate(`/verify/${encodeURIComponent(code)}`);
+    // Un code d'exemple est vérifié par tous les visiteurs : la page de
+    // résultat le sait et n'en tire pas d'alerte.
+    navigate(`/verify/${encodeURIComponent(code)}${codeToVerify ? '?exemple=1' : ''}`);
   };
 
   const scrollToGuide = () => {
@@ -118,12 +121,13 @@ export const VerificationPage: React.FC = () => {
               </button>
             </form>
 
+            {demoCodes.length > 0 && (
             <div className="flex flex-wrap items-center justify-start gap-1.5 mt-4 text-[11px]">
               <span className="font-bold text-[#0C261B] flex items-center gap-1 text-[11px]">
                 <Sparkles className="w-3 h-3 text-[#C68A28]" />
                 {t('marketplace:verifyPage.demoCodesLabel')}
               </span>
-              {DEMO_CODES.map((code) => (
+              {demoCodes.map((code) => (
                 <button
                   key={code}
                   type="button"
@@ -134,6 +138,7 @@ export const VerificationPage: React.FC = () => {
                 </button>
               ))}
             </div>
+            )}
 
             <button
               type="button"
