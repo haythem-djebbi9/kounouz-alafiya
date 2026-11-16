@@ -1,5 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { SITE_CONTACT } from '../../lib/site-contact';
+import { LEGAL_PATHS } from '../../lib/legal-paths';
+import { SocialIcon, SOCIAL_LABELS } from '../../components/SocialIcon';
 import { useTranslation } from 'react-i18next';
 import {
   Bell,
@@ -17,10 +20,6 @@ import {
   Settings,
   User,
   X,
-  Facebook,
-  Instagram,
-  Youtube,
-  Linkedin,
 } from 'lucide-react';
 import { useAuth } from '../../lib/auth-context';
 import { resolveFileUrl } from '../../lib/api';
@@ -188,23 +187,27 @@ export const ProducerLayout: React.FC = () => {
               <span>{t('producer:footer.motto')}</span>
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link to="/producteur/aide?tab=faq" className="hover:underline">
+              <Link to={LEGAL_PATHS.privacy} className="hover:underline">
                 {t('producer:footer.privacy')}
               </Link>
-              <span className="text-gray-300">|</span>
-              <Link to="/producteur/aide?tab=faq" className="hover:underline">
+              <span className="text-gray-300" aria-hidden="true">|</span>
+              <Link to={LEGAL_PATHS.terms} className="hover:underline">
                 {t('producer:footer.terms')}
               </Link>
               <span className="text-gray-300">|</span>
               <Link to="/producteur/aide?tab=contact" className="hover:underline">
                 {t('producer:footer.contact')}
               </Link>
-              <span className="flex items-center gap-3 ms-2 text-[#14215B]">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook className="w-4 h-4" /></a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram className="w-4 h-4" /></a>
-                <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><Youtube className="w-4 h-4" /></a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin className="w-4 h-4" /></a>
-              </span>
+              {/* Comptes officiels confirmés seulement (site-contact.ts). */}
+              {SITE_CONTACT.social.length > 0 && (
+                <span className="flex items-center gap-3 ms-2 text-[#14215B]">
+                  {SITE_CONTACT.social.map((account) => (
+                    <a key={account.network} href={account.url} target="_blank" rel="noreferrer" aria-label={SOCIAL_LABELS[account.network]}>
+                      <SocialIcon network={account.network} className="w-4 h-4" />
+                    </a>
+                  ))}
+                </span>
+              )}
             </div>
           </div>
         </footer>

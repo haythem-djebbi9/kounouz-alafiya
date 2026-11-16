@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Logo } from './Logo';
 import { PageView } from '../types';
-import { SITE_CONTACT } from '../lib/site-contact';
+import { SITE_CONTACT, whatsappNumber } from '../lib/site-contact';
+import { SocialIcon, SOCIAL_LABELS } from './SocialIcon';
+import { LEGAL_PATHS } from '../lib/legal-paths';
 import {
   Phone,
   Mail,
   MapPin,
-  Instagram,
-  Facebook,
-  Twitter,
   MessageCircle
 } from 'lucide-react';
 
@@ -21,6 +20,10 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVerify }) => {
   const { t } = useTranslation(['marketplace', 'common']);
+  const whatsapp = whatsappNumber();
+  // Seuls les comptes confirmés (site-contact.ts) sont affichés : une icône
+  // qui mène à facebook.com faute de compte inquiète plus qu'elle ne rassure.
+  const hasSocial = SITE_CONTACT.social.length > 0 || !!whatsapp;
   return (
     <footer id="main-footer" className="bg-[#081E18] text-[#FAF6EE] pt-14 pb-8 border-t border-[#1C4A3E] relative overflow-hidden">
       {/* Background Honeycomb Subtle Detail */}
@@ -39,45 +42,33 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVerify }) => {
               {t('marketplace:footer.bio')}
             </p>
 
-            {/* Social Icons */}
-            <div className="flex items-center gap-2.5 pt-2">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t('marketplace:footer.social.instagram')}
-                className="w-9 h-9 rounded-full bg-[#12362C] hover:bg-[#D49B37] hover:text-[#081E18] flex items-center justify-center text-[#FAF6EE] transition-colors cursor-pointer"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t('marketplace:footer.social.facebook')}
-                className="w-9 h-9 rounded-full bg-[#12362C] hover:bg-[#D49B37] hover:text-[#081E18] flex items-center justify-center text-[#FAF6EE] transition-colors cursor-pointer"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t('marketplace:footer.social.twitter')}
-                className="w-9 h-9 rounded-full bg-[#12362C] hover:bg-[#D49B37] hover:text-[#081E18] flex items-center justify-center text-[#FAF6EE] transition-colors cursor-pointer"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href={`https://wa.me/${SITE_CONTACT.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t('marketplace:footer.social.whatsapp')}
-                className="w-9 h-9 rounded-full bg-[#12362C] hover:bg-[#25D366] hover:text-white flex items-center justify-center text-[#FAF6EE] transition-colors cursor-pointer"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-            </div>
+            {hasSocial && (
+              <div className="flex items-center gap-2.5 pt-2">
+                {SITE_CONTACT.social.map((account) => (
+                  <a
+                    key={account.network}
+                    href={account.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={SOCIAL_LABELS[account.network]}
+                    className="w-9 h-9 rounded-full bg-[#12362C] hover:bg-[#D49B37] hover:text-[#081E18] flex items-center justify-center text-[#FAF6EE] transition-colors cursor-pointer"
+                  >
+                    <SocialIcon network={account.network} className="w-4 h-4" />
+                  </a>
+                ))}
+                {whatsapp && (
+                  <a
+                    href={`https://wa.me/${whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={t('marketplace:footer.social.whatsapp')}
+                    className="w-9 h-9 rounded-full bg-[#12362C] hover:bg-[#25D366] hover:text-white flex items-center justify-center text-[#FAF6EE] transition-colors cursor-pointer"
+                  >
+                    <MessageCircle className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Col 2: Products Links (Span 3) */}
@@ -181,16 +172,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVerify }) => {
               {t('marketplace:nav.contact')}
             </h4>
             <div className="space-y-2.5 text-xs text-[#A3B8B0]">
+              {SITE_CONTACT.phoneDisplay && (
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-[#D49B37] shrink-0" aria-hidden="true" />
+                  <a href={`tel:${SITE_CONTACT.phoneDisplay.replace(/\s/g, '')}`} dir="ltr" className="font-mono text-white font-bold hover:text-[#E5AC44]">{SITE_CONTACT.phoneDisplay}</a>
+                </div>
+              )}
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#D49B37] shrink-0" />
-                <a href={`tel:${SITE_CONTACT.phoneDisplay.replace(/\s/g, '')}`} dir="ltr" className="font-mono text-white font-bold hover:text-[#E5AC44]">{SITE_CONTACT.phoneDisplay}</a>
+                <Mail className="w-4 h-4 text-[#D49B37] shrink-0" aria-hidden="true" />
+                <a href={`mailto:${SITE_CONTACT.email}`} dir="ltr" className="text-white hover:text-[#E5AC44]">{SITE_CONTACT.email}</a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#D49B37] shrink-0" />
-                <a href={`mailto:${SITE_CONTACT.email}`} className="text-white hover:text-[#E5AC44]">{SITE_CONTACT.email}</a>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#D49B37] shrink-0" />
+                <MapPin className="w-4 h-4 text-[#D49B37] shrink-0" aria-hidden="true" />
                 <span>{t('marketplace:footer.address')}</span>
               </div>
             </div>
@@ -205,17 +198,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenVerify }) => {
           </div>
 
           <div className="flex items-center gap-4 text-[11px]">
-            <a href="#privacy" onClick={(e) => { e.preventDefault(); alert(t('marketplace:footer.privacyAlert')); }} className="hover:text-[#E5AC44] transition-colors">
+            <Link to={LEGAL_PATHS.privacy} className="hover:text-[#E5AC44] transition-colors">
               {t('marketplace:footer.privacyPolicy')}
-            </a>
-            <span>|</span>
-            <a href="#terms" onClick={(e) => { e.preventDefault(); alert(t('marketplace:footer.termsAlert')); }} className="hover:text-[#E5AC44] transition-colors">
+            </Link>
+            <span aria-hidden="true">|</span>
+            <Link to={LEGAL_PATHS.terms} className="hover:text-[#E5AC44] transition-colors">
               {t('marketplace:footer.termsPolicy')}
-            </a>
-            <span>|</span>
-            <a href="#returns" onClick={(e) => { e.preventDefault(); alert(t('marketplace:footer.returnsAlert')); }} className="hover:text-[#E5AC44] transition-colors">
+            </Link>
+            <span aria-hidden="true">|</span>
+            <Link to={LEGAL_PATHS.returns} className="hover:text-[#E5AC44] transition-colors">
               {t('marketplace:footer.returnsPolicy')}
-            </a>
+            </Link>
           </div>
         </div>
 

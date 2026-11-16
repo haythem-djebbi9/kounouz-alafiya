@@ -1,0 +1,187 @@
+{
+  "updated": "Last updated: 16 November 2026",
+  "backHome": "Back to the site",
+  "otherDocs": "See also",
+  "privacy": {
+    "title": "Privacy policy",
+    "intro": "Kounouz Alafiya verifies and sells Tunisian honey. This page explains which personal data we collect on kounouzalafia.io, why, how long we keep it and how to exercise your rights. It applies to visitors, customers, beekeepers and Kounouz staff.",
+    "sections": [
+      {
+        "heading": "Who is responsible for your data",
+        "body": [
+          "Kounouz Alafiya, Tunis (Tunisia), is responsible for the data collected on kounouzalafia.io. For any question about it, write to {{email}}."
+        ],
+        "list": []
+      },
+      {
+        "heading": "The data we collect",
+        "body": [
+          "It depends on what you do on the site:"
+        ],
+        "list": [
+          "Verifying a product (scanning or typing a code): the code verified, the date, your IP address, your device and browser type, the country inferred from your device's time zone, and a random identifier stored in your browser. The site never asks for your location; it only sends it if you have already allowed the site to access it.",
+          "Placing an order: your name, phone number, delivery address and city, and your email if you give it.",
+          "Customer account: your name, email and password, which is only ever stored encrypted.",
+          "Partner beekeeper: the information in your file — identity, contact details, apiary and its location, supporting documents, photos — and the bank details needed to pay you.",
+          "Reporting a label: the reason you chose and your comment."
+        ]
+      },
+      {
+        "heading": "Why we use it",
+        "body": [],
+        "list": [
+          "To check that products are genuine and detect counterfeits: a code verified in an unusual way — very often, by many people or from distant countries — reveals a copied label.",
+          "To prepare, deliver and track your orders.",
+          "To manage your account and let you sign in.",
+          "To review beekeepers' requests, organise sample collection and pay what they are owed.",
+          "To meet our legal obligations, particularly accounting ones.",
+          "We do not sell your data and never use it for advertising."
+        ]
+      },
+      {
+        "heading": "Who we share it with",
+        "body": [],
+        "list": [
+          "The accredited laboratory receives honey samples identified by a code — never your customer data.",
+          "The delivery service receives the name, phone number and address needed to hand over your order.",
+          "Our hosting provider, Hostinger, stores the data on its servers on our behalf.",
+          "Authorities, only when the law requires it."
+        ]
+      },
+      {
+        "heading": "How long we keep it",
+        "body": [
+          "We keep your data only as long as needed for the purpose it was collected for: the life of your account, the legal retention period for accounting records for an order, and the commercial life of a batch for verifications of its jars. You can ask for your account to be deleted at any time."
+        ],
+        "list": []
+      },
+      {
+        "heading": "What your browser stores",
+        "body": [
+          "The site uses no advertising cookies and no audience-measurement tools. It only stores in your browser the language you chose, the random identifier used for verifications and, if you are signed in, your session. You can clear them at any time in your browser settings."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Your rights",
+        "body": [
+          "Under Organic Law No. 2004-63 of 27 July 2004 on the protection of personal data, you may access your data, have it corrected, object to its processing on legitimate grounds and ask for it to be deleted. Write to us at {{email}}: we reply within one month at most.",
+          "If our reply does not satisfy you, you may refer the matter to the National Authority for the Protection of Personal Data (INPDP)."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Security",
+        "body": [
+          "Exchanges with the site are encrypted (HTTPS). Passwords are never stored in readable form. Beekeepers' identity documents are stored separately, away from any public address, and only Kounouz staff can access them."
+        ],
+        "list": []
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms and conditions of sale",
+    "intro": "These terms apply to every order placed on kounouzalafia.io. By confirming an order, you accept them.",
+    "sections": [
+      {
+        "heading": "The seller",
+        "body": [
+          "Kounouz Alafiya, Tunis (Tunisia). Contact: {{email}}."
+        ],
+        "list": []
+      },
+      {
+        "heading": "The products",
+        "body": [
+          "Every honey sold on the site was sampled at the beekeeper's, analysed by an accredited laboratory and approved by the Kounouz verification team before going on sale. Each jar carries a unique QR code: it lets you check on this site where the honey comes from, its batch and its analysis results.",
+          "Photos are for illustration: the colour and texture of natural honey vary from one batch to the next. Like all honey, our products must not be given to children under one year old."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Prices",
+        "body": [
+          "Prices are shown in Tunisian dinars and are the amount payable for the product. Delivery costs 25 TND and is free on orders over 200 TND. The price that applies is the one shown when you confirm the order."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Ordering",
+        "body": [
+          "You choose your products and their size, then give your delivery details. The order is recorded when you confirm it, and its number is displayed. The price and availability of each product are checked at that moment. We may call you to confirm the order before shipping it."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Payment",
+        "body": [
+          "Payment is made on delivery. No bank details are requested on the site."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Delivery",
+        "body": [
+          "We deliver to every governorate in Tunisia within 2 to 5 days. Check the parcel when it arrives: a broken or damaged jar must be reported to us within 48 hours, as the returns policy explains."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Returns",
+        "body": [
+          "You may return an unopened jar within 14 days of delivery. The conditions are set out in the returns policy."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Storing honey",
+        "body": [
+          "Keep honey at room temperature, away from heat and humidity. Over time, natural honey crystallises: this is normal and affects neither its quality nor its authenticity."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Personal data and governing law",
+        "body": [
+          "How we process your data is described in the privacy policy. These terms are governed by Tunisian law; in the event of a dispute, we first seek an amicable solution with you."
+        ],
+        "list": []
+      }
+    ]
+  },
+  "returns": {
+    "title": "Returns policy",
+    "intro": "Verified honey should reach you intact, and suit you. Here is how we handle returns.",
+    "sections": [
+      {
+        "heading": "Broken, damaged or non-conforming jar",
+        "body": [
+          "Report it within 48 hours of delivery by writing to {{email}} with a photo of the jar and its label. We will send you a new jar or refund you, at no cost to you."
+        ],
+        "list": []
+      },
+      {
+        "heading": "You change your mind",
+        "body": [
+          "You have 14 days from delivery to return an unopened jar with its seal intact. We refund the price of the product; return shipping costs are yours to pay."
+        ],
+        "list": []
+      },
+      {
+        "heading": "An opened jar",
+        "body": [
+          "For hygiene reasons, an opened jar cannot be taken back. If you doubt its quality, first check its QR code, then write to us: every batch is analysed before going on sale, and we keep a reference sample from it that allows a counter-analysis.",
+          "Honey that crystallises is not faulty: it is a sign of natural honey."
+        ],
+        "list": []
+      },
+      {
+        "heading": "How to return",
+        "body": [
+          "Write to {{email}} with your order number and the reason for the return, and we will explain the steps. The refund is paid within 14 days of our receiving the jar, by the method agreed with you."
+        ],
+        "list": []
+      }
+    ]
+  }
+}

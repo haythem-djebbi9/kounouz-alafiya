@@ -29,6 +29,9 @@ const LoginPage = lazyPage(() => import('./pages/LoginPage'), 'LoginPage');
 const RegisterProducerPage = lazyPage(() => import('./pages/RegisterProducerPage'), 'RegisterProducerPage');
 const RegisterConsumerPage = lazyPage(() => import('./pages/RegisterConsumerPage'), 'RegisterConsumerPage');
 const GuidePage = lazyPage(() => import('./pages/GuidePage'), 'GuidePage');
+const PrivacyPage = lazyPage(() => import('./pages/LegalPage'), 'PrivacyPage');
+const TermsPage = lazyPage(() => import('./pages/LegalPage'), 'TermsPage');
+const ReturnsPage = lazyPage(() => import('./pages/LegalPage'), 'ReturnsPage');
 const ProducerLayout = lazyPage(() => import('./portals/producer/ProducerLayout'), 'ProducerLayout');
 const DashboardPage = lazyPage(() => import('./portals/producer/DashboardPage'), 'DashboardPage');
 const RequestsListPage = lazyPage(() => import('./portals/producer/RequestsListPage'), 'RequestsListPage');
@@ -121,6 +124,10 @@ export const AppRouter: React.FC = () => {
       <Route path="/inscription/producteur" element={<RegisterProducerPage />} />
       <Route path="/inscription/client" element={<RegisterConsumerPage />} />
       <Route path="/guide" element={<GuidePage />} />
+      {/* Pages légales : liées depuis le pied de page (adresses dans LegalPage.LEGAL_PATHS). */}
+      <Route path="/confidentialite" element={<PrivacyPage />} />
+      <Route path="/conditions" element={<TermsPage />} />
+      <Route path="/retours" element={<ReturnsPage />} />
       {/* Page canonique encodée dans l'image du QR — voir backend QrCodesService.generateImage */}
       <Route path="/verify/:identifier" element={<PublicVerifyPage />} />
 

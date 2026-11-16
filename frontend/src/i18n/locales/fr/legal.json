@@ -1,0 +1,187 @@
+{
+  "updated": "Dernière mise à jour : 16 novembre 2026",
+  "backHome": "Retour au site",
+  "otherDocs": "Voir aussi",
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "intro": "Kounouz Alafiya vérifie et vend du miel tunisien. Cette page explique quelles données personnelles nous recueillons sur kounouzalafia.io, pourquoi, combien de temps nous les gardons et comment exercer vos droits. Elle s'applique aux visiteurs, aux clients, aux apiculteurs et aux équipes de Kounouz.",
+    "sections": [
+      {
+        "heading": "Qui est responsable de vos données",
+        "body": [
+          "Kounouz Alafiya, Tunis (Tunisie), est responsable des données recueillies sur kounouzalafia.io. Pour toute question à leur sujet, écrivez à {{email}}."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Les données que nous recueillons",
+        "body": [
+          "Elles dépendent de ce que vous faites sur le site :"
+        ],
+        "list": [
+          "Vérification d'un produit (scan ou saisie d'un code) : le code vérifié, la date, votre adresse IP, le type d'appareil et de navigateur, le pays déduit du fuseau horaire de votre appareil, et un identifiant aléatoire enregistré dans votre navigateur. Le site ne vous demande jamais votre position ; il ne la transmet que si vous l'avez déjà autorisé à y accéder.",
+          "Commande : votre nom, votre téléphone, votre adresse et votre ville de livraison, et votre e-mail si vous le donnez.",
+          "Compte client : votre nom, votre e-mail et votre mot de passe, conservé uniquement sous forme chiffrée.",
+          "Apiculteur partenaire : les informations de votre dossier — identité, coordonnées, rucher et sa localisation, documents justificatifs, photos — et les coordonnées bancaires nécessaires à vos règlements.",
+          "Signalement d'une étiquette : le motif choisi et votre commentaire."
+        ]
+      },
+      {
+        "heading": "Pourquoi nous les utilisons",
+        "body": [],
+        "list": [
+          "Vérifier l'authenticité des produits et détecter les contrefaçons : un code vérifié de façon anormale — très souvent, par de nombreuses personnes ou depuis des pays éloignés — révèle une étiquette copiée.",
+          "Préparer, livrer et suivre vos commandes.",
+          "Gérer votre compte et vous permettre de vous connecter.",
+          "Instruire les demandes des apiculteurs, organiser les prélèvements et leur verser ce qui leur est dû.",
+          "Respecter nos obligations légales, notamment comptables.",
+          "Nous ne vendons pas vos données et ne les utilisons jamais à des fins publicitaires."
+        ]
+      },
+      {
+        "heading": "Avec qui nous les partageons",
+        "body": [],
+        "list": [
+          "Le laboratoire agréé reçoit les échantillons de miel, identifiés par un code : jamais vos données de client.",
+          "Le service de livraison reçoit le nom, le téléphone et l'adresse nécessaires pour vous remettre votre commande.",
+          "Notre hébergeur, Hostinger, conserve les données sur ses serveurs pour notre compte.",
+          "Les autorités, uniquement lorsque la loi l'exige."
+        ]
+      },
+      {
+        "heading": "Combien de temps nous les gardons",
+        "body": [
+          "Nous ne gardons vos données que le temps nécessaire à ce pour quoi elles ont été recueillies : la durée de votre compte, la durée légale de conservation des pièces comptables pour une commande, et la durée de vie commerciale d'un lot pour les vérifications de ses pots. Vous pouvez demander la suppression de votre compte à tout moment."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Ce que votre navigateur conserve",
+        "body": [
+          "Le site n'utilise ni cookie publicitaire ni outil de mesure d'audience. Il enregistre seulement dans votre navigateur la langue choisie, l'identifiant aléatoire utilisé pour les vérifications et, si vous êtes connecté, votre session. Vous pouvez les effacer à tout moment depuis les réglages de votre navigateur."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Vos droits",
+        "body": [
+          "Conformément à la loi organique n° 2004-63 du 27 juillet 2004 portant sur la protection des données à caractère personnel, vous pouvez accéder à vos données, les faire rectifier, vous opposer à leur traitement pour un motif légitime et en demander la suppression. Écrivez-nous à {{email}} : nous vous répondons dans un délai d'un mois au plus.",
+          "Si notre réponse ne vous satisfait pas, vous pouvez saisir l'Instance nationale de protection des données personnelles (INPDP)."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Sécurité",
+        "body": [
+          "Les échanges avec le site sont chiffrés (HTTPS). Les mots de passe ne sont jamais conservés en clair. Les documents d'identité des apiculteurs sont stockés à part, hors de toute adresse publique, et réservés à l'équipe de Kounouz."
+        ],
+        "list": []
+      }
+    ]
+  },
+  "terms": {
+    "title": "Conditions générales de vente",
+    "intro": "Ces conditions s'appliquent à toute commande passée sur kounouzalafia.io. En confirmant une commande, vous les acceptez.",
+    "sections": [
+      {
+        "heading": "Le vendeur",
+        "body": [
+          "Kounouz Alafiya, Tunis (Tunisie). Contact : {{email}}."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Les produits",
+        "body": [
+          "Chaque miel vendu sur le site a été prélevé chez l'apiculteur, analysé par un laboratoire agréé et approuvé par l'équipe de vérification de Kounouz avant sa mise en vente. Chaque pot porte un code QR unique : il permet de vérifier sur ce site l'origine du miel, son lot et ses résultats d'analyse.",
+          "Les photos sont indicatives : la couleur et la texture d'un miel naturel varient d'un lot à l'autre. Comme tout miel, nos produits ne doivent pas être donnés aux enfants de moins d'un an."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Les prix",
+        "body": [
+          "Les prix sont indiqués en dinars tunisiens ; c'est le montant à payer pour le produit. La livraison coûte 25 DT et elle est offerte au-delà de 200 DT d'achat. Le prix appliqué est celui affiché au moment où vous confirmez la commande."
+        ],
+        "list": []
+      },
+      {
+        "heading": "La commande",
+        "body": [
+          "Vous choisissez vos produits et leur format, puis indiquez vos coordonnées de livraison. La commande est enregistrée quand vous la confirmez, et son numéro s'affiche. Le prix et la disponibilité de chaque produit sont vérifiés à ce moment-là. Nous pouvons vous appeler pour confirmer la commande avant de l'expédier."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Le paiement",
+        "body": [
+          "Le paiement se fait à la livraison. Aucune donnée bancaire ne vous est demandée sur le site."
+        ],
+        "list": []
+      },
+      {
+        "heading": "La livraison",
+        "body": [
+          "Nous livrons dans tous les gouvernorats de Tunisie, sous 2 à 5 jours. Vérifiez l'état du colis à sa réception : un pot cassé ou abîmé doit nous être signalé dans les 48 heures, comme l'explique la politique de retour."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Retours",
+        "body": [
+          "Vous pouvez nous retourner un pot non ouvert dans les 14 jours suivant la livraison. Les conditions sont détaillées dans la politique de retour."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Conservation du miel",
+        "body": [
+          "Conservez le miel à température ambiante, à l'abri de la chaleur et de l'humidité. Avec le temps, un miel naturel cristallise : c'est un phénomène normal, qui n'altère ni sa qualité ni son authenticité."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Données personnelles et droit applicable",
+        "body": [
+          "Le traitement de vos données est décrit dans la politique de confidentialité. Ces conditions sont soumises au droit tunisien ; en cas de différend, nous recherchons d'abord avec vous une solution amiable."
+        ],
+        "list": []
+      }
+    ]
+  },
+  "returns": {
+    "title": "Politique de retour",
+    "intro": "Un miel vérifié doit vous arriver intact, et vous convenir. Voici comment nous traitons les retours.",
+    "sections": [
+      {
+        "heading": "Pot cassé, abîmé ou non conforme",
+        "body": [
+          "Signalez-le dans les 48 heures suivant la livraison, en écrivant à {{email}} avec une photo du pot et de son étiquette. Nous vous envoyons un pot neuf ou nous vous remboursons, sans frais pour vous."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Vous changez d'avis",
+        "body": [
+          "Vous disposez de 14 jours à compter de la livraison pour nous retourner un pot non ouvert, opercule intact. Nous vous remboursons le prix du produit ; les frais de retour restent à votre charge."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Un pot ouvert",
+        "body": [
+          "Pour des raisons d'hygiène, un pot ouvert ne peut pas être repris. Si vous doutez de sa qualité, vérifiez d'abord son code QR, puis écrivez-nous : chaque lot est analysé avant sa mise en vente, et nous en conservons un échantillon de référence qui permet une contre-analyse.",
+          "Un miel qui cristallise n'est pas défectueux : c'est le signe d'un miel naturel."
+        ],
+        "list": []
+      },
+      {
+        "heading": "Comment procéder",
+        "body": [
+          "Écrivez à {{email}} en indiquant votre numéro de commande et le motif du retour : nous vous indiquons la marche à suivre. Le remboursement est versé dans les 14 jours suivant la réception du pot, par le moyen convenu avec vous."
+        ],
+        "list": []
+      }
+    ]
+  }
+}

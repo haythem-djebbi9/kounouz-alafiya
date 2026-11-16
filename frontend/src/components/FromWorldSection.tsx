@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Instagram } from 'lucide-react';
+import { socialAccount } from '../lib/site-contact';
 import { ForwardArrow, SectionHeading } from './home/ui';
 import { usePublicBlogPosts } from '../lib/blog';
 import { BlogCard, BlogCardSkeleton } from './blog/BlogCard';
@@ -15,6 +16,7 @@ interface FromWorldSectionProps {
 // d'administration). Sans article publié, la section disparaît.
 export const FromWorldSection: React.FC<FromWorldSectionProps> = ({ onOpenArticle, onShowAll }) => {
   const { t } = useTranslation('marketplace');
+  const instagram = socialAccount('instagram');
   const { data: posts, isLoading } = usePublicBlogPosts(4);
 
   if (!isLoading && (!posts || posts.length === 0)) return null;
@@ -50,8 +52,12 @@ export const FromWorldSection: React.FC<FromWorldSectionProps> = ({ onOpenArticl
           transition={{ duration: 0.45 }}
           className="mt-10 max-w-3xl mx-auto rounded-2xl border border-[#EAE1D2] bg-white px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm"
         >
+          {/* Compte Instagram officiel seulement, s'il est renseigné : l'ancien
+              lien visait @kunuzalafiya, même orthographe que le domaine
+              kunuzalafiya.com, qui n'existe pas. */}
+          {instagram ? (
           <a
-            href="https://instagram.com/kunuzalafiya"
+            href={instagram.url}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 hover:opacity-80 transition-opacity group"
@@ -61,9 +67,12 @@ export const FromWorldSection: React.FC<FromWorldSectionProps> = ({ onOpenArticl
             </span>
             <span className="text-start">
               <span className="text-sm font-bold text-[#0C261B] block">{t('marketplace:fromWorld.instagramFollow')}</span>
-              <span dir="ltr" className="text-xs font-medium text-[#7E8F88] font-mono">@kunuzalafiya</span>
+              <span dir="ltr" className="text-xs font-medium text-[#7E8F88] font-mono">{instagram.handle}</span>
             </span>
           </a>
+          ) : (
+            <span />
+          )}
           <button
             id="blog-show-more-btn"
             onClick={onShowAll}

@@ -13,6 +13,7 @@ import {
   Leaf,
   MapPin,
   MessageCircle,
+  Mail,
   Minus,
   Plus,
   QrCode,
@@ -26,7 +27,7 @@ import {
 import { usePriceFormatter } from '../lib/format-price';
 import { usePublicProduct, type PublicLabParameter } from '../lib/marketplace-hooks';
 import { FREE_SHIPPING_THRESHOLD, isShippingFree } from '../lib/shop-rules';
-import { SITE_CONTACT } from '../lib/site-contact';
+import { SITE_CONTACT, whatsappNumber } from '../lib/site-contact';
 import { Product } from '../types';
 import { ProductCard } from './shop/ProductCard';
 
@@ -203,9 +204,13 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   };
 
   const scrollToLab = () => document.getElementById('lab-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  const whatsappUrl = `https://wa.me/${SITE_CONTACT.whatsapp}?text=${encodeURIComponent(
-    t('marketplace:productPage.whatsappMessage', { product: product.name }),
-  )}`;
+  // WhatsApp quand un numéro officiel est renseigné ; sinon l'e-mail, pour ne
+  // jamais laisser l'acheteur sans moyen de poser sa question.
+  const whatsapp = whatsappNumber();
+  const questionMessage = t('marketplace:productPage.whatsappMessage', { product: product.name });
+  const questionUrl = whatsapp
+    ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(questionMessage)}`
+    : `mailto:${SITE_CONTACT.email}?subject=${encodeURIComponent(product.name)}&body=${encodeURIComponent(questionMessage)}`;
 
   const addButton = (extraClass = '') => (
     <button
@@ -442,13 +447,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </p>
 
               <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={questionUrl}
+                target={whatsapp ? '_blank' : undefined}
+                rel={whatsapp ? 'noopener noreferrer' : undefined}
                 className="flex items-center justify-center gap-2 rounded-xl border border-[#EAE1D2] py-3 text-sm font-bold text-[#0C261B] hover:border-[#25D366] hover:text-[#128C4B] transition-colors"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                {t('marketplace:productPage.question')}
+                {whatsapp ? (
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" aria-hidden="true" />
+                ) : (
+                  <Mail className="w-4 h-4 text-[#D49B37]" aria-hidden="true" />
+                )}
+                {whatsapp ? t('marketplace:productPage.question') : t('marketplace:productPage.questionEmail')}
               </a>
 
               <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#EAE1D2] text-center">
