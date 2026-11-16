@@ -223,6 +223,12 @@ async function main() {
       if (!format) {
         ko('commande de test', 'aucun format en stock');
       } else {
+        // Stock réel, lu côté administration : la vitrine n'en publie qu'une
+        // valeur plafonnée (le stock exact est une donnée commerciale), qui
+        // ne bouge pas quand on retire un pot sur huit cents.
+        const stockDe = async () =>
+          (await appel(`/products/${produit.id}`, { jeton: jetons.admin })).donnees?.variants?.find((v) => v.id === format.id)?.stock;
+        const stockAvant = await stockDe();
         const commande = await appel('/orders', {
           methode: 'POST',
           corps: {
@@ -242,18 +248,15 @@ async function main() {
             'commission calculée sur le prix du format',
             `${ligne.lineTotal} DT × 18 % = ${ligne.commissionAmount} DT`,
           );
-          // Fiche produit, jamais mise en cache (le catalogue l'est 30 s).
-          const stockDe = async () =>
-            (await appel(`/products/catalog/${produit.id}`)).donnees?.variants?.find((v) => v.id === format.id)?.stock;
           const stockApres = await stockDe();
-          verifier(stockApres === format.stock - 1, 'le stock du format diminue', `${format.stock} → ${stockApres}`);
+          verifier(stockApres === stockAvant - 1, 'le stock du format diminue', `${stockAvant} → ${stockApres}`);
           const annulation = await appel(`/orders/${commande.donnees.id}/status`, {
             methode: 'PATCH',
             jeton: jetons.admin,
             corps: { status: 'CANCELLED' },
           });
           const stockRendu = await stockDe();
-          verifier(annulation.statut === 200 && stockRendu === format.stock, 'commande de test annulée, stock restitué', `${stockRendu}`);
+          verifier(annulation.statut === 200 && stockRendu === stockAvant, 'commande de test annulée, stock restitué', `${stockRendu}`);
         }
       }
     }

@@ -30,6 +30,25 @@ const PRODUCT_INCLUDE = {
 // l'affichage de la traçabilité sur la fiche produit du marketplace.
 const CATALOG_CACHE_MS = 30_000;
 
+// Le stock réel est une donnée commerciale : publié tel quel, il donnait à
+// n'importe quel concurrent l'état des réserves (1 800 pots, 800 par
+// format). La vitrine n'en a besoin que pour afficher « épuisé » et borner la
+// quantité au panier : une valeur plafonnée suffit aux deux, et la commande
+// revérifie de toute façon le stock réel avant d'être enregistrée.
+const PUBLIC_STOCK_CAP = 20;
+
+function capStock(stock: number): number {
+  return Math.max(0, Math.min(stock, PUBLIC_STOCK_CAP));
+}
+
+function toPublicProduct<T extends { stock: number; variants?: { stock: number }[] }>(product: T): T {
+  return {
+    ...product,
+    stock: capStock(product.stock),
+    ...(product.variants ? { variants: product.variants.map((v) => ({ ...v, stock: capStock(v.stock) })) } : {}),
+  };
+}
+
 const PUBLIC_PRODUCT_INCLUDE = {
   categorie: true,
   qrCodes: PRIMARY_QR_SELECT,
@@ -254,7 +273,7 @@ export class ProductsService {
       include: PUBLIC_PRODUCT_INCLUDE,
       orderBy: { createdAt: 'desc' },
     });
-    const data = withPrimaryQrAll(products);
+    const data = withPrimaryQrAll(products).map(toPublicProduct);
     if (this.catalogCache.size > 50) this.catalogCache.clear();
     this.catalogCache.set(key, { at: Date.now(), data });
     return data;
@@ -268,7 +287,7 @@ export class ProductsService {
     if (!product) {
       throw new NotFoundException('Produit introuvable.');
     }
-    return { ...withPrimaryQr(product), labReport: await this.publicLabReport(product.batchId) };
+    return { ...toPublicProduct(withPrimaryQr(product)), labReport: await this.publicLabReport(product.batchId) };
   }
 
   // Fiche produit : provenance du lot et résultats d'analyse publiés, lus
@@ -308,7 +327,9 @@ export class ProductsService {
       honeyType: batch.honeyType,
       origin: batch.origin,
       harvestSeason: batch.harvestSeason,
-      productionDate: batch.productionDate,
+      // Date du conditionnement, postérieure à la vérification : voir la
+      // même correction dans QrCodesService.getPublicVerification.
+      packagingDate: batch.productionDate,
       bestBefore: batch.bestBefore,
       verifiedAt: verification?.verifiedAt ?? null,
       producer: verification?.request.producer ?? null,
