@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Clock } from 'lucide-react';
-import { BLOG_FALLBACK_COVER, blogCoverUrl, pickLocalized, type BlogPostSummary } from '../../lib/blog';
+import { BLOG_FALLBACK_COVER, blogCoverAltKey, blogCoverUrl, pickLocalized, type BlogPostSummary } from '../../lib/blog';
 import { dateLocale } from '../../i18n';
 import { ForwardArrow } from '../home/ui';
 
@@ -32,7 +32,7 @@ export const BlogCard: React.FC<{
       <div className={`relative overflow-hidden bg-[#EAE1D2]/50 shrink-0 ${large ? 'aspect-[16/9] md:aspect-auto md:w-1/2' : 'aspect-[4/3] w-full'}`}>
         <img
           src={blogCoverUrl(post) ?? BLOG_FALLBACK_COVER}
-          alt=""
+          alt={blogCoverAltKey(post) ? t(blogCoverAltKey(post)!) : ''}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

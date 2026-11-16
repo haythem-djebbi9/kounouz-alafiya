@@ -53,6 +53,19 @@ export function blogCoverUrl(post: Pick<BlogPostSummary, 'id' | 'hasUploadedCove
 
 export const BLOG_FALLBACK_COVER = '/images/3sal.webp';
 
+// Couvertures de la bibliothèque proposée par l'éditeur du blog : on sait ce
+// qu'elles montrent, on peut donc les décrire (alt). Une couverture
+// téléversée reste décorative : son contenu est inconnu, et la carte porte
+// déjà le titre de l'article.
+const STOCK_COVERS = ['scan', 'sedre', 'beekeeper', '3sal', 'royal-jelly', 'propolis', 'jabal', 'kisatona'];
+
+/** Clé de traduction du texte alternatif de la couverture, ou null si décorative. */
+export function blogCoverAltKey(post: Pick<BlogPostSummary, 'hasUploadedCover' | 'coverImage'>): string | null {
+  if (post.hasUploadedCover) return null;
+  const name = (post.coverImage ?? BLOG_FALLBACK_COVER).match(/\/images\/([\w-]+)\.webp$/)?.[1];
+  return name && STOCK_COVERS.includes(name) ? `marketplace:blog.coverAlt.${name}` : null;
+}
+
 // --- Vitrine -------------------------------------------------------------------
 
 // Articles de départ embarqués dans la vitrine (générés depuis

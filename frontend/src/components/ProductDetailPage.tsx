@@ -28,6 +28,7 @@ import { usePriceFormatter } from '../lib/format-price';
 import { usePublicProduct, type PublicLabParameter } from '../lib/marketplace-hooks';
 import { FREE_SHIPPING_THRESHOLD, isShippingFree } from '../lib/shop-rules';
 import { SITE_CONTACT, whatsappNumber } from '../lib/site-contact';
+import { localizePlace, localizeSeason } from '../lib/tunisia-places';
 import { Product } from '../types';
 import { ProductCard } from './shop/ProductCard';
 
@@ -171,7 +172,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     parameters.find((p) => p.value);
 
   const farmName = report?.producer?.farmName ?? product.farmName;
-  const location = report?.producer?.location ?? product.producerLocation;
+  // Saisis en français : traduits pour ne pas mêler deux langues sur la fiche.
+  const location = localizePlace(report?.producer?.location ?? product.producerLocation, i18n.language);
+  const harvestSeason = localizeSeason(report?.harvestSeason, i18n.language);
   const honeyType = report?.honeyType ?? product.honeyType;
   const pitch = product.description.split(/(?<=[.!؟?])\s/)[0] ?? '';
 
@@ -185,7 +188,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
 
   const chips = [
     location && { icon: MapPin, text: location },
-    report?.harvestSeason && { icon: Leaf, text: t('marketplace:productPage.chips.harvest', { season: report.harvestSeason }) },
+    harvestSeason && { icon: Leaf, text: t('marketplace:productPage.chips.harvest', { season: harvestSeason }) },
     honeyType && { icon: Warehouse, text: honeyType },
     analysis && { icon: FlaskConical, text: analysis.laboratory.name },
     product.batchCode && { icon: QrCode, text: product.batchCode, ltr: true },

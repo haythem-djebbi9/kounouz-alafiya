@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
-import { Check, MapPin, Plus, ShieldCheck, QrCode, FlaskConical } from 'lucide-react';
+import { Check, MapPin, ShoppingBag, ShieldCheck, QrCode, FlaskConical } from 'lucide-react';
 import type { Product } from '../../types';
 import { usePriceFormatter } from '../../lib/format-price';
+import { localizePlace } from '../../lib/tunisia-places';
 
 interface ProductCardProps {
   product: Product;
@@ -16,14 +17,17 @@ interface ProductCardProps {
 // format et ajout rapide. Au survol (écrans à souris), les points clés du
 // produit apparaissent sur la photo — uniquement des faits réels du lot.
 export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, onSelect, onAdd }) => {
-  const { t } = useTranslation('marketplace');
+  const { t, i18n } = useTranslation('marketplace');
   const formatPrice = usePriceFormatter();
   const [added, setAdded] = useState(false);
   const soldOut = !!product.variants?.length && product.variants.every((v) => v.stock <= 0);
+  // Localité saisie en français (« Le Kef, Tunisie ») : traduite en arabe et
+  // en anglais pour ne pas mêler deux langues sur une même carte.
+  const place = localizePlace(product.producerLocation, i18n.language);
 
   const keyPoints = [
     { icon: FlaskConical, text: t('marketplace:card.points.lab') },
-    product.producerLocation && { icon: MapPin, text: t('marketplace:card.points.origin', { origin: product.producerLocation }) },
+    place && { icon: MapPin, text: t('marketplace:card.points.origin', { origin: place }) },
     product.batchCode && { icon: QrCode, text: t('marketplace:card.points.batch', { code: product.batchCode }) },
   ].filter(Boolean) as { icon: typeof MapPin; text: string }[];
 
@@ -85,10 +89,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, on
       <div className="flex flex-col flex-grow p-4 sm:p-5">
         <div className="flex items-center justify-between gap-2 text-[11px] font-bold">
           <span className="text-[#C68A28] truncate">{product.categoryLabel}</span>
-          {product.producerLocation && (
+          {place && (
             <span className="inline-flex items-center gap-1 text-[#6F827B] truncate">
-              <MapPin className="w-3 h-3 text-[#D49B37] shrink-0" />
-              <span className="truncate">{product.producerLocation}</span>
+              <MapPin className="w-3 h-3 text-[#D49B37] shrink-0" aria-hidden="true" />
+              <span className="truncate">{place}</span>
             </span>
           )}
         </div>
@@ -100,23 +104,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, index = 0, on
           <p className="mt-1.5 text-xs sm:text-[13px] text-[#5E6F68] leading-relaxed line-clamp-2">{product.description}</p>
         )}
 
-        <div className="mt-auto pt-4 flex items-end justify-between gap-3">
+        <div className="mt-auto pt-4 space-y-3">
           <p className="leading-none">
             <span className="text-xl sm:text-2xl font-extrabold text-[#0C261B]">{formatPrice(product.price)}</span>
             {product.weight && <span className="ms-1.5 text-xs font-semibold text-[#8C7A60]">/ {product.weight}</span>}
           </p>
+          {/* Bouton libellé : le rond « + » d'avant ne se lisait pas comme
+              « ajouter au panier » (revue du 5 novembre). */}
           <motion.button
             type="button"
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.97 }}
             onClick={handleAdd}
             disabled={soldOut}
-            aria-label={soldOut ? t('marketplace:productDetail.soldOut') : t('marketplace:productDetail.addToCartCta')}
-            title={soldOut ? t('marketplace:productDetail.soldOut') : t('marketplace:productDetail.addToCartCta')}
-            className={`shrink-0 w-11 h-11 rounded-full inline-flex items-center justify-center shadow-md transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 ${
-              added ? 'bg-emerald-600 text-white' : 'bg-[#0C261B] text-[#E5AC44] hover:bg-[#D49B37] hover:text-[#0C261B]'
+            className={`w-full h-11 rounded-xl inline-flex items-center justify-center gap-2 text-sm font-bold shadow-sm transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 ${
+              added ? 'bg-emerald-600 text-white' : 'bg-[#0C261B] text-white hover:bg-[#D49B37] hover:text-[#0C261B]'
             }`}
           >
-            {added ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+            {added ? (
+              <Check className="w-4 h-4" aria-hidden="true" />
+            ) : (
+              <ShoppingBag className="w-4 h-4 text-[#E5AC44]" aria-hidden="true" />
+            )}
+            {soldOut ? t('marketplace:productDetail.soldOut') : t('marketplace:productDetail.addToCartCta')}
           </motion.button>
         </div>
       </div>
@@ -131,9 +140,9 @@ export const ProductCardSkeleton: React.FC = () => (
       <div className="h-3 w-1/3 bg-[#F3ECE0] rounded" />
       <div className="h-5 w-3/4 bg-[#EFE7D9] rounded" />
       <div className="h-3 w-full bg-[#F3ECE0] rounded" />
-      <div className="flex justify-between items-end pt-3">
+      <div className="pt-3 space-y-3">
         <div className="h-7 w-1/3 bg-[#EFE7D9] rounded" />
-        <div className="h-11 w-11 bg-[#EFE7D9] rounded-full" />
+        <div className="h-11 w-full bg-[#EFE7D9] rounded-xl" />
       </div>
     </div>
   </div>

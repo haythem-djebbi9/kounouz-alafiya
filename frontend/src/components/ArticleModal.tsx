@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X, Calendar, Clock, Share2, QrCode, Check } from 'lucide-react';
-import { BLOG_FALLBACK_COVER, blogCoverUrl, pickLocalized, usePublicBlogPost } from '../lib/blog';
+import { BLOG_FALLBACK_COVER, blogCoverAltKey, blogCoverUrl, pickLocalized, usePublicBlogPost } from '../lib/blog';
 import { ArticleBody } from './blog/ArticleBody';
 import { formatBlogDate } from './blog/BlogCard';
 
@@ -70,7 +70,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ slug, onClose, onVer
       >
         <div className="relative aspect-[16/7] overflow-hidden bg-[#0C261B] shrink-0">
           {post && (
-            <img src={blogCoverUrl(post) ?? BLOG_FALLBACK_COVER} alt="" className="w-full h-full object-cover" decoding="async" />
+            <img src={blogCoverUrl(post) ?? BLOG_FALLBACK_COVER} alt={blogCoverAltKey(post) ? t(blogCoverAltKey(post)!) : ''} className="w-full h-full object-cover" decoding="async" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-transparent to-transparent" />
           <button

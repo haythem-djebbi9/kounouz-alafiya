@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { QrCode, ShieldCheck, CheckCircle2, ChevronDown, MapPin } from 'lucide-react';
 import type { Product } from '../types';
 import { ForwardArrow, Hexagon } from './home/ui';
+import { localizePlace } from '../lib/tunisia-places';
 
 interface HeroSectionProps {
   onDiscover: () => void;
@@ -24,7 +25,7 @@ const FLOATING_HEXAGONS = [
 const POLLEN = [8, 18, 27, 36, 52, 61, 70, 83, 92];
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, featured }) => {
-  const { t } = useTranslation(['marketplace', 'common']);
+  const { t, i18n } = useTranslation(['marketplace', 'common']);
   const lines = [t('marketplace:hero.titleLine1'), t('marketplace:hero.titleLine2')];
   const points = [
     t('marketplace:home.hero.points.lab'),
@@ -52,7 +53,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
 
       {/* Voiles de lisibilité : le texte ne passe jamais sur le pot de miel */}
       <div className="absolute inset-0 md:hidden bg-gradient-to-b from-[#F6F1EB] via-[#F6F1EB]/90 via-55% to-[#F6F1EB]/0 pointer-events-none" />
-      <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#F6F1EB] via-[#F6F1EB]/85 via-40% to-transparent to-70% pointer-events-none" />
+      {/* Voile prolongé : à 1024 px, la fin des lignes arabes tombait sur la
+          cuillère et le pot, dans une zone presque transparente. */}
+      <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#F6F1EB] via-[#F6F1EB]/90 via-45% to-transparent to-75% pointer-events-none" />
 
       {/* Motif d'alvéoles flottantes */}
       {FLOATING_HEXAGONS.map((h, i) => (
@@ -79,7 +82,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
 
       {/* Contenu : toujours dans la zone claire (à gauche physiquement) */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-56 sm:pb-64 md:py-16">
-        <div className="w-full max-w-xl mx-auto md:ml-0 md:mr-auto flex flex-col items-center md:items-start text-center md:text-start">
+        {/* Colonne plus étroite aux largeurs moyennes : elle ne doit jamais
+            atteindre le pot, placé à partir de 57 % de la largeur. */}
+        <div className="w-full max-w-xl md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto md:ml-0 md:mr-auto flex flex-col items-center md:items-start text-center md:text-start">
           <motion.span
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -103,7 +108,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
               </motion.span>
             ))}
             <motion.span
-              className="block text-[0.8em] bg-gradient-to-r from-[#B8802A] via-[#E5AC44] to-[#B8802A] bg-[length:200%_auto] bg-clip-text text-transparent"
+              // Doré foncé : #E5AC44 sur le fond crème ne contrastait qu'à 2:1, la
+              // ligne se perdait. Ce dégradé reste au-dessus de 3,3:1 partout.
+              className="block text-[0.8em] bg-gradient-to-r from-[#8F621C] via-[#B07A22] to-[#8F621C] bg-[length:200%_auto] bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 28, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)', backgroundPosition: ['0% 50%', '200% 50%'] }}
               transition={{
@@ -217,7 +224,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onDiscover, onVerify, 
                 <span className="text-[#6F827B]">{t('marketplace:home.hero.card.origin')}</span>
                 <span className="inline-flex items-center gap-1 font-bold text-[#0C261B] truncate">
                   <MapPin className="w-3 h-3 text-[#D49B37] shrink-0" />
-                  {featured.producerLocation ?? featured.origin}
+                  {localizePlace(featured.producerLocation ?? featured.origin, i18n.language)}
                 </span>
               </div>
             </div>

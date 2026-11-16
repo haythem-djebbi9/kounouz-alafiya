@@ -2,8 +2,11 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 // Tous les montants de la plateforme — vitrine comme portails — sont en dinar
-// tunisien. Le dinar se divise en 1000 millimes, d'où 3 décimales quand le
-// prix n'est pas rond (89,900 DT) ; un prix rond reste sans décimales (35 DT).
+// tunisien. Le dinar se divise en 1000 millimes : un prix s'écrit toujours
+// avec ses 3 décimales (42,000 DT ; 89,900 DT), comme dans le commerce
+// tunisien. Afficher « 42 DT » à côté de « 89,900 DT » donnait deux formats
+// sur une même page (revue du 5 novembre). Seuls les totaux arrondis des
+// tableaux de bord (`round`) s'écrivent sans décimales.
 const NUMBER_LOCALES: Record<string, string> = { ar: 'ar-TN', fr: 'fr-TN', en: 'en-US' };
 const CURRENCY_LABELS: Record<string, string> = { ar: 'د.ت', fr: 'DT', en: 'TND' };
 
@@ -18,16 +21,15 @@ export function currencyLabel(lang: string): string {
 
 /** Montant seul, sans devise. `round` : entier (tableaux de bord, totaux). */
 export function formatAmount(value: number, lang: string, round = false): string {
-  const rounded = round ? Math.round(value) : Math.round(value * 1000) / 1000;
-  const whole = Number.isInteger(rounded);
+  const digits = round ? 0 : 3;
   return new Intl.NumberFormat(NUMBER_LOCALES[lang] ?? 'fr-TN', {
     numberingSystem: 'latn',
-    minimumFractionDigits: whole ? 0 : 3,
-    maximumFractionDigits: whole ? 0 : 3,
-  }).format(rounded);
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(round ? Math.round(value) : value);
 }
 
-/** Montant en dinars dans la langue voulue : « 35 د.ت », « 89,900 DT », « 1,250 TND ». */
+/** Montant en dinars dans la langue voulue : « 35,000 د.ت », « 89,900 DT », « 1,250.000 TND ». */
 export function formatTnd(value: number | string | null | undefined, lang: string, options: { round?: boolean } = {}): string {
   const amount = Number(value);
   if (value === null || value === undefined || value === '' || !Number.isFinite(amount)) return '—';

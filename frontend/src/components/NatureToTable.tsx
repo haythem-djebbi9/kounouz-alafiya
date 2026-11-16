@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { localizePlace } from '../lib/tunisia-places';
 import { Check, MapPin, Mountain } from 'lucide-react';
 import { ForwardArrow, SectionHeading } from './home/ui';
 
@@ -11,7 +12,7 @@ interface NatureToTableProps {
 }
 
 export const NatureToTable: React.FC<NatureToTableProps> = ({ onDiscoverStory, origins }) => {
-  const { t } = useTranslation('marketplace');
+  const { t, i18n } = useTranslation('marketplace');
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   // Parallaxe douce de la photo dans son cadre.
@@ -98,8 +99,8 @@ export const NatureToTable: React.FC<NatureToTableProps> = ({ onDiscoverStory, o
                     transition={{ delay: 0.3 + idx * 0.08 }}
                     className="inline-flex items-center gap-1.5 bg-white border border-[#EAE1D2] text-[#0C261B] text-sm font-semibold px-3 py-1.5 rounded-full shadow-sm"
                   >
-                    <MapPin className="w-3.5 h-3.5 text-[#D49B37]" />
-                    {origin}
+                    <MapPin className="w-3.5 h-3.5 text-[#D49B37]" aria-hidden="true" />
+                    {localizePlace(origin, i18n.language)}
                   </motion.span>
                 ))}
               </div>

@@ -497,6 +497,16 @@
       "APICULTURE": "Apiculture",
       "TRACABILITE": "Traçabilité",
       "ACTUALITES": "Actualités"
+    },
+    "coverAlt": {
+      "scan": "Pot Kounouz Alafiya, son coffret et sa carte de vérification à QR code",
+      "sedre": "Pot de miel de sedra posé sur une pierre, près d'un panier de jujubes",
+      "beekeeper": "Apiculteur en tenue tenant un cadre de rayons au rucher, au coucher du soleil",
+      "3sal": "Miel coulant d'une cuillère en bois dans un bol, parmi des fleurs blanches",
+      "royal-jelly": "Pot de gelée royale Kounouz Alafiya près d'un rayon de miel",
+      "propolis": "Pot de propolis Kounouz Alafiya entouré de morceaux de propolis",
+      "jabal": "Pot de miel de montagne sur un rocher, devant un paysage de montagnes",
+      "kisatona": "Apiculteur inspectant un cadre parmi les ruches, près d'un panneau en bois"
     }
   },
   "shop": {

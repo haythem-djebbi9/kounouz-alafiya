@@ -89,7 +89,11 @@ export const InteractiveBee: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
+    // z-30 : sous l'en-tête (sticky, z-40). À égalité de z-index, l'abeille,
+    // plus loin dans la page, passait au-dessus : quand elle survolait le
+    // bouton du menu mobile, c'est elle qui recevait le toucher, et le menu
+    // ne s'ouvrait pas (revue du 5 novembre).
+    <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
       {/* Speech Bubble */}
       <AnimatePresence>
         {speechBubble && (
